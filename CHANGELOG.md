@@ -72,10 +72,3 @@
 - Bump androidx.compose:compose-bom from 2024.11.00 to 2024.12.01 (@dependabot[bot])
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/16ae67f6...ad26809e)
-
-
-## 2024-12-25
-- feat(Support Image Extractor): Moved the Extraction to Work Manager (#334) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ad26809e...7a1e2381)
-
