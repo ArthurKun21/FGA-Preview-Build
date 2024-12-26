@@ -85,3 +85,10 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7a1e2381...3e190fdb)
 
+
+## 2024-12-26
+- chore(gradle): Update Gradle wrapper to version 8.12 (#337) (@ArthurKun21)
+- fix(Library): Unable to perform config export (#339) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/3e190fdb...a4bb5830)
+
