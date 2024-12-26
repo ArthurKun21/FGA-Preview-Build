@@ -78,3 +78,10 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ad26809e...7a1e2381)
 
+
+## 2024-12-26
+- refactor(Notifications): Updated codebase for notification channels (#335) (@ArthurKun21)
+- refactor(storage): Migrate from DocumentFile to UniFile (#336) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7a1e2381...3e190fdb)
+
