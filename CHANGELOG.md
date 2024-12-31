@@ -92,3 +92,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/3e190fdb...a4bb5830)
 
+
+## 2024-12-31
+- fix(Battle Launcher): Negative Apple Count (#341) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/a4bb5830...2dc72912)
+
