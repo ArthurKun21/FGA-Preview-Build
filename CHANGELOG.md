@@ -98,3 +98,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/a4bb5830...2dc72912)
 
+
+## 2025-01-03
+- feat(AutoFriendGacha): Support for 100x FP (#342) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2dc72912...94896252)
+
