@@ -104,3 +104,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2dc72912...94896252)
 
+
+## 2025-01-07
+- feat(AutoBattle): Stop on Bond Level up (#345) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/94896252...ce7b51c0)
+
