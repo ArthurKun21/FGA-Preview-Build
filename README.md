@@ -33,33 +33,29 @@ Ideas want to work on:
 3. [ ] On pause, show the remaining commands
    
 4. [ ] Use the current storage settings to auto save all of the configs
-   
-5. [X] Probably migrate from DocumentFile to Unifile like Mihon
 
-6. [ ] Integration with Laplace from [Chaldea](https://github.com/chaldea-center/chaldea).
+5. [ ] Integration with Laplace from [Chaldea](https://github.com/chaldea-center/chaldea).
 
     The Idea is to able to get data from Laplace and then copy paste it into another text box.
 
-7. [ ] Combine Card and Servant Priority.
+6. [ ] Combine Card and Servant Priority.
 
-8. [ ] Update the Card pick logic to maximize dmg/np gain
+7. [ ] Update the Card pick logic to maximize dmg/np gain
     - e.g. `NP(Servant A)-(Card from A)-(Card from B)` will become `NP(Servant A)-(Card from B)-(Card from A))`
 
-9. [ ] Read less images from card pick logic
+8. [ ] Read less images from card pick logic
     - When 3 NP used. verify NPs can be used and no card checking.
     - When 2 NP used. Find the same one as the higher priority card in the same chain
 
-10. [ ] Need to have full friend list to get the error when sending request with full list.
+9. [ ] Need to have full friend list to get the error when sending request with full list.
     
-11. [ ] Select what is the wave/turn the script would start. This is now made possible thanks to the fast lazy column
+10. [ ] Select what is the wave/turn the script would start. This is now made possible thanks to the fast lazy column
 
-12. [ ] Different scripts per support.
+11. [ ] Different scripts per support.
 
-13. [ ] NP Level recognition
-
-14. [ ] Auto Creation of Blue Apples, if available
+12. [ ] Auto Creation of Blue Apples, if available
   
-15. [ ] Download Support Servants/CE from another repository. Instead of need to use Support Image Maker. Can just download support files.
+13. [ ] Download Support Servants/CE from another repository. Instead of need to use Support Image Maker. Can just download support files.
 
 Already done:
 
@@ -98,4 +94,10 @@ Already done:
 14. [X] Support Image Maker to Compose.
 
 15. [X] Command Spell's Full HP/Full NP on the battle script
+    
+16. [X] Probably migrate from DocumentFile to Unifile like Mihon
+    
+17. [X] Stop on Bond Level Up
+    
+18. [X] NP Level recognition
 
