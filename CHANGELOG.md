@@ -110,3 +110,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/94896252...ce7b51c0)
 
+
+## 2025-01-07
+- feat(Support): NP Level Detection (#346) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ce7b51c0...4836f995)
+
