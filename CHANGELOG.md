@@ -122,3 +122,10 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/4836f995...61b85cc7)
 
+
+## 2025-01-08
+- refactor(Service): replace Service references with application context (#348) (@ArthurKun21)
+- fix(Notification): Notification priority causes it to disappear when used often. (#349) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/61b85cc7...cd84908b)
+
