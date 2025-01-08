@@ -116,3 +116,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ce7b51c0...4836f995)
 
+
+## 2025-01-08
+- fix(Support): NP Level Detection for wide screens (#347) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/4836f995...61b85cc7)
+
