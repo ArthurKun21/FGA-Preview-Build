@@ -129,3 +129,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/61b85cc7...cd84908b)
 
+
+## 2025-01-11
+- Bump org.jetbrains.kotlinx:kotlinx-serialization-json from 1.7.3 to 1.8.0 (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/cd84908b...9ce128b7)
+
