@@ -124,6 +124,14 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Prune old releases
+        uses: dev-drprasad/delete-older-releases@dfbe6be2a006e9475dfcbe5b8d201f1824c2a9fe # v0.3.4
+        if: ${{ env.commit_count_diff > 0 }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          keep_latest: 14
+          delete_tags: true
   
   changelog:
     runs-on: macos-latest
@@ -148,3 +156,4 @@ jobs:
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
           git push
+          
