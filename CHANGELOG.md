@@ -135,3 +135,9 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/cd84908b...9ce128b7)
 
+
+## 2025-01-15
+- Bump com.android.tools.build:gradle from 8.7.3 to 8.8.0 (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/9ce128b7...576eccc6)
+
