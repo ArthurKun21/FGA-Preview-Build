@@ -145,7 +145,7 @@ jobs:
       - name: Update CHANGELOG.md
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         run: |
-          echo -e "${{ needs.build-app.outputs.CHANGELOG }}" >> CHANGELOG.md
+          echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com' 

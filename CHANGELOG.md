@@ -1,65 +1,60 @@
+## 2025-01-15
+- Bump com.android.tools.build:gradle from 8.7.3 to 8.8.0 (@dependabot[bot])
 
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/9ce128b7...576eccc6)
 
-## 2024-12-09
-- Fix battle launcher sort (#307) (@ArthurKun21)
-- Fix Library Sort (#308) (@ArthurKun21)
+## 2025-01-11
+- Bump org.jetbrains.kotlinx:kotlinx-serialization-json from 1.7.3 to 1.8.0 (@dependabot[bot])
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e20eeb0f...d62dbaf3)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/cd84908b...9ce128b7)
 
-## 2024-12-09
-- Update Battle launcher UI (#309) (@ArthurKun21)
+## 2025-01-08
+- refactor(Service): replace Service references with application context (#348) (@ArthurKun21)
+- fix(Notification): Notification priority causes it to disappear when used often. (#349) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/d62dbaf3...da7a46fa)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/61b85cc7...cd84908b)
 
-## 2024-12-09
-- Fix Empty Library Crash (#310) (@ArthurKun21)
+## 2025-01-08
+- fix(Support): NP Level Detection for wide screens (#347) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/da7a46fa...7f64cd08)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/4836f995...61b85cc7)
 
+## 2025-01-07
+- feat(Support): NP Level Detection (#346) (@ArthurKun21)
 
-## 2024-12-13
-- Refactor strings (#311) (@ArthurKun21)
-- Fix Compile and min SDK (#313) (@ArthurKun21)
-- Fix library config preparation (#314) (@ArthurKun21)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ce7b51c0...4836f995)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7f64cd08...e133795c)
+## 2025-01-07
+- feat(AutoBattle): Stop on Bond Level up (#345) (@ArthurKun21)
 
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/94896252...ce7b51c0)
 
-## 2024-12-13
-- Fix race condition on creating/destroying service (#315) (@ArthurKun21)
+## 2025-01-03
+- feat(AutoFriendGacha): Support for 100x FP (#342) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e133795c...c62f2e23)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2dc72912...94896252)
 
+## 2024-12-31
+- fix(Battle Launcher): Negative Apple Count (#341) (@ArthurKun21)
 
-## 2024-12-14
-- Fix linter error (#316) (@ArthurKun21)
-- Library Predefined Server Sort (#317) (@ArthurKun21)
-- Fix Library search toggle (#318) (@ArthurKun21)
-- Fix sort settings not being saved (#319) (@ArthurKun21)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/a4bb5830...2dc72912)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/c62f2e23...86122452)
+## 2024-12-26
+- chore(gradle): Update Gradle wrapper to version 8.12 (#337) (@ArthurKun21)
+- fix(Library): Unable to perform config export (#339) (@ArthurKun21)
 
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/3e190fdb...a4bb5830)
 
-## 2024-12-17
-- Support for JP Long Press lottery (#320) (@ArthurKun21)
+## 2024-12-26
+- refactor(Notifications): Updated codebase for notification channels (#335) (@ArthurKun21)
+- refactor(storage): Migrate from DocumentFile to UniFile (#336) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/86122452...078b3031)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7a1e2381...3e190fdb)
 
+## 2024-12-25
+- feat(Support Image Extractor): Moved the Extraction to Work Manager (#334) (@ArthurKun21)
 
-## 2024-12-18
-- Fix Toggle Service (#321) (@ArthurKun21)
-- Fix Library Select (#322) (@ArthurKun21)
-- Update Library Search icons (#323) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/078b3031...10fab43a)
-
-
-## 2024-12-21
-- Fix JP Lottery Present Box Full (#324) (@ArthurKun21)
-- feat(AutoLottery): Jp lottery long press improvement (#325) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/10fab43a...16ae67f6)
-
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ad26809e...7a1e2381)
 
 ## 2024-12-23
 - Update dependabot.yml (@ArthurKun21)
@@ -73,71 +68,56 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/16ae67f6...ad26809e)
 
-## 2024-12-25
-- feat(Support Image Extractor): Moved the Extraction to Work Manager (#334) (@ArthurKun21)
+## 2024-12-21
+- Fix JP Lottery Present Box Full (#324) (@ArthurKun21)
+- feat(AutoLottery): Jp lottery long press improvement (#325) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ad26809e...7a1e2381)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/10fab43a...16ae67f6)
 
+## 2024-12-18
+- Fix Toggle Service (#321) (@ArthurKun21)
+- Fix Library Select (#322) (@ArthurKun21)
+- Update Library Search icons (#323) (@ArthurKun21)
 
-## 2024-12-26
-- refactor(Notifications): Updated codebase for notification channels (#335) (@ArthurKun21)
-- refactor(storage): Migrate from DocumentFile to UniFile (#336) (@ArthurKun21)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/078b3031...10fab43a)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7a1e2381...3e190fdb)
+## 2024-12-17
+- Support for JP Long Press lottery (#320) (@ArthurKun21)
 
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/86122452...078b3031)
 
-## 2024-12-26
-- chore(gradle): Update Gradle wrapper to version 8.12 (#337) (@ArthurKun21)
-- fix(Library): Unable to perform config export (#339) (@ArthurKun21)
+## 2024-12-14
+- Fix linter error (#316) (@ArthurKun21)
+- Library Predefined Server Sort (#317) (@ArthurKun21)
+- Fix Library search toggle (#318) (@ArthurKun21)
+- Fix sort settings not being saved (#319) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/3e190fdb...a4bb5830)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/c62f2e23...86122452)
 
+## 2024-12-13
+- Fix race condition on creating/destroying service (#315) (@ArthurKun21)
 
-## 2024-12-31
-- fix(Battle Launcher): Negative Apple Count (#341) (@ArthurKun21)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e133795c...c62f2e23)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/a4bb5830...2dc72912)
+## 2024-12-13
+- Refactor strings (#311) (@ArthurKun21)
+- Fix Compile and min SDK (#313) (@ArthurKun21)
+- Fix library config preparation (#314) (@ArthurKun21)
 
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7f64cd08...e133795c)
 
-## 2025-01-03
-- feat(AutoFriendGacha): Support for 100x FP (#342) (@ArthurKun21)
+## 2024-12-09
+- Fix Empty Library Crash (#310) (@ArthurKun21)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2dc72912...94896252)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/da7a46fa...7f64cd08)
 
+## 2024-12-09
+- Update Battle launcher UI (#309) (@ArthurKun21)
 
-## 2025-01-07
-- feat(AutoBattle): Stop on Bond Level up (#345) (@ArthurKun21)
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/d62dbaf3...da7a46fa)
 
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/94896252...ce7b51c0)
+## 2024-12-09
+- Fix battle launcher sort (#307) (@ArthurKun21)
+- Fix Library Sort (#308) (@ArthurKun21)
 
-
-## 2025-01-07
-- feat(Support): NP Level Detection (#346) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ce7b51c0...4836f995)
-
-
-## 2025-01-08
-- fix(Support): NP Level Detection for wide screens (#347) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/4836f995...61b85cc7)
-
-
-## 2025-01-08
-- refactor(Service): replace Service references with application context (#348) (@ArthurKun21)
-- fix(Notification): Notification priority causes it to disappear when used often. (#349) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/61b85cc7...cd84908b)
-
-
-## 2025-01-11
-- Bump org.jetbrains.kotlinx:kotlinx-serialization-json from 1.7.3 to 1.8.0 (@dependabot[bot])
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/cd84908b...9ce128b7)
-
-
-## 2025-01-15
-- Bump com.android.tools.build:gradle from 8.7.3 to 8.8.0 (@dependabot[bot])
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/9ce128b7...576eccc6)
-
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e20eeb0f...d62dbaf3)
