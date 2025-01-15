@@ -1,4 +1,12 @@
 
+## 2025-01-15
+- Bump com.android.tools.build:gradle from 8.7.3 to 8.8.0 (@dependabot[bot])
+- Bump io.mockk:mockk from 1.13.14 to 1.13.16 (@dependabot[bot])
+- Bump hilt from 2.54 to 2.55 (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/9ce128b7...1ce10c43)
+
+
 ## 2025-01-11
 - Bump org.jetbrains.kotlinx:kotlinx-serialization-json from 1.7.3 to 1.8.0 (@dependabot[bot])
 
