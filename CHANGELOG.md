@@ -1,3 +1,9 @@
+
+## 2025-01-15
+- Bump io.mockk:mockk from 1.13.14 to 1.13.16 (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/576eccc6...18ff63e9)
+
 ## 2025-01-15
 - Bump com.android.tools.build:gradle from 8.7.3 to 8.8.0 (@dependabot[bot])
 
