@@ -65,7 +65,7 @@ jobs:
 
           COMPARISON_LINK="https://github.com/ArthurKun21/fga-preview/compare/${PREV_RELEASE_SHA}...${CURRENT_SHA}"
 
-          CHANGELOG="\n## $CURRENT_DATE\n${COMMIT_LOGS}\n\n[Compare changes]($COMPARISON_LINK)\n"
+          CHANGELOG="## ${COMMIT_COUNT}\n$CURRENT_DATE\n${COMMIT_LOGS}\n\n[Compare changes]($COMPARISON_LINK)"
           
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
