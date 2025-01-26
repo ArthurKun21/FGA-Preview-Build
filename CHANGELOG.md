@@ -1,3 +1,10 @@
+## 1810
+2025-01-26
+- Bump activity from 1.9.3 to 1.10.0 (@dependabot[bot])
+- Bump androidx.compose:compose-bom from 2024.12.01 to 2025.01.00 (@dependabot[bot])
+- Bump org.opencv:opencv from 4.10.0-kleidicv to 4.11.0 (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/1ce10c43...6caee4af)
 ## 1807
 2025-01-15
 - Bump com.android.tools.build:gradle from 8.7.3 to 8.8.0 (@dependabot[bot])
