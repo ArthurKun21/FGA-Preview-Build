@@ -1,3 +1,8 @@
+## 1811
+2025-01-29
+- fix(AutoBattle): New JP Repeat Button Location (#358) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/6caee4af...33c6da8f)
 ## 1810
 2025-01-26
 - Bump activity from 1.9.3 to 1.10.0 (@dependabot[bot])
