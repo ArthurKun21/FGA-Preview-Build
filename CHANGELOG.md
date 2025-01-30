@@ -1,3 +1,8 @@
+## 1817
+2025-01-30
+- fix(MediaProjectionRecording): Update the deprecated Media Recording (#362) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/d25e8130...2a404155)
 ## 1816
 2025-01-30
 - refactor(DroidCvPattern): improve logging format for match results (#359) (@ArthurKun21)
