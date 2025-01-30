@@ -1,3 +1,12 @@
+## 1816
+2025-01-30
+- refactor(DroidCvPattern): improve logging format for match results (#359) (@ArthurKun21)
+- Bump com.github.ben-manes.versions from 0.51.0 to 0.52.0 (#357) (@dependabot[bot])
+- Bump kotlin from 2.1.0 to 2.1.10 (#356) (@dependabot[bot])
+- Bump ksp from 2.1.0-1.0.29 to 2.1.10-1.0.29 (@ArthurKun21)
+- fix(DroidCvPattern): Crash due to region out of bounds (#361) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/33c6da8f...d25e8130)
 ## 1811
 2025-01-29
 - fix(AutoBattle): New JP Repeat Button Location (#358) (@ArthurKun21)
