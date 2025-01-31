@@ -1,3 +1,12 @@
+## 1826
+2025-01-31
+- fix: Update the deprecated Display metrics (#364) (@ArthurKun21)
+- feat(Teapots): New Teapots UI in JP (#368) (@ArthurKun21)
+- feat(Support Screen): Minor QoL Improvements (#369) (@ArthurKun21)
+- fix: locale positioning warning (#370) (@ArthurKun21)
+- fix(Teapots): reduce timeout for popup existence check from 5 seconds to 2 seconds (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ad77672c...2ca217d5)
 ## 1821
 2025-01-31
 - chore: Update Home Screen Top Bar UI (#363) (@ArthurKun21)
