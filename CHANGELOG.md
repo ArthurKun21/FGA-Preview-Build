@@ -1,3 +1,11 @@
+## 1821
+2025-01-31
+- chore: Update Home Screen Top Bar UI (#363) (@ArthurKun21)
+- chore: Further Update Home Screen UI (#365) (@ArthurKun21)
+- chore: Update App Colors (#366) (@ArthurKun21)
+- chore: Code Cleanup (#367) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2a404155...ad77672c)
 ## 1817
 2025-01-30
 - fix(MediaProjectionRecording): Update the deprecated Media Recording (#362) (@ArthurKun21)
