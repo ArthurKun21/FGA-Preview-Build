@@ -1,3 +1,23 @@
+## 1842
+2025-02-17
+- fix(Command Spell): Detection in ultra-wide devices (#333) (@ArthurKun21)
+- feat!: Remove Spam configuration (#371) (@ArthurKun21)
+- fix: replaced the clickable text in onboarding (#372) (@ArthurKun21)
+- feat: Update the Command Card Screen (#373) (@ArthurKun21)
+- fix: invalid image format (@ArthurKun21)
+- fix: Various inconsistencies with the Command Card Screen (#374) (@ArthurKun21)
+- feat: Update Fine Tune Screen UI (#376) (@ArthurKun21)
+- chore(deps): bump org.jetbrains.kotlinx:kotlinx-datetime from 0.6.1 to 0.6.2 (@dependabot[bot])
+- chore(deps): bump coil from 3.0.4 to 3.1.0 (@dependabot[bot])
+- chore(deps): bump androidx.navigation:navigation-compose from 2.8.5 to 2.8.6 (@dependabot[bot])
+- chore: refactor AutoSkillCommand (#381) (@ArthurKun21)
+- feat: allow skipping onboarding items in debug mode (#382) (@ArthurKun21)
+- feat Update dialogs UI (#383) (@ArthurKun21)
+- feat: Update Command Card Screen UI (#384) (@ArthurKun21)
+- feat: Update Support Class Picker UI (#385) (@ArthurKun21)
+- fix: navigation backstack error on multiple click event (#386) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2ca217d5...2733f065)
 ## 1826
 2025-01-31
 - fix: Update the deprecated Display metrics (#364) (@ArthurKun21)
