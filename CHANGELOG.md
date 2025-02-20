@@ -1,3 +1,19 @@
+## 1854
+2025-02-20
+- chore: remove Gson from Project and replace with kotlin serialization (#387) (@ArthurKun21)
+- chore(deps): bump ksp from 2.1.10-1.0.29 to 2.1.10-1.0.30 (@dependabot[bot])
+- chore(deps): bump androidx.navigation:navigation-compose from 2.8.6 to 2.8.7 (@dependabot[bot])
+- chore(deps): bump com.android.tools.build:gradle from 8.8.0 to 8.8.1 (@dependabot[bot])
+- chore(deps): bump androidx.compose:compose-bom from 2025.01.00 to 2025.02.00 (@dependabot[bot])
+- feat: Update Library Screen (#406) (@ArthurKun21)
+- chore: refactor battle config components (#407) (@ArthurKun21)
+- feat: Update Material Screen UI logic (#408) (@ArthurKun21)
+- chore: update .gitignore to include runConfigurations.xml (@ArthurKun21)
+- feat: added background to home and library (#409) (@ArthurKun21)
+- feat: Update settings screen UI (#410) (@ArthurKun21)
+- fix: Color and Component issue caused by last update (#411) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2733f065...230fac58)
 ## 1842
 2025-02-17
 - fix(Command Spell): Detection in ultra-wide devices (#333) (@ArthurKun21)
