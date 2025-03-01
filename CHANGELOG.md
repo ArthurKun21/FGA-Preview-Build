@@ -1,3 +1,8 @@
+## 1855
+2025-03-01
+- feat(manifest): add internet and network state permissions (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/230fac58...cd83c303)
 ## 1854
 2025-02-20
 - chore: remove Gson from Project and replace with kotlin serialization (#387) (@ArthurKun21)
