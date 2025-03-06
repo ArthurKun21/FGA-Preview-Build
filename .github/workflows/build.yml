@@ -2,8 +2,8 @@ name: build app
 
 on:
   # Every Saturday at 21:00 UTC
-  schedule:
-    - cron: '0 21 * * 6'
+  # schedule:
+  #   - cron: '0 21 * * 6'
   # Manual triggers
   workflow_dispatch:
 
