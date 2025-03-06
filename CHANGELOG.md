@@ -1,3 +1,17 @@
+## 1864
+2025-03-06
+- feat(manifest): add internet and network state permissions (@ArthurKun21)
+- feat: Backup and Restore Settings (#420) (@ArthurKun21)
+- chore(deps): bump activity from 1.10.0 to 1.10.1 (@dependabot[bot])
+- chore(deps): bump ksp from 2.1.10-1.0.30 to 2.1.10-1.0.31 (@dependabot[bot])
+- chore(deps): bump com.android.tools.build:gradle from 8.8.1 to 8.8.2 (@dependabot[bot])
+- chore(deps): bump org.junit:junit-bom from 5.11.4 to 5.12.0 (@dependabot[bot])
+- chore(deps): bump io.mockk:mockk from 1.13.16 to 1.13.17 (@dependabot[bot])
+- fix: Start Service race conditon (#421) (@ArthurKun21)
+- feat: Update the default detail screen to Battle for Expanded Settings Screen (#422) (@ArthurKun21)
+- feat(Skill Maker): Update Support for Dante Alighieri (#423) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/230fac58...65d2d3df)
 ## 1854
 2025-02-20
 - chore: remove Gson from Project and replace with kotlin serialization (#387) (@ArthurKun21)
