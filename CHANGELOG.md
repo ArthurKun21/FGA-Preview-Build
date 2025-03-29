@@ -1,3 +1,22 @@
+## 1897
+2025-03-29
+- chore: refactor class names and functions (#446) (@ArthurKun21)
+- chore(deps): bump kotlin from 2.1.10 to 2.1.20 (@dependabot[bot])
+- chore(deps): bump ksp from 2.1.10-1.0.31 to 2.1.20-1.0.31 (@dependabot[bot])
+- chore(deps): bump com.android.tools.build:gradle from 8.9.0 to 8.9.1 (@dependabot[bot])
+- chore(deps): bump hilt from 2.55 to 2.56 (@dependabot[bot])
+- chore(deps): bump gradle from 8.12 to 8.13 (@ArthurKun21)
+- chore: update .gitignore to ignore all files in .idea except icon.png (@ArthurKun21)
+- feat: update to use SpecialSkill.Transform and deprecate Transform (#447) (@ArthurKun21)
+- chore: convert actions from stateflow to sharedflow (#448) (@ArthurKun21)
+- fix: update proguard rules (#449) (@ArthurKun21)
+- chore: convert parameter to duration (#451) (@ArthurKun21)
+- fix: unreleased Mat instances (#453) (@ArthurKun21)
+- feat: always disable AccessibilityService when stopping Script Service (#454) (@ArthurKun21)
+- feat!: temp disable daily reset handler (#455) (@ArthurKun21)
+- fix(NA): Broken skill confirm check (#456) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/a6599f8f...7c4be32a)
 ## 1882
 2025-03-24
 - feat(manifest): add internet and network state permissions (@ArthurKun21)
