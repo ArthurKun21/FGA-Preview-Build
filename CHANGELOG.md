@@ -1,3 +1,20 @@
+## 1910
+2025-04-02
+- feat: use ai generated translations (#457) (@ArthurKun21)
+- fix: reserved character causing build error (#458) (@ArthurKun21)
+- feat: Replace local images with link urls (#459) (@ArthurKun21)
+- feat: implement image loading optimization with LruCache (#460) (@ArthurKun21)
+- chore: Update Gradle config (#461) (@ArthurKun21)
+- feat: implement asynchronous file logging (#462) (@ArthurKun21)
+- chore: refactor code to split the notification and logging for scripts (#463) (@ArthurKun21)
+- chore: cleanup unnecessary script (#464) (@ArthurKun21)
+- chore: reduce accessibility service permissions (#465) (@ArthurKun21)
+- chore: added safety checks for accessiblity service (#466) (@ArthurKun21)
+- chore(deps): bump ksp from 2.1.20-1.0.31 to 2.1.20-1.0.32 (@dependabot[bot])
+- chore(deps): bump hilt from 2.56 to 2.56.1 (@dependabot[bot])
+- chore(deps): bump androidx.compose:compose-bom from 2025.03.00 to 2025.03.01 (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7c4be32a...55fdfc05)
 ## 1897
 2025-03-29
 - chore: refactor class names and functions (#446) (@ArthurKun21)
