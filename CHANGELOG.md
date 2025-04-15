@@ -1,3 +1,18 @@
+## 1921
+2025-04-15
+- feat: start at support after the repeat quest (#472) (@ArthurKun21)
+- chore(deps): bump org.jetbrains.kotlinx:kotlinx-serialization-json from 1.8.0 to 1.8.1 (@dependabot[bot])
+- refactor: update gradle build configuration and dependencies (#473) (@ArthurKun21)
+- refactor: update composition state management (#475) (@ArthurKun21)
+- chore: upgrade Java in gradle from 11 to 17 (#476) (@ArthurKun21)
+- chore: remove ndkVersion from build.gradle.kts (#477) (@ArthurKun21)
+- chore(deps): bump io.mockk:mockk from 1.13.17 to 1.14.0 (@dependabot[bot])
+- chore(deps): bump org.jetbrains.kotlinx:kotlinx-coroutines-core from 1.10.1 to 1.10.2 (@dependabot[bot])
+- chore(deps): bump org.junit:junit-bom from 5.12.1 to 5.12.2 (@dependabot[bot])
+- chore(deps): bump com.google.devtools.ksp from 2.1.20-1.0.32 to 2.1.20-2.0.0 (@dependabot[bot])
+- fix: initial 100 FP Gacha (#482) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/55fdfc05...8cdffe55)
 ## 1910
 2025-04-02
 - feat: use ai generated translations (#457) (@ArthurKun21)
