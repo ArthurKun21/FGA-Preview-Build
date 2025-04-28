@@ -1,3 +1,8 @@
+## 1930
+2025-04-28
+- fix: False Lotto Detection(EN/JP server) (#495) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/10f29abe...105c8272)
 ## 1929
 2025-04-28
 - fix: temporary increase delay on opening master skill menu (#489) (@ArthurKun21)
