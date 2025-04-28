@@ -1,3 +1,15 @@
+## 1929
+2025-04-28
+- fix: temporary increase delay on opening master skill menu (#489) (@ArthurKun21)
+- chore(deps): bump hilt from 2.56.1 to 2.56.2 (@dependabot[bot])
+- chore(deps): bump compose_bom from 2025.04.00 to 2025.04.01 (@ArthurKun21)
+- chore(deps): bump gradle wrapper from 8.13 to 8.14 (#492) (@ArthurKun21)
+- fix: relocate help rearrange cards URL to the correct section (#493) (@ArthurKun21)
+- chore(deps): update dependabot schedule from weekly to daily (@ArthurKun21)
+- chore: Improve GitHub related items (#494) (@ArthurKun21)
+- feat: optimize concurrency with coroutine migration (#485) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/8cdffe55...10f29abe)
 ## 1921
 2025-04-15
 - feat: start at support after the repeat quest (#472) (@ArthurKun21)
