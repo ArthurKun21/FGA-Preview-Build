@@ -4,6 +4,7 @@
 - feat(AutoGiftBox): added silver embers count (#498) (@ArthurKun21)
 - chore: update AutoLottery to GiftBox template image (#501) (@ArthurKun21)
 - fix: Prevent OC teapots from being incorrectly enabled in subsequent runs (#502) (@ArthurKun21)
+  - Added explanation: If you have storm pods and used them with teapots. When you ran out of storm pods, you would return back to menu and the next time you have did runs the teapots are turned on but the Teapots mode in the app is on neutral, meaning it won't alter the state of the teapots. Meaning you might accidentally use teapots even if you don't want to. This change will make the Teapots mode to turned off, meaning it will check and if it was turned on it would turned it off, to prevent accidental usage.
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/105c8272...7cf94e95)
 ## 1930
