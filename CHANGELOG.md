@@ -1,3 +1,11 @@
+## 1934
+2025-04-29
+- chore(deps): bump com.google.accompanist:accompanist-permissions from 0.37.2 to 0.37.3 (@dependabot[bot])
+- feat(AutoGiftBox): added silver embers count (#498) (@ArthurKun21)
+- chore: update AutoLottery to GiftBox template image (#501) (@ArthurKun21)
+- fix: Prevent OC teapots from being incorrectly enabled in subsequent runs (#502) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/105c8272...7cf94e95)
 ## 1930
 2025-04-28
 - fix: False Lotto Detection(EN/JP server) (#495) (@ArthurKun21)
