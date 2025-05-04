@@ -1,3 +1,15 @@
+## 1942
+2025-05-04
+- fix: update Face Card Details Region for non-EN regions (#503) (@ArthurKun21)
+- chore(deps): bump io.mockk:mockk from 1.14.0 to 1.14.2 (@dependabot[bot])
+- fix: update teapots usage to neutral when resetting (#505) (@ArthurKun21)
+- chore: clean up .gitignore files by removing redundant build entries (@ArthurKun21)
+- chore(deps): bump com.google.devtools.ksp from 2.1.20-2.0.0 to 2.1.20-2.0.1 (@dependabot[bot])
+- chore: update skill confirmation template image (CN) (@ArthurKun21)
+- chore(deps): bump gradle/actions/wrapper-validation from v3 to v4 (#511) (@ArthurKun21)
+- feat: added OC4 mats (#510) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7cf94e95...f333cec8)
 ## 1934
 2025-04-29
 - chore(deps): bump com.google.accompanist:accompanist-permissions from 0.37.2 to 0.37.3 (@dependabot[bot])
