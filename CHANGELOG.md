@@ -1,3 +1,10 @@
+## 1945
+2025-05-05
+- chore(deps): bump agp from 8.9.1 to 8.9.2 (#513) (@ArthurKun21)
+- fix: android 14+ crash (#514) (@ArthurKun21)
+- fix: android 14+ workmanager notification permission error (#515) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/f333cec8...2ae931bb)
 ## 1942
 2025-05-04
 - fix: update Face Card Details Region for non-EN regions (#503) (@ArthurKun21)
