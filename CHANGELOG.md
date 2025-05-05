@@ -1,3 +1,9 @@
+## 1948
+2025-05-05
+- fix: manage Tesseract state on closing (#517) (@ArthurKun21)
+- fix: ensure proper copying of Tesseract data files (#519) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/66c8521b...ef20a1d9)
 ## 1946
 2025-05-05
 - fix: Incorrectly closed resources, preventing the play button from reappearing (#516) (@ArthurKun21)
