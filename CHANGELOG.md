@@ -1,3 +1,8 @@
+## 1946
+2025-05-05
+- fix: Incorrectly closed resources, preventing the play button from reappearing (#516) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2ae931bb...66c8521b)
 ## 1945
 2025-05-05
 - chore(deps): bump agp from 8.9.1 to 8.9.2 (#513) (@ArthurKun21)
