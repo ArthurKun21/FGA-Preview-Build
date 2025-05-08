@@ -7,23 +7,49 @@
 
 <a href='https://ko-fi.com/arthurkun21' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
+## APP
+
+![FGA Preview](https://github.com/user-attachments/assets/890f2031-d7a8-49d1-87dd-3bf54c55e545)
+
+## Scripts
+
+### Auto Level Skills
+
+![Auto Level Skill](https://github.com/user-attachments/assets/8d3810e0-dd60-44c0-813c-a02912890f53)
+
+### Auto Level CE
+
+![Auto Level CE](https://github.com/user-attachments/assets/7b9d452c-2356-43c8-97b4-e71bc6c49bc7)
+
+### Auto Level Append
+
+![Auto Level Append](https://github.com/user-attachments/assets/d70caf20-053b-4dfe-a831-d883049d6b08)
+
+### Improve Support Selection
+
+![Improve Support Selection](https://github.com/user-attachments/assets/20139fde-e80d-40d9-b586-a9a6dc619284)
+
+## TODO
+
 Current things being worked on
 
-1. [ ] Migration from hilt
+1. [ ] Migration from hilt to kotlin-inject/metro
   
 2. [ ] Migrate Battle Configs from prefs to FGA folder.
 
      It will be on the `configs` folder. Plan to enable to allow users to create folder for organization.
+
+3. [ ] Migrate from shared preferences to datastore
    
-3. [ ] Github Backup and Restore for configs
+4. [ ] Github Backup and Restore for configs
   
-4. [ ] FGA Settings Backup and Restore
+5. [ ] FGA Settings Backup and Restore
   
-5. [ ] Config tags and filter tag
+6. [ ] Config tags and filter tag
 
      It will make it easy to search for at battle launcher.
 
-6. [ ] Battle History.
+7. [ ] Battle History.
 
 Ideas want to work on:
 
