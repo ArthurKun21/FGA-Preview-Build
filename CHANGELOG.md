@@ -1,9 +1,3 @@
-## 1950
-2025-05-09
-- feat: added angra to skill maker (#520) (@ArthurKun21)
-- feat: Update Onboarding screen (#521) (@ArthurKun21)
-
-[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ef20a1d9...38772130)
 ## 1948
 2025-05-05
 - fix: manage Tesseract state on closing (#517) (@ArthurKun21)
