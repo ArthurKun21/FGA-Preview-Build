@@ -1,3 +1,11 @@
+## 1952
+2025-05-11
+- feat: added angra to skill maker (#520) (@ArthurKun21)
+- feat: Update Onboarding screen (#521) (@ArthurKun21)
+- fix: onboarding not setting to be completed on finished (#522) (@ArthurKun21)
+- feat(AutoLevelServant): Start script at Grail menu to return to Servant menu (#523) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ef20a1d9...3519489b)
 ## 1948
 2025-05-05
 - fix: manage Tesseract state on closing (#517) (@ArthurKun21)
