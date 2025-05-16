@@ -105,6 +105,7 @@ jobs:
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}
           name: FGA Preview ${{ env.COMMIT_COUNT }}
+          discussion_category_name: 'Announcements'
           body: |
             ### Commits
 
