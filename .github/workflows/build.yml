@@ -17,6 +17,9 @@ jobs:
     outputs:
       CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
       CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
+    permissions:
+      contents: write
+      discussions: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
