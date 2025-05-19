@@ -1,3 +1,21 @@
+## 1966
+2025-05-19
+- chore(deps): bump kotlin from 2.1.20 to 2.1.21 (@dependabot[bot])
+- chore(deps): bump com.google.devtools.ksp from 2.1.20-2.0.1 to 2.1.21-2.0.1 (@dependabot[bot])
+- chore(deps): bump coil from 3.1.0 to 3.2.0 (@dependabot[bot])
+- fix: face card detection, only JP and CN have updated ver (#528) (@ArthurKun21)
+- chore(deps): bump agp from 8.9.2 to 8.10.0 (@ArthurKun21)
+- chore(deps): bump compose_bom from 2025.04.01 to 2025.05.00 (@ArthurKun21)
+- chore(deps): bump navigation_compose from 2.8.9 to 2.9.0 (@ArthurKun21)
+- chore(deps): bump lifecycle from 2.8.7 to 2.9.0 (@ArthurKun21)
+- chore(deps): bump workmanager from 2.10.0 to 2.10.1 (@ArthurKun21)
+- feat: switch to tesseract openmp for better performance (#532) (@ArthurKun21)
+- feat: Update to use collectAsStateWithLifecycle (#536) (@ArthurKun21)
+- feat: Update Dialogs UI (#537) (@ArthurKun21)
+- feat: Use Compose Overlay Window for Play Button (#539) (@ArthurKun21)
+- feat: Update App icons and introduce monochrome icon (#540) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/3519489b...db35f981)
 ## 1952
 2025-05-11
 - feat: added angra to skill maker (#520) (@ArthurKun21)
