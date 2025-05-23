@@ -1,3 +1,13 @@
+## 1972
+2025-05-23
+- chore: simplify workflow scripts (#541) (@ArthurKun21)
+- feat: introduce buildSrc for project management (#542) (@ArthurKun21)
+- fix: hilt misconfiguration on buildSrc (#544) (@ArthurKun21)
+- chore: add matchingFallbacks for alpha build (@ArthurKun21)
+- feat(support): Implement searching for Grand Servants (#547) (@ArthurKun21)
+- feat(support): implement temporary ce selection when using grand servant (#548) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/db35f981...2f088460)
 ## 1966
 2025-05-19
 - chore(deps): bump kotlin from 2.1.20 to 2.1.21 (@dependabot[bot])
