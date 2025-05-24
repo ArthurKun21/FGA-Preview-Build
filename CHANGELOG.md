@@ -1,3 +1,13 @@
+## 1978
+2025-05-24
+- fix: update game server check for Grand Servant CE logic (@ArthurKun21)
+- chore: streamline Permissions (#549) (@ArthurKun21)
+- chore: streamline theme and language preferences (#550) (@ArthurKun21)
+- feat(support): implement search friend in new grand servant UI (#551) (@ArthurKun21)
+- fix: race condition on floating window (#552) (@ArthurKun21)
+- fix: Ordeal Call and Teapots for EN (#553) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/2f088460...f769d72d)
 ## 1972
 2025-05-23
 - chore: simplify workflow scripts (#541) (@ArthurKun21)
