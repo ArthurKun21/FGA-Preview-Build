@@ -25,9 +25,13 @@
 
 ![Auto Level Append](https://github.com/user-attachments/assets/d70caf20-053b-4dfe-a831-d883049d6b08)
 
-### Improve Support Selection
+### Improved Support Selection
 
-![Improve Support Selection](https://github.com/user-attachments/assets/20139fde-e80d-40d9-b586-a9a6dc619284)
+- Support Appends
+- NP Level Detection
+- Support for Grand Servant system
+
+![Improved Support Selection](https://github.com/user-attachments/assets/00ec91c8-6d8e-4670-b9e1-ba6e66674f58)
 
 ## TODO
 
@@ -127,4 +131,6 @@ Already done:
 17. [X] Stop on Bond Level Up
     
 18. [X] NP Level recognition
+
+19. [X] Grand Servant Support(mostly good)
 
