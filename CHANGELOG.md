@@ -1,3 +1,16 @@
+## 1987
+2025-05-26
+- feat: add step buttons for adjusting max gold ember total count (@ArthurKun21)
+- feat: Update Preferred Support UI (#554) (@ArthurKun21)
+- feat(support): Split Slot 1 and 3 CE selection for grand servant (#555) (@ArthurKun21)
+- feat(support): Grand Servant CE Slot 2 selection (#556) (@ArthurKun21)
+- fix(support): wrong region clipping leads to unable to find 3 Grand Servant CE (#557) (@ArthurKun21)
+- feat(support): Grand Servant NP Level detection (#558) (@ArthurKun21)
+- fix: add weight in the party and server dialog (#559) (@ArthurKun21)
+- feat: remove requirement to set GrandServant type before seeing slot 2 and 3 CE (#560) (@ArthurKun21)
+- feat(support): handle new support popup (#561) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/f769d72d...726daa1f)
 ## 1978
 2025-05-24
 - fix: update game server check for Grand Servant CE logic (@ArthurKun21)
