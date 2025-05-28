@@ -1,3 +1,9 @@
+## 1994
+2025-05-28
+- chore: Update logging for scripts module (#568) (@ArthurKun21)
+- fix: handle app freezing when stopping certain scripts (#569) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/68dd1e78...6b0d9791)
 ## 1992
 2025-05-28
 - fix(gradle): Create task to make git and configuration-cache compatible (#562) (@ArthurKun21)
