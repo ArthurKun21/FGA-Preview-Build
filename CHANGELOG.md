@@ -1,3 +1,12 @@
+## 1992
+2025-05-28
+- fix(gradle): Create task to make git and configuration-cache compatible (#562) (@ArthurKun21)
+- chore(gradle): Update Accessibility task to use ExecOperations (#564) (@ArthurKun21)
+- chore(deps): bump gradle wrapper from 8.14 to 8.14.1 (#565) (@ArthurKun21)
+- chore: convert modules to android library (#563) (@ArthurKun21)
+- fix(support): Grand Servant Bond CE Selector (#566) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/726daa1f...68dd1e78)
 ## 1987
 2025-05-26
 - feat: add step buttons for adjusting max gold ember total count (@ArthurKun21)
