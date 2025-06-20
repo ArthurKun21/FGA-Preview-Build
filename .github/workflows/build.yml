@@ -99,8 +99,6 @@ jobs:
         if: ${{ env.commit_count_diff > 0 }}
         run: |
           cp app/build/outputs/apk/preview/app-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
-          sha=`shasum -a 256 fga-preview-${{ env.COMMIT_COUNT }}.apk | awk '{ print $1 }'`
-          echo "APK_UNIVERSAL_SHA=$sha" >> $GITHUB_ENV
 
       - name: Create release
         uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
@@ -115,14 +113,6 @@ jobs:
             https://github.com/ArthurKun21/fga-preview/compare/${{ env.PREV_RELEASE_SHA }}...${{ env.CURRENT_SHA }}
 
             ${{ env.COMMIT_LOGS }}
-
-            ---
-              
-            ### Checksums
-
-            | Variant | SHA-256 |
-            | ------- | ------- |
-            | Universal APK | ${{ env.APK_UNIVERSAL_SHA }} |
           files: |
             fga-preview-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
