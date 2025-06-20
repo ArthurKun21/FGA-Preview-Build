@@ -1,3 +1,18 @@
+## 2005
+2025-06-20
+- chore(deps): bump org.junit:junit-bom from 5.12.2 to 5.13.0 (#571) (@dependabot[bot])
+- refactor: move enums and classes to models module (#574) (@ArthurKun21)
+- refactor: moved components to libautomata (#576) (@ArthurKun21)
+- chore: split screenshot and recording into separate classes (#577) (@ArthurKun21)
+- chore(deps): bump compose-bom from 2025.05.00 to 2025.05.01 (@ArthurKun21)
+- chore(deps): bump agp from 8.10.0 to 8.10.1 (@ArthurKun21)
+- chore(deps): bump org.junit:junit-bom from 5.13.0 to 5.13.1 (#579) (@dependabot[bot])
+- chore(deps): bump sh.calvin.reorderable:reorderable from 2.4.3 to 2.5.1 (#580) (@dependabot[bot])
+- chore(deps): bump com.google.devtools.ksp:symbol-processing-gradle-plugin from 2.1.21-2.0.1 to 2.1.21-2.0.2 (#581) (@dependabot[bot])
+- chore(deps): bump cz.adaptech.tesseract4android:tesseract4android-openmp from 4.8.0 to 4.9.0 (#582) (@dependabot[bot])
+- feat(support): added Zerktoria and Lilith template images (#583) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/6b0d9791...e2eb2b5e)
 ## 1994
 2025-05-28
 - chore: Update logging for scripts module (#568) (@ArthurKun21)
