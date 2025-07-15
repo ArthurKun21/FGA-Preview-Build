@@ -1,3 +1,16 @@
+## 2014
+2025-07-15
+- chore(deps): bump com.diffplug.spotless:spotless-plugin-gradle from 7.0.3 to 7.0.4 (#567) (@dependabot[bot])
+- chore(deps): bump io.mockk:mockk from 1.14.2 to 1.14.4 (#584) (@dependabot[bot])
+- chore(deps): bump kotlin from 2.1.21 to 2.2.0 (#585) (@dependabot[bot])
+- chore(deps): bump com.google.devtools.ksp:symbol-processing-gradle-plugin from 2.1.21-2.0.2 to 2.2.0-2.0.2 (#587) (@dependabot[bot])
+- chore(deps): bump org.junit:junit-bom from 5.13.1 to 5.13.2 (#586) (@dependabot[bot])
+- chore(deps): bump agp from 8.10.1 to 8.11.0 (#590) (@ArthurKun21)
+- chore(deps): bump org.jetbrains.kotlinx:kotlinx-datetime from 0.6.2 to 0.7.0 (#591) (@ArthurKun21)
+- chore(deps): bump org.opencv:opencv from 4.11.0 to 4.12.0 (#595) (@dependabot[bot])
+- fix(Tesseract): Extraction and verification of tesseract data (#596) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e2eb2b5e...b588b2bc)
 ## 2005
 2025-06-20
 - chore(deps): bump org.junit:junit-bom from 5.12.2 to 5.13.0 (#571) (@dependabot[bot])
