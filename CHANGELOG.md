@@ -1,3 +1,14 @@
+## 2021
+2025-07-17
+- refactor: migrate from prefs to data module (#598) (@ArthurKun21)
+- feat: add image resources for Grand Lancer and Grand Berserker (#600) (@ArthurKun21)
+- feat(support): add Bhima, Melusine, and Scathach support servant images (#601) (@ArthurKun21)
+- fix: Preferred Support not refreshing after support image extraction (#602) (@ArthurKun21)
+- fix(Support Image Maker): image cache invalidation to display the right support image (#603) (@ArthurKun21)
+- feat(Support Image Maker): added hints to enable non-emulator to use the script (#604) (@ArthurKun21)
+- fix(Battle): adjust apple refill timing for Grand Duels and Ordeal Call FQ (#605) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/b588b2bc...fcc603f1)
 ## 2014
 2025-07-15
 - chore(deps): bump com.diffplug.spotless:spotless-plugin-gradle from 7.0.3 to 7.0.4 (#567) (@dependabot[bot])
