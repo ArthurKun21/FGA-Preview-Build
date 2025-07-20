@@ -1,3 +1,16 @@
+## 2030
+2025-07-20
+- feat: migrate Run Configuration to per Battle Config (#606) (@ArthurKun21)
+- ci: update github actions to reenable PR builds (@ArthurKun21)
+- ci: update dependabot pr request limit (@ArthurKun21)
+- ci: fix the PR Build workflow (@ArthurKun21)
+- chore: update gradle.properties for improved configuration settings (@ArthurKun21)
+- fix: optimized storage read-write with okio (#607) (@ArthurKun21)
+- chore(deps): bump com.github.ArthurKun21:compose-overlay-window from 1.1.0 to 1.1.1 (#609) (@dependabot[bot])
+- feat: Hide SQ from resources by default (#610) (@ArthurKun21)
+- chore(deps): bump org.jetbrains.kotlinx:kotlinx-datetime from 0.7.0 to 0.7.1 (#592) (@dependabot[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/fcc603f1...7e2871ec)
 ## 2021
 2025-07-17
 - refactor: migrate from prefs to data module (#598) (@ArthurKun21)
