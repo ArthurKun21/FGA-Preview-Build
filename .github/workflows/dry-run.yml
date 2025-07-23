@@ -6,6 +6,11 @@ on:
     - cron: '0 0 * * *'
   # Manual triggers
   workflow_dispatch:
+    inputs:
+      upload_apk:
+        description: 'Upload APK to GitHub Actions'
+        required: false
+        default: 'false'
 
 env:
   JAVA_VERSION: 17
@@ -56,6 +61,7 @@ jobs:
           cp app/build/outputs/apk/preview/app-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v4
         with:
           name: fga-preview-${{ env.COMMIT_COUNT }}.apk
