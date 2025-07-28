@@ -23,6 +23,32 @@
 - fix: correct proguard rules for model and enum classes (#628) (@ArthurKun21)
 - chore: refactor project to make some functions reusable  (#630) (@ArthurKun21)
 
+Library tabs will now display all of the servers tabs. If you want to disable some of the server tabs go to settings -> library -> library tabs and disable the ones you don't want to see.
+
+<img width="714" height="293" alt="image" src="https://github.com/user-attachments/assets/5fad2a15-429d-4dbd-9b51-67010ad7bf1b" />
+
+<img width="360" height="472" alt="image" src="https://github.com/user-attachments/assets/e37552d5-fd30-4692-9102-be60f6f8211b" />
+
+---
+
+There's now a new setting to disable auto stop of accessibility service when the script was stopped.
+
+Go to settings -> advanced -> "Auto stop accessibility service on script service stop"
+
+<img width="687" height="162" alt="image" src="https://github.com/user-attachments/assets/bd41dd72-6bd6-4d12-95fd-ddd21a338001" />
+
+
+---
+
+Battle script will now automatically return to menu when the script ends instead of staying on the repeat screen.
+
+To disable it, on the battle launcher
+
+Click Settings(Gear) -> disable "return to main screen"
+
+<img width="403" height="513" alt="image" src="https://github.com/user-attachments/assets/88ed440a-357f-4472-9a84-93fc933e7879" />
+
+
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7e2871ec...5ca9863b)
 ## 2030
 2025-07-20
