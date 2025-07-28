@@ -1,3 +1,29 @@
+## 2052
+2025-07-28
+- ci: Update the PR Build workflow condition (@ArthurKun21)
+- feat: add optional toggle to always stopping accessibility service (#612) (@ArthurKun21)
+- chore: remove unused KnownException references from exit handling (#613) (@ArthurKun21)
+- fix: update parameter annotations to use @param syntax (#614) (@ArthurKun21)
+- feat: moved Fine Tune to Home Screen (#615) (@ArthurKun21)
+- chore(deps): bump coil from 3.2.0 to 3.3.0 (#622) (@dependabot[bot])
+- fix: simplify Settings screen navigation (#621) (@ArthurKun21)
+- fix: add library tabs to the settings (#620) (@ArthurKun21)
+- chore(deps): bump agp from 8.11.0 to 8.11.1 (@ArthurKun21)
+- chore(deps): bump gradle wrapper from 8.14.1 to 8.14.3 (@ArthurKun21)
+- chore(deps): bump lifecycle from 2.9.0 to 2.9.2 (@ArthurKun21)
+- chore(deps): bump appcompat from 1.7.0 to 1.7.1 (@ArthurKun21)
+- chore(deps): bump workmanager from 2.10.1 to 2.10.2 (@ArthurKun21)
+- chore(deps): bump compose_bom from 2025.05.01 to 2025.07.00 (@ArthurKun21)
+- chore(deps): bump navigation_compose from 2.9.0 to 2.9.2 (@ArthurKun21)
+- chore(deps): bump mockk from 1.14.4 to 1.14.5 (@ArthurKun21)
+- chore(deps): bump junit_bom from 5.13.2 to 5.13.3 (@ArthurKun21)
+- chore(deps): bump spotless from 7.0.4 to 7.1.0 (@ArthurKun21)
+- refactor: migrate skill maker activity to compose (#625) (@ArthurKun21)
+- feat: set always return to menu as the default (#626) (@ArthurKun21)
+- fix: correct proguard rules for model and enum classes (#628) (@ArthurKun21)
+- chore: refactor project to make some functions reusable  (#630) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7e2871ec...5ca9863b)
 ## 2030
 2025-07-20
 - feat: migrate Run Configuration to per Battle Config (#606) (@ArthurKun21)
