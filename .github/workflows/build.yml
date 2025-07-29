@@ -18,7 +18,6 @@ jobs:
       CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
       CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
       COMMIT_COUNT: ${{ steps.prepare_build.outputs.COMMIT_COUNT }}
-      RELEASE_URL: ${{ steps.draft_release.outputs.url }}
     env:
       commit_count_diff: 0
       PREV_RELEASE_SHA: ''
@@ -169,7 +168,7 @@ jobs:
           git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
           
           pr_title="Release pre-${{ needs.build-app.outputs.COMMIT_COUNT }}"
-          pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.\n\n${{ needs.build-app.outputs.RELEASE_URL }}"
+          pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT }}."
           gh pr create --title "${pr_title}" --body "${pr_body}" --label release --draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
