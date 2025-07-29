@@ -144,7 +144,7 @@ jobs:
       - name: Update CHANGELOG.md
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         run: |
-          git switch -c update-changelog-${{ needs.build-app.outputs.COMMIT_COUNT }}
+          git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
 
           echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
@@ -156,7 +156,7 @@ jobs:
 
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
-          git push -u origin update-changelog-${{ needs.build-app.outputs.COMMIT_COUNT }}
+          git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
 
           gh pr create --title "Release ${needs.build-app.outputs.COMMIT_COUNT}" --body "This PR updates the CHANGELOG.md with the latest changes." --label release
         env:
