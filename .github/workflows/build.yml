@@ -17,6 +17,15 @@ jobs:
     outputs:
       CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
       CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
+      COMMIT_COUNT: ${{ steps.prepare_build.outputs.COMMIT_COUNT }}
+    env:
+      commit_count_diff: 0
+      PREV_RELEASE_SHA: ''
+      CURRENT_SHA: ''
+      COMMIT_COUNT: 0
+      FGA_VERSION_CODE: 0
+      FGA_VERSION_NAME: ''
+      COMMIT_LOGS: ''
     permissions:
       contents: write
       discussions: write
@@ -35,6 +44,7 @@ jobs:
           exclude_types: "draft|prerelease"
           view_top: 1
       - name: Prepare build
+        id: prepare_build
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
@@ -106,7 +116,6 @@ jobs:
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}
           name: FGA Preview ${{ env.COMMIT_COUNT }}
-          discussion_category_name: 'Announcements'
           body: |
             ### Commits
 
@@ -116,6 +125,7 @@ jobs:
           files: |
             fga-preview-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
+          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Prune old releases
@@ -132,13 +142,18 @@ jobs:
     needs: build-app
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Update CHANGELOG.md
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         run: |
+          git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
+
           echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
           git config --global user.name 'github-actions[bot]'
@@ -147,7 +162,28 @@ jobs:
           # Use ISO-8601 format for consistency
           CURRENT_DATE_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-          git add CHANGELOG.md
+          # Check if docs/changelog directory exists, create if not
+          mkdir -p docs/changelog
+          if ! touch docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md; then
+            echo "Failed to create changelog file. Please check directory permissions or existence."
+            exit 1
+          fi
+
+          echo -e "${{ needs.build-app.outputs.CHANGELOG }}" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
+
+          git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
-          git push
-          
+          git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
+        
+      - name: Create pull request
+        if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr_title="Release pre-${{ needs.build-app.outputs.COMMIT_COUNT }}"
+          pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT }}."
+          pr_branch="update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}"
+          if ! gh pr create --head "${pr_branch}" --title "${pr_title}" --body "${pr_body}" --label release --draft; then
+            echo "Failed to create pull request. Please check branch existence, authentication, or network connectivity."
+            exit 1
+          fi
