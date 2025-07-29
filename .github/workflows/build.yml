@@ -18,6 +18,14 @@ jobs:
       CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
       CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
       COMMIT_COUNT: ${{ steps.prepare_build.outputs.COMMIT_COUNT }}
+    env:
+      commit_count_diff: 0
+      PREV_RELEASE_SHA: ''
+      CURRENT_SHA: ''
+      COMMIT_COUNT: 0
+      FGA_VERSION_CODE: 0
+      FGA_VERSION_NAME: ''
+      COMMIT_LOGS: ''
     permissions:
       contents: write
       discussions: write
