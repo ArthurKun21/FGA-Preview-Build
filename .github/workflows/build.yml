@@ -113,7 +113,6 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         if: ${{ env.commit_count_diff > 0 }}
-        id: draft_release
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}
           name: FGA Preview ${{ env.COMMIT_COUNT }}
