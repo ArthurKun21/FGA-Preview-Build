@@ -17,6 +17,7 @@ jobs:
     outputs:
       CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
       CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
+      COMMIT_COUNT: ${{ steps.prepare_build.outputs.COMMIT_COUNT }}
     permissions:
       contents: write
       discussions: write
@@ -35,6 +36,7 @@ jobs:
           exclude_types: "draft|prerelease"
           view_top: 1
       - name: Prepare build
+        id: prepare_build
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
