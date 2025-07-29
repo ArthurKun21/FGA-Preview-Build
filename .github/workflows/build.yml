@@ -160,6 +160,6 @@ jobs:
           
           pr_title="Release pre-${{ needs.build-app.outputs.COMMIT_COUNT }}"
           pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT }}."
-          gh pr create --title "${pr_title}" --body "${pr_body}" --label release
+          gh pr create --title "${pr_title}" --body "${pr_body}" --label release --draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
