@@ -1,3 +1,8 @@
+## 2053
+2025-07-29
+- fix: update the CN repeat button location (#631) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/5ca9863b...5f7bb6ef)
 ## 2052
 2025-07-28
 - ci: Update the PR Build workflow condition (@ArthurKun21)
