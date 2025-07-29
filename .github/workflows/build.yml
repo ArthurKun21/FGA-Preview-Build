@@ -162,7 +162,16 @@ jobs:
           # Use ISO-8601 format for consistency
           CURRENT_DATE_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-          git add CHANGELOG.md
+          # Check if docs/changelog directory exists, create if not
+          mkdir -p docs/changelog
+          if ! touch docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md; then
+            echo "Failed to create changelog file. Please check directory permissions or existence."
+            exit 1
+          fi
+
+          echo -e "${{ needs.build-app.outputs.CHANGELOG }}" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
+
+          git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
           git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
         
