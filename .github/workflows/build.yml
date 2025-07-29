@@ -117,6 +117,7 @@ jobs:
           files: |
             fga-preview-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
+          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Prune old releases
