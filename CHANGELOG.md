@@ -1,3 +1,9 @@
+## 2055
+2025-07-29
+- revert: update project dependencies to remove gradle's type-safe accessors (#632) (@ArthurKun21)
+- fix: add support for CN's 15 party slot (#633) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/5f7bb6ef...ee232491)
 ## 2053
 2025-07-29
 - fix: update the CN repeat button location (#631) (@ArthurKun21)
