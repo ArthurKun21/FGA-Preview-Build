@@ -153,7 +153,7 @@ jobs:
 
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
-          git push
+          git push -u origin update-changelog-${{ needs.build-app.outputs.COMMIT_COUNT }}
 
           gh pr create --title "Release ${needs.build-app.outputs.COMMIT_COUNT}" --body "This PR updates the CHANGELOG.md with the latest changes." --label release
         env:
