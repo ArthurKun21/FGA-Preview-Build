@@ -165,12 +165,16 @@ jobs:
           git add CHANGELOG.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
           git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
-          
+        
+      - name: Create pull request
+        if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           pr_title="Release pre-${{ needs.build-app.outputs.COMMIT_COUNT }}"
           pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT }}."
-          if ! gh pr create --title "${pr_title}" --body "${pr_body}" --label release --draft; then
+          pr_branch="update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}"
+          if ! gh pr create --head "${pr_branch}" --title "${pr_title}" --body "${pr_body}" --label release --draft; then
             echo "Failed to create pull request. Please check branch existence, authentication, or network connectivity."
             exit 1
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
