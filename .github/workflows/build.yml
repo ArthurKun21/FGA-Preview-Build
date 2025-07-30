@@ -37,11 +37,19 @@ jobs:
           fetch-depth: 0
           repository: 'ArthurKun21/FGA-Preview'
           token: ${{ secrets.PAT }}
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: 'preview'
       - name: Get previous release
         id: last_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cd preview
+          
           if OUTPUT=$(gh release list --exclude-drafts --exclude-pre-releases --json tagName --limit 1 --jq '.[0].tagName'); then
             echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
             echo "Latest Tag: $OUTPUT"
