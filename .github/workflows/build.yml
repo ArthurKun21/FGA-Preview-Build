@@ -17,7 +17,7 @@ jobs:
     outputs:
       CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
       CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
-      COMMIT_COUNT: ${{ steps.prepare_build.outputs.COMMIT_COUNT }}
+      COMMIT_COUNT_OUTPUT: ${{ steps.prepare_build.outputs.COMMIT_COUNT_OUTPUT }}
     env:
       commit_count_diff: 0
       PREV_RELEASE_SHA: ''
@@ -61,6 +61,7 @@ jobs:
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
+          echo "COMMIT_COUNT_OUTPUT=$commit_count" >> $GITHUB_OUTPUT
           current_sha=$(git rev-parse --short HEAD)
           echo "CURRENT_SHA=$current_sha" >> $GITHUB_ENV
           
@@ -165,7 +166,7 @@ jobs:
       - name: Update CHANGELOG.md
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         run: |
-          git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
+          git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
 
           echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
@@ -177,25 +178,25 @@ jobs:
 
           # Check if docs/changelog directory exists, create if not
           mkdir -p docs/changelog
-          if ! touch docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md; then
+          if ! touch docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md; then
             echo "Failed to create changelog file. Please check directory permissions or existence."
             exit 1
           fi
 
-          echo -e "${{ needs.build-app.outputs.CHANGELOG }}" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
+          echo -e "${{ needs.build-app.outputs.CHANGELOG }}" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
 
           git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
-          git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}
+          git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
         
       - name: Create pull request
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pr_title="Release pre-${{ needs.build-app.outputs.COMMIT_COUNT }}"
-          pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT }}."
-          pr_branch="update-release-${{ needs.build-app.outputs.COMMIT_COUNT }}"
+          pr_title="Release pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}"
+          pr_body="This PR creates a draft release for version pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}."
+          pr_branch="update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}"
           if ! gh pr create --head "${pr_branch}" --title "${pr_title}" --body "${pr_body}" --label release --draft; then
             echo "Failed to create pull request. Please check branch existence, authentication, or network connectivity."
             exit 1
