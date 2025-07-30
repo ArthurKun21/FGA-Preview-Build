@@ -26,6 +26,7 @@ jobs:
       FGA_VERSION_CODE: 0
       FGA_VERSION_NAME: ''
       COMMIT_LOGS: ''
+      TAG_NAME: ''
     permissions:
       contents: write
       discussions: write
@@ -38,11 +39,15 @@ jobs:
           token: ${{ secrets.PAT }}
       - name: Get previous release
         id: last_release
-        uses: InsonusK/get-latest-release@7a9ff16c8c6b7ead5d71c0f1cc61f2703170eade # v1.1.0
-        with:
-          myToken: ${{ github.token }}
-          exclude_types: "draft|prerelease"
-          view_top: 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if OUTPUT=$(gh release list --exclude-drafts --exclude-pre-releases --json tagName --limit 1 --jq '.[0].tagName'); then
+            echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
+            echo "Latest Tag: $OUTPUT"
+          else
+            echo "Failed to get repository information"
+          fi
       - name: Prepare build
         id: prepare_build
         run: |
@@ -54,7 +59,7 @@ jobs:
           echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
           echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
 
-          prev_commit_count=$(echo "${{ steps.last_release.outputs.tag_name }}" | sed -e "s/^pre-//")
+          prev_commit_count=$(echo "${{ env.TAG_NAME }}" | sed -e "s/^pre-//")
 
           commit_count_diff=$(($commit_count - $prev_commit_count))
           echo "commit_count_diff=$commit_count_diff" >> $GITHUB_ENV
