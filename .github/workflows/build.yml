@@ -48,8 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd preview
-
-          if OUTPUT=$(gh release list --exclude-drafts --exclude-pre-releases --json tagName --limit 1 --jq '.[0].tagName'); then
+          OUTPUT=$(gh release list --exclude-drafts --exclude-pre-releases --json tagName --limit 1 --jq 'select(length > 0) | .[0].tagName')
+          if [ -n "$OUTPUT" ]; then
             echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
             echo "Latest Tag: $OUTPUT"
           else
