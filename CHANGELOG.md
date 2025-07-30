@@ -8,6 +8,30 @@
 - fix: forgot to remove some launcher settings (#640) (@ArthurKun21)
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ee232491...18da5b64)
+
+### Default Run configuration
+
+<img width="544" height="315" alt="image" src="https://github.com/user-attachments/assets/a415982f-f1a3-4cb4-861e-68ecce385708" />
+
+The initial value of per item in the configuration will always be "1" but by resetting in the battle launcher it would then reset to whatever default value you inputted.
+
+Whenever you completed your inputted number of runs, it would also reset to whatever default you have inputted instead of "1"
+
+### Auto Level Servant for JP
+
+It has now been optimized to use the newly added auto fill embers
+
+![Level Servant Script](docs/images/changelog/2061/servant-output.gif)
+
+> [!WARNING]
+> Haven't tested with the temporary servants such as welfares at the time of creating this feature. As such may fail, please be advised.
+
+### Auto Level CE for JP
+
+It has now been optimized to use the newly added auto fill CEs
+
+![Level Servant Script](docs/images/changelog/2061/ce-output.gif)
+
 ## 2055
 2025-07-29
 - revert: update project dependencies to remove gradle's type-safe accessors (#632) (@ArthurKun21)
