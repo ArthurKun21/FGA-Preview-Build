@@ -47,6 +47,7 @@ jobs:
             echo "Latest Tag: $OUTPUT"
           else
             echo "Failed to get repository information"
+            exit 1
           fi
       - name: Prepare build
         id: prepare_build
