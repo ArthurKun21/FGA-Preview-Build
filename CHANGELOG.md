@@ -30,7 +30,7 @@ It has now been optimized to use the newly added auto fill embers
 
 It has now been optimized to use the newly added auto fill CEs
 
-![Level Servant Script](docs/images/changelog/2061/ce-output.gif)
+![Level CE Script](docs/images/changelog/2061/ce-output.gif)
 
 ## 2055
 2025-07-29
