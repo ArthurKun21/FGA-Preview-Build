@@ -185,7 +185,7 @@ jobs:
 
           echo -e "${{ needs.build-app.outputs.CHANGELOG }}" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
 
-          git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT }}.md
+          git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
           git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
         
