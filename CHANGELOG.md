@@ -1,3 +1,8 @@
+## 2075
+2025-08-01
+- fix: return the image pattern used for NA's servant level (#659) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/1e5c8503...7afa3bdd)
 ## 2074
 2025-08-01
 - chore: refactor battle launcher code to reused the same config (#641) (@ArthurKun21)
