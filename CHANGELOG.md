@@ -5,6 +5,12 @@
 - chore: Update project structure for Scripts module (#661) (@ArthurKun21)
 - feat(LevelServant): implement JP's extra embers/qp refund mechanism handler (#662) (@ArthurKun21)
 
+JP have now implemented a refund window that show the extra Embers/QP. This makes the script quit due to
+sharing the same window with out of ember/qp. We have now implemented a handler to hopefully handle this
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/891fa3b0-3141-49d3-af48-fb9c7fae7499" />
+
+
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7afa3bdd...71d99215)
 ## 2075
 2025-08-01
