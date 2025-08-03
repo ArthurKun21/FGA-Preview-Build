@@ -131,6 +131,9 @@ jobs:
           tag_name: pre-${{ env.COMMIT_COUNT }}
           name: FGA Preview ${{ env.COMMIT_COUNT }}
           body: |
+            > [!TIP]
+            > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
+
             ### Commits
 
             https://github.com/ArthurKun21/fga-preview/compare/${{ env.PREV_RELEASE_SHA }}...${{ env.CURRENT_SHA }}
