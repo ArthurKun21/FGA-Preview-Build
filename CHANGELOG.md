@@ -1,3 +1,31 @@
+## 2085
+2025-08-04
+- feat: add Mihon's crash handling activity with log dumping functionality (#663) (@ArthurKun21)
+- chore: Update project structure for App module  (#664) (@ArthurKun21)
+- fix: add lower bounds to play button to prevent negative coordinates (#665) (@ArthurKun21)
+- Update dependency org.junit:junit-bom to v5.13.4 (#655) (@renovate[bot])
+- Update dependency com.diffplug.spotless:spotless-plugin-gradle to v7.2.1 (#656) (@renovate[bot])
+- Update dependency com.pinterest.ktlint:ktlint-cli to v1.7.1 (#657) (@renovate[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/71d99215...5ef62ae8)
+
+App was crashing when starting the script service. This is a side-effect code to fix the initialization of play button.
+Due to bug in the code it causes to have negative left location causing the crash. We have now added a lower bound in order to prevent that.
+
+---
+
+We have copied code from Mihon's codebase in order to display some crashing issues.
+
+<img width="1093" height="545" alt="image" src="https://github.com/user-attachments/assets/bed7e930-48e0-48b9-a697-2968c3d43c4e" />
+
+---
+
+Finally figured out what was wrong with my code and it is no longer ugly again.
+
+<img width="177" height="70" alt="image" src="https://github.com/user-attachments/assets/ec32ac98-344a-440d-aada-7f7d5c7659cf" />
+
+
+
 ## 2079
 2025-08-03
 - ci: remove unused github action workflows (@ArthurKun21)
