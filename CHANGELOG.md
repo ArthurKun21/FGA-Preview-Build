@@ -7,6 +7,56 @@
 - feat(Support): Added new support servant template images (#672) (@ArthurKun21)
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/5ef62ae8...90bad108)
+
+Return back the `Reset All` to its old functionality and introduce a new button `Default` in which will now inherit the returning of values to their default value.
+
+<img width="398" height="271" alt="image" src="https://github.com/user-attachments/assets/bc0d9542-f7c0-463c-845d-03905bbf2e9f" />
+
+---
+
+Fix the is Max ascended for the Grand Servants. This is causing issues the last few grand duels 
+if you turn it on due to the fact that it wasn't adjusted for the Grand Servants.
+
+Notice that the `Max ascended` star is a lot lower on the Grand Servant than Normal Servant.
+
+We have now taken into account both situations.
+
+| Grand Servant | Normal Servant|
+|:--:|:--:|
+| <img width="177" height="200" alt="image" src="https://github.com/user-attachments/assets/5d312894-1f1f-47f8-991b-7299bfdff82c" /> | <img width="190" height="201" alt="image" src="https://github.com/user-attachments/assets/fd8f4f92-49f5-40dd-98a4-2c23e8bd1d9d" /> |
+
+---
+
+We have made a mistake in the previous logic for the Grand Servants selection. 
+Before even if you set it up to select Grand Servants there's a chance to select
+a normal version of it.
+
+| Grand Servant | Normal Servant|
+|:--:|:--:|
+| <img width="300" height="170" alt="image" src="https://github.com/user-attachments/assets/384c8651-8bd5-4a5c-9f34-385a87d8699a" /> | <img width="165" height="168" alt="image" src="https://github.com/user-attachments/assets/2102bb67-7aaf-4b1b-a1ca-12db271d424e" /> |
+
+We have now updated the logic that if you set it up to find Grand Servant it would check for Grand Servant Settings
+
+Such Settings are any of the following:
+- You have selected to find if there's Bond CE/NP Charge on Slot 2
+- You have setup to find a CE on Slot 3
+- You are searching for either Grand Servant Tag(Fixed lvl 100 or Lvl 100 and above)
+
+---
+
+The following are now added to Default Support Servants to help to the upcoming Extra 1 Grand Duel and beyond
+- Mash
+- Jalter
+- Arcueid
+- Kagetora (Ruler)
+- Ciel
+- BB Dubai
+- U-Olga Marie
+
+> [!IMPORTANT]
+> After the installation of the APK, you have to go to `Settings` -> `Storage` -> `Extract Default Support images`
+
+
 ## 2085
 2025-08-04
 - feat: add Mihon's crash handling activity with log dumping functionality (#663) (@ArthurKun21)
