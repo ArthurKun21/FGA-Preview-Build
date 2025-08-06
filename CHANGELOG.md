@@ -1,3 +1,9 @@
+## 2092
+2025-08-06
+- feat: Migrated from Timber to Square Logcat (#673) (@ArthurKun21)
+- revert: Mihon's crash handling activity with log dumping functionality (#674) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/90bad108...e6930503)
 ## 2090
 2025-08-06
 - feat: add default and reset buttons to battle launcher (#667) (@ArthurKun21)
