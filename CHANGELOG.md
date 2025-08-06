@@ -4,6 +4,12 @@
 - revert: Mihon's crash handling activity with log dumping functionality (#674) (@ArthurKun21)
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/90bad108...e6930503)
+
+Saw some reports with crashing and going to disable this for a while.
+
+For context, this runs in the background using kotlin thread. And this might be a problem when paired with the 
+kotlin coroutines, which where automation scripts run with, both fighting for the same resources causing a crash.
+
 ## 2090
 2025-08-06
 - feat: add default and reset buttons to battle launcher (#667) (@ArthurKun21)
