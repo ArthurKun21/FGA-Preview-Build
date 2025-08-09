@@ -1,3 +1,10 @@
+## 2095
+2025-08-09
+- fix(levelCE): JP - always enable auto fill state even if skip filter is ON (#675) (@ArthurKun21)
+- feat!: removal of root screenshot feature (#676) (@ArthurKun21)
+- fix(Grand): corrected search region calculation for friend search (#679) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e6930503...11839899)
 ## 2092
 2025-08-06
 - feat: Migrated from Timber to Square Logcat (#673) (@ArthurKun21)
