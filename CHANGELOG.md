@@ -1,3 +1,18 @@
+## 2095
+2025-08-09
+- fix(levelCE): JP - always enable auto fill state even if skip filter is ON (#675) (@ArthurKun21)
+- feat!: removal of root screenshot feature (#676) (@ArthurKun21)
+- fix(Grand): corrected search region calculation for friend search (#679) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e6930503...11839899)
+
+Fixes:
+- disabling the skip filter for JP will cause an infinite loop on CE leveling, now it will always auto ON the auto fill
+- Made a mistake when translating my jupyter notebook for experiment to the app code that cause incorrect detection area for searching friends with grand servants. We have now fixed it
+
+Breaking:
+- We are now removing the root screenshot feature for future improvement of codebase.
+
 ## 2092
 2025-08-06
 - feat: Migrated from Timber to Square Logcat (#673) (@ArthurKun21)
