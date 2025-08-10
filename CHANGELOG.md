@@ -1,3 +1,16 @@
+## 2100
+2025-08-10
+- refactor: update SupportBounds as value class (#684) (@ArthurKun21)
+- fix: add support for Support Image Maker for Grand Servants in support screen (#685) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/eec23e1e...58c5ed15)
+
+Fixes:
+- Added support for getting support images from grand servants. You can now get the CE and Friend as support images aside from the already supported Servant
+
+> [!Note]
+> Be aware that only the **slot 1** for CEs of Grand Servant is supported for the new implementation.
+
 ## 2098
 2025-08-10
 - feat: replace volatile variables with atomic types (#680) (@ArthurKun21)
