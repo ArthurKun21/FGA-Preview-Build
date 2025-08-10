@@ -6,7 +6,10 @@
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/eec23e1e...58c5ed15)
 
 Fixes:
-- Added support for getting support images from grand servants. Be aware that only the slot 1 for CEs of Grand Servant is supported for the new implementation.
+- Added support for getting support images from grand servants. You can now get the CE and Friend as support images aside from the already supported Servant
+
+> [!Note]
+> Be aware that only the **slot 1** for CEs of Grand Servant is supported for the new implementation.
 
 ## 2098
 2025-08-10
