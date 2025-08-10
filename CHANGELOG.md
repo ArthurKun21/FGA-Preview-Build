@@ -1,3 +1,10 @@
+## 2098
+2025-08-10
+- feat: replace volatile variables with atomic types (#680) (@ArthurKun21)
+- feat: migrate highlight functionality to AndroidExecutor interface (#681) (@ArthurKun21)
+- fix: resolve sequence consumption issues in image match highlighting (#683) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/11839899...eec23e1e)
 ## 2095
 2025-08-09
 - fix(levelCE): JP - always enable auto fill state even if skip filter is ON (#675) (@ArthurKun21)
