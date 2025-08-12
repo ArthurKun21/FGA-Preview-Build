@@ -24,7 +24,7 @@ jobs:
       discussions: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           repository: 'ArthurKun21/FGA-Preview'
