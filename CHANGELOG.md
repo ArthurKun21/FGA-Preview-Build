@@ -8,6 +8,32 @@
 - fix(Grand): Update detection regions for Support Image Maker (#691) (@ArthurKun21)
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/58c5ed15...69af606a)
+
+Fixes:
+
+### Teapots Fix
+
+- It is now back to just normal turn on or off
+
+  ![HD-Player_pxRSu8YtaQ](https://github.com/user-attachments/assets/53f43d48-668a-452b-af87-8786e59e0330)
+  
+- It will now always check the teapots section at party and repeat screen, if it needs to turn on or off depending if you check ✅ the usage
+- If you are on the last run and you still have remaining teapots in the configuration, it will now attempt to turn it off regardless.
+  This should help you do not accidentally used Teapots for Non-high bond quests.
+- The above condition doesn't apply to Ordeal Call Free Quest if you ran out of Storm Pods, as we have no way of turning it off once the quests ends.
+
+### Grand Servants Fix
+
+- We have updated the detection regions for both normal as well as support image maker.
+- Removed the warning for `Above lvl 100` with the new updated detection region as it seems fairly consistent at Grand Duels
+  
+  <img width="549" height="76" alt="image" src="https://github.com/user-attachments/assets/b42dfa86-d03a-47ac-b452-16ba2ce63170" />
+
+
+Experiment:
+- We have introduced a dedicated thread to Tesseract(OCR) to check if it will improve the NP level detection. As well as we have updated its detection region.
+  Let me know if it somehow improved.
+
 ## 2100
 2025-08-10
 - refactor: update SupportBounds as value class (#684) (@ArthurKun21)
