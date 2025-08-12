@@ -19,7 +19,7 @@ Fixes:
   
 - It will now always check the teapots section at party and repeat screen, if it needs to turn on or off depending if you check ✅ the usage
 - If you are on the last run and you still have remaining teapots in the configuration, it will now attempt to turn it off regardless.
-  This should help you do not accidentally used Teapots for Non-high bond quests.
+  This should help you ~~and me~~ to not accidentally use Teapots on non-high bond quests.
 - The above condition doesn't apply to Ordeal Call Free Quest if you ran out of Storm Pods, as we have no way of turning it off once the quests ends.
 
 ### Grand Servants Fix
@@ -33,7 +33,7 @@ Fixes:
 Experiment:
 - We have introduced a dedicated thread to Tesseract(OCR) to check if it will improve the NP level detection. As well as we have updated its detection region.
   Let me know if it somehow improved.
-
+  
 ## 2100
 2025-08-10
 - refactor: update SupportBounds as value class (#684) (@ArthurKun21)
