@@ -1,3 +1,17 @@
+## 2116
+2025-08-15
+- Update dependency androidx.compose:compose-bom to v2025.08.00 (#692) (@renovate[bot])
+- fix(Grand): Add clarification about Grand Servant Tags (#694) (@ArthurKun21)
+- feat: decouple Gestures from direct Accessibility Service dependency (#695) (@ArthurKun21)
+- feat: update TapperService state handling and lifecycle cleanup (#697) (@ArthurKun21)
+- Update kotlin monorepo to v2.2.10 (#696) (@renovate[bot])
+- fix(LevelServant): JP - Added handler for the temporary servant dialog (#701) (@ArthurKun21)
+- feat(Grand): added the grand extra icon (#702) (@ArthurKun21)
+- feat(Skill Maker): Added Summer Shiki (#703) (@ArthurKun21)
+- feat(Skill Maker): Update UI with Servant Icons (#704) (@ArthurKun21)
+- fix: correct preferred UI logic for showing Grand Servant Icons (#705) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/69af606a...16a1815a)
 ## 2106
 2025-08-12
 - refactor: update GameServer from sealed class to enum (#686) (@ArthurKun21)
