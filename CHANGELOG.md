@@ -1,3 +1,48 @@
+## 2116
+2025-08-15
+- Update dependency androidx.compose:compose-bom to v2025.08.00 (#692) (@renovate[bot])
+- fix(Grand): Add clarification about Grand Servant Tags (#694) (@ArthurKun21)
+- feat: decouple Gestures from direct Accessibility Service dependency (#695) (@ArthurKun21)
+- feat: update TapperService state handling and lifecycle cleanup (#697) (@ArthurKun21)
+- Update kotlin monorepo to v2.2.10 (#696) (@renovate[bot])
+- fix(LevelServant): JP - Added handler for the temporary servant dialog (#701) (@ArthurKun21)
+- feat(Grand): added the grand extra icon (#702) (@ArthurKun21)
+- feat(Skill Maker): Added Summer Shiki (#703) (@ArthurKun21)
+- feat(Skill Maker): Update UI with Servant Icons (#704) (@ArthurKun21)
+- fix: correct preferred UI logic for showing Grand Servant Icons (#705) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/69af606a...16a1815a)
+
+- Perform some minor UI tweaks here and there
+- Updated and perform some cleanup on codebase
+
+### Fixes
+
+#### Grand Servant Tag
+
+- Added clarification that the Grand Servant Tag currently only works on Grand Duels
+  
+  <img width="362" height="105" alt="image" src="https://github.com/user-attachments/assets/efd9d57f-82ae-4c4f-90bc-c930dcc16d58" />
+
+- Updated the text of the last option to further clarify what it means.
+
+  <img width="541" height="292" alt="image" src="https://github.com/user-attachments/assets/4d6e844d-3021-4e4c-b6da-59e21f94ed49" />
+
+#### Level Servant Script
+- Fixed the "execute" button not being handled for welfare servants
+- Also tested that the trial welfare servant will correctly stop the script once it reached its max level. We weren't sure due to the UI change.
+
+#### Skill Maker
+- Added Button hints for Shiki. But if you ever don't want to upgrade yet you can use Dante's options in the mean time.
+
+  <img width="1073" height="560" alt="image" src="https://github.com/user-attachments/assets/8eff6c3f-e035-4353-8ac8-c59767507cbe" />
+
+- Added various servant icons to help you decide the button to choose. Also you can't click on that servant icons.
+
+  <img width="1085" height="558" alt="image" src="https://github.com/user-attachments/assets/e636bcd4-1250-4659-a824-8b80d5e42f74" />
+
+- Fixed the buttons hint are only occupying the current space, we have now made it so it can go beyond the screen. Sorry about that.
+
 ## 2106
 2025-08-12
 - refactor: update GameServer from sealed class to enum (#686) (@ArthurKun21)
