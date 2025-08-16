@@ -1,5 +1,4 @@
-name: Dry Run
-
+name: Publish Docs
 on:
   push:
     branches:
@@ -14,11 +13,11 @@ permissions:
   contents: write
 
 jobs:
-  build-app:
+  publish-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      
+
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
@@ -37,6 +36,4 @@ jobs:
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-awesome-nav
 
       - run: mkdocs gh-deploy --force
-    
 
-      
