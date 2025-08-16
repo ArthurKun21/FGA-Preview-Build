@@ -1,5 +1,6 @@
 site_name: FGA Preview
-site_url: https://mydocs.com
+site_url: https://arthurkun21.github.io/FGA-Preview-Build
+use_directory_urls: true
 theme:
   name: material
   logo: assets/icon.png
