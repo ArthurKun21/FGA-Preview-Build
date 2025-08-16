@@ -3,5 +3,3 @@ nav:
   - Auto Battle: scripts/battle/
   - scripts/**.md
   - Changelog: changelog/
-sort:
-  direction: desc
