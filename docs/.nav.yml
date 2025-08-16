@@ -1,0 +1,7 @@
+nav:
+  - Home: index.md
+  - Auto Battle: scripts/battle/
+  - scripts/**.md
+  - Changelog: changelog/
+sort:
+  direction: desc
