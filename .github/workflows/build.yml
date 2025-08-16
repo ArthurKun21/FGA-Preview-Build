@@ -92,7 +92,7 @@ jobs:
 
           COMPARISON_LINK="https://github.com/ArthurKun21/fga-preview/compare/${PREV_RELEASE_SHA}...${CURRENT_SHA}"
 
-          CHANGELOG="## ${COMMIT_COUNT}\n$CURRENT_DATE\n${COMMIT_LOGS}\n\n[Compare changes]($COMPARISON_LINK)"
+          CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}\n\n[Compare changes]($COMPARISON_LINK)"
           
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
@@ -171,7 +171,7 @@ jobs:
         run: |
           git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
 
-          echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com' 
