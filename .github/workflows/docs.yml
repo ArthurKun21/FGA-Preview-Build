@@ -4,9 +4,10 @@ on:
     branches:
       - main
       - docs/**
-      - mkdocs.yml
     paths:
       - 'docs/**'
+      - mkdocs.yml
+      - '.github/workflows/docs.yml'
   # Manual triggers
   workflow_dispatch:
 
