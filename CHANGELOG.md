@@ -17,6 +17,8 @@
 
 ### Feature
 
+#### Use OCR on Apple Count
+
 - Crash on Apple Refill screen is due to Tesseract crashing. We have now added a new option to skip the usage of OCR for more accurate reading of apples used.
 
   <img width="685" height="146" alt="image" src="https://github.com/user-attachments/assets/af42bb78-c2bc-4e5e-ae4c-ccc2bba170f9" />
