@@ -35,6 +35,7 @@ plugins:
       type: date
       enable_creation_date: true
   - social
+  - meta
 markdown_extensions:
   - admonition
   - def_list
