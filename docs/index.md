@@ -2,6 +2,10 @@
 
 Currently, this documentation is still a work in progress.
 
+## Requirement
+
+Due to the nature of long press gesture, the **minimum Android version of this fork is 8.0**
+
 ## What is this?
 
 This is a fork version that has some differences with the main FGA app.
