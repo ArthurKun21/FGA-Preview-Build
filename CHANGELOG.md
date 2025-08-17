@@ -1,11 +1,31 @@
 ## 2120
+
 2025-08-17
+
 - chore(deps): downgrade  tesseract from multi-core to single core (#706) (@ArthurKun21)
 - fix(Tesseract): update tesseract initialization from singleton to service scoped (#707) (@ArthurKun21)
 - feat: Add Toggle for using OCR on Apple count (#708) (@ArthurKun21)
 - refactor(Tesseract): optimize regex initialization and improve error handling (#709) (@ArthurKun21)
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/16a1815a...d0860904)
+
+Fixes:
+
+- Not optimized initialization of Tesseract caused some devices to crash.
+- We were using too much threads for Tesseract. Moved the Tesseract back with others to the service scoped threads.
+- Crash on Apple Refill screen is due to Tesseract crashing. We have now added a new option to skip the usage of OCR for more accurate reading of apples used.
+
+  <img width="685" height="146" alt="image" src="https://github.com/user-attachments/assets/af42bb78-c2bc-4e5e-ae4c-ccc2bba170f9" />
+
+  This is found on `settings` -> `Battle` -> `Use OCR on Apple Count`.
+
+  In case you didn't knew, Enabling `Over Recharge AP` would use the max apples available when refilling apples instead of normally only using 1 at a time.
+
+  <img width="389" height="191" alt="image" src="https://github.com/user-attachments/assets/f34bb296-de6e-441e-bd6b-4d10e3c1166a" />
+
+- Added some excpetion handling for Tesseract and optimized the initilization of regex for reused.
+
+
 ## 2116
 2025-08-15
 - Update dependency androidx.compose:compose-bom to v2025.08.00 (#692) (@renovate[bot])
