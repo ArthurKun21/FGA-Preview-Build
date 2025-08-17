@@ -7,8 +7,7 @@ This is a script that lets you automate the leveling of your skills. By tapping 
 1. Go to Skills screen.
 2. Select servant you want to level up its skills.
 3. Click the play button to start the script.
-4. Setup the max level you want to reach.
-5. Enjoy!
+4. Setup the target level you want to reach.
 
 ## Exit scenarios
 
