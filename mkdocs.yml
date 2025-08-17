@@ -37,6 +37,7 @@ plugins:
   - social
 markdown_extensions:
   - admonition
+  - def_list
   - toc:
       permalink: true
   - footnotes
