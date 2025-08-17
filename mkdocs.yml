@@ -25,8 +25,13 @@ theme:
 
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.footer
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - toc.follow
 plugins:
   - search
   - awesome-nav
