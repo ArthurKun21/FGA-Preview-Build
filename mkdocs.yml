@@ -1,5 +1,8 @@
 site_name: FGA Preview
 site_url: https://arthurkun21.github.io/FGA-Preview-Build
+site_description: A fork version of FGA with additional features and improvements.
+repo_name: FGA Preview
+repo_url: https://github.com/ArthurKun21/fga-preview-build
 use_directory_urls: true
 theme:
   name: material
@@ -30,9 +33,15 @@ plugins:
   - git-revision-date-localized:
       type: date
       enable_creation_date: true
+  - social
 markdown_extensions:
-  - pymdownx.details
-  - pymdownx.superfences
   - admonition
   - toc:
       permalink: true
+  - footnotes
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.betterem
+  - pymdownx.tasklist:
+      custom_checkbox: true
