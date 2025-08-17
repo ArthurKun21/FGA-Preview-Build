@@ -37,7 +37,7 @@ jobs:
           path: ~/.cache 
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-awesome-nav pymdown-extensions
+      - run: pip install -r .github/workflows/requirements.txt
 
       - run: mkdocs gh-deploy --force
 
