@@ -9,13 +9,13 @@
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/16a1815a...d0860904)
 
-## Fixes:
+### Fixes:
 
 - Not optimized initialization of Tesseract caused some devices to crash.
 - We were using too much threads for Tesseract. Moved the Tesseract back with others to the service scoped threads.
 - Added some excpetion handling for Tesseract and optimized the initilization of regex for reused.
 
-## Feature:
+### Feature:
 
 - Crash on Apple Refill screen is due to Tesseract crashing. We have now added a new option to skip the usage of OCR for more accurate reading of apples used.
 
