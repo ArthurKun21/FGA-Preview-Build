@@ -1,3 +1,11 @@
+## 2120
+2025-08-17
+- chore(deps): downgrade  tesseract from multi-core to single core (#706) (@ArthurKun21)
+- fix(Tesseract): update tesseract initialization from singleton to service scoped (#707) (@ArthurKun21)
+- feat: Add Toggle for using OCR on Apple count (#708) (@ArthurKun21)
+- refactor(Tesseract): optimize regex initialization and improve error handling (#709) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/16a1815a...d0860904)
 ## 2116
 2025-08-15
 - Update dependency androidx.compose:compose-bom to v2025.08.00 (#692) (@renovate[bot])
