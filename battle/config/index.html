@@ -194,11 +194,18 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -965,6 +972,39 @@
       Command Card
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-support-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Support Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preferred-support-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preferred Support Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1838,6 +1878,50 @@
 <p>Below the Command Card options is the summary of the current command card priority.</p>
 <p>The summary is clickable and will redirect you to the <a href="../card-priority/">Command Card Priority</a> page.</p>
 <p>For more information about command cards, go to <a href="../card-priority/">Command Card Priority</a></p>
+<h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">&para;</a></h2>
+<p>This is where we will setup the support to be chosen.</p>
+<table>
+<thead>
+<tr>
+<th>General Support Setup</th>
+<th>Preferred Support Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="General Support Setup" src="../../assets/battle/general-support-setup.png" /></td>
+<td><img alt="Preferred Support Setup" src="../../assets/battle/preferrred-support-setup.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="general-support-setup">General Support Setup<a class="headerlink" href="#general-support-setup" title="Permanent link">&para;</a></h3>
+<p>This is where you setup the class and what kind of support mode the app would perform.</p>
+<table>
+<thead>
+<tr>
+<th>Selection Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First</td>
+<td>The app will always select the first available support option.</td>
+</tr>
+<tr>
+<td>Manual</td>
+<td>The app would stop the script and the user need to manually select a support option. After that, the user need to start the script again.</td>
+</tr>
+<tr>
+<td>Preferred</td>
+<td>The app will select the preferred support option based on the setup below. If no preferred support is available after certain amount of actions, it will use fallback option</td>
+</tr>
+</tbody>
+</table>
+<h3 id="preferred-support-setup">Preferred Support Setup<a class="headerlink" href="#preferred-support-setup" title="Permanent link">&para;</a></h3>
+<p>This is where you precisely define the preferred support setup for the battle.</p>
+<p>In order to learn about the preferred support visit <a href="../support/">support</a> page</p>
+<p><strong>Auto send Friend Request</strong> - If enabled, the app will automatically send a friend request to the selected support option after the battle and if the borrowed servant is not already on the friend list.</p>
 
 
 
@@ -1860,7 +1944,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 06:27:17 UTC">August 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 07:00:01 UTC">August 18, 2025</span>
   </span>
 
     
@@ -1964,7 +2048,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.sections", "navigation.expand", "navigation.path", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.sections", "navigation.expand", "navigation.path", "toc.follow", "toc.integrate", "search.suggest", "search.share", "search.highlight"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
