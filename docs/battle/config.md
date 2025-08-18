@@ -39,6 +39,20 @@ The current migration to Datastore would hopefully resolve this issue.
 
 ![Farming Configuration](../assets/battle/farming-config.png)
 
+- Clicking the materials would redirect you to [Materials](materials.md) where you can configure the farming materials that you want to track of.
+
+- Clicking the Server will restrict the Config to whatever Server you are currently on when you launched the game.
+
+    **Default** means this config will show up to any server.
+
+- Clicking the party would then move the configuration to the selected party.
+
+> **Note:**
+>
+> In CN and JP both now have 15 party slots compared to other servers' 10 party slots
+>
+> If you ever selected Default Server and choose 15th party slot but played on a server with only 10 slots, the script will restrict it to the highest possible number which is 10th slot.
+
 | Server Configuration | Party Configuration |
 | --- | --- |
 | ![Server Configuration](../assets/battle/server-config.png) | ![Party Configuration](../assets/battle/party-config.png) |
