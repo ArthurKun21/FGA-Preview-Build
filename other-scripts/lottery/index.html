@@ -1264,6 +1264,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Auto Lottery
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1275,6 +1288,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to get started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lottery-in-jp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lottery in JP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lottery-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lottery Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exit scenarios
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1682,7 +1750,56 @@
 
 
 <h1 id="auto-lottery">Auto Lottery<a class="headerlink" href="#auto-lottery" title="Permanent link">&para;</a></h1>
-<p>Currently work-in-progress.</p>
+<p>This is the script that helps you automate the rolling of lottery.</p>
+<h2 id="how-to-get-started">How to get started<a class="headerlink" href="#how-to-get-started" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Go to the Lottery Screen.</p>
+<p><img alt="Lottery Screen" src="../../assets/other-scripts/lottery.png" /></p>
+</li>
+<li>
+<p>Click the Play button in order to setup the lottery configuration.</p>
+<p><img alt="Lottery Configuration" src="../../assets/other-scripts/lottery-configuration.png" /></p>
+</li>
+<li>
+<p>Click the "Ok" button to start the script.</p>
+</li>
+</ol>
+<h2 id="lottery-in-jp">Lottery in JP<a class="headerlink" href="#lottery-in-jp" title="Permanent link">&para;</a></h2>
+<p>Lottery in JP server have implemented the long press option. This significantly improves the user experience by allowing for quicker rolling of the lottery.</p>
+<p>We have implemented such feature to the app to help users.</p>
+<p><img alt="Lottery JP Long press option" src="../../assets/other-scripts/lottery-jp-long-press.png" /></p>
+<h2 id="lottery-options">Lottery Options<a class="headerlink" href="#lottery-options" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>If you want to receive embers when the gift box is full, enable the "Receive Embers" option.</p>
+<p>This will show the options also found on <a href="../gift-box/">Gift Box</a> that is needed for receiving embers.</p>
+<p><img alt="Receive Embers" src="../../assets/other-scripts/lottery-receive-embers.png" /></p>
+</li>
+<li>
+<p>If you want to loop back to rolling the lottery, enable the "Return to lottery" option.</p>
+<p><img alt="Return to Lottery" src="../../assets/other-scripts/lottery-return-to-lottery.png" /></p>
+</li>
+<li>
+<p>If both the Gift Box and Servant inventory are full, and want to redirect to "sell" screen</p>
+<p>enable the "Move to sell after Gift Box" option.</p>
+<p><img alt="Move to Sell" src="../../assets/other-scripts/lottery-move-to-sell.png" /></p>
+</li>
+</ol>
+<h2 id="exit-scenarios">Exit scenarios<a class="headerlink" href="#exit-scenarios" title="Permanent link">&para;</a></h2>
+<p>The script ends when</p>
+<ol>
+<li>The user manually stopped the script.</li>
+<li>
+<p>User didn't configure to receive embers.</p>
+<p><img alt="Lottery Full" src="../../assets/other-scripts/lottery-full.png" /></p>
+</li>
+<li>
+<p>Enabled to receive embers but found no embers.</p>
+</li>
+<li>Both the Gift Box and Servant inventory are full, and the user didn't configure to sell.</li>
+<li>Both the Gift Box and Servant inventory are full, and the user configure to sell and have reached the sell screen.</li>
+</ol>
 
 
 
@@ -1705,7 +1822,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 01:50:13 UTC">August 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 08:37:53 UTC">August 18, 2025</span>
   </span>
 
     
