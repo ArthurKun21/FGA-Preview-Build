@@ -34,6 +34,10 @@ We implemented some of the following features.
 - Command Spell
 - Grand Duels
 
+## Features removed
+
+- Auto Spam, I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
+
 ## Special Acknowledgements
 
 - **MathewSachin**, who initially started the FGA project.
