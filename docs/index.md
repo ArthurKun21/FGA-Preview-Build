@@ -10,6 +10,8 @@ Due to the nature of long press gesture, the **minimum Android version of this f
 
 This is a fork version that has some differences with the main FGA app.
 
+## Features
+
 We implemented some of the following features.
 
 - New scripts
