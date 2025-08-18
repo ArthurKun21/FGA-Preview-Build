@@ -1,6 +1,13 @@
 nav:
   - Home: index.md
-  - App: app/
+  - App:
+    - Settings:
+      - app/appearance.md
+      - app/global-battle.md
+      - app/storage.md
+      - app/advanced.md
+    - fine-tune.md
+    - library.md
   - Auto Battle:
     - Configuration:
       - battle/config.md
