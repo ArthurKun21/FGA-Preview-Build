@@ -45,4 +45,8 @@ This is the section where you'll configure the command card priority for the bat
 | Use Servant Priority | If enabled, the app will prioritize the servant's cards before the command card type |
 | Use Crit Stars Priority | If enabled, the app will prioritize cards with high chance to do critical damage. The default percentage is 80 ~ 100% |
 
+Below the Command Card options is the summary of the current command card priority.
 
+The summary is clickable and will redirect you to the [Command Card Priority](card-priority.md) page.
+
+For more information about command cards, go to [Command Card Priority](card-priority.md)
