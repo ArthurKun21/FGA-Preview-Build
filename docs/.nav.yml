@@ -6,8 +6,8 @@ nav:
       - app/global-battle.md
       - app/storage.md
       - app/advanced.md
-    - fine-tune.md
-    - library.md
+    - app/fine-tune.md
+    - app/library.md
   - Auto Battle:
     - Configuration:
       - battle/config.md
