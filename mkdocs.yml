@@ -33,6 +33,9 @@ theme:
     - navigation.path
     - toc.follow
     - toc.integrate
+    - search.suggest
+    - search.share
+    - search.highlight
 plugins:
   - search
   - awesome-nav
