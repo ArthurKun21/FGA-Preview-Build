@@ -20,3 +20,6 @@ The app requires the following permissions:
 
     This is required for the app to capture the screen and use it for image matching and text detection in order for the app to function.
 
+4. Disable Battery Optimization
+
+    This is required on some devices to ensure the app runs smoothly in the background for a long time without being killed by the system.
