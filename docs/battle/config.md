@@ -4,6 +4,9 @@ This is how to setup the battle config.
 
 ## Identity
 
+- **Name** - The name of the battle config
+- **Notes** - A multi-line text field for additional information. It cannot contain images only text would be rendered.
+
 Clicking either the name or notes would popup a dialog to edit it.
 
 | Name and notes | Name and notes dialog |
