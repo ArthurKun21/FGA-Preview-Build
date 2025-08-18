@@ -35,6 +35,14 @@ As a workaround, we added a button in the Battle Launcher to reset the configura
 
 The current migration to Datastore would hopefully resolve this issue.
 
+## Farming Configuration
+
+![Farming Configuration](../assets/battle/farming-config.png)
+
+| Server Configuration | Party Configuration |
+| --- | --- |
+| ![Server Configuration](../assets/battle/server-config.png) | ![Party Configuration](../assets/battle/party-config.png) |
+
 ## Command Card
 
 ![Command Card](../assets/battle/command-card.png)
