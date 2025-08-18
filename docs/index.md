@@ -8,7 +8,11 @@ Due to the nature of long press gesture, the **minimum Android version of this f
 
 ## What is this?
 
-This is a fork version that has some differences with the main FGA app.
+This is a fork version of Fate/Grand Automata (FGA) with different development priorities and some other features.
+
+## Should you use it?
+
+If you are looking for stability and a more polished experience, use the main FGA app.
 
 ## Features
 
