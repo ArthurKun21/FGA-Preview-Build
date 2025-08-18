@@ -37,6 +37,8 @@ The current migration to Datastore would hopefully resolve this issue.
 
 ## Command Card
 
+![Command Card](../assets/battle/command-card.png)
+
 This is the section where you'll configure the command card priority for the battle.
 
 | Command Card Option | Command Card Option Description |
