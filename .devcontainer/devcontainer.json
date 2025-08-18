@@ -4,6 +4,12 @@
 	"build": {
         "dockerfile": "Dockerfile"
     },
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "none",
+			"installPip": "true"
+		}
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
