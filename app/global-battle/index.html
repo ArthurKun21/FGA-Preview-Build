@@ -662,6 +662,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Global Battle Settings
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -673,6 +686,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#battle-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Battle Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Battle Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Game Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#story-skip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Story Skip
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Story Skip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#story-skip-limitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Story Skip Limitation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boost-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boost Item
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hide-sq-in-ap-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hide SQ in AP Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treat-support-like-own-servants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Treat Support like own servants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-ocr-on-apple-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use OCR on Apple Count
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1291,6 +1407,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../other-scripts/play-button-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Play Button Detection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../other-scripts/support-image-maker/" class="md-nav__link">
         
   
@@ -1685,7 +1824,44 @@
 
 
 <h1 id="global-battle-settings">Global Battle Settings<a class="headerlink" href="#global-battle-settings" title="Permanent link">&para;</a></h1>
-<p>Currently work-in-progress.</p>
+<p>This is where you can configure the global battle settings for the app.</p>
+<h2 id="battle-configuration">Battle Configuration<a class="headerlink" href="#battle-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="game-server">Game Server<a class="headerlink" href="#game-server" title="Permanent link">&para;</a></h3>
+<p>The default is <code>Auto-detect</code> it will make use of the Accessibility service in order to detect the app package and therefore provide the accurate game server.</p>
+<table>
+<thead>
+<tr>
+<th>Default</th>
+<th>Dialog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Game Server" src="../../assets/app/game-server.png" /></td>
+<td><img alt="Game Server Dialog" src="../../assets/app/game-server-dialog.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="story-skip">Story Skip<a class="headerlink" href="#story-skip" title="Permanent link">&para;</a></h3>
+<p>This setting allows you to skip the story scenes in the game.</p>
+<p><img alt="Story Skip" src="../../assets/app/story-skip.png" /></p>
+<h4 id="story-skip-limitation">Story Skip Limitation<a class="headerlink" href="#story-skip-limitation" title="Permanent link">&para;</a></h4>
+<p>The feature will get stuck when a story requires user input to make a choice and cannot be skipped. We do not currently plan to address this limitation.</p>
+<h3 id="boost-item">Boost Item<a class="headerlink" href="#boost-item" title="Permanent link">&para;</a></h3>
+<p>FGO used to have items in events to boost performance of servants. Not much nowadays.</p>
+<p><img alt="Boost Item" src="../../assets/app/boost-item.png" /></p>
+<h3 id="hide-sq-in-ap-resources">Hide SQ in AP Resources<a class="headerlink" href="#hide-sq-in-ap-resources" title="Permanent link">&para;</a></h3>
+<p>This will make the SQ which is a premium currency to be hidden by default for resource refill. Will prevent accidental usage.</p>
+<p><img alt="Hide SQ in AP Resources" src="../../assets/app/hide-sq.png" /></p>
+<h3 id="treat-support-like-own-servants">Treat Support like own servants<a class="headerlink" href="#treat-support-like-own-servants" title="Permanent link">&para;</a></h3>
+<p>This is a setting to solve the problem with super-buffed servants.</p>
+<p>Super-buffed servants are support servants that have received too many buffs that part of their "support" tag is hidden, making them appear as regular servants and tracking them results into unknown servant.</p>
+<p>The "support" tag is the one the app uses to track which are support or not.</p>
+<p><img alt="Treat Support like own servants" src="../../assets/app/treat-support-like-servants.png" /></p>
+<h3 id="use-ocr-on-apple-count">Use OCR on Apple Count<a class="headerlink" href="#use-ocr-on-apple-count" title="Permanent link">&para;</a></h3>
+<p>An unoptimized Tesseract setup can spawn too many threads and cause the script to crash. This setting is included in case these crashes persist.</p>
+<p>OCR (Optical Character Recognition) was added to more accurately read the number of Apples used in the game.</p>
+<p><img alt="Use OCR on Apple Count" src="../../assets/app/use-ocr-on-apple.png" /></p>
 
 
 
@@ -1708,7 +1884,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 01:48:08 UTC">August 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 13:17:48 UTC">August 18, 2025</span>
   </span>
 
     
