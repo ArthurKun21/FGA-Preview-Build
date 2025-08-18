@@ -1008,6 +1008,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#battle-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Battle Settings
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1922,6 +1931,54 @@
 <p>This is where you precisely define the preferred support setup for the battle.</p>
 <p>In order to learn about the preferred support visit <a href="../support/">support</a> page</p>
 <p><strong>Auto send Friend Request</strong> - If enabled, the app will automatically send a friend request to the selected support option after the battle and if the borrowed servant is not already on the friend list.</p>
+<h2 id="battle-settings">Battle Settings<a class="headerlink" href="#battle-settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Settings</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Out of Commands Exit</td>
+<td>When you run out of commands, the app will automatically exit the battle.</td>
+</tr>
+<tr>
+<td>Off-script Exit</td>
+<td>When a turn/wave that is not on the list of commands, the app will automatically exit the battle. If you disabled <code>Out of Commands Exit</code> but enabled this option, the app will also exit the battle as it encounters an off-script turn/wave.</td>
+</tr>
+<tr>
+<td>Raid</td>
+<td>When enabled, it will delay the initial action of the script according to the <code>raid delay</code></td>
+</tr>
+<tr>
+<td>Raid Delay</td>
+<td>Amount of time (in seconds) to delay the initial action of the script.</td>
+</tr>
+<tr>
+<td>Auto-Choose Target</td>
+<td>If enabled, the app will automatically choose the target with first <code>servant</code> or <code>danger</code> tag.</td>
+</tr>
+<tr>
+<td>Shuffle Cards</td>
+<td>It will shuffle cards depending on the commands cards.</td>
+</tr>
+</tbody>
+</table>
+<p>Dev notes:</p>
+<ul>
+<li>
+<p>Raid Delay</p>
+<p>The best example of this is the Tunguska Raid wherein it would display the counter of raid kills left. This messes up the timing of the script if you opt-in to not one shot for maximum rewards.</p>
+<p><a href="https://youtu.be/Kpg2DsgQRBg?t=123"><img alt="Tunguska Raid Example" src="https://i.ytimg.com/vi/Kpg2DsgQRBg/mqdefault.jpg" /></a></p>
+<p>On the Youtube timestamp link will show you the exact moment in the video where this is relevant.</p>
+</li>
+<li>
+<p>Auto-Choose Target - I honestly never used this</p>
+</li>
+<li>Shuffle Cards - I also never shuffle my cards either.</li>
+</ul>
 
 
 
@@ -1944,7 +2001,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 07:00:01 UTC">August 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 07:24:37 UTC">August 18, 2025</span>
   </span>
 
     
