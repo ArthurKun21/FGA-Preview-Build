@@ -1,6 +1,7 @@
 nav:
   - Home: index.md
   - App:
+    - app/requirements.md
     - Settings:
       - app/appearance.md
       - app/global-battle.md
