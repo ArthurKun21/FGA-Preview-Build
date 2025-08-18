@@ -1,17 +1,14 @@
-FROM mcr.microsoft.com/devcontainers/python:3.12
+FROM mcr.microsoft.com/devcontainers/python:1-3.11-bullseye
 
 # Install system dependencies
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y --no-install-recommends \
-        libcairo2-dev \
-        libfreetype6-dev \
-        libffi-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libz-dev \
+RUN apt-get update && apt-get install -y \
+    libcairo2-dev \
+    libfreetype6-dev \
+    libffi-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libz-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install Python deps
-COPY .github/workflows/requirements.txt /tmp/pip-tmp/
-RUN pip install --no-cache-dir -r /tmp/pip-tmp/requirements.txt \
-    && rm -rf /tmp/pip-tmp
+# Ensure pip is available and up to date
+RUN python -m pip install --upgrade pip setuptools wheel
