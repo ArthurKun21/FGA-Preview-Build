@@ -52,3 +52,29 @@ Below the Command Card options is the summary of the current command card priori
 The summary is clickable and will redirect you to the [Command Card Priority](card-priority.md) page.
 
 For more information about command cards, go to [Command Card Priority](card-priority.md)
+
+## Support
+
+This is where we will setup the support to be chosen.
+
+| General Support Setup | Preferred Support Setup |
+| --- | --- |
+| ![General Support Setup](../assets/battle/general-support-setup.png) | ![Preferred Support Setup](../assets/battle/preferrred-support-setup.png) |
+
+### General Support Setup
+
+This is where you setup the class and what kind of support mode the app would perform.
+
+| Selection Mode | Description |
+| --- | --- |
+| First | The app will always select the first available support option. |
+| Manual | The app would stop the script and the user need to manually select a support option. After that, the user need to start the script again. |
+| Preferred | The app will select the preferred support option based on the setup below. If no preferred support is available after certain amount of actions, it will use fallback option |
+
+### Preferred Support Setup
+
+This is where you precisely define the preferred support setup for the battle.
+
+In order to learn about the preferred support visit [support](support.md) page
+
+**Auto send Friend Request** - If enabled, the app will automatically send a friend request to the selected support option after the battle and if the borrowed servant is not already on the friend list.
