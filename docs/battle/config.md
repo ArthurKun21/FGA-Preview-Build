@@ -78,3 +78,27 @@ This is where you precisely define the preferred support setup for the battle.
 In order to learn about the preferred support visit [support](support.md) page
 
 **Auto send Friend Request** - If enabled, the app will automatically send a friend request to the selected support option after the battle and if the borrowed servant is not already on the friend list.
+
+## Battle Settings
+
+| Settings | Description |
+| --- | --- |
+| Out of Commands Exit | When you run out of commands, the app will automatically exit the battle. |
+| Off-script Exit | When a turn/wave that is not on the list of commands, the app will automatically exit the battle. If you disabled `Out of Commands Exit` but enabled this option, the app will also exit the battle as it encounters an off-script turn/wave. |
+| Raid | When enabled, it will delay the initial action of the script according to the `raid delay` |
+| Raid Delay | Amount of time (in seconds) to delay the initial action of the script. |
+| Auto-Choose Target | If enabled, the app will automatically choose the target with first `servant` or `danger` tag. |
+| Shuffle Cards | It will shuffle cards depending on the commands cards. |
+
+Dev notes:
+
+- Raid Delay
+
+    The best example of this is the Tunguska Raid wherein it would display the counter of raid kills left. This messes up the timing of the script if you opt-in to not one shot for maximum rewards.
+
+    [![Tunguska Raid Example](https://i.ytimg.com/vi/Kpg2DsgQRBg/mqdefault.jpg)](https://youtu.be/Kpg2DsgQRBg?t=123)
+
+    On the Youtube timestamp link will show you the exact moment in the video where this is relevant.
+
+- Auto-Choose Target - I honestly never used this
+- Shuffle Cards - I also never shuffle my cards either.
