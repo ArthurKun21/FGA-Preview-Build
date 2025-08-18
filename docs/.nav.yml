@@ -16,7 +16,8 @@ nav:
       - battle/materials.md
       - battle/skill-maker.md
       - battle/support.md
-    - Launcher: battle/launcher.md
+    - How to get started:
+      - battle/launcher.md
   - scripts/auto-level-servant.md
   - scripts/auto-level-ce.md
   - scripts/auto-level-skills.md
