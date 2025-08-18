@@ -21,3 +21,9 @@ This setting allows you to skip the story scenes in the game.
 #### Story Skip Limitation
 
 The feature will get stuck when a story requires user input to make a choice and cannot be skipped. We do not currently plan to address this limitation.
+
+### Boost Item
+
+FGO used to have items in events to boost performance of servants. Not much nowadays.
+
+![Boost Item](../assets/app/boost-item.png)
