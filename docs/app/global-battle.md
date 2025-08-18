@@ -33,3 +33,13 @@ FGO used to have items in events to boost performance of servants. Not much nowa
 This will make the SQ which is a premium currency to be hidden by default for resource refill. Will prevent accidental usage.
 
 ![Hide SQ in AP Resources](../assets/app/hide-sq.png)
+
+### Treat Support like own servants
+
+This is a setting to solve the problem with super-buffed servants.
+
+Super-buffed servants are support servants that have received too many buffs that part of their "support" tag is hidden, making them appear as regular servants and tracking them results into unknown servant.
+
+The "support" tag is the one the app uses to track which are support or not.
+
+![Treat Support like own servants](../assets/app/treat-support-like-servants.png)
