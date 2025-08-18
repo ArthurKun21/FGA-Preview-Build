@@ -8,7 +8,7 @@ Clicking either the name or notes would popup a dialog to edit it.
 
 | Name and notes | Name and notes dialog |
 | --- | --- |
-| ![Name and notes](../assets/name-and-notes.png) | ![Name and notes dialog](../assets/name-and-notes-dialog.png) |
+| ![Name and notes](../assets/battle/name-and-notes.png) | ![Name and notes dialog](../assets/battle/name-and-notes-dialog.png) |
 
 ## Command
 
@@ -16,4 +16,8 @@ Clicking the command would redirect you to the [Skill Maker Screen](skill-maker.
 
 | Skill command | Skill command dialog |
 | --- | --- |
-| ![skill command](../assets/skill-command.png) | ![skill command dialog](../assets/skill-command-dialog.png) |
+| ![skill command](../assets/battle/skill-command.png) | ![skill command dialog](../assets/battle/skill-command-dialog.png) |
+
+## Default Run Configuration
+
+![Default Run Configuration](../assets/battle/default-run-config.png)
