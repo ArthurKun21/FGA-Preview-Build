@@ -27,3 +27,9 @@ The feature will get stuck when a story requires user input to make a choice and
 FGO used to have items in events to boost performance of servants. Not much nowadays.
 
 ![Boost Item](../assets/app/boost-item.png)
+
+### Hide SQ in AP Resources
+
+This will make the SQ which is a premium currency to be hidden by default for resource refill. Will prevent accidental usage.
+
+![Hide SQ in AP Resources](../assets/app/hide-sq.png)
