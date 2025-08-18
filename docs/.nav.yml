@@ -3,4 +3,5 @@ nav:
   - App: app/
   - Auto Battle: battle/
   - scripts/**.md
+  - Other Scripts: other-scripts/
   - Changelog: changelog/
