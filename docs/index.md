@@ -9,8 +9,6 @@ Currently, this documentation is still a work in progress.
 
 [![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
 
-[![GitHub downloads](https://img.shields.io/github/downloads/ArthurKun21/FGA-Preview-Build/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
-
 <a href="https://ko-fi.com/arthurkun21">
     <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=4" alt="Buy Me a Coffee" title="Buy Me a Coffee" width="140"/>
 </a>
