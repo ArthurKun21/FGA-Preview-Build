@@ -32,6 +32,7 @@ theme:
     - navigation.expand
     - navigation.path
     - toc.follow
+    - toc.integrate
 plugins:
   - search
   - awesome-nav
