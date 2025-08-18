@@ -32,3 +32,22 @@ We implemented some of the following features.
 - Stop script upon reaching certain bond level.
 - Command Spell
 - Grand Duels
+
+## Special Acknowledgements
+
+- **MathewSachin**, who initially started the FGA project.
+- **Reconman**, who maintained the FGA project after MathewSachin.
+- **Other FGA Contributors**, for their invaluable support and contributions.
+- **Atlas Academy**, for the raw data and support used by this project.
+- **Rayshift**, which provides raw data in collaboration with Atlas Academy.
+- **Chaldea**, for verifying data in practice and providing translations.
+- **Mihon**, for inspiration for the UI.
+
+## Links
+
+- Main FGA: [https://github.com/Fate-Grand-Automata/FGA](https://github.com/Fate-Grand-Automata/FGA)
+- Current Fork Releases: [https://github.com/ArthurKun21/fga-preview-build/releases](https://github.com/ArthurKun21/fga-preview-build/releases)
+- Atlas Academy: [https://atlasacademy.io/](https://atlasacademy.io/)
+- Chaldea: [https://github.com/chaldea-center/chaldea](https://github.com/chaldea-center/chaldea)
+- Rayshift: [http://rayshift.io/](http://rayshift.io/)
+- Mihon: [https://github.com/mihonapp/mihon](https://github.com/mihonapp/mihon)
