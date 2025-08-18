@@ -16,6 +16,9 @@ nav:
       - battle/skill-maker.md
       - battle/support.md
     - Launcher: battle/launcher.md
-  - scripts/**.md
+  - scripts/auto-level-servant.md
+  - scripts/auto-level-ce.md
+  - scripts/auto-level-skills.md
+  - scripts/auto-level-append.md
   - Other Scripts: other-scripts/
   - Changelog: changelog/
