@@ -43,3 +43,11 @@ Super-buffed servants are support servants that have received too many buffs tha
 The "support" tag is the one the app uses to track which are support or not.
 
 ![Treat Support like own servants](../assets/app/treat-support-like-servants.png)
+
+### Use OCR on Apple Count
+
+An unoptimized Tesseract setup can spawn too many threads and cause the script to crash. This setting is included in case these crashes persist.
+
+OCR (Optical Character Recognition) was added to more accurately read the number of Apples used in the game.
+
+![Use OCR on Apple Count](../assets/app/use-ocr-on-apple.png)
