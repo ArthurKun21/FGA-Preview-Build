@@ -21,3 +21,13 @@ Clicking the command would redirect you to the [Skill Maker Screen](skill-maker.
 ## Default Run Configuration
 
 ![Default Run Configuration](../assets/battle/default-run-config.png)
+
+When a run ended, the default run configuration values will be used for the initial values of the next run.
+
+### Limitation
+
+Due to current architectural limitations, we can't update the current configuration. Run/materials/CE/teapots need to reach their limits before the default values are applied.
+
+As a workaround, we added a button in the Battle Launcher to reset the configuration to its default values.
+
+The current migration to Datastore would hopefully resolve this issue.
