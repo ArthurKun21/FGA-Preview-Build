@@ -1,7 +1,14 @@
 nav:
   - Home: index.md
   - App: app/
-  - Auto Battle: battle/
+  - Auto Battle:
+    - Configuration:
+      - battle/config.md
+      - battle/card-priority.md
+      - battle/materials.md
+      - battle/skill-maker.md
+      - battle/support.md
+    - Launcher: battle/launcher.md
   - scripts/**.md
   - Other Scripts: other-scripts/
   - Changelog: changelog/
