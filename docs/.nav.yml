@@ -1,5 +1,5 @@
 nav:
   - Home: index.md
-  - Auto Battle: scripts/battle/
+  - Auto Battle: battle/
   - scripts/**.md
   - Changelog: changelog/
