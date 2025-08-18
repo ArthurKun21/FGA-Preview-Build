@@ -877,6 +877,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Battle Config
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -888,6 +901,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-run-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Run Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Run Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Card
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1000,18 +1083,74 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    How to get started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            How to get started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../launcher/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Launcher
+    Battle Launcher
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1628,6 +1767,77 @@
 
 <h1 id="battle-config">Battle Config<a class="headerlink" href="#battle-config" title="Permanent link">&para;</a></h1>
 <p>This is how to setup the battle config.</p>
+<h2 id="identity">Identity<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Name</strong> - The name of the battle config</li>
+<li><strong>Notes</strong> - A multi-line text field for additional information. It cannot contain images only text would be rendered.</li>
+</ul>
+<p>Clicking either the name or notes would popup a dialog to edit it.</p>
+<table>
+<thead>
+<tr>
+<th>Name and notes</th>
+<th>Name and notes dialog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Name and notes" src="../../assets/battle/name-and-notes.png" /></td>
+<td><img alt="Name and notes dialog" src="../../assets/battle/name-and-notes-dialog.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h2>
+<p>Clicking the command would redirect you to the <a href="../skill-maker/">Skill Maker Screen</a> while clicking the <code>terminal</code> icon would show a popup dialog for quick edit</p>
+<table>
+<thead>
+<tr>
+<th>Skill command</th>
+<th>Skill command dialog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="skill command" src="../../assets/battle/skill-command.png" /></td>
+<td><img alt="skill command dialog" src="../../assets/battle/skill-command-dialog.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="default-run-configuration">Default Run Configuration<a class="headerlink" href="#default-run-configuration" title="Permanent link">&para;</a></h2>
+<p><img alt="Default Run Configuration" src="../../assets/battle/default-run-config.png" /></p>
+<p>When a run ended, the default run configuration values will be used for the initial values of the next run.</p>
+<h3 id="limitation">Limitation<a class="headerlink" href="#limitation" title="Permanent link">&para;</a></h3>
+<p>Due to current architectural limitations, we can't update the current configuration. Run/materials/CE/teapots need to reach their limits before the default values are applied.</p>
+<p>As a workaround, we added a button in the Battle Launcher to reset the configuration to its default values.</p>
+<p>The current migration to Datastore would hopefully resolve this issue.</p>
+<h2 id="command-card">Command Card<a class="headerlink" href="#command-card" title="Permanent link">&para;</a></h2>
+<p><img alt="Command Card" src="../../assets/battle/command-card.png" /></p>
+<p>This is the section where you'll configure the command card priority for the battle.</p>
+<table>
+<thead>
+<tr>
+<th>Command Card Option</th>
+<th>Command Card Option Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skip servant face-card checks</td>
+<td>If enabled, the app will not check if the servant face card matches allowing for faster picking of cards in exchange of possibly weaker cards.</td>
+</tr>
+<tr>
+<td>Use Servant Priority</td>
+<td>If enabled, the app will prioritize the servant's cards before the command card type</td>
+</tr>
+<tr>
+<td>Use Crit Stars Priority</td>
+<td>If enabled, the app will prioritize cards with high chance to do critical damage. The default percentage is 80 ~ 100%</td>
+</tr>
+</tbody>
+</table>
+<p>Below the Command Card options is the summary of the current command card priority.</p>
+<p>The summary is clickable and will redirect you to the <a href="../card-priority/">Command Card Priority</a> page.</p>
+<p>For more information about command cards, go to <a href="../card-priority/">Command Card Priority</a></p>
 
 
 
@@ -1650,7 +1860,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 01:51:20 UTC">August 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2025 06:27:17 UTC">August 18, 2025</span>
   </span>
 
     
