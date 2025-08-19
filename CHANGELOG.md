@@ -1,3 +1,11 @@
+## 2124
+2025-08-19
+- feat(support): add Summer Tiamat template image (#710) (@ArthurKun21)
+- chore: update compile sdk to android 16 (#713) (@ArthurKun21)
+- Update dependency com.android.tools.build:gradle to v8.12.1 (#711) (@renovate[bot])
+- Update dependency androidx.core:core-ktx to v1.17.0 (#693) (@renovate[bot])
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/d0860904...0900ecc0)
 ## 2120
 
 2025-08-17
