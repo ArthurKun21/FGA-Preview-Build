@@ -6,6 +6,18 @@
 - Update dependency androidx.core:core-ktx to v1.17.0 (#693) (@renovate[bot])
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/d0860904...0900ecc0)
+
+### Updates
+
+- Added Summer Tiamat to servant template images
+
+> [!IMPORTANT]
+>
+> After the installation of the APK, you have to go to `Settings` -> `Storage` -> `Extract Default Support images`
+
+- Increase the SDK to API Level 36(Android 16). Let me know if there are some problems.
+
+
 ## 2120
 
 2025-08-17
