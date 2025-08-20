@@ -1,5 +1,20 @@
+## 2126
+
+2025-08-20
+
+- chore: fix lint errors (#714) (@ArthurKun21)
+- fix(Tesseract): move TessBaseAPI inside the thread dispatcher (#715) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/0900ecc0...735e550e)
+
+### Fixes
+
+- Move the initialization of tesseract to its designated thread.
+
 ## 2124
+
 2025-08-19
+
 - feat(support): add Summer Tiamat template image (#710) (@ArthurKun21)
 - chore: update compile sdk to android 16 (#713) (@ArthurKun21)
 - Update dependency com.android.tools.build:gradle to v8.12.1 (#711) (@renovate[bot])
