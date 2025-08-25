@@ -41,6 +41,8 @@
 
 - Experimental new feature: Mighty Chain by @Vylantze
 
+  <img width="313" height="135" alt="image" src="https://github.com/user-attachments/assets/84976ac1-8ad8-4f61-9260-43f47a67b895" />
+
 ## 2126
 
 2025-08-20
