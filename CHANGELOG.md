@@ -1,3 +1,14 @@
+## 2133
+2025-08-25
+- Update actions/setup-java action to v5 (#718) (@renovate[bot])
+- Update dependency com.github.ArthurKun21:compose-overlay-window to v1.5.0 (#719) (@renovate[bot])
+- Update hilt to v2.57.1 (#716) (@renovate[bot])
+- fix: Skill window not closing during cooldown (#720) (@erectorOps)
+- refactor(overlay): Update overlay UI and state management (#717) (@ArthurKun21)
+- feat(overlay): Add keyboard support for Support Image Maker (#722) (@ArthurKun21)
+- feat: basic Mighty chain implementation (@Vylantze)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/735e550e...64db6921)
 ## 2126
 
 2025-08-20
