@@ -105,7 +105,7 @@ jobs:
       
       - name: Set up JDK 17
         if: ${{ env.commit_count_diff > 0 }}
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRO }}
