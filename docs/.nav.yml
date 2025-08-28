@@ -1,0 +1,26 @@
+nav:
+  - Home: index.md
+  - App:
+    - app/requirements.md
+    - Settings:
+      - app/appearance.md
+      - app/global-battle.md
+      - app/storage.md
+      - app/advanced.md
+    - app/fine-tune.md
+    - app/library.md
+  - Auto Battle:
+    - Configuration:
+      - battle/config.md
+      - battle/card-priority.md
+      - battle/materials.md
+      - battle/skill-maker.md
+      - battle/support.md
+    - How to get started:
+      - battle/launcher.md
+  - scripts/auto-level-servant.md
+  - scripts/auto-level-ce.md
+  - scripts/auto-level-skills.md
+  - scripts/auto-level-append.md
+  - Other Scripts: other-scripts/
+  - Changelog: changelog/
