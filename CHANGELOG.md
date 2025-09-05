@@ -1,3 +1,18 @@
+# 2146
+
+2025-09-05
+
+- fix: Stepper should use IntRange boundary in current value (#728) (@ArthurKun21)
+- fix(Skill Maker): Update Text related UI (#730) (@ArthurKun21)
+- Update dependency com.android.tools.build:gradle to v8.12.2 (#729) (@renovate[bot])
+- Update dependency com.android.tools.build:gradle to v8.13.0 (#733) (@renovate[bot])
+- feat(preferences): migrate from SharedPreferences to Preference DataStore (#723) (@ArthurKun21)
+- refactor: move Images to data module (#734) (@ArthurKun21)
+- fix(AutoBattle): use concurrent hash map on ServantTracker (#735) (@ArthurKun21)
+- feat(skill maker): add raid options (#736) (@ArthurKun21)
+
+[Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7e5a2fe0...00ce55a1)
+
 ## 2138
 
 2025-08-28
