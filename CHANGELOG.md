@@ -20,7 +20,7 @@
 
     <img width="1046" height="540" alt="image" src="https://github.com/user-attachments/assets/1fadc6f2-208e-41ee-8aec-38949a73ebf5" />
 
-- Make the saving of image patterns thread friendly
+- Make the saving of image patterns multi-thread friendly
 
 ### Feat
 
