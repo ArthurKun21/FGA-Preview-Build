@@ -1,0 +1,59 @@
+site_name: FGA Preview
+site_url: https://arthurkun21.github.io/FGA-Preview-Build
+site_description: A fork version of FGA with additional features and improvements.
+repo_name: FGA Preview
+repo_url: https://github.com/ArthurKun21/fga-preview-build
+use_directory_urls: true
+theme:
+  name: material
+  logo: assets/icon.png
+  favicon: assets/icon.ico
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: red
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: red
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.share
+    - search.highlight
+plugins:
+  - search
+  - awesome-nav
+  - tags
+  - git-revision-date-localized:
+      type: date
+      enable_creation_date: true
+  - social
+  - meta
+markdown_extensions:
+  - admonition
+  - def_list
+  - toc:
+      permalink: true
+  - footnotes
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.betterem
+  - pymdownx.tasklist:
+      custom_checkbox: true

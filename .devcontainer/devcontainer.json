@@ -1,0 +1,38 @@
+{
+	"name": "Python",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "none",
+			"installPip": "true"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"oderwat.indent-rainbow",
+				"redhat.vscode-yaml",
+				"DavidAnson.vscode-markdownlint",
+				"ms-python.python",
+				"ms-python.vscode-pylance"
+			]
+		},
+		"settings": {
+			"python.defaultInterpreterPath": "/usr/local/bin/python",
+			"terminal.integrated.defaultProfile.linux": "bash"
+		}
+	},
+	"postCreateCommand": "pip install -r .github/workflows/requirements.txt",
+	"remoteUser": "vscode",
+	"portsAttributes": {
+		"8000": {
+			"label": "Application",
+			"onAutoForward": "notify"
+		}
+	},
+	"mounts": []
+}
