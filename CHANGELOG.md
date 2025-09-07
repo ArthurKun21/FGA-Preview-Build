@@ -1,4 +1,4 @@
-# 2148
+## 2148
 
 2025-09-07
 
@@ -6,6 +6,19 @@
 - fix(Preference): Unable to update due to datastore can only be initiated once (#737) (@ArthurKun21)
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/00ce55a1...0b5f9b64)
+
+### Fixes
+
+- Cannot select an apple, update apple count or any server related preference if you have switched from one game server(EN) to another (JP) and vice versa.
+- Selected Apple's Count not being decreased if you used it.
+
+### Feat
+
+- Updated to show all of the apple counts in battle launcher
+- Updated to add more buttons for easier updating of apple count
+
+    <img width="711" height="198" alt="image" src="https://github.com/user-attachments/assets/a3d444d9-c630-40ca-8f7b-852ff4ac6e49" />
+
 
 ## 2146
 
