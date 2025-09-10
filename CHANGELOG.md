@@ -1,3 +1,10 @@
+# 2150
+
+2025-09-10
+
+- fix: Stepper not updating correctly (#739) (@ArthurKun21)
+- feat(support): Added New Support Templates Images (#740) (@ArthurKun21)
+
 ## 2148
 
 2025-09-07
