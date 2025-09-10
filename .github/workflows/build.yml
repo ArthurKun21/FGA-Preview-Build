@@ -90,9 +90,7 @@ jobs:
           # Get the current date
           CURRENT_DATE=$(date +"%Y-%m-%d")
 
-          COMPARISON_LINK="https://github.com/ArthurKun21/fga-preview/compare/${PREV_RELEASE_SHA}...${CURRENT_SHA}"
-
-          CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}\n\n[Compare changes]($COMPARISON_LINK)"
+          CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}"
           
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
@@ -134,9 +132,7 @@ jobs:
             > [!TIP]
             > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
 
-            ### Commits
-
-            https://github.com/ArthurKun21/fga-preview/compare/${{ env.PREV_RELEASE_SHA }}...${{ env.CURRENT_SHA }}
+            ## Commits
 
             ${{ env.COMMIT_LOGS }}
           files: |
