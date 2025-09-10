@@ -125,7 +125,7 @@ jobs:
           cp app/build/outputs/apk/preview/app-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
 
       - name: Create release
-        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
+        uses: softprops/action-gh-release@6cbd405e2c4e67a21c47fa9e383d020e4e28b836 # v2.3.3
         if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}
