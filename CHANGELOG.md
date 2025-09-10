@@ -1,3 +1,58 @@
+## 2152
+
+2025-09-10
+
+- fix: Stepper not updating correctly (#739) (@ArthurKun21)
+- feat(support): Added New Support Templates Images (#740) (@ArthurKun21)
+- fix(Support): Updated Nemo to Noah (@ArthurKun21)
+- feat(Support): Added Support Template image for CEs (#741) (@ArthurKun21)
+
+### Fixes
+
+- Stepper not updating correctly, reverted back to old behavior
+
+### Feat
+
+#### Support Servant
+
+- Added the following servant templates for Grand Rider
+    - Constantine XI
+    - Medb
+    - Noah
+    - Summer Kriemhild
+    - Taigong Wang
+- Updated the following servant templates for Grand Rider
+    - Reines
+
+#### Support CEs
+
+- Added the following ce template images
+    - [Blessed Bride](https://apps.atlasacademy.io/db/JP/craft-essence/2233)
+    - [Chaldea Morning](https://apps.atlasacademy.io/db/JP/craft-essence/2020)
+    - [First Day of Filming](https://apps.atlasacademy.io/db/JP/craft-essence/1596)
+    - [Fondant au Chocolat](https://apps.atlasacademy.io/db/JP/craft-essence/428)
+    - [Foreign God](https://apps.atlasacademy.io/db/JP/craft-essence/2437)
+    - [From NFF with Love](https://apps.atlasacademy.io/db/JP/craft-essence/1949)
+    - [Great Detective Foumes](https://apps.atlasacademy.io/db/JP/craft-essence/1080)
+    - [Inverted Rain of Mud](https://apps.atlasacademy.io/db/JP/craft-essence/1691)
+    - [Needle of Sincerity](https://apps.atlasacademy.io/db/JP/craft-essence/2209)
+    - [Ocean Flier](https://apps.atlasacademy.io/db/JP/craft-essence/1474)
+    - [Report Check](https://apps.atlasacademy.io/db/JP/craft-essence/2052)
+    - [Secret Mission](https://apps.atlasacademy.io/db/JP/craft-essence/2142)
+    - [Standing beneath the Azure Sky](https://apps.atlasacademy.io/db/JP/craft-essence/1605)
+    - [To the Beyond, Bereft the Snowy Blossom](https://apps.atlasacademy.io/db/JP/craft-essence/1410)
+    - [Traces of Christmases Past](https://apps.atlasacademy.io/db/JP/craft-essence/1126)
+    - [Wings of Manuscript](https://apps.atlasacademy.io/db/JP/craft-essence/2124)
+- Updated the following ce template images
+    - Aerial Drive
+    - Bella Lisa
+    - Black Grail
+    - Blessed Bride
+    - Chaldea Lunchtime
+    - Chaldea Teatime
+    - GudaGuda Poster Girl
+    - Kaleidoscope
+
 ## 2148
 
 2025-09-07
