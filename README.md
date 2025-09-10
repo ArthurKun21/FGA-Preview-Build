@@ -7,6 +7,44 @@
 
 <a href='https://ko-fi.com/arthurkun21' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
+## Requirement
+
+Due to the nature of long press gesture, the **minimum Android version of this fork is 8.0**
+
+## What is this?
+
+This is a fork version of Fate/Grand Automata (FGA) with different development priorities and some other features.
+
+## Should you use it?
+
+If you are looking for stability and a more polished experience, use the main FGA app.
+
+## Features
+
+We implemented some of the following features.
+
+- New scripts
+    - Auto Level Skills
+    - Auto Level Append
+    - Auto Level CE
+- Updated Scripts
+    - Friend Gacha going to Level CE upon max inventory.
+    - Looping of Lotto to Gift Box for much easier management.
+    - Long Press on Lotto for faster opening of boxes.
+- Find Appends on Support
+- NP Level Detection
+- Auto Send of Friend Request after clearing a quest.
+- Auto on/off toggle of Teapots.
+- Stop script upon reaching certain bond level.
+- Command Spell
+- Grand Duels
+
+## Features removed
+
+- Auto Spam
+
+    I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
+
 ## APP
 
 ![FGA Preview](https://github.com/user-attachments/assets/890f2031-d7a8-49d1-87dd-3bf54c55e545)
