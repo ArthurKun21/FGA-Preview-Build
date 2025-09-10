@@ -1,9 +1,24 @@
-# 2150
+## 2150
 
 2025-09-10
 
 - fix: Stepper not updating correctly (#739) (@ArthurKun21)
 - feat(support): Added New Support Templates Images (#740) (@ArthurKun21)
+
+### Fixes
+
+- Stepper not updating correctly, reverted back to old behavior
+
+### Feat
+
+- Added the following servant templates for Grand Rider
+    - Constantine XI
+    - Medb
+    - Noah
+    - Summer Kriemhild
+    - Taigong Wang
+- Updated the following servant templates for Grand Rider
+    - Reines
 
 ## 2148
 
