@@ -1,3 +1,24 @@
+## 2163
+
+2025-09-13
+
+- Update kotlin (#742) (@renovate[bot])
+- Update dependency androidx.navigation:navigation-compose to v2.9.4 (#743) (@renovate[bot])
+- Update dependency androidx.work:work-runtime to v2.10.4 (#744) (@renovate[bot])
+- Update activity to v1.11.0 (#745) (@renovate[bot])
+- Update dependency androidx.compose:compose-bom to v2025.09.00 (#746) (@renovate[bot])
+- Update dependency androidx.hilt:hilt-navigation-compose to v1.3.0 (#747) (@renovate[bot])
+- Update hilt.work to v1.3.0 (#748) (@renovate[bot])
+- Update dependency com.google.devtools.ksp:symbol-processing-gradle-plugin to v2.2.20-2.0.3 (#750) (@renovate[bot])
+- fix(Onboarding): Crash when invalid storage location (#751) (@ArthurKun21)
+- feat(lifecycle): Switch from DisposableEffect to LifecycleEventEffect and repeatOnLifecycle (#752) (@ArthurKun21)
+- fix: configs are not being deleted properly (#753) (@ArthurKun21)
+
+### Fixes
+
+- When using the app for the first time, it won't launch because the storage path hasn't been set yet. This creates a circular problem, as you need to set up the storage path before the app can launch.
+- Forgot to delete the config file itself and its reference as I was only deleting the in-app memory of it, resulting in the config file not being deleted at all.
+
 ## 2152
 
 2025-09-10
