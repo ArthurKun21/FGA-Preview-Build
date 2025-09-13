@@ -1,4 +1,4 @@
-# 2163
+## 2163
 
 2025-09-13
 
@@ -13,6 +13,11 @@
 - fix(Onboarding): Crash when invalid storage location (#751) (@ArthurKun21)
 - feat(lifecycle): Switch from DisposableEffect to LifecycleEventEffect and repeatOnLifecycle (#752) (@ArthurKun21)
 - fix: configs are not being deleted properly (#753) (@ArthurKun21)
+
+### Fixes
+
+- When using the app for the first time, it won't launch because the storage path hasn't been set yet. This creates a circular problem, as you need to set up the storage path before the app can launch.
+- Forgot to delete the config file itself and its reference as I was only deleting the in-app memory of it, resulting in the config file not being deleted at all.
 
 ## 2152
 
