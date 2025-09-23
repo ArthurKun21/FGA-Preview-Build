@@ -30,7 +30,7 @@
 
 ### Features
 
-- Use Material3Expressive
+- Use Material3Expressive and various UI screen update
 - Use dynamic colors for Android 12 and above
 - Update now to make the play button to use the app's theme
 - Update the sorting configuration to make it easier to see the sorting.
