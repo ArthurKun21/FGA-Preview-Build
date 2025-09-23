@@ -1,3 +1,23 @@
+# 2178
+
+2025-09-23
+
+- Update lifecycle to v2.9.4 (#755) (@renovate[bot])
+- Update Gradle to v9.1.0 (#756) (@renovate[bot])
+- chore: add translation prompt for multiple languages (@ArthurKun21)
+- feat: update UI with Material3 Expressive and prepare for protobuf migration (#754) (@ArthurKun21)
+- feat(support): update default max refresh to 25 (@ArthurKun21)
+- feat: Streamline configuration sorting (#757) (@ArthurKun21)
+- chore: update translation prompt with clearer examples and instructions (@ArthurKun21)
+- feat: add Grand Rider icon (#758) (@ArthurKun21)
+- feat(ui): add random servant illustrations to some backgrounds for fun (#759) (@ArthurKun21)
+- feat(tesseract): implement retry mechanism for language model initialization (#760) (@ArthurKun21)
+- refactor(tesseract): remove direct reference to DroidCvPattern (#761) (@ArthurKun21)
+- feat(tesseract): use Coroutine newSingleThreadContext instead of Executors (#762) (@ArthurKun21)
+- fix(script): don't include the pause time in the elapsed time for scripts (#763) (@ArthurKun21)
+- feat(ui): add option for relative time at library screen (#764) (@ArthurKun21)
+- fix(Battle): temp fix for average time per run not being calculated properly (#765) (@ArthurKun21)
+
 ## 2163
 
 2025-09-13
