@@ -1,4 +1,4 @@
-# 2186
+## 2186
 
 2025-10-01
 
@@ -10,6 +10,11 @@
 - fix(imaging): mat resources not being freed (#774) (@ArthurKun21)
 - fix: cached the cutoff region on every script start (#777) (@ArthurKun21)
 - Update gradle/actions action to v5 (#776) (@renovate[bot])
+
+### Fixes
+
+- Update codebase and aggressively close opencv mat resources in order to decrease resources used in long run
+- Updated cutout region from being calculated every time to only once per script run, now it will only reset on script end
 
 ## 2178
 
