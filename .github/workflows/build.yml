@@ -99,7 +99,7 @@ jobs:
 
       - name: Validate Gradle Wrapper
         if: ${{ env.commit_count_diff > 0 }}
-        uses: gradle/actions/wrapper-validation@v4
+        uses: gradle/actions/wrapper-validation@v5
       
       - name: Set up JDK 17
         if: ${{ env.commit_count_diff > 0 }}
@@ -110,7 +110,7 @@ jobs:
   
       - name: Set up gradle
         if: ${{ env.commit_count_diff > 0 }}
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
     
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
