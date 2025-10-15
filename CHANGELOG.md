@@ -1,4 +1,4 @@
-# 2207
+## 2207
 
 2025-10-15
 
@@ -23,6 +23,33 @@
 - feat(battle): set stop on bond level up enabled by default (#800) (@ArthurKun21)
 - feat: add grand assassin icon  (#801) (@ArthurKun21)
 - feat(support): add new servant template images for Grand Assassin (#802) (@ArthurKun21)
+
+### Feat
+
+- Enabled parallel reading of the command cards. If anyone wants to bring back the one at a time go to `Fine-Tune` -> `Optimizations` -> Set `Parallel Command Card Check` to 1
+
+    <img width="616" height="242" alt="image" src="https://github.com/user-attachments/assets/7b85ebda-ff77-459a-b6ab-614addf64aab" />
+
+- Switched from OCR based to template image matching for reading critical stars.
+- Added new option to sort configs mark with favorite to the top
+
+    <img width="643" height="81" alt="image" src="https://github.com/user-attachments/assets/19e3e9e6-9a2f-4467-84c2-74166dc9e06d" />
+
+- Faster Support refresh, switched from time based waiting to actively checking if the refresh button is now active. It has a fallback with refresh timeout.
+- `Stop on bond level up` is now enabled by default. To turned it off go to `Settings` -> `Battle` -> toggle `Stop on bond level up`
+
+    <img width="815" height="82" alt="image" src="https://github.com/user-attachments/assets/87bc581d-1e84-477b-bbd9-e1ee201c318e" />
+
+- Added new servant template images
+    - [First Hassan](https://apps.atlasacademy.io/db/JP/servant/154)
+    - [Kama](https://apps.atlasacademy.io/db/JP/servant/239)
+    - [Kawakami Gensai](https://apps.atlasacademy.io/db/JP/servant/453)
+    - [Li Shuwen](https://apps.atlasacademy.io/db/JP/servant/235)
+- When on `Tips` screen, we have added delay on there to remove wasted image matching process.
+
+### Fixes
+
+- used the correct coroutines for optimized image loading with opencv
 
 ## 2186
 
