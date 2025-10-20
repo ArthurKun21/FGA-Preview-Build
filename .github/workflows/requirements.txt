@@ -6,4 +6,4 @@ pymdown-extensions
 # Imaging dependencies for mkdocs-material social plugin
 # https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/
 cairosvg==2.8.2
-pillow==11.3.0
+pillow==12.0.0
