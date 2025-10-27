@@ -62,7 +62,7 @@ jobs:
       
       - name: Upload APK
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: fga-preview-${{ env.COMMIT_COUNT }}.apk
           path: fga-preview-${{ env.COMMIT_COUNT }}.apk
