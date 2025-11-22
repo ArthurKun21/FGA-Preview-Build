@@ -40,7 +40,17 @@
 - Update dependency com.google.devtools.ksp:symbol-processing-gradle-plugin to v2.3.3 (#864) (@renovate[bot])
 - Update dependency com.github.ArthurKun21:compose-overlay-window to v1.5.1 (#865) (@renovate[bot])
 
-# 2208
+### Breaking Changes
+
+- Removed Screen Recording feature to simplify the codebase and reduce maintenance overhead.
+
+### Feat
+
+- Updated the MediaProjection request to use full screen for Android 15 and above. This should help reduce issues when you click the app only option that causes problems.
+- Minor optimization on loading of image assets.
+
+
+## 2208
 
 2025-10-15
 
