@@ -1,3 +1,12 @@
+# 2249
+
+2025-11-24
+
+- feat(navigation): migrate to navigation3 (#866) (@ArthurKun21)
+- feat(ui): add marker for favorite configs (#867) (@ArthurKun21)
+- revert(imaging): restore pre-allocated Mats with some optimizations (#868) (@ArthurKun21)
+- fix(AutoBattle): Stop on Bond Level Up not working due to exception not being re-throw (#872) (@ArthurKun21)
+
 # 2245
 
 2025-11-22
