@@ -11,6 +11,14 @@
 
 - Added a favorite icon for configs marked as favorite
 
+    <img width="392" height="111" alt="image" src="https://github.com/user-attachments/assets/72875c04-4012-4cad-8808-201c247479b8" />
+
+    In the Library
+
+    <img width="360" height="196" alt="image" src="https://github.com/user-attachments/assets/ca8f2606-ce52-4b19-94cc-e68e2f651c12" />
+
+    In the Battle Launcher
+
 ### Fixes
 
 - `Stop on Bond Level Up` was not working due to exception not being re-thrown after being caught.
