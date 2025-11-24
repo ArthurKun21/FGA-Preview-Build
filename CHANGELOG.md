@@ -7,7 +7,16 @@
 - revert(imaging): restore pre-allocated Mats with some optimizations (#868) (@ArthurKun21)
 - fix(AutoBattle): Stop on Bond Level Up not working due to exception not being re-throw (#872) (@ArthurKun21)
 
-# 2245
+### Feat
+
+- Added a favorite icon for configs marked as favorite
+
+### Fixes
+
+- `Stop on Bond Level Up` was not working due to exception not being re-thrown after being caught.
+- Restored pre-allocated Mats to ease up the memory allocation on some devices.
+
+## 2245
 
 2025-11-22
 
