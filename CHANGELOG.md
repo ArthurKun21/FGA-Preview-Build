@@ -1,4 +1,30 @@
-# 2245
+# 2249
+
+2025-11-24
+
+- feat(navigation): migrate to navigation3 (#866) (@ArthurKun21)
+- feat(ui): add marker for favorite configs (#867) (@ArthurKun21)
+- revert(imaging): restore pre-allocated Mats with some optimizations (#868) (@ArthurKun21)
+- fix(AutoBattle): Stop on Bond Level Up not working due to exception not being re-throw (#872) (@ArthurKun21)
+
+### Feat
+
+- Added a favorite icon for configs marked as favorite
+
+    <img width="392" height="111" alt="image" src="https://github.com/user-attachments/assets/72875c04-4012-4cad-8808-201c247479b8" />
+
+    In the Library
+
+    <img width="360" height="196" alt="image" src="https://github.com/user-attachments/assets/ca8f2606-ce52-4b19-94cc-e68e2f651c12" />
+
+    In the Battle Launcher
+
+### Fixes
+
+- `Stop on Bond Level Up` was not working due to exception not being re-thrown after being caught.
+- Restored pre-allocated Mats to ease up the memory allocation on some devices.
+
+## 2245
 
 2025-11-22
 
