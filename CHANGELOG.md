@@ -1,3 +1,11 @@
+# 2252
+
+2025-11-27
+
+- fix(screenshot): useSameSnapIn color mode caching (#873) (@ArthurKun21)
+- feat(LevelCE): Add the CE Type Filter (#876) (@ArthurKun21)
+- feat(FP): add the CE Type filter settings to FPLauncher (#878) (@ArthurKun21)
+
 # 2249
 
 2025-11-24
