@@ -1,3 +1,9 @@
+# 2253
+
+2025-11-28
+
+- fix(LevelCE): adjust widescreen layout and guard against locked CEs (#887) (@ArthurKun21)
+
 # 2252
 
 2025-11-27
