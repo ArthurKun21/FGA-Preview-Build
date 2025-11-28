@@ -1,4 +1,15 @@
-# 2252
+# 2253
+
+2025-11-28
+
+- fix(LevelCE): adjust widescreen layout and guard against locked CEs (#887) (@ArthurKun21)
+
+### Fixes
+
+- Widescreen layout at CE menu screen have been updated causing errors when trying to level CEs. Updated the layout to match the new widescreen layout.
+- The updated logic for fodder CEs causes crash when there's a locked CE. Fixed the logic to guard against locked CEs.
+
+## 2252
 
 2025-11-27
 
