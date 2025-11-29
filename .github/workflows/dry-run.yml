@@ -11,6 +11,10 @@ on:
         description: 'Upload APK to GitHub Actions'
         required: false
         default: 'false'
+      repo_branch:
+        description: 'Repository branch to build from'
+        required: false
+        default: 'development'
 
 env:
   JAVA_VERSION: 17
@@ -29,6 +33,7 @@ jobs:
           fetch-depth: 0
           repository: 'ArthurKun21/FGA-Preview'
           token: ${{ secrets.PAT }}
+          ref: ${{ github.event.inputs.repo_branch || 'development' }}
 
       - name: Prepare build
         run: |
