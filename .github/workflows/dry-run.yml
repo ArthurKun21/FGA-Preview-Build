@@ -69,5 +69,5 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v5
         with:
-          name: fga-ci-${{ env.COMMIT_COUNT }}.apk
+          name: fga-ci-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-${{ env.COMMIT_COUNT }}.apk

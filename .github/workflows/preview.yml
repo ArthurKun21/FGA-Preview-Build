@@ -61,5 +61,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v5
         with:
-          name: fga-preview-${{ env.COMMIT_COUNT }}.apk
+          name: fga-preview-${{ env.COMMIT_COUNT }}-apk
           path: fga-preview-${{ env.COMMIT_COUNT }}.apk
