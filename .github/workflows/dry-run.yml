@@ -39,11 +39,6 @@ jobs:
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
-          current_sha=$(git rev-parse --short HEAD)
-          echo "CURRENT_SHA=$current_sha" >> $GITHUB_ENV
-          
-          echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
-          echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
 
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v5
