@@ -59,15 +59,15 @@ jobs:
     
       - name: Build Android Package
         run: |
-          ./gradlew assemblepreview --scan --parallel --no-daemon
+          ./gradlew assembleCi --parallel
       
       - name: Clean up build artifacts
         run: |
-          cp app/build/outputs/apk/preview/app-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-ci.apk fga-ci-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v5
         with:
-          name: fga-preview-${{ env.COMMIT_COUNT }}.apk
-          path: fga-preview-${{ env.COMMIT_COUNT }}.apk
+          name: fga-ci-${{ env.COMMIT_COUNT }}.apk
+          path: fga-ci-${{ env.COMMIT_COUNT }}.apk
