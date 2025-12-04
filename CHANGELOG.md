@@ -1,4 +1,6 @@
-# 2267
+# Changelog
+
+## 2267
 
 2025-12-04
 
@@ -7,7 +9,10 @@
 - fix(imaging): update betterfgo keys on asset lookup map (ArthurKun21/FGA-Preview#918) (@ArthurKun21)
 - fix(skill-maker): crash on number of cards before NP validation (ArthurKun21/FGA-Preview#919) (@ArthurKun21)
 
-# Changelog
+### Fixes
+
+- Updated the asset lookup map to include the betterfgo keys. I forgot to add this resulting in problems with bfgo.
+- Fixed the validation logic for number of cards before NP selection in Skill Maker.
 
 ## 2263
 
