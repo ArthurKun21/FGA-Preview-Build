@@ -85,6 +85,8 @@ When the present box becomes full, the script can:
 | Move to Sell After Present Box | Navigate to sell menu after collecting |
 | Max Gold Ember Total Count | Limit on gold embers to collect per session |
 
+![Lottery](../assets/other-scripts/lottery.png)
+
 ![Lottery Dialog](../assets/scripts/Lottery.png)
 
 ## Spin Configuration
