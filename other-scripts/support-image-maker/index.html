@@ -1463,6 +1463,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support Image Maker
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1479,6 +1497,191 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servant-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servant Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ce-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CE Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friend-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friend Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grand-servant-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grand Servant Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After Extraction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="After Extraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming Tips
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Reasons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2490,7 +2693,158 @@
 
 
 <h1 id="support-image-maker">Support Image Maker<a class="headerlink" href="#support-image-maker" title="Permanent link">&para;</a></h1>
-<p>Currently work-in-progress.</p>
+<p>Automatically extracts support servant, CE, and friend images from the support selection screen for use in support preferences.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Support Image Maker script captures images of support servants, Craft Essences (CEs), and friend names from the support selection screen. These images are used to configure support preferences for automated farming - allowing FGA to select specific servants or CEs during battle setup.</p>
+<h2 id="how-to-start">How to Start<a class="headerlink" href="#how-to-start" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Navigate to the <strong>Support Selection</strong> screen in the game (either from quest start or friend list)</li>
+<li>Ensure the support entries you want to capture are visible on screen</li>
+<li>Start the Support Image Maker script</li>
+<li>The script will extract images from up to 2 visible support entries</li>
+</ol>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│    Start Support Image Maker Script     │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│     Clean Temporary Extract Folder      │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│   Detect Support Screen Type            │
+│   (Support Selection vs Friend List)    │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│   Find Support Entry Bounds on Screen   │
+│   (Up to 2 entries)                     │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │  For Each Support Entry │
+        └─────────────┬───────────┘
+                      │
+         ┌────────────┴────────────┐
+         │                         │
+         ▼                         ▼
+    ┌─────────────┐          ┌─────────────┐
+    │   Normal    │          │    Grand    │
+    │   Servant   │          │   Servant   │
+    └──────┬──────┘          └──────┬──────┘
+           │                        │
+           ▼                        ▼
+    ┌─────────────┐          ┌─────────────┐
+    │ Extract:    │          │ Extract:    │
+    │ - Servant   │          │ - Servant   │
+    │ - CE        │          │ - CE Slot 1 │
+    │ - Friend    │          │ - Friend    │
+    └──────┬──────┘          └──────┬──────┘
+           │                        │
+           └────────────┬───────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────┐
+│   Save Images to Temporary Directory    │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│     Open Image Review Screen            │
+│     (Name and save images)              │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="image-types">Image Types<a class="headerlink" href="#image-types" title="Permanent link">&para;</a></h2>
+<p>The script extracts three types of images from each support entry:</p>
+<h3 id="servant-image">Servant Image<a class="headerlink" href="#servant-image" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Captures the servant portrait from the support card</li>
+<li>Used to identify specific servants during support selection</li>
+<li>Recommended naming: <code>[Servant Name]/[Ascension]</code> (e.g., <code>Waver/Final</code>)</li>
+</ul>
+<h3 id="ce-image">CE Image<a class="headerlink" href="#ce-image" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Captures the Craft Essence equipped on the support servant</li>
+<li>For Grand Servants: Extracts from CE Slot 1 position</li>
+<li>Used to select supports with specific CEs (e.g., event bonus CEs)</li>
+</ul>
+<h3 id="friend-image">Friend Image<a class="headerlink" href="#friend-image" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Captures the friend/master name from the support card</li>
+<li>Used to prioritize specific friends on your support list</li>
+<li>Position differs between support selection and friend list screens</li>
+</ul>
+<h2 id="grand-servant-handling">Grand Servant Handling<a class="headerlink" href="#grand-servant-handling" title="Permanent link">&para;</a></h2>
+<p>Grand Servants have a different support card layout with multiple CE slots. The script:</p>
+<ol>
+<li>Detects the Grand CE logo on the support card</li>
+<li>Adjusts extraction coordinates for the Grand layout</li>
+<li>Extracts CE from Slot 1 (top CE slot)</li>
+<li>Uses Grand-specific friend name region</li>
+</ol>
+<h2 id="after-extraction">After Extraction<a class="headerlink" href="#after-extraction" title="Permanent link">&para;</a></h2>
+<p>Once the script completes, you'll see the <strong>Support Image Review</strong> screen:</p>
+<ol>
+<li><strong>Preview extracted images</strong> - See all captured servant, CE, and friend images</li>
+<li><strong>Enable/disable images</strong> - Check the checkbox for images you want to save</li>
+<li><strong>Name your images</strong> - Enter descriptive names for organization:</li>
+<li>Servant images: Enter servant name and ascension/costume</li>
+<li>CE images: Enter CE name</li>
+<li>Friend images: Enter friend's master name</li>
+<li><strong>Save</strong> - Images are saved to your support image directory</li>
+</ol>
+<h3 id="naming-tips">Naming Tips<a class="headerlink" href="#naming-tips" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use descriptive names for easy identification later</li>
+<li>For servants, include ascension or costume info</li>
+<li>Avoid special characters: <code>&lt; &gt; " | : * ? \ /</code></li>
+<li>Names can include subdirectories using <code>/</code> (e.g., <code>Waver/Bond CE</code>)</li>
+</ul>
+<h2 id="exit-reasons">Exit Reasons<a class="headerlink" href="#exit-reasons" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Exit Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Success</strong></td>
+<td>Images extracted successfully. Review screen will open.</td>
+</tr>
+<tr>
+<td><strong>Not Found</strong></td>
+<td>No support entries found on screen. Make sure you're on the support selection screen with visible entries.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips-for-best-results">Tips for Best Results<a class="headerlink" href="#tips-for-best-results" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Scroll to desired supports</strong> - Position the servants you want to capture before starting</li>
+<li><strong>Use clear support cards</strong> - Avoid partially visible entries at screen edges</li>
+<li><strong>Maximum 2 entries</strong> - The script captures up to 2 support entries per run</li>
+<li><strong>Re-run as needed</strong> - Run the script multiple times to capture different supports</li>
+<li><strong>Consistent naming</strong> - Use consistent naming conventions for easier management</li>
+</ol>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<p>This script has no configurable settings. It automatically:</p>
+<ul>
+<li>Detects screen type (support selection vs friend list)</li>
+<li>Handles both normal and Grand servant layouts</li>
+<li>Saves to the app's support image temporary directory</li>
+</ul>
+<h2 id="related-features">Related Features<a class="headerlink" href="#related-features" title="Permanent link">&para;</a></h2>
+<p>After creating support images, use them in:</p>
+<ul>
+<li><strong>Battle Script</strong> → Support Selection settings</li>
+<li>Configure preferred servants, CEs, and friends for automated farming</li>
+</ul>
 
 
 
@@ -2513,7 +2867,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 5, 2025 13:30:01 UTC">September 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 4, 2025 13:44:22 UTC">December 4, 2025</span>
   </span>
 
     
