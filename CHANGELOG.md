@@ -1,3 +1,9 @@
+# 2263
+
+2025-12-04
+
+- revert: remove caching with Cutout preference and use direct calls again. (#917) (@ArthurKun21)
+
 # 2262
 
 2025-12-03
