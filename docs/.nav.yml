@@ -20,6 +20,7 @@ nav:
       - battle/launcher.md
   - scripts/auto-level-servant.md
   - scripts/auto-level-ce.md
+  - scripts/auto-ce-exp-bomb.md
   - scripts/auto-level-skills.md
   - scripts/auto-level-append.md
   - Other Scripts: other-scripts/
