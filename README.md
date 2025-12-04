@@ -32,7 +32,7 @@ We implemented some of the following features.
     - Looping of Lotto to Gift Box for much easier management.
     - Long Press on Lotto for faster opening of boxes.
 - Find Appends on Support
-- NP Level Detection
+- NP Level Detection(Finally reliable thanks to PaddleOCR)
 - Auto Send of Friend Request after clearing a quest.
 - Auto on/off toggle of Teapots.
 - Stop script upon reaching certain bond level.
@@ -66,7 +66,7 @@ We implemented some of the following features.
 ### Improved Support Selection
 
 - Support Appends
-- NP Level Detection
+- NP Level Detection(a bit more reliable with PaddleOCR)
 - Support for Grand Servant system
 
 ![Improved Support Selection](https://github.com/user-attachments/assets/00ec91c8-6d8e-4670-b9e1-ba6e66674f58)
@@ -75,7 +75,7 @@ We implemented some of the following features.
 
 Current things being worked on
 
-1. [ ] Migration from hilt to kotlin-inject/metro
+1. [X] Migration from hilt to kotlin-inject/metro
   
 2. [ ] Migrate Battle Configs from prefs to FGA folder.
 
