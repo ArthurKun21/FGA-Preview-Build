@@ -1264,22 +1264,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-get-started" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to get started
+        Overview
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How to get started">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#auto-level-ce-setup" class="md-nav__link">
+  <a href="#auto-lock-target-ce" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto Level CE Setup
+        Auto-Lock Target CE
       
     </span>
   </a>
@@ -1287,10 +1320,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#auto-ce-bomb-setup" class="md-nav__link">
+  <a href="#smart-display-adjustment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto CE Bomb Setup
+        Smart Display Adjustment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filter Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-sort-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Sort Features
       
     </span>
   </a>
@@ -1299,6 +1354,61 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Reasons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differences-from-ce-bomb-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Differences from CE Bomb Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Notes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1432,7 +1542,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Friend Point Gacha
+    Friend Point Gacha
   
 
     
@@ -1460,7 +1570,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Gift Box
+    Auto Gift Box (Present Box)
   
 
     
@@ -2523,30 +2633,212 @@
 
 
 <h1 id="auto-level-ce">Auto Level CE<a class="headerlink" href="#auto-level-ce" title="Permanent link">&para;</a></h1>
-<p>The auto level CE script have two modes.</p>
+<p>Automatically enhances a selected Craft Essence (CE) to increase its level.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Level CE script enhances a single target Craft Essence by feeding it fodder CEs. Unlike CE Bomb mode, this mode is designed to level a specific CE you've already selected and will stop when that CE reaches its maximum level.</p>
+<h2 id="how-to-start">How to Start<a class="headerlink" href="#how-to-start" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p><strong>Auto Level CE</strong>: This mode will automatically level up your Craft Essence (CE) up until the target CE is maxed or you run out of fodder CEs.</p>
-</li>
-<li>
-<p><strong>Auto CE Bomb</strong>: This mode automatically levels either 1★ or 2★ Craft Essences (CEs) depending on the configuration. Unlike "Auto Level CE" mode, it does not stop when the current target CE reaches max level; instead it selects a new CE and perform the leveling process again. It only stops when you run out of fodder CEs or you perform manual stopping intervention.</p>
-</li>
+<li>Navigate to <strong>Enhancement → Craft Essence</strong> in the game</li>
+<li><strong>Select the CE you want to level</strong> (tap on it so it appears in the enhancement slot)</li>
+<li>The script will automatically detect you're in CE enhancement mode when:</li>
+<li>The CE Enhancement banner is visible</li>
+<li>A CE is already selected (not empty)</li>
+<li>Start the script</li>
 </ol>
-<h2 id="how-to-get-started">How to get started<a class="headerlink" href="#how-to-get-started" title="Permanent link">&para;</a></h2>
-<p>The two modes have different scenarios to get started.</p>
-<h3 id="auto-level-ce-setup">Auto Level CE Setup<a class="headerlink" href="#auto-level-ce-setup" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Important</strong>: You must select a target CE before starting. The script distinguishes between Level CE mode and CE Bomb mode based on whether a CE is already selected.</p>
+</blockquote>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│         Start Level CE Script           │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│    Verify Target CE is Selected         │
+│    (Not empty enhancement slot)         │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │   Main Enhancement Loop │◄──────┐
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │  Check if CE is Locked  │       │
+        │  (Auto-lock if needed)  │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │  Open Fodder Selection  │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Configure Filters     │       │
+        │   (Display, Sort, etc.) │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Select Fodder CEs     │       │
+        │   (Drag to select)      │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Confirm Enhancement   │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Is Target CE Max?     │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+         ┌────────────┴────────────┐      │
+         │ Yes                     │ No   │
+         ▼                         └──────┘
+┌─────────────────────────────────────────┐
+│    Exit: Target CE Max Level            │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="auto-lock-target-ce">Auto-Lock Target CE<a class="headerlink" href="#auto-lock-target-ce" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automatically locks the target CE to prevent accidental use as fodder</li>
+<li>Can be disabled in settings</li>
+<li>Requires Android 8.0+ for long-press functionality</li>
+</ul>
+<h3 id="smart-display-adjustment">Smart Display Adjustment<a class="headerlink" href="#smart-display-adjustment" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automatically sets CE display to small size for better visibility</li>
+<li>Can detect and click the correct corner for display toggle</li>
+<li>Configurable based on your screen layout</li>
+</ul>
+<h3 id="filter-configuration">Filter Configuration<a class="headerlink" href="#filter-configuration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automatically sets appropriate filters for fodder CEs</li>
+<li>Filters by rarity (based on your settings)</li>
+<li>Configures sort options for optimal fodder selection</li>
+</ul>
+<h3 id="smart-sort-features">Smart Sort Features<a class="headerlink" href="#smart-sort-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Enables smart sort for efficient CE organization</li>
+<li>Enables select sort for easier multi-selection</li>
+<li>Sorts by level to use lowest-level CEs first</li>
+</ul>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target CE Rarity</td>
+<td>Rarity of the CE you're leveling</td>
+</tr>
+<tr>
+<td>Fodder CE Rarity</td>
+<td>Which CE rarities to use as fodder</td>
+</tr>
+<tr>
+<td>Skip Auto-Lock Target CE</td>
+<td>Don't automatically lock the target CE</td>
+</tr>
+<tr>
+<td>Skip Automatic Display Change</td>
+<td>Don't auto-adjust display size</td>
+</tr>
+<tr>
+<td>Skip CE Filter Detection</td>
+<td>Don't auto-configure filters</td>
+</tr>
+<tr>
+<td>Skip Sort Detection</td>
+<td>Don't auto-configure sort options</td>
+</tr>
+<tr>
+<td>CE Display Change Area</td>
+<td>Which corner to tap to change display</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exit-reasons">Exit Reasons<a class="headerlink" href="#exit-reasons" title="Permanent link">&para;</a></h2>
+<p>The script will stop and notify you when any of these conditions occur:</p>
+<table>
+<thead>
+<tr>
+<th>Exit Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Target CE Max Level</strong></td>
+<td>The target CE has reached its maximum level</td>
+</tr>
+<tr>
+<td><strong>No Suitable Fodder CE Found</strong></td>
+<td>No fodder CEs available that match your filter criteria</td>
+</tr>
+<tr>
+<td><strong>No Suitable Target CE Found</strong></td>
+<td>Could not identify a valid target CE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="differences-from-ce-bomb-mode">Differences from CE Bomb Mode<a class="headerlink" href="#differences-from-ce-bomb-mode" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Level CE</th>
+<th>CE Bomb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target CE</td>
+<td>Pre-selected by user</td>
+<td>Auto-selected from list</td>
+</tr>
+<tr>
+<td>Stop condition</td>
+<td>Target CE max level</td>
+<td>No more fodder available</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Level specific CE</td>
+<td>Create multiple leveled CEs</td>
+</tr>
+<tr>
+<td>Starting state</td>
+<td>CE already in slot</td>
+<td>Empty enhancement slot</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips-for-best-results">Tips for Best Results<a class="headerlink" href="#tips-for-best-results" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Go to the Craft Essence screen.</li>
-<li>Select the Craft Essence you want to level up.</li>
-<li>Click the play button to start the script.</li>
-<li>Setup the configuration options as desired.</li>
+<li><strong>Select your target CE first</strong> before starting the script</li>
+<li><strong>Use appropriate fodder rarities</strong> to maximize enhancement value</li>
+<li><strong>Enable auto-lock</strong> to protect your target CE</li>
+<li><strong>Configure display area</strong> based on your screen layout</li>
+<li><strong>Ensure sufficient QP</strong> for enhancement costs</li>
 </ol>
-<h3 id="auto-ce-bomb-setup">Auto CE Bomb Setup<a class="headerlink" href="#auto-ce-bomb-setup" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Go to the Craft Essence screen.</li>
-<li>Click the play button to start the script.</li>
-<li>Setup the configuration options as desired.</li>
-</ol>
+<h2 id="technical-notes">Technical Notes<a class="headerlink" href="#technical-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Uses 7 columns × 4 rows grid for target CE selection</li>
+<li>Uses 7 columns × 3 rows grid for fodder CE selection</li>
+<li>Skips rows/columns where CEs have been exhausted</li>
+<li>Handles connection retries automatically</li>
+</ul>
 
 
 
@@ -2569,7 +2861,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 5, 2025 13:30:01 UTC">September 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 4, 2025 13:29:23 UTC">December 4, 2025</span>
   </span>
 
     

@@ -1349,7 +1349,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Friend Point Gacha
+    Friend Point Gacha
   
 
     
@@ -1377,7 +1377,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Gift Box
+    Auto Gift Box (Present Box)
   
 
     
@@ -1458,10 +1458,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-get-started" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to get started
+        Overview
       
     </span>
   </a>
@@ -1469,10 +1469,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lottery-in-jp" class="md-nav__link">
+  <a href="#how-to-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lottery in JP
+        How to Start
       
     </span>
   </a>
@@ -1480,10 +1480,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lottery-options" class="md-nav__link">
+  <a href="#workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lottery Options
+        Workflow
       
     </span>
   </a>
@@ -1491,10 +1491,104 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exit-scenarios" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exit scenarios
+        Key Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-specific-spinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server-Specific Spinning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#present-box-full-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Present Box Full Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lottery-completion-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lottery Completion Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spin Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Reasons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#present-box-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Present Box Integration
       
     </span>
   </a>
@@ -2571,56 +2665,204 @@
 
 
 <h1 id="auto-lottery">Auto Lottery<a class="headerlink" href="#auto-lottery" title="Permanent link">&para;</a></h1>
-<p>This is the script that helps you automate the rolling of lottery.</p>
-<h2 id="how-to-get-started">How to get started<a class="headerlink" href="#how-to-get-started" title="Permanent link">&para;</a></h2>
+<p>Automatically spins lottery boxes during event lotteries to collect rewards efficiently.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Lottery script continuously opens lottery boxes during Fate/Grand Order events. It handles present box overflow and can redirect to collect embers or sell items when the present box becomes full.</p>
+<h2 id="how-to-start">How to Start<a class="headerlink" href="#how-to-start" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p>Go to the Lottery Screen.</p>
-<p><img alt="Lottery Screen" src="../../assets/other-scripts/lottery.png" /></p>
-</li>
-<li>
-<p>Click the Play button in order to setup the lottery configuration.</p>
-<p><img alt="Lottery Configuration" src="../../assets/other-scripts/lottery-configuration.png" /></p>
-</li>
-<li>
-<p>Click the "Ok" button to start the script.</p>
-</li>
+<li>Navigate to the <strong>Event Lottery</strong> screen in the game</li>
+<li>The script will automatically detect the lottery screen when:</li>
+<li>The lottery cost indicator is visible (JP/EN servers)</li>
+<li>The lottery box finished indicator is visible</li>
+<li>Make sure you have lottery currency (event items) to spend</li>
 </ol>
-<h2 id="lottery-in-jp">Lottery in JP<a class="headerlink" href="#lottery-in-jp" title="Permanent link">&para;</a></h2>
-<p>Lottery in JP server have implemented the long press option. This significantly improves the user experience by allowing for quicker rolling of the lottery.</p>
-<p>We have implemented such feature to the app to help users.</p>
-<p><img alt="Lottery JP Long press option" src="../../assets/other-scripts/lottery-jp-long-press.png" /></p>
-<h2 id="lottery-options">Lottery Options<a class="headerlink" href="#lottery-options" title="Permanent link">&para;</a></h2>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│          Start Lottery Script           │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│        Initialize Spin Settings         │
+│   (Click count, long press duration)    │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │     Main Spin Loop      │◄──────┐
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Check Current State   │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+    ┌─────────────────┼─────────────────┐ │
+    │                 │                 │ │
+    ▼                 ▼                 ▼ │
+┌─────────┐    ┌───────────┐    ┌─────────┐
+│Present  │    │  Lottery  │    │  Keep   │
+│Box Full │    │   Done    │    │Spinning │
+└────┬────┘    └─────┬─────┘    └────┬────┘
+     │               │               │    │
+     ▼               ▼               │    │
+Handle Full     Verify Done         │    │
+Present Box     (Double check)       └────┘
+     │               │
+     ▼               ▼
+┌─────────────┐  Exit with
+│Collect or   │  &quot;Out of Currency&quot;
+│Sell Embers  │
+└─────────────┘
+</code></pre></div>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="server-specific-spinning">Server-Specific Spinning<a class="headerlink" href="#server-specific-spinning" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JP Servers</strong>: Uses long press spinning for faster lottery spins</li>
+<li><strong>Other Servers</strong>: Uses rapid click spinning (configurable click count)</li>
+</ul>
+<h3 id="present-box-full-handling">Present Box Full Handling<a class="headerlink" href="#present-box-full-handling" title="Permanent link">&para;</a></h3>
+<p>When the present box becomes full, the script can:</p>
 <ol>
-<li>
-<p>If you want to receive embers when the gift box is full, enable the "Receive Embers" option.</p>
-<p>This will show the options also found on <a href="../gift-box/">Gift Box</a> that is needed for receiving embers.</p>
-<p><img alt="Receive Embers" src="../../assets/other-scripts/lottery-receive-embers.png" /></p>
-</li>
-<li>
-<p>If you want to loop back to rolling the lottery, enable the "Return to lottery" option.</p>
-<p><img alt="Return to Lottery" src="../../assets/other-scripts/lottery-return-to-lottery.png" /></p>
-</li>
-<li>
-<p>If both the Gift Box and Servant inventory are full, and want to redirect to "sell" screen</p>
-<p>enable the "Move to sell after Gift Box" option.</p>
-<p><img alt="Move to Sell" src="../../assets/other-scripts/lottery-move-to-sell.png" /></p>
-</li>
+<li><strong>Collect Embers from Gift Box</strong> - Opens gift box to receive gold embers</li>
+<li><strong>Redirect to Sell Menu</strong> - After collecting embers, redirect to sell excess items</li>
+<li><strong>Stop the script</strong> - Exit with a present box full notification</li>
 </ol>
-<h2 id="exit-scenarios">Exit scenarios<a class="headerlink" href="#exit-scenarios" title="Permanent link">&para;</a></h2>
-<p>The script ends when</p>
+<h3 id="lottery-completion-detection">Lottery Completion Detection<a class="headerlink" href="#lottery-completion-detection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Double-checks when lottery appears done to avoid false positives</li>
+<li>Verifies by attempting spins and checking if the "done" indicator persists</li>
+</ul>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receive Embers When Gift Box Full</td>
+<td>Enable automatic ember collection</td>
+</tr>
+<tr>
+<td>Loop Into Lottery After Present Box</td>
+<td>Return to lottery after collecting embers</td>
+</tr>
+<tr>
+<td>Move to Sell After Present Box</td>
+<td>Navigate to sell menu after collecting</td>
+</tr>
+<tr>
+<td>Max Gold Ember Total Count</td>
+<td>Limit on gold embers to collect per session</td>
+</tr>
+</tbody>
+</table>
+<h2 id="spin-configuration">Spin Configuration<a class="headerlink" href="#spin-configuration" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lotto Spin Count</td>
+<td>Number of clicks per spin cycle (non-JP)</td>
+</tr>
+<tr>
+<td>Lotto Long Press Duration</td>
+<td>Duration of long press for spinning (JP)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exit-reasons">Exit Reasons<a class="headerlink" href="#exit-reasons" title="Permanent link">&para;</a></h2>
+<p>The script will stop and notify you when any of these conditions occur:</p>
+<table>
+<thead>
+<tr>
+<th>Exit Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ran Out of Currency</strong></td>
+<td>No more lottery currency to spend</td>
+</tr>
+<tr>
+<td><strong>Present Box Full</strong></td>
+<td>Present box is full and auto-collect is disabled</td>
+</tr>
+<tr>
+<td><strong>No Embers Found</strong></td>
+<td>Could not find embers in the gift box</td>
+</tr>
+<tr>
+<td><strong>Cannot Select Any More</strong></td>
+<td>Reached the limit of selectable items</td>
+</tr>
+<tr>
+<td><strong>Present Box Full and Cannot Select Anymore</strong></td>
+<td>Box is full and reached selection limit</td>
+</tr>
+<tr>
+<td><strong>Reached Sell Banner</strong></td>
+<td>Successfully navigated to the sell menu</td>
+</tr>
+<tr>
+<td><strong>Unable to Verify Sell</strong></td>
+<td>Could not verify navigation to sell menu</td>
+</tr>
+<tr>
+<td><strong>Aborted</strong></td>
+<td>Script was manually stopped by user</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips-for-best-results">Tips for Best Results<a class="headerlink" href="#tips-for-best-results" title="Permanent link">&para;</a></h2>
 <ol>
-<li>The user manually stopped the script.</li>
-<li>
-<p>User didn't configure to receive embers.</p>
-<p><img alt="Lottery Full" src="../../assets/other-scripts/lottery-full.png" /></p>
-</li>
-<li>
-<p>Enabled to receive embers but found no embers.</p>
-</li>
-<li>Both the Gift Box and Servant inventory are full, and the user didn't configure to sell.</li>
-<li>Both the Gift Box and Servant inventory are full, and the user configure to sell and have reached the sell screen.</li>
+<li><strong>Clear your present box</strong> before starting for longer uninterrupted runs</li>
+<li><strong>Set ember collection limits</strong> to avoid unnecessary inventory management</li>
+<li><strong>Enable auto-collect</strong> to maximize lottery efficiency during events</li>
+<li><strong>Ensure stable connection</strong> as lotteries involve many rapid actions</li>
+<li><strong>JP users</strong>: The long press feature allows faster spinning</li>
 </ol>
+<h2 id="present-box-integration">Present Box Integration<a class="headerlink" href="#present-box-integration" title="Permanent link">&para;</a></h2>
+<p>When present box becomes full during lottery:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│        Present Box Full Detected        │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│    Is &quot;Receive Embers&quot; enabled?         │
+└─────────────────────┬───────────────────┘
+                      │
+         ┌────────────┴────────────┐
+         │ Yes                     │ No
+         ▼                         ▼
+┌─────────────────┐      ┌─────────────────┐
+│ Navigate to     │      │ Exit: Present   │
+│ Gift Box        │      │ Box Full        │
+└────────┬────────┘      └─────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│    Collect Gold Embers (AutoGiftBox)    │
+└─────────────────────┬───────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│    Is &quot;Loop Into Lottery&quot; enabled?      │
+└─────────────────────┬───────────────────┘
+         │
+         ▼
+   Return to Lottery or Exit
+</code></pre></div>
 
 
 
@@ -2643,7 +2885,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 5, 2025 13:30:01 UTC">September 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 4, 2025 13:29:23 UTC">December 4, 2025</span>
   </span>
 
     
@@ -2688,7 +2930,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../gift-box/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto Gift Box">
+          <a href="../gift-box/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto Gift Box (Present Box)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2698,7 +2940,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Auto Gift Box
+                Auto Gift Box (Present Box)
               </div>
             </div>
           </a>

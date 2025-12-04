@@ -1291,10 +1291,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-get-started" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to get started
+        Overview
       
     </span>
   </a>
@@ -1302,10 +1302,176 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exit-scenarios" class="md-nav__link">
+  <a href="#how-to-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exit scenarios
+        How to Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#individual-skill-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual Skill Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocr-level-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OCR Level Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-exit-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprehensive Exit State
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Reasons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exit Reasons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-script-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overall Script Exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-skill-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual Skill Exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-state-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit State Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qp-cascade-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QP Cascade Effect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Notes
       
     </span>
   </a>
@@ -1415,7 +1581,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Friend Point Gacha
+    Friend Point Gacha
   
 
     
@@ -1443,7 +1609,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Gift Box
+    Auto Gift Box (Present Box)
   
 
     
@@ -2506,28 +2672,241 @@
 
 
 <h1 id="auto-level-skills">Auto Level Skills<a class="headerlink" href="#auto-level-skills" title="Permanent link">&para;</a></h1>
-<p>This is a script that lets you automate the leveling of your skills. By tapping and reading the skill level programmatically, you can level up your skills with just initial setup.</p>
-<h2 id="how-to-get-started">How to get started<a class="headerlink" href="#how-to-get-started" title="Permanent link">&para;</a></h2>
+<p>Automatically upgrades servant skills to your desired level.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Level Skill script automatically enhances your servant's skills by repeatedly clicking the upgrade button until they reach the target level. It supports upgrading all three skills with individual target levels and provides detailed exit state information.</p>
+<h2 id="how-to-start">How to Start<a class="headerlink" href="#how-to-start" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Go to Skills screen.</li>
-<li>Select servant you want to level up its skills.</li>
-<li>Click the play button to start the script.</li>
-<li>Setup the target level you want to reach.</li>
+<li>Navigate to <strong>Enhancement → Skill</strong> in the game</li>
+<li><strong>Select the servant</strong> whose skills you want to upgrade</li>
+<li>The script will automatically detect skill enhancement mode when:</li>
+<li>The "Skills" banner is visible in the enhancement menu</li>
+<li><strong>Configure which skills to upgrade</strong> and their target levels in settings</li>
+<li>Start the script</li>
 </ol>
-<h2 id="exit-scenarios">Exit scenarios<a class="headerlink" href="#exit-scenarios" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Important</strong>: You must select a servant before starting. The script will exit if no servant is selected.</p>
+</blockquote>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│        Start Level Skill Script         │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│    Verify Servant is Selected           │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │   For Each Skill (1-3)  │
+        └─────────────┬───────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │  Should Upgrade This    │
+        │  Skill? (Check setting) │
+        └─────────────┬───────────┘
+                      │
+         ┌────────────┴────────────┐
+         │ Yes                     │ No
+         ▼                         ▼
+┌─────────────────────┐   ┌─────────────────────┐
+│ Click Skill Icon    │   │ Skip to Next Skill  │
+└─────────┬───────────┘   └─────────────────────┘
+          │
+          ▼
+    ┌─────────────────────────┐
+    │   Skill Upgrade Loop    │◄──────┐
+    └─────────────┬───────────┘       │
+                  │                   │
+                  ▼                   │
+    ┌─────────────────────────┐       │
+    │  Read Current Level     │       │
+    │  (Using OCR)            │       │
+    └─────────────┬───────────┘       │
+                  │                   │
+                  ▼                   │
+    ┌─────────────────────────┐       │
+    │  Target Level Reached?  │       │
+    └─────────────┬───────────┘       │
+                  │                   │
+     ┌────────────┴────────────┐      │
+     │ Yes                     │ No   │
+     ▼                         ▼      │
+   Move to                Click Enhance│
+   Next Skill             Button      │
+                              │       │
+                              ▼       │
+                  ┌─────────────────┐ │
+                  │ Confirm Upgrade │ │
+                  └────────┬────────┘ │
+                           └──────────┘
+</code></pre></div>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="individual-skill-configuration">Individual Skill Configuration<a class="headerlink" href="#individual-skill-configuration" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p>Ran out of materials.</p>
-<p>When one of the skills you are currently leveling up cannot proceed to due to lack of materials, the script will stop leveling up that skill and move on to the next one.</p>
-</li>
-<li>
-<p>Ran out of QP</p>
-<p>The script will stop leveling up skills when you run out of QP. You can resume the script once you have enough QP to continue.</p>
-</li>
-<li>
-<p>Reached the target level</p>
-<p>When the script has leveled up all the skills to the target level, it will stop automatically.</p>
-</li>
+<li>Configure each skill (1, 2, 3) independently</li>
+<li>Set specific target levels for each skill</li>
+<li>Enable/disable upgrade for each skill</li>
+</ul>
+<h3 id="ocr-level-detection">OCR Level Detection<a class="headerlink" href="#ocr-level-detection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses optical character recognition to read current skill level</li>
+<li>Accurately tracks progress during enhancement</li>
+<li>Detects when target level is reached</li>
+</ul>
+<h3 id="resource-monitoring">Resource Monitoring<a class="headerlink" href="#resource-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Detects insufficient QP (currency)</li>
+<li>Detects insufficient materials</li>
+<li>Stops and reports which resource ran out</li>
+</ul>
+<h3 id="comprehensive-exit-state">Comprehensive Exit State<a class="headerlink" href="#comprehensive-exit-state" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reports starting level for each skill</li>
+<li>Reports ending level for each skill</li>
+<li>Reports why each skill stopped (target met, out of mats, etc.)</li>
+</ul>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Should Upgrade Skill One</td>
+<td>Enable/disable skill 1 upgrade</td>
+</tr>
+<tr>
+<td>Should Upgrade Skill Two</td>
+<td>Enable/disable skill 2 upgrade</td>
+</tr>
+<tr>
+<td>Should Upgrade Skill Three</td>
+<td>Enable/disable skill 3 upgrade</td>
+</tr>
+<tr>
+<td>Skill One Upgrade Value</td>
+<td>Number of levels to upgrade skill 1</td>
+</tr>
+<tr>
+<td>Skill Two Upgrade Value</td>
+<td>Number of levels to upgrade skill 2</td>
+</tr>
+<tr>
+<td>Skill Three Upgrade Value</td>
+<td>Number of levels to upgrade skill 3</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: Target level = Minimum (starting) level + Upgrade value</p>
+</blockquote>
+<h2 id="exit-reasons">Exit Reasons<a class="headerlink" href="#exit-reasons" title="Permanent link">&para;</a></h2>
+<h3 id="overall-script-exit">Overall Script Exit<a class="headerlink" href="#overall-script-exit" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Exit Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Done</strong></td>
+<td>All configured skills have been processed</td>
+</tr>
+<tr>
+<td><strong>No Servant Selected</strong></td>
+<td>No servant was selected in the enhancement slot</td>
+</tr>
+<tr>
+<td><strong>Ran Out of QP</strong></td>
+<td>Insufficient QP to continue upgrades</td>
+</tr>
+<tr>
+<td><strong>Abort</strong></td>
+<td>Script was manually stopped by user</td>
+</tr>
+<tr>
+<td><strong>Unexpected</strong></td>
+<td>An unexpected error occurred</td>
+</tr>
+</tbody>
+</table>
+<h3 id="individual-skill-exit">Individual Skill Exit<a class="headerlink" href="#individual-skill-exit" title="Permanent link">&para;</a></h3>
+<p>Each skill can exit with one of these reasons:</p>
+<table>
+<thead>
+<tr>
+<th>Skill Exit Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Target Level Met</strong></td>
+<td>Skill reached the configured target level</td>
+</tr>
+<tr>
+<td><strong>Out of Mats</strong></td>
+<td>Insufficient materials for this skill</td>
+</tr>
+<tr>
+<td><strong>Out of QP</strong></td>
+<td>Insufficient QP for upgrade</td>
+</tr>
+<tr>
+<td><strong>Exit Early (QP)</strong></td>
+<td>Skipped because previous skill ran out of QP</td>
+</tr>
+<tr>
+<td><strong>No Skill Upgrade Error</strong></td>
+<td>Upgrade value was 0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exit-state-summary">Exit State Summary<a class="headerlink" href="#exit-state-summary" title="Permanent link">&para;</a></h2>
+<p>After the script completes, you receive a detailed summary:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│           Exit State Summary            │
+├─────────────────────────────────────────┤
+│ Skill 1:                                │
+│   • Checked: Yes/No                     │
+│   • Available: Yes/No                   │
+│   • Starting Level: X                   │
+│   • Ending Level: Y                     │
+│   • Target Level: Z                     │
+│   • Exit Reason: Target Met / Out of X  │
+├─────────────────────────────────────────┤
+│ Skill 2: (same format)                  │
+├─────────────────────────────────────────┤
+│ Skill 3: (same format)                  │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="qp-cascade-effect">QP Cascade Effect<a class="headerlink" href="#qp-cascade-effect" title="Permanent link">&para;</a></h2>
+<p>If a skill runs out of QP, subsequent skills will be marked with "Exit Early (QP)":</p>
+<div class="highlight"><pre><span></span><code>Skill 1: Out of QP ──► Skill 2: Exit Early (QP) ──► Skill 3: Exit Early (QP)
+</code></pre></div>
+<p>This prevents unnecessary attempts when QP is already depleted.</p>
+<h2 id="tips-for-best-results">Tips for Best Results<a class="headerlink" href="#tips-for-best-results" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Check your materials</strong> before starting to ensure all skills can be upgraded</li>
+<li><strong>Have sufficient QP</strong> for all planned upgrades</li>
+<li><strong>Set realistic targets</strong> based on your available resources</li>
+<li><strong>Note skill availability</strong> - Skills 2 and 3 may be locked on newer servants</li>
+<li><strong>Configure all three skills</strong> if you want to upgrade multiple in one run</li>
+</ol>
+<h2 id="technical-notes">Technical Notes<a class="headerlink" href="#technical-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Skills 2 and 3 availability is checked before attempting upgrade</li>
+<li>Temporary servants are handled with additional confirmation</li>
+<li>Uses regex pattern matching for level detection: <code>(\d+)(?:/1|/10)?</code></li>
+<li>Connection retries are handled automatically</li>
 </ul>
 
 
@@ -2551,7 +2930,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 5, 2025 13:30:01 UTC">September 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 4, 2025 13:29:23 UTC">December 4, 2025</span>
   </span>
 
     

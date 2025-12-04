@@ -1237,10 +1237,170 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-get-started" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to get started
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-select-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto Select Enhancement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jp-server-auto-fill-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JP Server Auto-Fill (2025+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-level-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Max Level Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascension-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ascension Automation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grail-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grail Automation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporary-servant-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporary Servant Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Reasons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-with-ascension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow with Ascension
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Notes
       
     </span>
   </a>
@@ -1404,7 +1564,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Friend Point Gacha
+    Friend Point Gacha
   
 
     
@@ -1432,7 +1592,7 @@
   <span class="md-ellipsis">
     
   
-    Auto Gift Box
+    Auto Gift Box (Present Box)
   
 
     
@@ -2495,13 +2655,232 @@
 
 
 <h1 id="auto-level-servant">Auto Level Servant<a class="headerlink" href="#auto-level-servant" title="Permanent link">&para;</a></h1>
-<p>This script automates the leveling and ascension of servants. It's particularly useful for players who want to level their servants to 120.</p>
-<h2 id="how-to-get-started">How to get started<a class="headerlink" href="#how-to-get-started" title="Permanent link">&para;</a></h2>
+<p>Automatically enhances a servant's level using embers.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Level Servant script automatically feeds embers to your selected servant to increase their level. It can optionally handle ascension and even palingenesis (grailing) when the servant reaches maximum level for their current stage.</p>
+<h2 id="how-to-start">How to Start<a class="headerlink" href="#how-to-start" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Go to the Servant leveling screen.</li>
-<li>Select the servant you want to level up.</li>
-<li>Click the play button to start the script.</li>
+<li>Navigate to <strong>Enhancement → Servant</strong> in the game</li>
+<li><strong>Select the servant you want to level</strong></li>
+<li>The script will automatically detect servant enhancement mode when:</li>
+<li>The "Auto Select" button is visible</li>
+<li>Or the servant ascension/grail banner is visible</li>
+<li>Start the script</li>
 </ol>
+<blockquote>
+<p><strong>Important</strong>: You must select a servant before starting. The script will exit if no servant is selected.</p>
+</blockquote>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│       Start Level Servant Script        │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│    Verify Servant is Selected           │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │   Main Enhancement Loop │◄──────┐
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │  Is Auto Select Visible?│       │
+        └─────────────┬───────────┘       │
+                      │ Yes               │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Click Auto Select     │       │
+        │   (Embers selected)     │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Confirm Ember Use     │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Click Enhance Button  │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Confirm Enhancement   │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Check for Max Level   │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+         ┌────────────┴────────────┐      │
+         │ Max Level              │ No    │
+         ▼                        └───────┘
+        Handle Max Level
+        (Ascension/Grail/Exit)
+</code></pre></div>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="auto-select-enhancement">Auto Select Enhancement<a class="headerlink" href="#auto-select-enhancement" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses the game's auto select feature to pick embers</li>
+<li>Automatically optimizes ember selection</li>
+</ul>
+<h3 id="jp-server-auto-fill-2025">JP Server Auto-Fill (2025+)<a class="headerlink" href="#jp-server-auto-fill-2025" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For JP servers, supports the auto-fill feature</li>
+<li>Automatically toggles auto-fill ON for faster enhancement</li>
+<li>Handles the new refund window after leveling</li>
+</ul>
+<h3 id="max-level-handling">Max Level Handling<a class="headerlink" href="#max-level-handling" title="Permanent link">&para;</a></h3>
+<p>When the servant reaches max level, the script can:</p>
+<ol>
+<li><strong>Redirect to Ascension</strong> - Navigate to ascension menu and perform ascension</li>
+<li><strong>Redirect to Grail Menu</strong> - Navigate to palingenesis menu</li>
+<li><strong>Exit</strong> - Stop the script at max level</li>
+</ol>
+<h3 id="ascension-automation">Ascension Automation<a class="headerlink" href="#ascension-automation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Can automatically perform ascension when enabled</li>
+<li>Returns to enhancement menu after ascension</li>
+<li>Handles the 3rd ascension dialog properly</li>
+</ul>
+<h3 id="grail-automation">Grail Automation<a class="headerlink" href="#grail-automation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>There's no plan to support automatic grailing</li>
+<li>After Grailing servant, you can run the script again to continue leveling</li>
+</ul>
+<h3 id="temporary-servant-support">Temporary Servant Support<a class="headerlink" href="#temporary-servant-support" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Detects temporary (story support) servants</li>
+<li>Handles the additional confirmation dialog</li>
+</ul>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Should Redirect Ascension</td>
+<td>Navigate to ascension menu at max level</td>
+</tr>
+<tr>
+<td>Should Perform Ascension</td>
+<td>Automatically perform the ascension</td>
+</tr>
+<tr>
+<td>Should Redirect Grail</td>
+<td>Navigate to grail menu at max level</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exit-reasons">Exit Reasons<a class="headerlink" href="#exit-reasons" title="Permanent link">&para;</a></h2>
+<p>The script will stop and notify you when any of these conditions occur:</p>
+<table>
+<thead>
+<tr>
+<th>Exit Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No Servant Selected</strong></td>
+<td>No servant was selected in the enhancement slot</td>
+</tr>
+<tr>
+<td><strong>No Embers or QP Left</strong></td>
+<td>Ran out of embers to use or insufficient QP</td>
+</tr>
+<tr>
+<td><strong>Max Level Achieved</strong></td>
+<td>Servant reached maximum level (no redirect enabled)</td>
+</tr>
+<tr>
+<td><strong>Redirect Ascension</strong></td>
+<td>Navigated to ascension menu (ascension not enabled)</td>
+</tr>
+<tr>
+<td><strong>Unable to Perform Ascension</strong></td>
+<td>Could not complete the ascension process</td>
+</tr>
+<tr>
+<td><strong>Redirect Grail</strong></td>
+<td>Navigated to grail/palingenesis menu</td>
+</tr>
+<tr>
+<td><strong>Perform Grail</strong></td>
+<td>Currently in grail menu</td>
+</tr>
+<tr>
+<td><strong>Abort</strong></td>
+<td>Script was manually stopped by user</td>
+</tr>
+<tr>
+<td><strong>Unexpected</strong></td>
+<td>An unexpected error occurred</td>
+</tr>
+</tbody>
+</table>
+<h2 id="workflow-with-ascension">Workflow with Ascension<a class="headerlink" href="#workflow-with-ascension" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│      Servant Reaches Max Level          │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│  Is &quot;Redirect to Ascension&quot; Enabled?    │
+└─────────────────────┬───────────────────┘
+                      │
+         ┌────────────┴────────────┐
+         │ Yes                     │ No
+         ▼                         ▼
+┌─────────────────────┐   ┌─────────────────────┐
+│ Navigate to         │   │ Check for Grail     │
+│ Ascension Menu      │   │ Redirect            │
+└─────────┬───────────┘   └─────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────────┐
+│  Is &quot;Perform Ascension&quot; Enabled?        │
+└─────────────────────┬───────────────────┘
+                      │
+         ┌────────────┴────────────┐
+         │ Yes                     │ No
+         ▼                         ▼
+┌─────────────────────┐   ┌─────────────────────┐
+│ Click Enhance       │   │ Exit: Redirect      │
+│ Confirm Ascension   │   │ Ascension           │
+└─────────┬───────────┘   └─────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────────┐
+│    Return to Enhancement Menu           │
+│    Continue Leveling                    │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="tips-for-best-results">Tips for Best Results<a class="headerlink" href="#tips-for-best-results" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Select your servant</strong> before starting the script</li>
+<li><strong>Have sufficient embers</strong> of the appropriate class</li>
+<li><strong>Ensure adequate QP</strong> for enhancement costs</li>
+<li><strong>Configure ascension settings</strong> based on your needs</li>
+<li><strong>For JP users</strong>: Auto-fill will speed up the process significantly</li>
+</ol>
+<h2 id="technical-notes">Technical Notes<a class="headerlink" href="#technical-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Maximum 5 retries for confirmation dialogs</li>
+<li>Handles connection issues automatically</li>
+<li>Detects "Low QP" minimum ember selection dialog</li>
+<li>Supports both regular and temporary servants</li>
+<li>Debug mode may interfere with redirect detection</li>
+</ul>
 
 
 
@@ -2524,7 +2903,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 5, 2025 13:30:01 UTC">September 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 4, 2025 13:29:23 UTC">December 4, 2025</span>
   </span>
 
     
