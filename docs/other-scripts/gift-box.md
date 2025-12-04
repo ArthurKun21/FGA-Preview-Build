@@ -105,6 +105,8 @@ The Gift Box script automatically selects and collects gold embers from your pre
 | Max Gold Ember Total Count | Maximum total gold embers to collect |
 | Loop Into Lottery After Present Box | Return to lottery after collection (when called from lottery) |
 
+![Gift Box Dialog](<../assets/scripts/Gift Box.png>)
+
 ## Exit Reasons
 
 The script will stop and notify you when any of these conditions occur:

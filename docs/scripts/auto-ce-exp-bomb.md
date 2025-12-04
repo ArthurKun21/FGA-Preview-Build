@@ -125,6 +125,10 @@ A CE Bomb is a leveled CE that stores a large amount of CE experience. By feedin
 | Skip Sort Detection | Don't auto-configure sort options |
 | CE Display Change Area | Which corner to tap to change display |
 
+![CE EXP Bomb Screen](<../assets/scripts/CE EXP Bomb.png>)
+
+![CE EXP Bomb Dialog](<../assets/scripts/CE EXP Bomb Dialog.png>)
+
 ## Exit Reasons
 
 The script will stop and notify you when any of these conditions occur:

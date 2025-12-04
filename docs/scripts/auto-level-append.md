@@ -25,6 +25,14 @@ Unlike regular skills, append skills' screen have their level text unable to be 
 
 > **Important**: You must select a servant before starting. The script will exit if no servant is selected.
 
+![Level Append](<../assets/scripts/Level Append Old.png>)
+
+Other servers with 3 appends
+
+![Level Append Extended](<../assets/scripts/Level Append Extended.png>)
+
+JP version with 5 appends
+
 ## Workflow
 
 ```text
@@ -132,6 +140,10 @@ Unlike regular skills, append skills' screen have their level text unable to be 
 | Upgrade Append Five | Number of levels to upgrade append 5 (JP only) |
 
 > **Note**: The app automatically detects which appends are locked/unlocked.
+
+![Level Append Dialog](<../assets/scripts/Level Append Dialog.png>)
+
+![Level Append Extended Dialog](<../assets/scripts/Level Append Extended Dialog.png>)
 
 ## Exit Reasons
 

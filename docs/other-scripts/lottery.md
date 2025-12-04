@@ -85,6 +85,8 @@ When the present box becomes full, the script can:
 | Move to Sell After Present Box | Navigate to sell menu after collecting |
 | Max Gold Ember Total Count | Limit on gold embers to collect per session |
 
+![Lottery Dialog](../assets/scripts/Lottery.png)
+
 ## Spin Configuration
 
 | Setting | Description |
@@ -106,6 +108,8 @@ The script will stop and notify you when any of these conditions occur:
 | **Reached Sell Banner** | Successfully navigated to the sell menu |
 | **Unable to Verify Sell** | Could not verify navigation to sell menu |
 | **Aborted** | Script was manually stopped by user |
+
+![Lottery Full](../assets/other-scripts/lottery-full.png)
 
 ## Tips for Best Results
 

@@ -115,6 +115,14 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 
 > **Note**: Target level = Minimum (starting) level + Upgrade value
 
+![Level Skill](<../assets/scripts/Level Skill.png>)
+
+![Level Skill Dialog](<../assets/scripts/Level Skill Dialog.png>)
+
+![Level Skill with unavailable slots](<../assets/scripts/Level Skill Limited.png>)
+
+![Level Skill with unavailable slots Dialog](<../assets/scripts/Level Skill Limited Dialog.png>)
+
 ## Exit Reasons
 
 ### Overall Script Exit

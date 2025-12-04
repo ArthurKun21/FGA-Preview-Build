@@ -114,6 +114,10 @@ The Level CE script enhances a single target Craft Essence by feeding it fodder 
 | Skip Sort Detection | Don't auto-configure sort options |
 | CE Display Change Area | Which corner to tap to change display |
 
+![Level CE](<../assets/scripts/Level CE.png>)
+
+![Level CE Dialog](<../assets/scripts/Level CE Dialog.png>)
+
 ## Exit Reasons
 
 The script will stop and notify you when any of these conditions occur:

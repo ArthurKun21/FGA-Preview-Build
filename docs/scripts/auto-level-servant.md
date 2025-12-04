@@ -17,6 +17,10 @@ The Level Servant script automatically feeds embers to your selected servant to 
 
 > **Important**: You must select a servant before starting. The script will exit if no servant is selected.
 
+![Level Servant](<../assets/scripts/Level Servant.png>)
+
+![Level Servant with auto select](<../assets/scripts/Level Servant with auto.png>)
+
 ## Workflow
 
 ```text
@@ -116,6 +120,8 @@ When the servant reaches max level, the script can:
 | Should Redirect Ascension | Navigate to ascension menu at max level |
 | Should Perform Ascension | Automatically perform the ascension |
 | Should Redirect Grail | Navigate to grail menu at max level |
+
+![Level Servant Dialog](<../assets/scripts/Level Servant Dialog.png>)
 
 ## Exit Reasons
 
