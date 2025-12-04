@@ -1,10 +1,16 @@
-# 2263
+# Changelog
+
+## 2263
 
 2025-12-04
 
 - revert: remove caching with Cutout preference and use direct calls again. (#917) (@ArthurKun21)
 
-# 2262
+### Fixes
+
+- Caching cutout preference caused problems for some devices, reverted back to direct calls again.
+
+## 2262
 
 2025-12-03
 
@@ -18,13 +24,13 @@
 - feat(battle): add delay for subtitles before turn start for EN server (ArthurKun21/FGA-Preview#909) (@ArthurKun21)
 - feat(support): Update support template images (ArthurKun21/FGA-Preview#910) (@ArthurKun21)
 
-## Fixes
+### Fixes
 
 - Apple count could go over 999, we are now fixing this by increasing the max apple count to 9,999.
 - Apple count would be fixed in between 0 and 9,999.
 - Import Battle configs results in some information to be lost(NP Level, Default Runs, etc) due to incorrect numeric type conversion. Fixed the conversion logic to properly parse the numbers.
 
-## Feat
+### Feat
 
 - We have now successfully migrated from the old Tesseract to modern PaddleOCR for our OCR operations. This now should result in more accurate readings.
 - As a result of the OCR migration, NP Level Detection for EN and JP server is now a bit more reliable. 
