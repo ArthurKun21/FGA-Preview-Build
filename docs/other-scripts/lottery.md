@@ -1,54 +1,158 @@
 # Auto Lottery
 
-This is the script that helps you automate the rolling of lottery.
+Automatically spins lottery boxes during event lotteries to collect rewards efficiently.
 
-## How to get started
+## Overview
 
-1. Go to the Lottery Screen.
+The Lottery script continuously opens lottery boxes during Fate/Grand Order events. It handles present box overflow and can redirect to collect embers or sell items when the present box becomes full.
 
-    ![Lottery Screen](../assets/other-scripts/lottery.png)
+## How to Start
 
-2. Click the Play button in order to setup the lottery configuration.
+1. Navigate to the **Event Lottery** screen in the game
+2. The script will automatically detect the lottery screen when:
+   - The lottery cost indicator is visible (JP/EN servers)
+   - The lottery box finished indicator is visible
+3. Make sure you have lottery currency (event items) to spend
 
-    ![Lottery Configuration](../assets/other-scripts/lottery-configuration.png)
+## Workflow
 
-3. Click the "Ok" button to start the script.
+```text
+┌─────────────────────────────────────────┐
+│          Start Lottery Script           │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│        Initialize Spin Settings         │
+│   (Click count, long press duration)    │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │     Main Spin Loop      │◄──────┐
+        └─────────────┬───────────┘       │
+                      │                   │
+                      ▼                   │
+        ┌─────────────────────────┐       │
+        │   Check Current State   │       │
+        └─────────────┬───────────┘       │
+                      │                   │
+    ┌─────────────────┼─────────────────┐ │
+    │                 │                 │ │
+    ▼                 ▼                 ▼ │
+┌─────────┐    ┌───────────┐    ┌─────────┐
+│Present  │    │  Lottery  │    │  Keep   │
+│Box Full │    │   Done    │    │Spinning │
+└────┬────┘    └─────┬─────┘    └────┬────┘
+     │               │               │    │
+     ▼               ▼               │    │
+Handle Full     Verify Done         │    │
+Present Box     (Double check)       └────┘
+     │               │
+     ▼               ▼
+┌─────────────┐  Exit with
+│Collect or   │  "Out of Currency"
+│Sell Embers  │
+└─────────────┘
+```
 
-## Lottery in JP
+## Key Features
 
-Lottery in JP server have implemented the long press option. This significantly improves the user experience by allowing for quicker rolling of the lottery.
+### Server-Specific Spinning
 
-We have implemented such feature to the app to help users.
+- **JP Servers**: Uses long press spinning for faster lottery spins
+- **Other Servers**: Uses rapid click spinning (configurable click count)
 
-![Lottery JP Long press option](../assets/other-scripts/lottery-jp-long-press.png)
+### Present Box Full Handling
 
-## Lottery Options
+When the present box becomes full, the script can:
 
-1. If you want to receive embers when the gift box is full, enable the "Receive Embers" option.
+1. **Collect Embers from Gift Box** - Opens gift box to receive gold embers
+2. **Redirect to Sell Menu** - After collecting embers, redirect to sell excess items
+3. **Stop the script** - Exit with a present box full notification
 
-    This will show the options also found on [Gift Box](gift-box.md) that is needed for receiving embers.
+### Lottery Completion Detection
 
-    ![Receive Embers](../assets/other-scripts/lottery-receive-embers.png)
+- Double-checks when lottery appears done to avoid false positives
+- Verifies by attempting spins and checking if the "done" indicator persists
 
-2. If you want to loop back to rolling the lottery, enable the "Return to lottery" option.
+## Settings
 
-    ![Return to Lottery](../assets/other-scripts/lottery-return-to-lottery.png)
+| Setting | Description |
+|---------|-------------|
+| Receive Embers When Gift Box Full | Enable automatic ember collection |
+| Loop Into Lottery After Present Box | Return to lottery after collecting embers |
+| Move to Sell After Present Box | Navigate to sell menu after collecting |
+| Max Gold Ember Total Count | Limit on gold embers to collect per session |
 
-3. If both the Gift Box and Servant inventory are full, and want to redirect to "sell" screen
+![Lottery](../assets/other-scripts/lottery.png)
 
-    enable the "Move to sell after Gift Box" option.
+![Lottery Dialog](../assets/scripts/Lottery.png)
 
-    ![Move to Sell](../assets/other-scripts/lottery-move-to-sell.png)
+## Spin Configuration
 
-## Exit scenarios
+| Setting | Description |
+|---------|-------------|
+| Lotto Spin Count | Number of clicks per spin cycle (non-JP) |
+| Lotto Long Press Duration | Duration of long press for spinning (JP) |
 
-The script ends when
+## Exit Reasons
 
-1. The user manually stopped the script.
-2. User didn't configure to receive embers.
+The script will stop and notify you when any of these conditions occur:
 
-    ![Lottery Full](../assets/other-scripts/lottery-full.png)
+| Exit Reason | Description |
+|-------------|-------------|
+| **Ran Out of Currency** | No more lottery currency to spend |
+| **Present Box Full** | Present box is full and auto-collect is disabled |
+| **No Embers Found** | Could not find embers in the gift box |
+| **Cannot Select Any More** | Reached the limit of selectable items |
+| **Present Box Full and Cannot Select Anymore** | Box is full and reached selection limit |
+| **Reached Sell Banner** | Successfully navigated to the sell menu |
+| **Unable to Verify Sell** | Could not verify navigation to sell menu |
+| **Aborted** | Script was manually stopped by user |
 
-3. Enabled to receive embers but found no embers.
-4. Both the Gift Box and Servant inventory are full, and the user didn't configure to sell.
-5. Both the Gift Box and Servant inventory are full, and the user configure to sell and have reached the sell screen.
+![Lottery Full](../assets/other-scripts/lottery-full.png)
+
+## Tips for Best Results
+
+1. **Clear your present box** before starting for longer uninterrupted runs
+2. **Set ember collection limits** to avoid unnecessary inventory management
+3. **Enable auto-collect** to maximize lottery efficiency during events
+4. **Ensure stable connection** as lotteries involve many rapid actions
+5. **JP users**: The long press feature allows faster spinning
+
+## Present Box Integration
+
+When present box becomes full during lottery:
+
+```text
+┌─────────────────────────────────────────┐
+│        Present Box Full Detected        │
+└─────────────────────┬───────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────┐
+│    Is "Receive Embers" enabled?         │
+└─────────────────────┬───────────────────┘
+                      │
+         ┌────────────┴────────────┐
+         │ Yes                     │ No
+         ▼                         ▼
+┌─────────────────┐      ┌─────────────────┐
+│ Navigate to     │      │ Exit: Present   │
+│ Gift Box        │      │ Box Full        │
+└────────┬────────┘      └─────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│    Collect Gold Embers (AutoGiftBox)    │
+└─────────────────────┬───────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│    Is "Loop Into Lottery" enabled?      │
+└─────────────────────┬───────────────────┘
+         │
+         ▼
+   Return to Lottery or Exit
+```
