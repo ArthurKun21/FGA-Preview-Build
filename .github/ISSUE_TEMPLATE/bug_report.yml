@@ -23,7 +23,9 @@ body:
       multiple: true
       options:
         - NA
+        - BetterFGO NA
         - JP
+        - BetterFGO JP
         - CN
         - TW
         - KR
@@ -76,4 +78,5 @@ body:
     id: ram
     attributes:
       label: RAM
+
       placeholder: 3GB
