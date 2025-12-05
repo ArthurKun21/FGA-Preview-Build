@@ -129,6 +129,10 @@ jobs:
           tag_name: pre-${{ env.COMMIT_COUNT }}
           name: FGA Preview ${{ env.COMMIT_COUNT }}
           body: |
+            # Pre-${{ env.COMMIT_COUNT }}
+
+            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+            
             > [!TIP]
             > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
 
@@ -200,3 +204,4 @@ jobs:
             echo "Failed to create pull request. Please check branch existence, authentication, or network connectivity."
             exit 1
           fi
+
