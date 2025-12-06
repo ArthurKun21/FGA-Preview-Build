@@ -9,11 +9,9 @@ body:
       label: Preparation
       description: "Before you open a bug report, you should check the following:"
       options:
-        - label: I tested the [latest release](https://github.com/Fate-Grand-Automata/FGA/releases/tag/canary)
+        - label: I tested the [latest release](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
           required: true
-        - label: I looked at other issues (even the [closed ones](https://github.com/Fate-Grand-Automata/FGA/issues?q=is%3Aissue+is%3Aclosed))
-          required: true
-        - label: I read the [Troubleshooting Guide](https://github.com/Fate-Grand-Automata/FGA/wiki/Troubleshooting)
+        - label: I looked at other issues (even the [closed ones](https://github.com/ArthurKun21/FGA-Preview-Build/issues?q=is%3Aissue+is%3Aclosed))
           required: true
   - type: dropdown
     id: server
@@ -39,7 +37,7 @@ body:
         The build number can be found on FGA's main screen at the top, it says BUILD:xxxx.
         
         Entering the number is enough.
-      placeholder: "1023"
+      placeholder: "2267"
     validations:
       required: true
   - type: textarea
@@ -50,14 +48,21 @@ body:
         A clear and concise description of what the bug is.
         
         Include steps to reproduce the error if required.
+
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: "If it is an app crash go to `Settings` -> `Advanced` -> `Share crash logs`"
   - type: dropdown
     id: android-version
     attributes:
       label: Android version
       options:
-        - 7
         - 8
         - 9
         - 10
@@ -78,5 +83,4 @@ body:
     id: ram
     attributes:
       label: RAM
-
-      placeholder: 3GB
+      placeholder: 4GB
