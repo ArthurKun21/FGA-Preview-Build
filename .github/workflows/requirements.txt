@@ -2,6 +2,7 @@ mkdocs-material
 mkdocs-git-revision-date-localized-plugin
 mkdocs-awesome-nav
 pymdown-extensions
+mkdocs-minify-plugin
 
 # Imaging dependencies for mkdocs-material social plugin
 # https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/
