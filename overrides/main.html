@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="{% if page and page.title %}{{ page.title }} - {% endif %}FGA Preview">
+  <meta name="description" content="{% if page and page.meta and page.meta.description %}{{ page.meta.description }}{% else %}{{ config.site_description }}{% endif %}">
+  <meta name="keywords" content="FGA, Fate Grand Automata, FGO, Fate Grand Order, Android, automation, farming, auto battle, preview, fork, scripts">
+  <meta name="author" content="{{ config.site_author }}">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  
+  <!-- Canonical URL -->
+  {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{% if page and page.canonical_url %}{{ page.canonical_url }}{% else %}{{ config.site_url }}{% endif %}">
+  <meta property="og:title" content="{% if page and page.title %}{{ page.title }} - {% endif %}FGA Preview">
+  <meta property="og:description" content="{% if page and page.meta and page.meta.description %}{{ page.meta.description }}{% else %}{{ config.site_description }}{% endif %}">
+  <meta property="og:image" content="{{ config.site_url }}assets/icon.png">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{% if page and page.canonical_url %}{{ page.canonical_url }}{% else %}{{ config.site_url }}{% endif %}">
+  <meta property="twitter:title" content="{% if page and page.title %}{{ page.title }} - {% endif %}FGA Preview">
+  <meta property="twitter:description" content="{% if page and page.meta and page.meta.description %}{{ page.meta.description }}{% else %}{{ config.site_description }}{% endif %}">
+  <meta property="twitter:image" content="{{ config.site_url }}assets/icon.png">
+  
+  <!-- Additional SEO -->
+  <meta name="application-name" content="FGA Preview Documentation">
+  <meta name="apple-mobile-web-app-title" content="FGA Preview">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FGA Preview",
+    "description": "{{ config.site_description }}",
+    "url": "{{ config.site_url }}",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Android 8.0+",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "ArthurKun21",
+      "url": "https://github.com/ArthurKun21"
+    },
+    "softwareVersion": "Latest",
+    "downloadUrl": "https://github.com/ArthurKun21/fga-preview-build/releases"
+  }
+  </script>
+  
+  {% if page and page.is_homepage %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ config.site_name }}",
+    "url": "{{ config.site_url }}",
+    "description": "{{ config.site_description }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ config.site_url }}?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  {% endif %}
+{% endblock %}

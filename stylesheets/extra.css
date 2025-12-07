@@ -1,0 +1,60 @@
+/* Extra CSS for FGA Preview Documentation */
+
+/* Improve link visibility for SEO */
+.md-content a:not(.md-button) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.md-content a:not(.md-button):hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Better heading styles */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 700;
+}
+
+/* Improve code block readability */
+.md-typeset code {
+  word-break: break-word;
+}
+
+/* Social card adjustments */
+.md-social {
+  margin-top: 0.5rem;
+}
+
+/* Footer improvements */
+.md-footer-meta {
+  padding: 1rem 0;
+}
+
+/* Table improvements for better content structure */
+.md-typeset table:not([class]) {
+  font-size: 0.85rem;
+  border-collapse: collapse;
+}
+
+.md-typeset table:not([class]) th {
+  font-weight: 700;
+}
+
+/* Admonition improvements */
+.md-typeset .admonition {
+  margin-bottom: 1.5rem;
+}
+
+/* Navigation improvements */
+.md-nav__link {
+  transition: color 0.15s ease;
+}
+
+/* Search highlight improvements */
+.md-search-result mark {
+  background-color: rgba(255, 235, 59, 0.5);
+  padding: 0 2px;
+}
