@@ -1,3 +1,14 @@
+---
+title: Auto Lottery
+description: Automatically spin event lottery boxes in Fate/Grand Order using FGA Preview. Handle present box overflow and collect rewards efficiently during FGO events.
+tags:
+  - scripts
+  - lottery
+  - events
+  - automation
+  - farming
+---
+
 # Auto Lottery
 
 Automatically spins lottery boxes during event lotteries to collect rewards efficiently.
