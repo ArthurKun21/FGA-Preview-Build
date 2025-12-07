@@ -1,3 +1,13 @@
+---
+title: Auto Level Skills
+description: Automatically upgrade servant skills in Fate/Grand Order using FGA Preview. Configure target skill levels and let the script handle the enhancement process.
+tags:
+  - scripts
+  - skills
+  - automation
+  - enhancement
+---
+
 # Auto Level Skills
 
 Automatically upgrades servant skills to your desired level.

@@ -1,3 +1,14 @@
+---
+title: Auto Gift Box
+description: Automatically collect embers and items from the FGO present box using FGA Preview. Intelligent filtering with OCR for gold and silver embers.
+tags:
+  - scripts
+  - gift box
+  - present box
+  - embers
+  - automation
+---
+
 # Auto Gift Box (Present Box)
 
 Automatically collects embers from the gift box (present box) with intelligent filtering.

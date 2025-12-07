@@ -1,3 +1,14 @@
+---
+title: Auto Level Append
+description: Automatically unlock and upgrade servant append skills in Fate/Grand Order using FGA Preview. Manage servant coins, materials, and QP for append skill leveling.
+tags:
+  - scripts
+  - append skills
+  - servant coins
+  - automation
+  - enhancement
+---
+
 # Auto Level Append
 
 Automatically unlocks and upgrades servant append skills.

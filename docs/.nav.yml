@@ -11,13 +11,44 @@ nav:
     - app/library.md
   - Auto Battle:
     - Configuration:
-      - battle/config.md
-      - battle/card-priority.md
-      - battle/materials.md
-      - battle/skill-maker.md
-      - battle/support.md
+      - battle-setup/config.md
+      - battle-setup/card-priority.md
+      - battle-setup/materials.md
+      - battle-setup/skill-maker.md
+      - battle-setup/support.md
     - How to get started:
-      - battle/launcher.md
+      - battle-setup/launcher.md
+    - In-battle:
+      - in-battle/auto-battle.md
+      - Card Selection:
+        - in-battle/card-selection/face-card-priority.md
+        - in-battle/card-selection/brave-chains.md
+        - in-battle/card-selection/shuffle-cards.md
+      - Skill System:
+        - in-battle/skill-system/skill-execution.md
+        - in-battle/skill-system/auto-target.md
+      - Tracking:
+        - in-battle/tracking/stage-tracking.md
+        - in-battle/tracking/servant-tracking.md
+        - in-battle/tracking/materials-tracking.md
+        - in-battle/tracking/ce-drops.md
+      - Resources:
+        - in-battle/resources/energy-refill.md
+        - in-battle/resources/teapots.md
+      - Script Control:
+        - in-battle/script-control/party-selection.md
+        - in-battle/script-control/withdraw.md
+        - in-battle/script-control/auto-battle-exit-reasons.md
+        - in-battle/script-control/screen-detection.md
+    - Support screen:
+      - support-screen/class-picker.md
+      - support-screen/refresh.md
+      - support-screen/selection-modes.md
+      - Preferred Support:
+        - support-screen/preferred-servant.md
+        - support-screen/preferred-ce.md
+        - support-screen/preferred-friend.md
+        - support-screen/grand-servant.md
   - scripts/auto-level-servant.md
   - scripts/auto-level-ce.md
   - scripts/auto-ce-exp-bomb.md

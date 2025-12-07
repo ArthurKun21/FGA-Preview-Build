@@ -1,6 +1,15 @@
 ---
+title: Home
+description: FGA Preview is an enhanced fork of Fate/Grand Automata for Android. Auto-level skills, servants, CEs, append skills, NP detection, and automated farming scripts for Fate/Grand Order.
+tags:
+  - home
+  - FGA
+  - Fate Grand Automata
+  - FGO
 search:
     exclude: true
+hide:
+  - navigation
 ---
 
 # FGA Preview

@@ -1,3 +1,15 @@
+---
+title: Auto CE EXP Bomb
+description: Create CE Bombs automatically in Fate/Grand Order using FGA Preview. Efficiently level Craft Essences by concentrating experience from fodder CEs.
+tags:
+  - scripts
+  - CE
+  - craft essence
+  - CE EXP bomb
+  - automation
+  - enhancement
+---
+
 # Auto CE EXP Bomb
 
 Automatically creates CE Bombs by continuously selecting and leveling Craft Essences.

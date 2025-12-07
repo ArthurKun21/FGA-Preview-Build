@@ -1,3 +1,14 @@
+---
+title: Friend Point Gacha
+description: Automatically perform Friend Point summons in Fate/Grand Order using FGA Preview. Continuous FP gacha with inventory management and CE enhancement redirect.
+tags:
+  - scripts
+  - gacha
+  - friend points
+  - automation
+  - summons
+---
+
 # Friend Point Gacha
 
 Automatically performs Friend Point (FP) summons in the Friend Point gacha screen.

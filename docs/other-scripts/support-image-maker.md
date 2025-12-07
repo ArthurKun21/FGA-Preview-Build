@@ -1,3 +1,14 @@
+---
+title: Support Image Maker
+description: Extract support servant and CE images in FGA Preview. Capture images from the support selection screen for automated support preferences.
+tags:
+  - scripts
+  - support
+  - images
+  - servants
+  - CE
+---
+
 # Support Image Maker
 
 Automatically extracts support servant, CE, and friend images from the support selection screen for use in support preferences.
@@ -151,4 +162,3 @@ After creating support images, use them in:
 
 - **Battle Script** → Support Selection settings
 - Configure preferred servants, CEs, and friends for automated farming
-
