@@ -11,15 +11,10 @@
     "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
     "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
   ],
-  "markdownlint.config": {
-    "MD007": {
-      "indent": 4
-    },
-    "MD033": {
-      "allowed_elements": [
-        "a",
-        "img"
-      ]
-    }
-  },
+  "markdownlint.configFile": ".vscode/.markdownlint.json",
+  "markdown.extension.list.indentationSize": "inherit",
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  }
 }

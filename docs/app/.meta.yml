@@ -1,2 +1,5 @@
+title: App Configuration
+icon: material/cog
+description: FGA Preview app configuration and settings. Requirements, appearance, storage, advanced options, and fine-tuning for optimal performance.
 search:
   boost: 1
