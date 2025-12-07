@@ -11,13 +11,13 @@ nav:
     - app/library.md
   - Auto Battle:
     - Configuration:
-      - battle/config.md
-      - battle/card-priority.md
-      - battle/materials.md
-      - battle/skill-maker.md
-      - battle/support.md
+      - battle-setup/config.md
+      - battle-setup/card-priority.md
+      - battle-setup/materials.md
+      - battle-setup/skill-maker.md
+      - battle-setup/support.md
     - How to get started:
-      - battle/launcher.md
+      - battle-setup/launcher.md
   - scripts/auto-level-servant.md
   - scripts/auto-level-ce.md
   - scripts/auto-ce-exp-bomb.md
