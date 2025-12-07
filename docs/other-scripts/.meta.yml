@@ -1,7 +1,5 @@
-title: Enhancement Scripts
-icon: material/arrow-up-bold
-description: FGA Preview primary scripts. Learn about the main automated scripts available in FGA Preview, including their features, configurations, and usage instructions.
+title: Other Scripts
+icon: material/script-text
+description: Additional FGA Preview scripts including lottery automation, friend point gacha, gift box collection, and support image extraction.
 search:
-  boost: 3
-hide:
-  - navigation
+  boost: 1.5
