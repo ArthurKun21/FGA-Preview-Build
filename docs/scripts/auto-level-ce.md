@@ -1,3 +1,14 @@
+---
+title: Auto Level CE
+description: Automatically level up Craft Essences in Fate/Grand Order using FGA Preview. Feed fodder CEs to enhance your target CE efficiently.
+tags:
+  - scripts
+  - CE
+  - craft essence
+  - automation
+  - enhancement
+---
+
 # Auto Level CE
 
 Automatically enhances a selected Craft Essence (CE) to increase its level.

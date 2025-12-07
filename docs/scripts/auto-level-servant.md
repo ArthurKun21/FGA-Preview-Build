@@ -1,3 +1,14 @@
+---
+title: Auto Level Servant
+description: Automatically level up servants in Fate/Grand Order using FGA Preview. Feed embers, handle ascensions, and grailing automatically with detailed configuration options.
+tags:
+  - scripts
+  - servant
+  - leveling
+  - automation
+  - enhancement
+---
+
 # Auto Level Servant
 
 Automatically enhances a servant's level using embers.
