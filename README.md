@@ -1,5 +1,7 @@
 # Fate/Grand Automata
 
+Documentation: https://arthurkun21.github.io/FGA-Preview-Build/
+
 | Stable | Preview |
 |---------|---------|
 | <a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> | [![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases) |
@@ -44,6 +46,14 @@ We implemented some of the following features.
 - Auto Spam
 
     I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
+
+- Screen recording
+
+    Currently removed it as newer versions of android no longer allow taking screenshots and recording video at the same time.
+
+- Root screenshot
+
+    Removed to simplify the codebase and I don't even used it.
 
 ## APP
 
