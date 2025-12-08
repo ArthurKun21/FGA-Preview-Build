@@ -27,44 +27,17 @@ The Lottery script continuously opens lottery boxes during Fate/Grand Order even
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│          Start Lottery Script           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│        Initialize Spin Settings         │
-│   (Click count, long press duration)    │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │     Main Spin Loop      │◄──────┐
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Check Current State   │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-    ┌─────────────────┼─────────────────┐ │
-    │                 │                 │ │
-    ▼                 ▼                 ▼ │
-┌─────────┐    ┌───────────┐    ┌─────────┐
-│Present  │    │  Lottery  │    │  Keep   │
-│Box Full │    │   Done    │    │Spinning │
-└────┬────┘    └─────┬─────┘    └────┬────┘
-     │               │               │    │
-     ▼               ▼               │    │
-Handle Full     Verify Done         │    │
-Present Box     (Double check)       └────┘
-     │               │
-     ▼               ▼
-┌─────────────┐  Exit with
-│Collect or   │  "Out of Currency"
-│Sell Embers  │
-└─────────────┘
+```mermaid
+flowchart TD
+    A[Start Lottery Script] --> B[Initialize Spin Settings<br/>Click count, long press duration]
+    B --> C[Main Spin Loop]
+    C --> D[Check Current State]
+    D --> E{State?}
+    E -->|Present Box Full| F[Handle Full Present Box]
+    E -->|Lottery Done| G[Verify Done<br/>Double check]
+    E -->|Keep Spinning| C
+    F --> H[Collect or Sell Embers]
+    G --> I[Exit with<br/>Out of Currency]
 ```
 
 ## Key Features
@@ -89,12 +62,12 @@ When the present box becomes full, the script can:
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Receive Embers When Gift Box Full | Enable automatic ember collection |
-| Loop Into Lottery After Present Box | Return to lottery after collecting embers |
-| Move to Sell After Present Box | Navigate to sell menu after collecting |
-| Max Gold Ember Total Count | Limit on gold embers to collect per session |
+| Setting                             | Description                                 |
+| ----------------------------------- | ------------------------------------------- |
+| Receive Embers When Gift Box Full   | Enable automatic ember collection           |
+| Loop Into Lottery After Present Box | Return to lottery after collecting embers   |
+| Move to Sell After Present Box      | Navigate to sell menu after collecting      |
+| Max Gold Ember Total Count          | Limit on gold embers to collect per session |
 
 ![Lottery](../assets/other-scripts/lottery.png)
 
@@ -102,25 +75,25 @@ When the present box becomes full, the script can:
 
 ## Spin Configuration
 
-| Setting | Description |
-|---------|-------------|
-| Lotto Spin Count | Number of clicks per spin cycle (non-JP) |
+| Setting                   | Description                              |
+| ------------------------- | ---------------------------------------- |
+| Lotto Spin Count          | Number of clicks per spin cycle (non-JP) |
 | Lotto Long Press Duration | Duration of long press for spinning (JP) |
 
 ## Exit Reasons
 
 The script will stop and notify you when any of these conditions occur:
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Ran Out of Currency** | No more lottery currency to spend |
-| **Present Box Full** | Present box is full and auto-collect is disabled |
-| **No Embers Found** | Could not find embers in the gift box |
-| **Cannot Select Any More** | Reached the limit of selectable items |
-| **Present Box Full and Cannot Select Anymore** | Box is full and reached selection limit |
-| **Reached Sell Banner** | Successfully navigated to the sell menu |
-| **Unable to Verify Sell** | Could not verify navigation to sell menu |
-| **Aborted** | Script was manually stopped by user |
+| Exit Reason                                    | Description                                      |
+| ---------------------------------------------- | ------------------------------------------------ |
+| **Ran Out of Currency**                        | No more lottery currency to spend                |
+| **Present Box Full**                           | Present box is full and auto-collect is disabled |
+| **No Embers Found**                            | Could not find embers in the gift box            |
+| **Cannot Select Any More**                     | Reached the limit of selectable items            |
+| **Present Box Full and Cannot Select Anymore** | Box is full and reached selection limit          |
+| **Reached Sell Banner**                        | Successfully navigated to the sell menu          |
+| **Unable to Verify Sell**                      | Could not verify navigation to sell menu         |
+| **Aborted**                                    | Script was manually stopped by user              |
 
 ![Lottery Full](../assets/other-scripts/lottery-full.png)
 

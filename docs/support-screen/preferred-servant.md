@@ -119,36 +119,17 @@ FGA reads the NP level from the support card using text recognition.
 
 ### Matching Process
 
-```text
-┌─────────────────────────────┐
-│ Load Servant Images         │
-└─────────────┬───────────────┘
-              │
-              ▼
-┌─────────────────────────────┐
-│ For Each Support Entry:     │
-│ ┌─────────────────────────┐ │
-│ │ Search for servant face │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Check ascension star    │ │
-│ │ (if enabled)            │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Check skill levels      │ │
-│ │ (if enabled)            │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Check NP level          │ │
-│ │ (if enabled)            │ │
-│ └─────────────────────────┘ │
-└─────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Load Servant Images] --> B[For Each Support Entry]
+    B --> C[Search for servant face]
+    C --> D[Check ascension star<br/>if enabled]
+    D --> E[Check skill levels<br/>if enabled]
+    E --> F[Check NP level<br/>if enabled]
+    F --> G{All Checks Passed?}
+    G -->|Yes| H[Accept Support]
+    G -->|No| I[Try Next Support]
+    I --> B
 ```
 
 ### Image Processing

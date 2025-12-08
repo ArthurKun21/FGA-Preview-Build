@@ -31,61 +31,18 @@ The Level CE script enhances a single target Craft Essence by feeding it fodder 
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│         Start Level CE Script           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Verify Target CE is Selected         │
-│    (Not empty enhancement slot)         │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │   Main Enhancement Loop │◄──────┐
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │  Check if CE is Locked  │       │
-        │  (Auto-lock if needed)  │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │  Open Fodder Selection  │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Configure Filters     │       │
-        │   (Display, Sort, etc.) │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Select Fodder CEs     │       │
-        │   (Drag to select)      │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Confirm Enhancement   │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Is Target CE Max?     │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-         ┌────────────┴────────────┐      │
-         │ Yes                     │ No   │
-         ▼                         └──────┘
-┌─────────────────────────────────────────┐
-│    Exit: Target CE Max Level            │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Start Level CE Script] --> B[Verify Target CE is Selected<br/>Not empty enhancement slot]
+    B --> C[Main Enhancement Loop]
+    C --> D[Check if CE is Locked<br/>Auto-lock if needed]
+    D --> E[Open Fodder Selection]
+    E --> F[Configure Filters<br/>Display, Sort, etc.]
+    F --> G[Select Fodder CEs<br/>Drag to select]
+    G --> H[Confirm Enhancement]
+    H --> I{Is Target CE Max?}
+    I -->|No| C
+    I -->|Yes| J[Exit: Target CE Max Level]
 ```
 
 ## Key Features
@@ -116,15 +73,15 @@ The Level CE script enhances a single target Craft Essence by feeding it fodder 
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Target CE Rarity | Rarity of the CE you're leveling |
-| Fodder CE Rarity | Which CE rarities to use as fodder |
-| Skip Auto-Lock Target CE | Don't automatically lock the target CE |
-| Skip Automatic Display Change | Don't auto-adjust display size |
-| Skip CE Filter Detection | Don't auto-configure filters |
-| Skip Sort Detection | Don't auto-configure sort options |
-| CE Display Change Area | Which corner to tap to change display |
+| Setting                       | Description                            |
+| ----------------------------- | -------------------------------------- |
+| Target CE Rarity              | Rarity of the CE you're leveling       |
+| Fodder CE Rarity              | Which CE rarities to use as fodder     |
+| Skip Auto-Lock Target CE      | Don't automatically lock the target CE |
+| Skip Automatic Display Change | Don't auto-adjust display size         |
+| Skip CE Filter Detection      | Don't auto-configure filters           |
+| Skip Sort Detection           | Don't auto-configure sort options      |
+| CE Display Change Area        | Which corner to tap to change display  |
 
 ![Level CE](<../assets/scripts/Level CE.png>)
 
@@ -134,20 +91,20 @@ The Level CE script enhances a single target Craft Essence by feeding it fodder 
 
 The script will stop and notify you when any of these conditions occur:
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Target CE Max Level** | The target CE has reached its maximum level |
+| Exit Reason                     | Description                                             |
+| ------------------------------- | ------------------------------------------------------- |
+| **Target CE Max Level**         | The target CE has reached its maximum level             |
 | **No Suitable Fodder CE Found** | No fodder CEs available that match your filter criteria |
-| **No Suitable Target CE Found** | Could not identify a valid target CE |
+| **No Suitable Target CE Found** | Could not identify a valid target CE                    |
 
 ## Differences from CE Bomb Mode
 
-| Feature | Level CE | CE Bomb |
-|---------|----------|---------|
-| Target CE | Pre-selected by user | Auto-selected from list |
-| Stop condition | Target CE max level | No more fodder available |
-| Purpose | Level specific CE | Create multiple leveled CEs |
-| Starting state | CE already in slot | Empty enhancement slot |
+| Feature        | Level CE             | CE Bomb                     |
+| -------------- | -------------------- | --------------------------- |
+| Target CE      | Pre-selected by user | Auto-selected from list     |
+| Stop condition | Target CE max level  | No more fodder available    |
+| Purpose        | Level specific CE    | Create multiple leveled CEs |
+| Starting state | CE already in slot   | Empty enhancement slot      |
 
 ## Tips for Best Results
 

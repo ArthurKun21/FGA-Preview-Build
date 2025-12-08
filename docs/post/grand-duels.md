@@ -91,8 +91,8 @@ In the **Preferred Servants** section:
 
 #### Grand Servant Tag Options
 
-| Option              | Behavior                                                      | Preview                                                                                  |
-| ------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Option              | Behavior                                                      | Preview                                                                               |
+| ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | **Any**             | Accept any servant (Grand or normal)                          | ![Servant](../assets/post/grand-duels/frame_servant.png)                              |
 | **Level 100**       | Only accept Grand Servants at level 100 or higher             | ![Grand Servant (100+)](../assets/post/grand-duels/frame_grand_servant.png)           |
 | **Above Level 100** | Only accept Grand Servants above level 100 (grailed servants) | ![Grailed Grand Servant](../assets/post/grand-duels/frame_grand_servant_over_100.png) |
@@ -147,35 +147,15 @@ Choose how FGA should handle the Bond CE slot:
 
 FGA automatically detects Grand Servants using the following workflow
 
-```text
-┌─────────────────────────────────────────┐
-│       Start Support Selection           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-         ┌────────────────────────┐
-         │  Scan Support List     │
-         └────────────┬───────────┘
-                      │
-                      ▼
-         ┌────────────────────────┐
-         │  Check for Grand CE    │
-         │  Logo on Each Support  │
-         └────────────┬───────────┘
-                      │
-           ┌──────────┴──────────┐
-           │                     │
-           ▼                     ▼
-    ┌────────────┐        ┌────────────┐
-    │   Grand    │        │   Normal   │
-    │  Servant   │        │  Support   │
-    └─────┬──────┘        └─────┬──────┘
-          │                     │
-          ▼                     ▼
-    ┌────────────┐        ┌────────────┐
-    │ Check All  │        │ Check CE   │
-    │ 3 CE Slots │        │  Slot 1    │
-    └────────────┘        └────────────┘
+```mermaid
+flowchart TD
+    A[Start Support Selection] --> B[Scan Support List]
+    B --> C[Check for Grand CE<br/>Logo on Each Support]
+    C --> D{Grand CE<br/>Detected?}
+    D -->|Yes| E[Grand Servant]
+    D -->|No| F[Normal Support]
+    E --> G[Check All<br/>3 CE Slots]
+    F --> H[Check CE<br/>Slot 1]
 ```
 
 FGA enters "Grand Servant Mode" automatically when:

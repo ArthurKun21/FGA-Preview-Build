@@ -69,26 +69,17 @@ Beyond just filtering to friends, you can target specific friends by name.
 
 ### How Friend Name Matching Works
 
-```text
-┌─────────────────────────────┐
-│ For Each Support Entry:     │
-│ ┌─────────────────────────┐ │
-│ │ Is Friends Only enabled?│ │
-│ │ → Check friend status   │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Preferred friends set?  │ │
-│ │ → Search for name image │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Match found in region   │ │
-│ │ → Accept this support   │ │
-│ └─────────────────────────┘ │
-└─────────────────────────────┘
+```mermaid
+flowchart TD
+    A[For Each Support Entry] --> B{Friends Only<br/>enabled?}
+    B -->|Yes| C[Check friend status]
+    B -->|No| D{Preferred friends<br/>set?}
+    C --> D
+    D -->|Yes| E[Search for name image]
+    D -->|No| F[Accept any friend]
+    E --> G{Match found<br/>in region?}
+    G -->|Yes| H[Accept this support]
+    G -->|No| I[Try next support]
 ```
 
 ### Matching Priority

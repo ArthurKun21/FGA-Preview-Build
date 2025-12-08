@@ -26,29 +26,11 @@ FGA maintains a mapping of which servants are on the field and in which position
 
 ## How Servant Tracking Works
 
-```text
-┌─────────────────────────────────────────┐
-│        Battle Start                     │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Initialize Field Positions           │
-│    Slots 1-3 = Team positions 1-3       │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Capture Servant Identification       │
-│    • Skill icons                        │
-│    • Face card images                   │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Each Turn: Verify Positions          │
-│    Check if servants match expectations │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Battle Start] --> B[Initialize Field Positions<br/>Slots 1-3 = Team positions 1-3]
+    B --> C[Capture Servant Identification<br/>• Skill icons<br/>• Face card images]
+    C --> D[Each Turn: Verify Positions<br/>Check if servants match expectations]
 ```
 
 ## Field Slots and Team Slots

@@ -31,51 +31,20 @@ The Auto Battle script is the primary automation script for farming quests in Fa
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│           Start Auto Battle             │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │     Main Battle Loop    │◄───────────────────────┐
-        └─────────────┬───────────┘                        │
-                      │                                    │
-                      ▼                                    │
-        ┌─────────────────────────┐                        │
-        │   Detect Current Screen │                        │
-        └─────────────┬───────────┘                        │
-                      │                                    │
-    ┌─────────────────┼─────────────────┐                  │
-    │                 │                 │                  │
-    ▼                 ▼                 ▼                  │
-┌────────┐     ┌───────────┐     ┌───────────┐            │
-│ Menu   │     │  Support  │     │  Battle   │            │
-│ Screen │     │  Screen   │     │  Screen   │            │
-└───┬────┘     └─────┬─────┘     └─────┬─────┘            │
-    │                │                 │                   │
-    ▼                ▼                 ▼                   │
-Select Quest    Select Support    Execute Battle          │
-    │                │                 │                   │
-    └────────────────┴────────┬────────┘                   │
-                              │                            │
-                              ▼                            │
-                    ┌─────────────────────┐                │
-                    │   Result Screens    │                │
-                    │  (Bond, Drops, EXP) │                │
-                    └─────────┬───────────┘                │
-                              │                            │
-                              ▼                            │
-                    ┌─────────────────────┐                │
-                    │  Continue/Repeat?   │                │
-                    └─────────┬───────────┘                │
-                              │                            │
-                 ┌────────────┴────────────┐               │
-                 │ Yes                     │ No            │
-                 └─────────────────────────┴───────────────┘
-                              │
-                              ▼
-                         Exit Script
+```mermaid
+flowchart TD
+    A[Start Auto Battle] --> B[Main Battle Loop]
+    B --> C[Detect Current Screen]
+    C --> D{Screen Type}
+    D -->|Menu| E[Select Quest]
+    D -->|Support| F[Select Support]
+    D -->|Battle| G[Execute Battle]
+    E --> H[Result Screens<br/>Bond, Drops, EXP]
+    F --> H
+    G --> H
+    H --> I{Continue/Repeat?}
+    I -->|Yes| B
+    I -->|No| J[Exit Script]
 ```
 
 ## Key Features
@@ -152,21 +121,21 @@ Select Quest    Select Support    Execute Battle          │
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Skill Command | Commands for skill usage per wave |
-| Card Priority | Priority order for card selection |
-| Party Selection | Which party slot to use |
-| Support Selection | How to select support servant |
-| Limit Runs | Enable run limit |
-| Run Count | Maximum number of runs |
-| Refill with Apples | Enable AP refill |
-| Apple Type | Which apple types to use |
-| Stop on CE Get | Stop when CE drops |
-| Stop on First Clear | Stop on first clear rewards |
-| Stop on Bond Level Up | Stop when bond target reached |
-| Bond Level Target | Target bond level to stop at |
-| Boost Item Selection | Which boost item to use (events) |
+| Setting               | Description                       |
+| --------------------- | --------------------------------- |
+| Skill Command         | Commands for skill usage per wave |
+| Card Priority         | Priority order for card selection |
+| Party Selection       | Which party slot to use           |
+| Support Selection     | How to select support servant     |
+| Limit Runs            | Enable run limit                  |
+| Run Count             | Maximum number of runs            |
+| Refill with Apples    | Enable AP refill                  |
+| Apple Type            | Which apple types to use          |
+| Stop on CE Get        | Stop when CE drops                |
+| Stop on First Clear   | Stop on first clear rewards       |
+| Stop on Bond Level Up | Stop when bond target reached     |
+| Bond Level Target     | Target bond level to stop at      |
+| Boost Item Selection  | Which boost item to use (events)  |
 
 ## Exit Reasons
 
@@ -174,51 +143,51 @@ The script will stop and notify you when any of these conditions occur:
 
 ### Normal Completion
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Limit Runs** | Configured run limit has been reached |
-| **Limit CEs** | CE drop limit has been reached |
-| **Limit Materials** | Material drop limit has been reached |
-| **CE Get** | A Craft Essence dropped (if stop on CE enabled) |
-| **First Clear Rewards** | First clear rewards obtained (if stop enabled) |
-| **Bond Level Reached** | Target bond level achieved |
-| **Stop After This Run** | User requested stop after current run |
+| Exit Reason             | Description                                     |
+| ----------------------- | ----------------------------------------------- |
+| **Limit Runs**          | Configured run limit has been reached           |
+| **Limit CEs**           | CE drop limit has been reached                  |
+| **Limit Materials**     | Material drop limit has been reached            |
+| **CE Get**              | A Craft Essence dropped (if stop on CE enabled) |
+| **First Clear Rewards** | First clear rewards obtained (if stop enabled)  |
+| **Bond Level Reached**  | Target bond level achieved                      |
+| **Stop After This Run** | User requested stop after current run           |
 
 ### Resource Depletion
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **AP Ran Out** | No more AP and refill not possible/allowed |
-| **Inventory Full** | Servant/CE inventory is full |
-| **Out of Command Spells** | No command spells available when needed |
+| Exit Reason               | Description                                |
+| ------------------------- | ------------------------------------------ |
+| **AP Ran Out**            | No more AP and refill not possible/allowed |
+| **Inventory Full**        | Servant/CE inventory is full               |
+| **Out of Command Spells** | No command spells available when needed    |
 
 ### Configuration Issues
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Support Selection Manual** | Manual support selection required |
-| **Support Selection Preferred Not Set** | Preferred support not configured |
-| **Skill Command Parse Error** | Invalid skill command syntax |
-| **Card Priority Parse Error** | Invalid card priority configuration |
-| **Withdraw Disabled** | Tried to withdraw but option disabled |
-| **Preset Quest** | Preset quest detected |
+| Exit Reason                             | Description                           |
+| --------------------------------------- | ------------------------------------- |
+| **Support Selection Manual**            | Manual support selection required     |
+| **Support Selection Preferred Not Set** | Preferred support not configured      |
+| **Skill Command Parse Error**           | Invalid skill command syntax          |
+| **Card Priority Parse Error**           | Invalid card priority configuration   |
+| **Withdraw Disabled**                   | Tried to withdraw but option disabled |
+| **Preset Quest**                        | Preset quest detected                 |
 
 ### Special Conditions
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Duplicate CE** | Duplicate CE detected in party (JP) |
-| **Daily Reset** | Game daily reset occurred |
-| **Exit on Out of Commands** | Ran out of configured commands |
-| **Exit on Off Script** | Script was turned off |
+| Exit Reason                 | Description                         |
+| --------------------------- | ----------------------------------- |
+| **Duplicate CE**            | Duplicate CE detected in party (JP) |
+| **Daily Reset**             | Game daily reset occurred           |
+| **Exit on Out of Commands** | Ran out of configured commands      |
+| **Exit on Off Script**      | Script was turned off               |
 
 ### User Actions
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Abort** | Script manually stopped by user |
-| **Paused** | Script is paused |
-| **Unexpected** | An unexpected error occurred |
+| Exit Reason    | Description                     |
+| -------------- | ------------------------------- |
+| **Abort**      | Script manually stopped by user |
+| **Paused**     | Script is paused                |
+| **Unexpected** | An unexpected error occurred    |
 
 See [Exit Reasons](script-control/auto-battle-exit-reasons.md) for detailed explanations of each exit condition.
 

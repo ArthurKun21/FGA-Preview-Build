@@ -18,7 +18,7 @@ When FGA reaches the support selection screen, it needs to decide which support 
 | Mode          | Description                                       | Best For                                  |
 | ------------- | ------------------------------------------------- | ----------------------------------------- |
 | **First**     | Automatically selects the first available support | Speed farming, no specific support needed |
-| **Manual**    | Exits automation for you to select manually      | Precise control, testing setups           |
+| **Manual**    | Exits automation for you to select manually       | Precise control, testing setups           |
 | **Preferred** | Searches for specific servants, CEs, or friends   | Optimized farming with specific supports  |
 
 ## First Mode
@@ -122,33 +122,19 @@ For a support to be selected, it must satisfy ALL enabled criteria:
 
 ### Search Behavior
 
-```text
-┌───────────────────────┐
-│ Check Class Tab       │
-└───────────┬───────────┘
-            │
-            ▼
-┌───────────────────────┐
-│ Scan Visible Supports │◄───────┐
-└───────────┬───────────┘        │
-            │                    │
-        ┌───┴───┐                │
-        │ Match │                │
-        │ Found?│                │
-        ▼       ▼                │
-   ┌────────┐  ┌────────┐        │
-   │ Select │  │ Scroll │────────┘
-   │ Done   │  │  Down  │
-   └────────┘  └────┬───┘
-                    │
-              ┌─────┴─────┐
-              │ Bottom of │
-              │   List?   │
-              ▼           ▼
-         ┌────────┐  ┌────────┐
-         │ Check  │  │Refresh │
-         │  All   │  │  List  │
-         └────────┘  └────────┘
+```mermaid
+flowchart TD
+    A[Check Class Tab] --> B[Scan Visible Supports]
+    B --> C{Match Found?}
+    C -->|Yes| D[Select - Done]
+    C -->|No| E[Scroll Down]
+    E --> F{Bottom of List?}
+    F -->|No| B
+    F -->|Yes| G{Also Check All<br/>Enabled?}
+    G -->|Yes| H[Check All Tab]
+    G -->|No| I[Refresh List]
+    H --> B
+    I --> B
 ```
 
 ### Fallback Behavior

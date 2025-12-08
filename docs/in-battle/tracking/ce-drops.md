@@ -26,32 +26,11 @@ FGA can detect when Craft Essences drop from quests, notify you immediately, and
 
 ## How CE Detection Works
 
-```text
-┌─────────────────────────────────────────┐
-│        Quest Result Screen              │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Scan for CE Drop Icons               │
-│    Search entire visible area           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    For Each Potential CE:               │
-│    • Check for CE icon                  │
-│    • Verify star pattern nearby         │
-│    • Confirm actual CE drop             │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    If CE Confirmed:                     │
-│    • Increment counter                  │
-│    • Send notification                  │
-│    • Check against limit                │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Quest Result Screen] --> B[Scan for CE Drop Icons<br/>Search entire visible area]
+    B --> C[For Each Potential CE:<br/>• Check for CE icon<br/>• Verify star pattern nearby<br/>• Confirm actual CE drop]
+    C --> D[If CE Confirmed:<br/>• Increment counter<br/>• Send notification<br/>• Check against limit]
 ```
 
 ## Detection Method

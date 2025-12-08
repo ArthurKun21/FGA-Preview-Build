@@ -30,61 +30,22 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│        Start Level Skill Script         │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Verify Servant is Selected           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │   For Each Skill (1-3)  │
-        └─────────────┬───────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │  Should Upgrade This    │
-        │  Skill? (Check setting) │
-        └─────────────┬───────────┘
-                      │
-         ┌────────────┴────────────┐
-         │ Yes                     │ No
-         ▼                         ▼
-┌─────────────────────┐   ┌─────────────────────┐
-│ Click Skill Icon    │   │ Skip to Next Skill  │
-└─────────┬───────────┘   └─────────────────────┘
-          │
-          ▼
-    ┌─────────────────────────┐
-    │   Skill Upgrade Loop    │◄──────┐
-    └─────────────┬───────────┘       │
-                  │                   │
-                  ▼                   │
-    ┌─────────────────────────┐       │
-    │  Read Current Level     │       │
-    │  (Using OCR)            │       │
-    └─────────────┬───────────┘       │
-                  │                   │
-                  ▼                   │
-    ┌─────────────────────────┐       │
-    │  Target Level Reached?  │       │
-    └─────────────┬───────────┘       │
-                  │                   │
-     ┌────────────┴────────────┐      │
-     │ Yes                     │ No   │
-     ▼                         ▼      │
-   Move to                Click Enhance│
-   Next Skill             Button      │
-                              │       │
-                              ▼       │
-                  ┌─────────────────┐ │
-                  │ Confirm Upgrade │ │
-                  └────────┬────────┘ │
-                           └──────────┘
+```mermaid
+flowchart TD
+    A[Start Level Skill Script] --> B[Verify Servant is Selected]
+    B --> C[For Each Skill 1-3]
+    C --> D{Should Upgrade<br/>This Skill?}
+    D -->|No| E[Skip to Next Skill]
+    D -->|Yes| F[Click Skill Icon]
+    F --> G[Skill Upgrade Loop]
+    G --> H[Read Current Level<br/>Using OCR]
+    H --> I{Target Level<br/>Reached?}
+    I -->|Yes| J[Move to Next Skill]
+    I -->|No| K[Click Enhance Button]
+    K --> L[Confirm Upgrade]
+    L --> G
+    E --> C
+    J --> C
 ```
 
 ## Key Features
@@ -115,14 +76,14 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Should Upgrade Skill One | Enable/disable skill 1 upgrade |
-| Should Upgrade Skill Two | Enable/disable skill 2 upgrade |
-| Should Upgrade Skill Three | Enable/disable skill 3 upgrade |
-| Skill One Upgrade Value | Number of levels to upgrade skill 1 |
-| Skill Two Upgrade Value | Number of levels to upgrade skill 2 |
-| Skill Three Upgrade Value | Number of levels to upgrade skill 3 |
+| Setting                    | Description                         |
+| -------------------------- | ----------------------------------- |
+| Should Upgrade Skill One   | Enable/disable skill 1 upgrade      |
+| Should Upgrade Skill Two   | Enable/disable skill 2 upgrade      |
+| Should Upgrade Skill Three | Enable/disable skill 3 upgrade      |
+| Skill One Upgrade Value    | Number of levels to upgrade skill 1 |
+| Skill Two Upgrade Value    | Number of levels to upgrade skill 2 |
+| Skill Three Upgrade Value  | Number of levels to upgrade skill 3 |
 
 !!! note
     Target level = Minimum (starting) level + Upgrade value
@@ -139,25 +100,25 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 
 ### Overall Script Exit
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Done** | All configured skills have been processed |
+| Exit Reason             | Description                                     |
+| ----------------------- | ----------------------------------------------- |
+| **Done**                | All configured skills have been processed       |
 | **No Servant Selected** | No servant was selected in the enhancement slot |
-| **Ran Out of QP** | Insufficient QP to continue upgrades |
-| **Abort** | Script was manually stopped by user |
-| **Unexpected** | An unexpected error occurred |
+| **Ran Out of QP**       | Insufficient QP to continue upgrades            |
+| **Abort**               | Script was manually stopped by user             |
+| **Unexpected**          | An unexpected error occurred                    |
 
 ### Individual Skill Exit
 
 Each skill can exit with one of these reasons:
 
-| Skill Exit Reason | Description |
-|-------------------|-------------|
-| **Target Level Met** | Skill reached the configured target level |
-| **Out of Mats** | Insufficient materials for this skill |
-| **Out of QP** | Insufficient QP for upgrade |
-| **Exit Early (QP)** | Skipped because previous skill ran out of QP |
-| **No Skill Upgrade Error** | Upgrade value was 0 |
+| Skill Exit Reason          | Description                                  |
+| -------------------------- | -------------------------------------------- |
+| **Target Level Met**       | Skill reached the configured target level    |
+| **Out of Mats**            | Insufficient materials for this skill        |
+| **Out of QP**              | Insufficient QP for upgrade                  |
+| **Exit Early (QP)**        | Skipped because previous skill ran out of QP |
+| **No Skill Upgrade Error** | Upgrade value was 0                          |
 
 ## Exit State Summary
 

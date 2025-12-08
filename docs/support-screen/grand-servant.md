@@ -41,11 +41,11 @@ The Grand CE icon appears on support cards when a servant is set up as a Grand S
 
 Grand Servant mode activates automatically when ANY of these conditions is true:
 
-| Condition                      | Description                              |
-| ------------------------------ | ---------------------------------------- |
-| **Slot 3 CEs configured**      | You have CEs set for the third slot      |
+| Condition                    | Description                                  |
+| ---------------------------- | -------------------------------------------- |
+| **Slot 3 CEs configured**    | You have CEs set for the third slot          |
 | **Grand Servant Tag filter** | Grand Servant Tag filter is not set to "Any" |
-| **Bond CE preference**         | Bond CE is not set to "Skip"             |
+| **Bond CE preference**       | Bond CE is not set to "Skip"                 |
 
 When Grand Servant mode is active, FGA uses adjusted screen regions optimized for the Grand Servant display format.
 
@@ -57,11 +57,11 @@ Filter Grand Servants by their tag.
 
 ### Filter Options
 
-| Option              | Behavior                                             |
-| ------------------- | ---------------------------------------------------- |
-| **Any**             | Accept any servant (Grand or normal)                 |
-| **Level 100**       | Only accept Grand Servants at exactly level 100 or higher      |
-| **Above Level 100** | Only accept Grand Servants above level 100 |
+| Option              | Behavior                                                  |
+| ------------------- | --------------------------------------------------------- |
+| **Any**             | Accept any servant (Grand or normal)                      |
+| **Level 100**       | Only accept Grand Servants at exactly level 100 or higher |
+| **Above Level 100** | Only accept Grand Servants above level 100                |
 
 ### How Level Detection Works
 
@@ -102,9 +102,9 @@ The second slot is designed specifically for Bond CEs.
 
 **Bond CE Types Explained:**
 
-| Type             | Description            | Use Case            |
-| ---------------- | ---------------------- | ------------------- |
-| **Regular Bond** | Standard Bond 10 CE    | General stat boosts |
+| Type             | Description                | Use Case               |
+| ---------------- | -------------------------- | ---------------------- |
+| **Regular Bond** | Standard Bond 10 CE        | General stat boosts    |
 | **Charge Bond**  | Bond CE with 50% NP charge | Better starting charge |
 
 !!! note
@@ -129,26 +129,13 @@ Slot 3 only accepts [Mana Prism Shop CEs](https://fategrandorder.fandom.com/wiki
 
 ### Detection Flow
 
-```text
-┌─────────────────────────────┐
-│ Check for Grand CE Logo     │
-│ in support card region      │
-└─────────────┬───────────────┘
-              │
-              ▼
-      ┌───────┴───────┐
-      │ Grand Logo    │
-      │  Found?       │
-      ▼               ▼
-   ┌──────┐       ┌──────┐
-   │ Yes  │       │ No   │
-   └──┬───┘       └──┬───┘
-      │              │
-      ▼              ▼
-┌──────────┐   ┌──────────────┐
-│ Use Grand│   │ Check if mode│
-│ Matching │   │ forces Grand │
-└──────────┘   └──────────────┘
+```mermaid
+flowchart TD
+    A[Check for Grand CE Logo<br/>in support card region] --> B{Grand Logo<br/>Found?}
+    B -->|Yes| C[Use Grand Matching]
+    B -->|No| D{Mode forces<br/>Grand?}
+    D -->|Yes| C
+    D -->|No| E[Use Normal Matching]
 ```
 
 ### Grand Matching Checks

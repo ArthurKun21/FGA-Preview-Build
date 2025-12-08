@@ -26,36 +26,13 @@ FGA tracks which wave (stage) you're on during battle to execute the appropriate
 
 ## How Stage Tracking Works
 
-```text
-┌─────────────────────────────────────────┐
-│        Battle Begins (Wave 1)           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Capture Stage Counter Snapshot       │
-│    Save current wave indicator          │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Execute Wave 1 Skills                │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Each Turn: Compare Against Snapshot  │
-│    Did the stage counter change?        │
-└─────────────────────┬───────────────────┘
-                      │
-         ┌────────────┴────────────┐
-         │ Changed?                │ No
-         ▼                         ▼
-┌─────────────────┐    ┌─────────────────┐
-│  Update Wave    │    │  Continue on    │
-│  Take New Snap  │    │  Current Wave   │
-│  Run New Skills │    │                 │
-└─────────────────┘    └─────────────────┘
+```mermaid
+flowchart TD
+    A[Battle Begins Wave 1] --> B[Capture Stage Counter Snapshot<br/>Save current wave indicator]
+    B --> C[Execute Wave 1 Skills]
+    C --> D[Each Turn: Compare Against Snapshot<br/>Did the stage counter change?]
+    D -->|Changed| E[Update Wave<br/>Take New Snap<br/>Run New Skills]
+    D -->|No| F[Continue on<br/>Current Wave]
 ```
 
 ## Stage Counter Location

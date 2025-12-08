@@ -26,33 +26,12 @@ FGA can track specific materials that drop during quests, keeping count of how m
 
 ## How Material Tracking Works
 
-```text
-┌─────────────────────────────────────────┐
-│        Quest Result Screen              │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Scan for Configured Materials        │
-│    Search entire drop area              │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Match Against Material Images        │
-│    Count occurrences of each            │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Update Running Totals                │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Check Against Limits                 │
-│    Stop if target reached               │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Quest Result Screen] --> B[Scan for Configured Materials<br/>Search entire drop area]
+    B --> C[Match Against Material Images<br/>Count occurrences of each]
+    C --> D[Update Running Totals]
+    D --> E[Check Against Limits<br/>Stop if target reached]
 ```
 
 ## Configuration

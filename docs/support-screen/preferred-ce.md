@@ -112,55 +112,26 @@ The third CE slot for Grand Servants:
 
 ### Normal Support Matching
 
-```text
-┌─────────────────────────────┐
-│ Load CE Images              │
-└─────────────┬───────────────┘
-              │
-              ▼
-┌─────────────────────────────┐
-│ For Each Support Entry:     │
-│ ┌─────────────────────────┐ │
-│ │ No CEs configured?      │ │
-│ │ → Check not blank       │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Search for CE image     │ │
-│ │ in support region       │ │
-│ └───────────┬─────────────┘ │
-│             │               │
-│             ▼               │
-│ ┌─────────────────────────┐ │
-│ │ Check MLB star          │ │
-│ │ (if enabled)            │ │
-│ └─────────────────────────┘ │
-└─────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Load CE Images] --> B[For Each Support Entry]
+    B --> C{CEs configured?}
+    C -->|No| D[Check not blank]
+    C -->|Yes| E[Search for CE image<br/>in support region]
+    D --> F{Valid?}
+    E --> G[Check MLB star<br/>if enabled]
+    G --> F
+    F -->|Yes| H[Accept]
+    F -->|No| I[Try Next]
+    I --> B
 ```
 
 ### Grand Servant Matching
 
-```text
-┌─────────────────────────────┐
-│ Check Slot 1 (Main CE)      │
-│ • Match configured CEs      │
-│ • Check MLB if enabled      │
-└─────────────┬───────────────┘
-              │
-              ▼
-┌─────────────────────────────┐
-│ Check Slot 2 (Bond CE)      │
-│ • Skip, Any, Bond, or Charge│
-│ • Verify not blank          │
-└─────────────┬───────────────┘
-              │
-              ▼
-┌─────────────────────────────┐
-│ Check Slot 3 (Third CE)     │
-│ • Match configured CEs      │
-│ • Check MLB if enabled      │
-└─────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Check Slot 1 - Main CE<br/>Match configured CEs<br/>Check MLB if enabled] --> B[Check Slot 2 - Bond CE<br/>Skip, Any, Bond, or Charge<br/>Verify not blank]
+    B --> C[Check Slot 3 - Third CE<br/>Match configured CEs<br/>Check MLB if enabled]
 ```
 
 ### MLB Detection
