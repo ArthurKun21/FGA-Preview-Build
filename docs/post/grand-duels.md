@@ -196,7 +196,7 @@ FGA enters "Grand Servant Mode" automatically when:
 
 2. **Use Support Servant as Carry** - If possible, use a Grand Servant from your supports list as your main damage dealer to maximize synergy with support servants.
 
-3. **Save Bond Grails** - Grand Duels offers high bond points. Use this opportunity to level up your Grand Servants' bond levels. **More bond level means more SQ rewards!**
+3. **Save Bond Grails** - Grand Duels offers high bond points. Use this opportunity to level up your Servants' bond levels. **More bond level means more SQ rewards!**
 
 ---
 
