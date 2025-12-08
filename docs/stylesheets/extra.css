@@ -23,6 +23,18 @@
   word-break: break-word;
 }
 
+/* Fix for ASCII art diagrams using box-drawing characters */
+.md-typeset pre code {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "DejaVu Sans Mono", monospace;
+  line-height: 1.4;
+}
+
+/* Ensure consistent character width for box-drawing in pre blocks */
+.md-typeset pre {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Social card adjustments */
 .md-social {
   margin-top: 0.5rem;
