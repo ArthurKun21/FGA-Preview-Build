@@ -34,7 +34,8 @@ Unlike regular skills, append skills' screen have their level text unable to be 
 4. **Configure which appends to unlock/upgrade** in settings
 5. Start the script
 
-> **Important**: You must select a servant before starting. The script will exit if no servant is selected.
+!!! tip "Important"
+    You must select a servant before starting. The script will exit if no servant is selected.
 
 ![Level Append](<../assets/scripts/Level Append Old.png>)
 

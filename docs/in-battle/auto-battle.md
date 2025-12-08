@@ -26,7 +26,8 @@ The Auto Battle script is the primary automation script for farming quests in Fa
     - You're in the middle of a battle
 4. Start the script
 
-> **Important**: You must configure a Battle Config with skill commands before starting. The script will exit if skill commands cannot be parsed.
+!!! tip "Important"
+    You must configure a Battle Config with skill commands before starting. The script will exit if skill commands cannot be parsed.
 
 ## Workflow
 

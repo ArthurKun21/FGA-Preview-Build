@@ -16,7 +16,7 @@ Configure FGA to identify and select Grand Servants on the Japanese (JP) server,
 
 Grand Servants are a JP server's new feature where players can showcase a single servant with enhanced support capabilities. These servants can equip up to 3 Craft Essences and display a special Grand Servant indicator.
 
-!!! tip Important
+!!! tip "Important"
     Grand Servant features are currently only available on JP server's **Grand Duels**. Other server versions do not support these options yet.
 
 ## Key Features

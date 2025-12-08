@@ -62,7 +62,8 @@ Select which support servants you want FGA to look for.
 2. Select one or more servant images from your collection
 3. Tap **Save** to confirm
 
-**Important**: You must first create servant images using the **Support Image Maker** feature. Without images, FGA cannot identify servants.
+!!! tip "Important"
+    You must first create servant images using the **Support Image Maker** feature. Without images, FGA cannot identify servants.
 
 ### Servant Filters
 

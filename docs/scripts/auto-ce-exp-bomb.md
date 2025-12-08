@@ -31,7 +31,8 @@ A CE Bomb is a leveled CE that stores a large amount of CE experience. By feedin
    - The enhancement slot shows "Empty Enhance" state
 4. Start the script
 
-> **Important**: The enhancement slot must be empty. If a CE is already selected, the script will run in Level CE mode instead.
+!!! tip "Important"
+    The enhancement slot must be empty. If a CE is already selected, the script will run in Level CE mode instead.
 
 ## Workflow
 
