@@ -1,0 +1,5 @@
+title: Posts
+icon: material/file-document-outline
+description: FGA Preview posts and tutorials.
+search:
+  boost: 1
