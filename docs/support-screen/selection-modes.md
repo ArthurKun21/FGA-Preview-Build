@@ -18,7 +18,7 @@ When FGA reaches the support selection screen, it needs to decide which support 
 | Mode          | Description                                       | Best For                                  |
 | ------------- | ------------------------------------------------- | ----------------------------------------- |
 | **First**     | Automatically selects the first available support | Speed farming, no specific support needed |
-| **Manual**    | Pauses automation for you to select manually      | Precise control, testing setups           |
+| **Manual**    | Exits automation for you to select manually      | Precise control, testing setups           |
 | **Preferred** | Searches for specific servants, CEs, or friends   | Optimized farming with specific supports  |
 
 ## First Mode
@@ -49,14 +49,14 @@ First mode selects the first visible support servant without any filtering.
 
 ## Manual Mode
 
-Manual mode pauses the automation script when it reaches the support selection screen.
+Manual mode exits the automation script when it reaches the support selection screen.
 
 ### How Manual Mode Works
 
 1. FGA detects the support selection screen
-2. Script pauses immediately
+2. Script exits immediately
 3. You manually select your desired support
-4. Script resumes after you make your selection
+4. You must start the script again after you make your selection
 
 ### When to Use Manual Mode
 

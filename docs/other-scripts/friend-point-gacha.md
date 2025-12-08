@@ -24,6 +24,10 @@ The Friend Point Gacha script continuously triggers 10x summons using Friend Poi
    - The "Friend Summon" banner on the initial summon screen
    - The continue summon button after your first summon
 
+![Friend Point Gacha](<../assets/scripts/Friend Point Gacha.png>)
+
+![Friend Point Gacha to CE EXP Bomb](<../assets/scripts/Friend Point Gacha To CE EXP Bomb.png>)
+
 ## Workflow
 
 ```text
@@ -77,8 +81,6 @@ The Friend Point Gacha script continuously triggers 10x summons using Friend Poi
 - **Optional FP limit**: Set a maximum number of summons to perform
 - Once the limit is reached, the script can either stop or redirect to the sell menu
 
-![FP Limit](<../assets/scripts/Friend Point Gacha.png>)
-
 ### Inventory Full Handling
 
 When the inventory becomes full, the script can:
@@ -86,8 +88,6 @@ When the inventory becomes full, the script can:
 1. **Redirect to CE Enhancement** - Create CE bombs with the summoned CEs
 2. **Redirect to Sell Menu** - Sell unwanted cards
 3. **Stop the script** - Exit with an inventory full notification
-
-![FP to CE EXP Bomb](<../assets/scripts/Friend Point Gacha To CE EXP Bomb.png>)
 
 ### Connection Retry
 

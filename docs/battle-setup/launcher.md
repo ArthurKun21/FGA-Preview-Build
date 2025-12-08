@@ -55,7 +55,7 @@ The left panel shows all your battle configurations.
 
 - Tap on any config name to select it
 - The selected config is highlighted
-- A heart icon (★) indicates favorite configs
+- A heart icon (❤) indicates favorite configs
 
 ### Sorting Configs
 
@@ -100,23 +100,27 @@ Select which apple type to use when AP runs out:
 
 | Resource | Description |
 |----------|-------------|
-| **Copper** | Bronze Apple (10 AP) |
-| **Bronze** | Blue Apple (40 AP, time-limited) |
+| **Copper** | Copper Apple (10 AP) |
+| **Bronze/Blue** | Bronze/Blue Apple (40 AP, resource-limited) |
 | **Silver** | Silver Apple (50% max AP) |
 | **Gold** | Gold Apple (100% max AP) |
-| **SQ** | Saint Quartz (100% max AP) |
+| **SQ** | Saint Quartz (100% max AP, resource-limited) |
 
-**Note**: Only one resource type can be selected at a time. Tap to toggle selection.
+!!! note
+    Only one resource type can be selected at a time. Tap to toggle selection.
 
 #### Wait for AP Regeneration
 
 When enabled, the script will wait for natural AP regeneration instead of using apples when you run out.
 
+It checks every 1 minute if it can do the quest.
+
 #### Stamina Over Recharge
 
 When enabled and using Copper, Bronze, or Silver apples, allows AP to exceed your maximum.
 
-**Note**: This option is not available for Gold apples or Saint Quartz.
+!!! note
+    This option is not available for Gold apples or Saint Quartz.
 
 ### Run Limits
 
@@ -136,6 +140,8 @@ Stop after collecting a specific number of materials.
 - Check the box to enable
 - Set the target material count
 - Works with materials configured in your battle config
+- This is the combine amount across all materials
+    - E.g., if farming for 3 different items and set limit to 10, the script stops after collecting a total of 10 items across all types
 
 #### Limit by Craft Essences
 
@@ -213,7 +219,7 @@ Settings specific to the selected config:
 
 | Setting | Description |
 |---------|-------------|
-| **Auto Accept Friend Request** | Automatically accept friend requests during farming |
+| **Auto Accept Friend Request** | Automatically send friend requests during farming |
 
 ### Per Server
 
@@ -277,6 +283,12 @@ The script stops when any configured limit is reached.
 1. **Check your config**: Review the Info tab to verify settings
 2. **Verify support settings**: Ensure your preferred supports are correctly configured
 3. **Confirm party slot**: Make sure the right team is selected
+
+### Run until out of AP is depleted
+
+1. **Do not set a refill resource**: Leave all resource options unselected
+2. **Do not set any limits**: Leave all limit checkboxes unchecked
+3. **Run the script**: It will continue until your AP is fully depleted and exit.
 
 ---
 

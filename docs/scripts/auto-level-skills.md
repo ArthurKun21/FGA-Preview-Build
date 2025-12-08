@@ -25,7 +25,8 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 4. **Configure which skills to upgrade** and their target levels in settings
 5. Start the script
 
-> **Important**: You must select a servant before starting. The script will exit if no servant is selected.
+!!! tip Important
+    You must select a servant before starting. The script will exit if no servant is selected.
 
 ## Workflow
 
@@ -123,7 +124,8 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 | Skill Two Upgrade Value | Number of levels to upgrade skill 2 |
 | Skill Three Upgrade Value | Number of levels to upgrade skill 3 |
 
-> **Note**: Target level = Minimum (starting) level + Upgrade value
+!!! note
+    Target level = Minimum (starting) level + Upgrade value
 
 ![Level Skill](<../assets/scripts/Level Skill.png>)
 

@@ -14,9 +14,10 @@ Configure FGA to identify and select Grand Servants on the Japanese (JP) server,
 
 ## Overview
 
-Grand Servants are a JP server exclusive feature where players can showcase a single servant with enhanced support capabilities. These servants can equip up to 3 Craft Essences and display a special Grand Servant indicator.
+Grand Servants are a JP server's new feature where players can showcase a single servant with enhanced support capabilities. These servants can equip up to 3 Craft Essences and display a special Grand Servant indicator.
 
-**Important**: Grand Servant features are only available on JP server. Other server versions do not support these options.
+!!! tip Important
+    Grand Servant features are currently only available on JP server's **Grand Duels**. Other server versions do not support these options yet.
 
 ## Key Features
 
@@ -43,24 +44,24 @@ Grand Servant mode activates automatically when ANY of these conditions is true:
 | Condition                      | Description                              |
 | ------------------------------ | ---------------------------------------- |
 | **Slot 3 CEs configured**      | You have CEs set for the third slot      |
-| **Grand Servant level filter** | Grand Servant filter is not set to "Any" |
+| **Grand Servant Tag filter** | Grand Servant Tag filter is not set to "Any" |
 | **Bond CE preference**         | Bond CE is not set to "Skip"             |
 
 When Grand Servant mode is active, FGA uses adjusted screen regions optimized for the Grand Servant display format.
 
 ---
 
-## Grand Servant Level Filter
+## Grand Servant Tag Filter
 
-Filter Grand Servants by their level.
+Filter Grand Servants by their tag.
 
 ### Filter Options
 
 | Option              | Behavior                                             |
 | ------------------- | ---------------------------------------------------- |
 | **Any**             | Accept any servant (Grand or normal)                 |
-| **Level 100**       | Only accept Grand Servants at exactly level 100      |
-| **Above Level 100** | Only accept Grand Servants above level 100 (grailed) |
+| **Level 100**       | Only accept Grand Servants at exactly level 100 or higher      |
+| **Above Level 100** | Only accept Grand Servants above level 100 |
 
 ### How Level Detection Works
 
@@ -104,9 +105,10 @@ The second slot is designed specifically for Bond CEs.
 | Type             | Description            | Use Case            |
 | ---------------- | ---------------------- | ------------------- |
 | **Regular Bond** | Standard Bond 10 CE    | General stat boosts |
-| **Charge Bond**  | Bond CE with NP charge | Loop/farming builds |
+| **Charge Bond**  | Bond CE with 50% NP charge | Better starting charge |
 
-**Note**: FGA detects Bond CEs by their characteristic icon, not the full CE image. The similarity threshold for Bond CE detection is set to 60%.
+!!! note
+    FGA detects Bond CEs by their characteristic icon, not the full CE image. The similarity threshold for Bond CE detection is set to 60%.
 
 ### Slot 3: Third CE
 
@@ -118,6 +120,8 @@ The third CE slot for additional support:
 | **MLB Slot 3** | Only accept limit broken CEs in slot 3      |
 
 Slot 3 has its own MLB toggle independent of Slot 1.
+
+Slot 3 only accepts [Mana Prism Shop CEs](https://fategrandorder.fandom.com/wiki/Category:Shop_Craft_Essences).
 
 ---
 
@@ -164,7 +168,8 @@ For Grand Servants, FGA checks for blank CEs differently:
 - Slot 2 uses a specific blank Bond CE image for detection
 - Detection region is adjusted for Grand Servant layout
 
-**Note**: The blank Bond CE image is currently optimized for JP server only.
+!!! note
+    The blank Bond CE image is currently optimized for JP server only.
 
 ---
 
@@ -208,13 +213,12 @@ CE: [Event CE], MLB: Enabled
 ### Grand Servant Availability
 
 - Not all friends will have Grand Servants set up
-- Grand Servant configuration takes extra effort for players
-- Consider having fallback non-Grand requirements
+- Grand Servant configuration can only be done if you cleared Ordeal Call Prologue.
 
 ### Bond CE Considerations
 
 - Regular Bond CEs provide various stat bonuses
-- Charge Bond CEs are rarer but valuable for farming
+- Charge Bond CEs provide flat 50% NP charge at start
 - "Any" Bond CE option increases match chances
 
 ### Level Filter Usage

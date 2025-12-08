@@ -150,7 +150,8 @@ JP version with 5 appends
 | Upgrade Append Four | Number of levels to upgrade append 4 (JP only) |
 | Upgrade Append Five | Number of levels to upgrade append 5 (JP only) |
 
-> **Note**: The app automatically detects which appends are locked/unlocked.
+!!! note
+    The app automatically detects which appends are locked/unlocked.
 
 ![Level Append Dialog](<../assets/scripts/Level Append Dialog.png>)
 

@@ -26,7 +26,8 @@ The Level CE script enhances a single target Craft Essence by feeding it fodder 
    - A CE is already selected (not empty)
 4. Start the script
 
-> **Important**: You must select a target CE before starting. The script distinguishes between Level CE mode and CE Bomb mode based on whether a CE is already selected.
+!!! tip Important
+    You must select a target CE before starting. The script distinguishes between Level CE mode and CE Bomb mode based on whether a CE is already selected.
 
 ## Workflow
 

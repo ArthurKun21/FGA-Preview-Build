@@ -92,7 +92,7 @@ Configure the maximum number of scroll attempts before refreshing:
 
 | Setting     | Description                         |
 | ----------- | ----------------------------------- |
-| **Default** | Typically 3-5 swipes                |
+| **Default** | 10 swipes                |
 | **Low**     | Quick refresh cycles                |
 | **High**    | Exhaustive scrolling before refresh |
 
@@ -140,7 +140,7 @@ Configure the maximum number of refresh attempts:
 
 | Setting     | Description                    |
 | ----------- | ------------------------------ |
-| **Default** | Typically 3-10 refreshes       |
+| **Default** | 25 refreshes       |
 | **Low**     | Quick timeout, faster fallback |
 | **High**    | More attempts to find match    |
 
@@ -228,34 +228,6 @@ Fallback is triggered when:
 - Maximum refreshes exceeded
 - Both class tab and All tab (if enabled) exhausted
 - No matching supports found anywhere
-
----
-
-## Configuration Tips
-
-### For Rare Supports
-
-Increase refresh limits when looking for uncommon supports:
-
-- Higher max swipes to check more supports per refresh
-- Higher max updates for more refresh attempts
-- Enable "Also Check All" for broader search
-
-### For Speed
-
-Minimize time spent on support selection:
-
-- Lower max swipes (refresh earlier)
-- Lower max updates (accept fallback sooner)
-- Use specific class tabs to reduce list size
-
-### For Reliability
-
-Balance thoroughness with time:
-
-- Moderate swipes (3-5 per refresh)
-- Moderate updates (5-10 refreshes)
-- Enable "Also Check All" as safety net
 
 ---
 

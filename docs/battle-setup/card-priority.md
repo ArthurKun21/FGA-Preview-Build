@@ -78,7 +78,7 @@ The card priority list determines which card types are selected first. Cards at 
 
 | Suffix | Meaning |
 |--------|---------|
-| **C** | Critical (high critical chance) |
+| **C** | Critical (high critical chance 80% ~ 100%) |
 | _(none)_ | Non-critical |
 
 ### Examples
@@ -255,9 +255,14 @@ Here's an example of how you might configure different waves:
 - Move resist cards lower in the priority list
 - Or remove them entirely if you never want them selected
 
+### Support servant aren't being prioritized
+
+- If you put too many buffs on the support servant, you may encounter the [super-buff bug](https://github.com/Fate-Grand-Automata/FGA/issues/1076). Consider turning on the `Treat support servants like your own` option in Global Battle Settings (`Settings` -> `Battle` -> `Treat support servants like your own`).
+
 ---
 
 ## Related Documentation
 
 - [Auto Battle](../in-battle/auto-battle.md) - Overall battle automation
 - [Skill Maker](skill-maker.md) - Configure skill execution during battle
+- [Global Battle Settings](../app/global-battle.md#treat-support-servants-like-your-own) - Treat support servants like your own option
