@@ -1,5 +1,5 @@
 ---
-title: Energy Refill and AP Management
+title: Apple Refill and AP Management
 description: Configure automatic AP refill with apples in FGA. Manage stamina resources, set refill limits, and optimize apple usage for farming.
 tags:
     - battle
@@ -8,7 +8,7 @@ tags:
     - refill
 ---
 
-# Energy Refill and AP Management
+# Apple Refill and AP Management
 
 Automatically manage your AP (Action Points) during farming sessions.
 
@@ -34,11 +34,7 @@ FGA can automatically refill your AP when it runs out by using various apple typ
 | **Copper Apple** | 10 AP       | Depends on Master Level             |
 | **Saint Quartz** | Full AP     | 1              |
 
-### Resource Priority
-
-When multiple resources are configured, FGA uses the first available resource in your configured order.
-
-## How Energy Refill Works
+## How Apple Refill Works
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -81,18 +77,7 @@ Select which apple types FGA can use:
 
 1. Open your server configuration
 2. Navigate to refill settings
-3. Select resources in priority order
-4. Gold apples are typically first choice
-
-### Refill Limit
-
-Set the maximum number of refills per session:
-
-| Setting  | Behavior                          |
-| -------- | --------------------------------- |
-| 0        | Refill disabled                   |
-| 1-99     | Maximum refills allowed           |
-| No limit | Unlimited refills (use carefully) |
+3. Select which apple types to use
 
 ### Wait for AP Regeneration
 
@@ -128,24 +113,7 @@ When enabled, FGA waits for natural AP regen instead of using apples:
 
 ## Stamina Over-Recharge
 
-Some apple types can be used multiple times in one refill action:
-
-```text
-Example: 200 max AP, currently 0 AP
-
-Silver Apple (50%):
-- First use: +100 AP
-- Second use: +100 AP (if enabled)
-- Result: 200/200 AP, 2 refills counted
-
-Bronze Apple (30%):
-- First use: +60 AP
-- Second use: +60 AP
-- Third use: +60 AP
-- Result: 180/200 AP, 3 refills counted
-```
-
-FGA reads the stamina values to determine how many apples to use.
+Some apple types can be used multiple times in one refill action. Enabling this feature allows FGA to maximum apple available instead of only required for the quest to start.
 
 ## Auto-Decrement Limits
 

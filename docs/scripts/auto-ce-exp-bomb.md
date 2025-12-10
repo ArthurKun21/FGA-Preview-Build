@@ -31,73 +31,31 @@ A CE Bomb is a leveled CE that stores a large amount of CE experience. By feedin
    - The enhancement slot shows "Empty Enhance" state
 4. Start the script
 
-> **Important**: The enhancement slot must be empty. If a CE is already selected, the script will run in Level CE mode instead.
+!!! tip "Important"
+    The enhancement slot must be empty. If a CE is already selected, the script will run in Level CE mode instead.
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│         Start CE Bomb Script            │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Verify Enhancement Slot is Empty     │
-│    (CE Bomb mode activated)             │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │     CE Bomb Loop        │◄──────┐
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Select Target CE      │       │
-        │   from CE List          │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │  Check if CE is Locked  │       │
-        │  (Auto-lock if needed)  │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Configure Filters     │       │
-        │   for Fodder CEs        │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Select Fodder CEs     │       │
-        │   (Drag to select)      │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Perform Enhancement   │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │  Is Current CE Maxed?   │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-         ┌────────────┴────────────┐      │
-         │ Yes                     │ No   │
-         ▼                         └──────┤
-        ┌─────────────────────────┐       │
-        │  Clear Slot, Pick New   │───────┘
-        │  Target CE              │
-        └─────────────────────────┘
-
-        Loop continues until:
-        • No more fodder CEs available
-        • No more target CEs available
-        • User stops the script
+```mermaid
+flowchart TD
+    A[Start CE Bomb Script] --> B[Verify Enhancement Slot is Empty<br/>CE Bomb mode activated]
+    B --> C[CE Bomb Loop]
+    C --> D[Select Target CE<br/>from CE List]
+    D --> E[Check if CE is Locked<br/>Auto-lock if needed]
+    E --> F[Configure Filters<br/>for Fodder CEs]
+    F --> G[Select Fodder CEs<br/>Drag to select]
+    G --> H[Perform Enhancement]
+    H --> I{Is Current CE Maxed?}
+    I -->|No| C
+    I -->|Yes| J[Clear Slot, Pick New<br/>Target CE]
+    J --> C
 ```
+
+Loop continues until:
+
+- No more fodder CEs available
+- No more target CEs available
+- User stops the script
 
 ## Key Features
 
@@ -127,15 +85,15 @@ A CE Bomb is a leveled CE that stores a large amount of CE experience. By feedin
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Target CE Rarity | Rarity of CEs to use as bomb base |
-| Fodder CE Rarity | Which CE rarities to use as fodder |
-| Skip Auto-Lock Target CE | Don't automatically lock target CEs |
-| Skip Automatic Display Change | Don't auto-adjust display size |
-| Skip CE Filter Detection | Don't auto-configure filters |
-| Skip Sort Detection | Don't auto-configure sort options |
-| CE Display Change Area | Which corner to tap to change display |
+| Setting                       | Description                           |
+| ----------------------------- | ------------------------------------- |
+| Target CE Rarity              | Rarity of CEs to use as bomb base     |
+| Fodder CE Rarity              | Which CE rarities to use as fodder    |
+| Skip Auto-Lock Target CE      | Don't automatically lock target CEs   |
+| Skip Automatic Display Change | Don't auto-adjust display size        |
+| Skip CE Filter Detection      | Don't auto-configure filters          |
+| Skip Sort Detection           | Don't auto-configure sort options     |
+| CE Display Change Area        | Which corner to tap to change display |
 
 ![CE EXP Bomb Screen](<../assets/scripts/CE EXP Bomb.png>)
 
@@ -145,20 +103,20 @@ A CE Bomb is a leveled CE that stores a large amount of CE experience. By feedin
 
 The script will stop and notify you when any of these conditions occur:
 
-| Exit Reason | Description |
-|-------------|-------------|
+| Exit Reason                     | Description                                                  |
+| ------------------------------- | ------------------------------------------------------------ |
 | **No Suitable Fodder CE Found** | No more fodder CEs available that match your filter criteria |
-| **No Suitable Target CE Found** | No more target CEs available to use as bomb base |
+| **No Suitable Target CE Found** | No more target CEs available to use as bomb base             |
 
 ## Differences from Level CE Mode
 
-| Feature | CE Bomb | Level CE |
-|---------|---------|----------|
-| Target CE | Auto-selected | Pre-selected by user |
-| Starting state | Empty slot | CE in slot |
-| Stop condition | Out of fodder/targets | Target CE maxed |
-| Purpose | Mass produce leveled CEs | Level one specific CE |
-| Continuous | Yes (loops) | No (single CE) |
+| Feature        | CE Bomb                  | Level CE              |
+| -------------- | ------------------------ | --------------------- |
+| Target CE      | Auto-selected            | Pre-selected by user  |
+| Starting state | Empty slot               | CE in slot            |
+| Stop condition | Out of fodder/targets    | Target CE maxed       |
+| Purpose        | Mass produce leveled CEs | Level one specific CE |
+| Continuous     | Yes (loops)              | No (single CE)        |
 
 ## Recommended CE Bomb Strategy
 

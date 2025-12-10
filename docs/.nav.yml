@@ -1,5 +1,6 @@
 nav:
   - Home: index.md
+  - Posts: post/
   - App:
     - app/requirements.md
     - Settings:

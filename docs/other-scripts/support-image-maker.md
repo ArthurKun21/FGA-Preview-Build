@@ -26,61 +26,18 @@ The Support Image Maker script captures images of support servants, Craft Essenc
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│    Start Support Image Maker Script     │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│     Clean Temporary Extract Folder      │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│   Detect Support Screen Type            │
-│   (Support Selection vs Friend List)    │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│   Find Support Entry Bounds on Screen   │
-│   (Up to 2 entries)                     │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │  For Each Support Entry │
-        └─────────────┬───────────┘
-                      │
-         ┌────────────┴────────────┐
-         │                         │
-         ▼                         ▼
-    ┌─────────────┐          ┌─────────────┐
-    │   Normal    │          │    Grand    │
-    │   Servant   │          │   Servant   │
-    └──────┬──────┘          └──────┬──────┘
-           │                        │
-           ▼                        ▼
-    ┌─────────────┐          ┌─────────────┐
-    │ Extract:    │          │ Extract:    │
-    │ - Servant   │          │ - Servant   │
-    │ - CE        │          │ - CE Slot 1 │
-    │ - Friend    │          │ - Friend    │
-    └──────┬──────┘          └──────┬──────┘
-           │                        │
-           └────────────┬───────────┘
-                        │
-                        ▼
-┌─────────────────────────────────────────┐
-│   Save Images to Temporary Directory    │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│     Open Image Review Screen            │
-│     (Name and save images)              │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Start Support Image Maker Script] --> B[Clean Temporary Extract Folder]
+    B --> C[Detect Support Screen Type<br/>Support Selection vs Friend List]
+    C --> D[Find Support Entry Bounds on Screen<br/>Up to 2 entries]
+    D --> E[For Each Support Entry]
+    E --> F{Servant Type?}
+    F -->|Normal Servant| G[Extract:<br/>- Servant<br/>- CE<br/>- Friend]
+    F -->|Grand Servant| H[Extract:<br/>- Servant<br/>- CE Slot 1<br/>- Friend]
+    G --> I[Save Images to Temporary Directory]
+    H --> I
+    I --> J[Open Image Review Screen<br/>Name and save images]
 ```
 
 ## Image Types
@@ -135,9 +92,9 @@ Once the script completes, you'll see the **Support Image Review** screen:
 
 ## Exit Reasons
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Success** | Images extracted successfully. Review screen will open. |
+| Exit Reason   | Description                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Success**   | Images extracted successfully. Review screen will open.                                                    |
 | **Not Found** | No support entries found on screen. Make sure you're on the support selection screen with visible entries. |
 
 ## Tips for Best Results

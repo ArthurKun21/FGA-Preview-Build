@@ -30,48 +30,18 @@ When FGA cannot find a matching support on the visible portion of the support li
 
 The support selection follows a structured loop:
 
-```text
-┌─────────────────────────────────┐
-│ Wait for Support Screen to Load │
-└───────────────┬─────────────────┘
-                │
-                ▼
-┌─────────────────────────────────┐
-│ Check for No Supports Message   │◄──────────────┐
-└───────────────┬─────────────────┘               │
-                │                                 │
-        ┌───────┴───────┐                         │
-        │ Supports      │                         │
-        │ Present?      │                         │
-        ▼               ▼                         │
-   ┌────────┐    ┌──────────┐                     │
-   │  Yes   │    │ Refresh  │─────────────────────┘
-   └───┬────┘    └──────────┘
-       │
-       ▼
-┌─────────────────────────────────┐
-│ Run Selection Provider          │
-└───────────────┬─────────────────┘
-                │
-        ┌───────┴───────────────┬────────────────┐
-        ▼                       ▼                ▼
-   ┌────────┐           ┌─────────────┐   ┌───────────┐
-   │ Done   │           │ Scroll Down │   │  Refresh  │
-   └────────┘           └──────┬──────┘   └─────┬─────┘
-                               │                │
-                               ▼                │
-                    ┌──────────────────┐        │
-                    │ Max Swipes       │        │
-                    │ Reached?         │        │
-                    └────────┬─────────┘        │
-                             │                  │
-                     ┌───────┴───────┐          │
-                     ▼               ▼          │
-                ┌────────┐    ┌──────────┐      │
-                │  No    │    │   Yes    │──────┘
-                └───┬────┘    └──────────┘
-                    │
-                    └─────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Wait for Support Screen to Load] --> B[Check for No Supports Message]
+    B --> C{Supports Present?}
+    C -->|Yes| D[Run Selection Provider]
+    C -->|No/Refresh| B
+    D --> E{Result?}
+    E -->|Done| F[Selection Complete]
+    E -->|Scroll Down| G{Max Swipes Reached?}
+    E -->|Refresh| B
+    G -->|No| D
+    G -->|Yes| B
 ```
 
 ---
@@ -92,7 +62,7 @@ Configure the maximum number of scroll attempts before refreshing:
 
 | Setting     | Description                         |
 | ----------- | ----------------------------------- |
-| **Default** | Typically 3-5 swipes                |
+| **Default** | 10 swipes                           |
 | **Low**     | Quick refresh cycles                |
 | **High**    | Exhaustive scrolling before refresh |
 
@@ -140,7 +110,7 @@ Configure the maximum number of refresh attempts:
 
 | Setting     | Description                    |
 | ----------- | ------------------------------ |
-| **Default** | Typically 3-10 refreshes       |
+| **Default** | 25 refreshes                   |
 | **Low**     | Quick timeout, faster fallback |
 | **High**    | More attempts to find match    |
 
@@ -175,35 +145,12 @@ FGA monitors for dialog states:
 
 When "Also Check All" is enabled:
 
-```text
-┌─────────────────────────────┐
-│ Search Class Tab Exhausted  │
-│ (scrolled + refreshed)      │
-└─────────────┬───────────────┘
-              │
-              ▼
-      ┌───────────────┐
-      │ Also Check    │
-      │ All Enabled?  │
-      └───────┬───────┘
-              │
-      ┌───────┴───────┐
-      ▼               ▼
-   ┌──────┐       ┌──────┐
-   │ Yes  │       │ No   │
-   └──┬───┘       └──┬───┘
-      │              │
-      ▼              ▼
-┌───────────┐   ┌──────────┐
-│ Switch to │   │ Fallback │
-│ All Tab   │   │ Behavior │
-└─────┬─────┘   └──────────┘
-      │
-      ▼
-┌───────────────────┐
-│ Reset Swipe Count │
-│ Search All Tab    │
-└───────────────────┘
+```mermaid
+flowchart TD
+    A[Search Class Tab Exhausted<br/>scrolled + refreshed] --> B{Also Check All<br/>Enabled?}
+    B -->|Yes| C[Switch to All Tab]
+    B -->|No| D[Fallback Behavior]
+    C --> E[Reset Swipe Count<br/>Search All Tab]
 ```
 
 The "Also Check All" search:
@@ -228,34 +175,6 @@ Fallback is triggered when:
 - Maximum refreshes exceeded
 - Both class tab and All tab (if enabled) exhausted
 - No matching supports found anywhere
-
----
-
-## Configuration Tips
-
-### For Rare Supports
-
-Increase refresh limits when looking for uncommon supports:
-
-- Higher max swipes to check more supports per refresh
-- Higher max updates for more refresh attempts
-- Enable "Also Check All" for broader search
-
-### For Speed
-
-Minimize time spent on support selection:
-
-- Lower max swipes (refresh earlier)
-- Lower max updates (accept fallback sooner)
-- Use specific class tabs to reduce list size
-
-### For Reliability
-
-Balance thoroughness with time:
-
-- Moderate swipes (3-5 per refresh)
-- Moderate updates (5-10 refreshes)
-- Enable "Also Check All" as safety net
 
 ---
 

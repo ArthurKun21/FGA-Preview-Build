@@ -34,7 +34,8 @@ Unlike regular skills, append skills' screen have their level text unable to be 
 4. **Configure which appends to unlock/upgrade** in settings
 5. Start the script
 
-> **Important**: You must select a servant before starting. The script will exit if no servant is selected.
+!!! tip "Important"
+    You must select a servant before starting. The script will exit if no servant is selected.
 
 ![Level Append](<../assets/scripts/Level Append Old.png>)
 
@@ -46,67 +47,23 @@ JP version with 5 appends
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│       Start Level Append Script         │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Verify Servant is Selected           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │  For Each Append (1-3)  │
-        │  (1-5 on JP servers)    │
-        └─────────────┬───────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │  Check Configuration:   │
-        │  • Unlock needed?       │
-        │  • Upgrades needed?     │
-        └─────────────┬───────────┘
-                      │
-         ┌────────────┴────────────┐
-         │ Action needed          │ No
-         ▼                         ▼
-┌─────────────────────┐   ┌─────────────────────┐
-│ Click Append Icon   │   │ Mark as Not Selected│
-└─────────┬───────────┘   │ Move to Next        │
-          │               └─────────────────────┘
-          ▼
-    ┌─────────────────────────┐
-    │ Need to Unlock First?   │
-    └─────────────┬───────────┘
-                  │
-     ┌────────────┴────────────┐
-     │ Yes                     │ No
-     ▼                         │
-┌─────────────────────┐        │
-│ Perform Unlock      │        │
-│ (Uses Servant Coins)│        │
-└─────────┬───────────┘        │
-          │                    │
-          ▼                    │
-    ┌─────────────────────────┐│
-    │   Upgrade Loop          ││◄─────┐
-    └─────────────┬───────────┘│      │
-                  │◄───────────┘      │
-                  ▼                   │
-    ┌─────────────────────────┐       │
-    │  Upgrades Remaining?    │       │
-    └─────────────┬───────────┘       │
-                  │                   │
-     ┌────────────┴────────────┐      │
-     │ Yes                     │ No   │
-     ▼                         ▼      │
-   Click Enhance        Move to       │
-   Button               Next Append   │
-        │                             │
-        ▼                             │
-   Confirm Upgrade ───────────────────┘
+```mermaid
+flowchart TD
+    A[Start Level Append Script] --> B[Verify Servant is Selected]
+    B --> C[For Each Append 1-3<br/>1-5 on JP servers]
+    C --> D[Check Configuration:<br/>• Unlock needed?<br/>• Upgrades needed?]
+    D -->|Action needed| E[Click Append Icon]
+    D -->|No| F[Mark as Not Selected<br/>Move to Next]
+    E --> G{Need to Unlock First?}
+    G -->|Yes| H[Perform Unlock<br/>Uses Servant Coins]
+    G -->|No| I[Upgrade Loop]
+    H --> I
+    I --> J{Upgrades Remaining?}
+    J -->|Yes| K[Click Enhance Button]
+    K --> L[Confirm Upgrade]
+    L --> I
+    J -->|No| M[Move to Next Append]
+    M --> C
 ```
 
 ## Key Features
@@ -137,20 +94,21 @@ JP version with 5 appends
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Should Unlock Append One | Enable unlocking of append 1 |
-| Should Unlock Append Two | Enable unlocking of append 2 |
-| Should Unlock Append Three | Enable unlocking of append 3 |
-| Should Unlock Append Four | Enable unlocking of append 4 (JP only) |
-| Should Unlock Append Five | Enable unlocking of append 5 (JP only) |
-| Upgrade Append One | Number of levels to upgrade append 1 |
-| Upgrade Append Two | Number of levels to upgrade append 2 |
-| Upgrade Append Three | Number of levels to upgrade append 3 |
-| Upgrade Append Four | Number of levels to upgrade append 4 (JP only) |
-| Upgrade Append Five | Number of levels to upgrade append 5 (JP only) |
+| Setting                    | Description                                    |
+| -------------------------- | ---------------------------------------------- |
+| Should Unlock Append One   | Enable unlocking of append 1                   |
+| Should Unlock Append Two   | Enable unlocking of append 2                   |
+| Should Unlock Append Three | Enable unlocking of append 3                   |
+| Should Unlock Append Four  | Enable unlocking of append 4 (JP only)         |
+| Should Unlock Append Five  | Enable unlocking of append 5 (JP only)         |
+| Upgrade Append One         | Number of levels to upgrade append 1           |
+| Upgrade Append Two         | Number of levels to upgrade append 2           |
+| Upgrade Append Three       | Number of levels to upgrade append 3           |
+| Upgrade Append Four        | Number of levels to upgrade append 4 (JP only) |
+| Upgrade Append Five        | Number of levels to upgrade append 5 (JP only) |
 
-> **Note**: The app automatically detects which appends are locked/unlocked.
+!!! note
+    The app automatically detects which appends are locked/unlocked.
 
 ![Level Append Dialog](<../assets/scripts/Level Append Dialog.png>)
 
@@ -160,29 +118,29 @@ JP version with 5 appends
 
 ### Overall Script Exit
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **Done** | All configured appends have been processed |
-| **No Servant Selected** | No servant was selected |
-| **Ran Out of QP** | Insufficient QP to continue |
-| **Abort** | Script was manually stopped |
-| **Unexpected** | An unexpected error occurred |
+| Exit Reason             | Description                                |
+| ----------------------- | ------------------------------------------ |
+| **Done**                | All configured appends have been processed |
+| **No Servant Selected** | No servant was selected                    |
+| **Ran Out of QP**       | Insufficient QP to continue                |
+| **Abort**               | Script was manually stopped                |
+| **Unexpected**          | An unexpected error occurred               |
 
 ### Individual Append Exit
 
 Each append can exit with one of these reasons:
 
-| Append Exit Reason | Description |
-|--------------------|-------------|
-| **Success** | Append successfully upgraded to target |
-| **Unlock Success** | Append unlocked (no upgrades configured) |
-| **Not Selected** | Append was not configured for upgrade |
-| **Ran Out of QP** | Insufficient QP |
-| **Ran Out of Mats** | Insufficient materials |
-| **Exit Early (QP)** | Skipped due to previous QP shortage |
-| **Unable to Unlock** | Could not unlock (insufficient coins or error) |
-| **Unable to Upgrade Further** | Could not continue upgrading |
-| **Lag** | Timeout waiting for UI response |
+| Append Exit Reason            | Description                                    |
+| ----------------------------- | ---------------------------------------------- |
+| **Success**                   | Append successfully upgraded to target         |
+| **Unlock Success**            | Append unlocked (no upgrades configured)       |
+| **Not Selected**              | Append was not configured for upgrade          |
+| **Ran Out of QP**             | Insufficient QP                                |
+| **Ran Out of Mats**           | Insufficient materials                         |
+| **Exit Early (QP)**           | Skipped due to previous QP shortage            |
+| **Unable to Unlock**          | Could not unlock (insufficient coins or error) |
+| **Unable to Upgrade Further** | Could not continue upgrading                   |
+| **Lag**                       | Timeout waiting for UI response                |
 
 ## Exit State Summary
 
@@ -210,34 +168,13 @@ After the script completes, you receive a detailed summary:
 
 ## Unlock Workflow Detail
 
-```text
-┌─────────────────────────────────────────┐
-│         Unlock Append Skill             │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Click Enhance Button (2 retries)     │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Wait for OK Button to Appear         │
-└─────────────────────┬───────────────────┘
-                      │
-         ┌────────────┴────────────┐
-         │ OK Visible             │ Not Visible
-         ▼                         ▼
-┌─────────────────────┐   ┌─────────────────────┐
-│ Click OK to Confirm │   │ Exit: Unable to     │
-│ Unlock              │   │ Unlock              │
-└─────────┬───────────┘   └─────────────────────┘
-          │
-          ▼
-┌─────────────────────────────────────────┐
-│    Wait for Append Banner to Disappear  │
-│    (Animation completion)               │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Unlock Append Skill] --> B[Click Enhance Button<br/>2 retries]
+    B --> C[Wait for OK Button to Appear]
+    C -->|OK Visible| D[Click OK to Confirm Unlock]
+    C -->|Not Visible| E[Exit: Unable to Unlock]
+    D --> F[Wait for Append Banner to Disappear<br/>Animation completion]
 ```
 
 ## QP Cascade Effect

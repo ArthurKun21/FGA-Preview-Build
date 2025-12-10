@@ -28,60 +28,18 @@ The Gift Box script automatically selects and collects gold embers from your pre
 
 ## Workflow
 
-```text
-┌─────────────────────────────────────────┐
-│         Start Gift Box Script           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│     Locate Ember Pattern Position       │
-│     (Gold, Silver, or 5-Star XP)        │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-        ┌─────────────────────────┐
-        │   Selection Iteration   │◄──────┐
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Scan Visible Items    │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │  For Each Checkbox:     │       │
-        │  • Check if ember type  │       │
-        │  • Read stack count     │       │
-        │  • Apply size filter    │       │
-        │  • Select if valid      │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │    Scroll Down List     │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-                      ▼                   │
-        ┌─────────────────────────┐       │
-        │   Check End of List     │       │
-        └─────────────┬───────────┘       │
-                      │                   │
-         ┌────────────┴────────────┐      │
-         │ End                     │ More │
-         ▼                         └──────┘
-┌─────────────────────────────────────────┐
-│        Receive Selected Items           │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│   Check if Can Select More Items        │
-└─────────────────────┬───────────────────┘
-         │
-         ▼
-   Exit or Return to Lottery
+```mermaid
+flowchart TD
+    A[Start Gift Box Script] --> B[Locate Ember Pattern Position<br/>Gold, Silver, or 5-Star XP]
+    B --> C[Selection Iteration]
+    C --> D[Scan Visible Items]
+    D --> E[For Each Checkbox:<br/>• Check if ember type<br/>• Read stack count<br/>• Apply size filter<br/>• Select if valid]
+    E --> F[Scroll Down List]
+    F --> G[Check End of List]
+    G -->|More| C
+    G -->|End| H[Receive Selected Items]
+    H --> I[Check if Can Select More Items]
+    I --> J[Exit or Return to Lottery]
 ```
 
 ## Key Features
@@ -110,10 +68,10 @@ The Gift Box script automatically selects and collects gold embers from your pre
 
 ## Settings
 
-| Setting | Description |
-|---------|-------------|
-| Max Gold Ember Stack Size | Maximum stack size to select (larger stacks skipped) |
-| Max Gold Ember Total Count | Maximum total gold embers to collect |
+| Setting                             | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------------- |
+| Max Gold Ember Stack Size           | Maximum stack size to select (larger stacks skipped)          |
+| Max Gold Ember Total Count          | Maximum total gold embers to collect                          |
 | Loop Into Lottery After Present Box | Return to lottery after collection (when called from lottery) |
 
 ![Gift Box Dialog](<../assets/scripts/Gift Box.png>)
@@ -122,11 +80,11 @@ The Gift Box script automatically selects and collects gold embers from your pre
 
 The script will stop and notify you when any of these conditions occur:
 
-| Exit Reason | Description |
-|-------------|-------------|
-| **No Embers Found** | Could not locate any embers in the gift box |
-| **Cannot Select Any More** | Reached selection limit or no more valid items |
-| **Return to Lottery** | Successfully collected embers and returning to lottery script |
+| Exit Reason                | Description                                                   |
+| -------------------------- | ------------------------------------------------------------- |
+| **No Embers Found**        | Could not locate any embers in the gift box                   |
+| **Cannot Select Any More** | Reached selection limit or no more valid items                |
+| **Return to Lottery**      | Successfully collected embers and returning to lottery script |
 
 ## Selection Algorithm
 

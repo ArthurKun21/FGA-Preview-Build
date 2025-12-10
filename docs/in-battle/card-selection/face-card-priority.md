@@ -26,36 +26,12 @@ The Face Card Priority system determines which command cards FGA clicks during t
 
 ## How Card Selection Works
 
-```text
-┌─────────────────────────────────────────┐
-│         Read 5 Command Cards            │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Parse Card Properties                │
-│    • Card type (B/A/Q)                  │
-│    • Affinity (W/Normal/R)              │
-│    • Critical percentage                │
-│    • Servant owner                      │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Apply Servant Priority (if enabled)  │
-│    Group cards by servant order         │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Apply Card Priority                  │
-│    Sort by type + affinity + critical   │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Select Top 3 Cards                   │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Read 5 Command Cards] --> B[Parse Card Properties<br/>• Card type B/A/Q<br/>• Affinity W/Normal/R<br/>• Critical percentage<br/>• Servant owner]
+    B --> C[Apply Servant Priority if enabled<br/>Group cards by servant order]
+    C --> D[Apply Card Priority<br/>Sort by type + affinity + critical]
+    D --> E[Select Top 3 Cards]
 ```
 
 ## Card Type Priority

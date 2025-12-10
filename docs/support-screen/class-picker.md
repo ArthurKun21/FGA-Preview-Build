@@ -55,36 +55,15 @@ When enabled, FGA will also search the "All" tab if no match is found in the sel
 
 ### How Also Check All Works
 
-```text
-┌─────────────────────────────┐
-│ Search Selected Class Tab   │
-└─────────────┬───────────────┘
-              │
-              ▼
-      ┌───────┴───────┐
-      │ Match Found?  │
-      ▼               ▼
-   ┌──────┐       ┌──────┐
-   │ Yes  │       │ No   │
-   └──┬───┘       └──┬───┘
-      │              │
-      ▼              ▼
-┌──────────┐   ┌──────────────┐
-│ Select   │   │ Also Check   │
-│ Support  │   │ All enabled? │
-└──────────┘   └──────┬───────┘
-                      │
-              ┌───────┴───────┐
-              ▼               ▼
-         ┌──────┐       ┌──────────┐
-         │ Yes  │       │ No       │
-         └──┬───┘       └────┬─────┘
-            │                │
-            ▼                ▼
-    ┌───────────────┐  ┌────────────┐
-    │ Switch to All │  │ Refresh    │
-    │ Tab & Search  │  │ List       │
-    └───────────────┘  └────────────┘
+```mermaid
+flowchart TD
+    A[Search Selected Class Tab] --> B{Match Found?}
+    B -->|Yes| C[Select Support]
+    B -->|No| D{Also Check All<br/>enabled?}
+    D -->|Yes| E[Switch to All Tab<br/>& Search]
+    D -->|No| F[Refresh List]
+    E --> B
+    F --> A
 ```
 
 ### When Also Check All is Available

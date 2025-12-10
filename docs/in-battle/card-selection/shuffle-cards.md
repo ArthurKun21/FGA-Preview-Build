@@ -33,30 +33,12 @@ FGA can use the card shuffle feature (available through Mystic Codes or game mec
 
 ## How Shuffle Checker Works
 
-```text
-┌─────────────────────────────────────────┐
-│        Command Cards Read               │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Check Shuffle Condition              │
-│    Based on configured mode             │
-└─────────────────────┬───────────────────┘
-                      │
-         ┌────────────┴────────────┐
-         │ Should Shuffle?         │ No
-         ▼                         ▼
-┌─────────────────┐    ┌─────────────────┐
-│  Use Shuffle    │    │  Select Best    │
-│  Get New Cards  │    │  Available Cards│
-└────────┬────────┘    └─────────────────┘
-         │
-         ▼
-┌─────────────────────────────────────────┐
-│    Read New Cards                       │
-│    Continue with selection              │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Command Cards Read] --> B[Check Shuffle Condition<br/>Based on configured mode]
+    B -->|Should Shuffle| C[Use Shuffle<br/>Get New Cards]
+    B -->|No| D[Select Best<br/>Available Cards]
+    C --> E[Read New Cards<br/>Continue with selection]
 ```
 
 ## Mode Details
