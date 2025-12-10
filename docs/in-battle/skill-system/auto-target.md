@@ -1,10 +1,10 @@
 ---
 title: Auto Target Enemy Selection
-description: Automatically target dangerous enemies and servant bosses during FGO battles with FGA Preview, detecting priority targets and focusing your attacks each turn.
+description: Automatically prioritize dangerous enemies and servants in FGO battles with FGA Preview's Auto Target feature, preventing team wipes and optimizing farming.
 tags:
-    - battle
-    - targeting
-    - automation
+  - battle
+  - targeting
+  - automation
 ---
 
 # Auto Target Enemy Selection
@@ -13,118 +13,102 @@ Automatically prioritize dangerous enemies and servant bosses during battle.
 
 ## Overview
 
-Auto Target keeps your attacks on the most threatening enemy so you do not need to retarget every turn. It removes manual taps during Auto Battle, focusing on danger-marked mobs and servant bosses before they can wipe your team. Best for farming nodes or challenge quests with high-priority enemies.
+**Auto Target** scans the battlefield at the start of each turn to identify high-priority enemies. It automatically switches your target to enemies marked with a Danger icon or Servant crown, helping to prevent team wipes from enemy Noble Phantasms or critical attacks. This feature is essential for automating harder content where ignoring priority targets can lead to defeat.
 
 ## Key Features
 
-- **Danger Detection**: Identifies enemies marked with the danger indicator (!)
-- **Servant Detection**: Recognizes enemy servants by their crown icon
-- **Formation Support**: Works with both 3-enemy and 6-enemy battle formations
-- **Smart Targeting**: Picks the last priority enemy found in the scan order (typically the boss)
+- **Danger Detection**: Prioritizes enemies about to use special attacks (marked with `!`).
+- **Servant Recognition**: Identifies and targets enemy Servants (marked with a crown).
+- **Formation Support**: Fully compatible with standard 3-enemy and extended 6-enemy quests.
+- **Smart Prioritization**: Automatically selects the most dangerous enemy (typically the boss) based on screen position.
 
-## How to Access
+## How to Start
 
-1. Open FGA and choose your **Battle Config**.
-2. Scroll to the **Auto choose target** toggle and enable it.
-3. Start **Auto Battle**; FGA scans at the start of each turn.
-4. Optional: Add enemy targets in **Skill Command** (for example, `t3`) if you want to override Auto Target on specific turns.
+1. Open FGA and navigate to your **Battle Config**.
+2. Scroll down to the **Auto choose target** setting.
+3. Toggle the switch to **ON**.
+4. Start your battle script as usual (`Auto Battle`).
+
+   FGA will now check for targets at the beginning of every turn.
 
 ## How Auto Target Works
 
+FGA detects targets using image recognition before executing your skills.
+
 ```mermaid
 flowchart TD
-    A[Turn Starts] --> B[Scan Enemy Positions<br/>in Order: A→B→C or A→B→C→D→E→F]
-    B --> C[Check Each for Priority Indicators<br/>• Danger icon !<br/>• Servant crown]
-    C --> D[Select Last Priority Target Found<br/>Higher position = higher priority]
-    D --> E[Click to Focus Target]
+    Start[Turn Starts] --> Scan[Scan Enemies in Order<br/>A→B→C or A→F]
+    Scan --> Check{Priority Found?<br/>Danger ! or Crown}
+    Check -->|Yes| Update[Update Priority Candidate]
+    Check -->|No| Next[Check Next Position]
+    Update --> Next
+    Next --> EndScanning{Finished Scanning?}
+    EndScanning -->|No| Scan
+    EndScanning -->|Yes| Select[Click Candidates Last Position]
 ```
+
+### Targeting Order Logic
+
+FGA scans enemies from **Left to Right**. It selects the **last** priority enemy found. In FGO, the strongest enemy (Boss) is typically positioned on the far right, so this logic ensures the Boss is targeted over weaker mobs that might also have danger markers.
 
 ## Enemy Formation Types
 
+FGA supports two main formation types for auto-targeting.
+
 ### Standard 3-Enemy Formation
 
-The most common formation with enemies in three positions:
+The most common layout found in farming nodes and story quests.
 
 | Position | Code | Priority |
-| -------- | ---- | -------- |
-| Left     | 1    | Lower    |
-| Center   | 2    | Medium   |
-| Right    | 3    | Higher   |
+| :--- | :--- | :--- |
+| **Left** | `1` | Low |
+| **Center** | `2` | Medium |
+| **Right** | `3` | **High** (Default Boss slot) |
 
 ### Extended 6-Enemy Formation
 
-Some quests feature six enemies across two rows:
+Used in specific events or story chapters with front and back rows. FGA uses a separate set of images to detect these enemies correctly.
 
-| Position     | Code | Notes                          |
-| ------------ | ---- | ------------------------------ |
-| Front Left   | 4    | Targetable                     |
-| Front Center | 5    | Targetable                     |
-| Front Right  | 6    | Targetable                     |
-| Back Left    | 7    | Targetable after front cleared |
-| Back Center  | 8    | Targetable after front cleared |
-| Back Right   | 9    | Targetable after front cleared |
+| Position | Code | Notes |
+| :--- | :--- | :--- |
+| **Front Left** | `4` | Targetable |
+| **Front Center** | `5` | Targetable |
+| **Front Right** | `6` | Targetable |
+| **Back Left** | `7` | Targetable if visible |
+| **Back Center** | `8` | Targetable if visible |
+| **Back Right** | `9` | Targetable if visible |
 
-FGA uses different detection images for 6-enemy formations to ensure accurate targeting.
-
-### Raid Formation
-
-Special raid quests have unique target codes:
-
-| Position    | Code    |
-| ----------- | ------- |
-| Raid Boss   | R       |
-| Raid Minion | X, Y, Z |
+!!! warning "Raid Battles Not Supported"
+    **Auto Target** does not currently support generic Raid bosses (Code `R`) or Raid minions (Codes `X`, `Y`, `Z`). For Raid battles, use manual target commands in your specific battle script (e.g., `tR`) instead of relying on Auto Target.
 
 ## Priority Target Indicators
 
+Auto Target looks for specific visual cues on the enemy health bars.
+
 ### Danger Indicator (!)
 
-Enemies with the exclamation mark are about to use a powerful attack or have a special ability. Targeting them first can prevent team wipes.
+Enemies displaying a **Danger** icon (exclamation mark) usually have full charge bars or special threat mechanics. Targeting them prevents them from unleashing their NP on your party.
 
 ### Servant Crown
 
-Enemy servants (appearing in story quests or challenge content) are marked with a crown icon. These typically have:
-
-- Higher HP pools
-- Powerful Noble Phantasms
-- Special skills and abilities
-
-## How Targeting Order Works
-
-In FGO boss stages, enemies are typically arranged with the strongest on the right:
-
-```text
-┌─────────┬─────────┬─────────┐
-│ Enemy 1 │ Enemy 2 │ Enemy 3 │
-│ (Weak)  │ (Medium)│ (Boss)  │
-└─────────┴─────────┴─────────┘
-```
-
-Auto Target scans positions in order (A→B→C for 3-enemy, A→F for 6-enemy) and selects the **last** priority target found. This means:
-
-- If Enemy 3 (position C) is a servant → Target Enemy 3
-- If only Enemy 1 (position A) has danger indicator → Target Enemy 1
-- If both Enemy 2 and 3 are servants → Target Enemy 3 (last in scan order)
-
-If no danger icon or servant crown is detected, Auto Target leaves your current target unchanged.
+Enemy Servants are marked with a silver or gold **class icon** or **crown**. FGA treats these as high-priority targets because they typically have higher HP and more dangerous skills than regular mobs.
 
 ## Tips for Best Results
 
-1. **Enable it for priority waves**: Turn on Auto Target for boss or danger-icon waves where a priority target exists.
-2. **Set a backup target in commands**: Add enemy target codes (such as `t1`, `t3`, or `tR`) in your **Skill Command** to force a specific target when detection is unclear.
-3. **Wait for the UI to settle**: Let the battle UI finish loading each turn so danger and crown icons are visible before Auto Target scans.
-4. **Match the formation**: Confirm the quest uses 3-enemy, 6-enemy, or raid layouts; 6-enemy fights use different detection images.
-5. **Override manually anytime**: Tap another enemy if you want to switch targets mid-run—Auto Target will respect your choice until the next scan.
+1. **Enable for Challenge Quests**: Use Auto Target for difficult content where focusing down the boss or dangerous mobs is critical for survival.
+2. **Combine with Manual Overrides**: You can still use manual target commands (like `t3`) in your **Skill Command**. Manual commands in specific turns will take precedence over Auto Target for that turn.
+3. **Wait for UI Stabilization**: Ensure your **Wait Time** settings allow the battle UI to fully load. FGA needs to see the Danger/Crown icons clearly to detect them.
+4. **Disable for Farming Weak Mobs**: If you are farming easy waves where turn order matters more than threat (e.g., you want to hit the middle enemy first), disable Auto Target to maintain predictable targeting.
 
 ## Troubleshooting
 
-| Problem                              | Solution                                                                                                                                                              |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Auto Target isn't selecting the boss | Ensure the enemy shows a danger (!) or servant crown; wait for the battle UI to finish loading before the turn starts; non-standard layouts may not match detection.  |
-| Wrong enemy is selected              | Auto Target picks the last priority enemy in scan order; add manual enemy targets in your skill commands to override; confirm the indicator is on the intended enemy. |
-| Targeting fails in 6-enemy quests    | Confirm your version supports 6-enemy detection; some events use unusual layouts; rerun after clearing any front-row enemies that block back-row targeting.           |
+| Problem | Solution |
+| :--- | :--- |
+| **Boss is not selected** | Ensure the enemy actually has a Danger icon or Crown. If the UI loads too slowly, increase **Wait Time**. Verify you are not in a Raid battle (which is unsupported). |
+| **Wrong enemy targeted** | Auto Target picks the *last* priority enemy (rightmost). If multiple dangerous enemies exist, the rightmost one wins. Use manual `t` commands to override if needed. |
+| **Fails in 6-enemy battles** | Ensure you are using the latest FGA version with updated 6-enemy assets. Occasionally, unique event layouts may not match the standard 6-enemy templates. |
 
 ## Related Documentation
 
-- [Auto Battle](../auto-battle.md) - Overall battle automation
-- [Skill Maker](../../battle-setup/skill-maker.md) - Configure manual target commands
+- [Auto Battle](../auto-battle.md) - Learn about the main battle loop.
+- [Skill Maker](../../battle-setup/skill-maker.md) - Configure manual target commands and skill scripts.

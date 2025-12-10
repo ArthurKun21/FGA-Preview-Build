@@ -2,10 +2,10 @@
 title: Skill Execution During Battle
 description: How FGA Preview casts servant skills, master skills, and command spells during combat, including targeting, order changes, and animation timing.
 tags:
-    - battle
-    - skills
-    - commands
-    - automation
+  - battle
+  - skills
+  - commands
+  - automation
 ---
 
 # Skill Execution During Battle
@@ -39,15 +39,15 @@ Each servant has three skills (S1, S2, S3):
 
 | Skill Position    | Command |
 | ----------------- | ------- |
-| Servant A Skill 1 | a       |
-| Servant A Skill 2 | b       |
-| Servant A Skill 3 | c       |
-| Servant B Skill 1 | d       |
-| Servant B Skill 2 | e       |
-| Servant B Skill 3 | f       |
-| Servant C Skill 1 | g       |
-| Servant C Skill 2 | h       |
-| Servant C Skill 3 | i       |
+| Servant A Skill 1 | `a`     |
+| Servant A Skill 2 | `b`     |
+| Servant A Skill 3 | `c`     |
+| Servant B Skill 1 | `d`     |
+| Servant B Skill 2 | `e`     |
+| Servant B Skill 3 | `f`     |
+| Servant C Skill 1 | `g`     |
+| Servant C Skill 2 | `h`     |
+| Servant C Skill 3 | `i`     |
 
 ### Master Skills
 
@@ -55,9 +55,22 @@ Your Mystic Code provides three skills:
 
 | Skill Position | Command |
 | -------------- | ------- |
-| Master Skill 1 | j       |
-| Master Skill 2 | k       |
-| Master Skill 3 | l       |
+| Master Skill 1 | `j`     |
+| Master Skill 2 | `k`     |
+| Master Skill 3 | `l`     |
+
+### Noble Phantasms (NPs)
+
+To cast a Noble Phantasm:
+
+| Servant Position | Command |
+| ---------------- | ------- |
+| Servant A NP     | `4`     |
+| Servant B NP     | `5`     |
+| Servant C NP     | `6`     |
+
+!!! tip "Mixing Skills and NPs"
+    You can freely mix skills and NPs in your command chain. For example, `a 4` uses Servant A's Skill 1, then casts their NP.
 
 ### Command Spells
 
@@ -65,8 +78,8 @@ For emergencies (limited uses):
 
 | Command | Effect                     |
 | ------- | -------------------------- |
-| o       | Full NP (100% gauge)       |
-| p       | Full HP (restore party HP) |
+| `o`     | Full NP (100% gauge)       |
+| `p`     | Full HP (restore one party's HP) |
 
 ## Skill Execution Flow
 
@@ -88,37 +101,63 @@ For skills that target allies:
 
 | Target | Position       | Command |
 | ------ | -------------- | ------- |
-| 1      | Left servant   | 1       |
-| 2      | Center servant | 2       |
-| 3      | Right servant  | 3       |
+| **1**  | Left servant   | `1`     |
+| **2**  | Center servant | `2`     |
+| **3**  | Right servant  | `3`     |
 
-Example: `a1` = Servant A's Skill 1 targeting Servant A (left position)
+Example: `a1` = Servant A's Skill 1 targeting Servant A (left position).
 
 ### Enemy Targets
 
-For skills that target enemies:
+To switch the attack focus to a specific enemy **before** using a skill or attacking:
 
-| Target | Position     |
-| ------ | ------------ |
-| 1      | Left enemy   |
-| 2      | Center enemy |
-| 3      | Right enemy  |
+| Target | Position     | Command |
+| ------ | ------------ | ------- |
+| **1**  | Left enemy   | `t1`    |
+| **2**  | Center enemy | `t2`    |
+| **3**  | Right enemy  | `t3`    |
+
+Example: `t2 a` = Target center enemy, then use Servant A's skill.
 
 ### Multi-Target Skills
 
-Some skills allow multiple targets:
+Some skills allow multiple targets. Wrap the targets in parentheses `( )`.
 
 ```text
 Example: Skill with 2 targets
-Command: b12
+Command: b([Ch2B]2)
 
-First target: Servant A (position 1)
-Second target: Servant B (position 2)
+1. Uses Servant A Skill 2 (b)
+2. First target: 2 Choices and select B option ([Ch2B])
+3. Second target: Servant B (2)
 ```
+
+## Action Modifiers
+
+Control how the turn plays out:
+
+| Command | Effect |
+| ------- | ------ |
+| `n1`    | Use 1 card before NP (needs NP selected) |
+| `n2`    | Use 2 cards before NP |
+| `0`     | No operation (do nothing this turn) |
+
+## Special Skill Options
+
+For servants with choice-based skills (e.g., Space Ishtar, Emiya) or transformations (Mélusine):
+
+| Command  | Effect |
+| -------- | ------ |
+| `[Ch2A]` | Option A (2-choice skill) |
+| `[Ch2B]` | Option B (2-choice skill) |
+| `[Ch3A]` | Option A (3-choice skill) |
+| `[Ch3B]` | Option B (3-choice skill) |
+| `[Ch3C]` | Option C (3-choice skill) |
+| `[Tfrm]` | Transformation skill (e.g., Mélusine) |
 
 ## Order Change (Servant Swap)
 
-Swap a field servant with a backup:
+Swap a field servant with a backup using the `x` command followed by the **starting** position and then the **sub** position.
 
 ### Command Format
 
@@ -140,109 +179,17 @@ flowchart TD
     C --> D[Confirm Swap<br/>Update servant tracking]
 ```
 
-## Skill Confirmation Dialog
-
-Some skills show a confirmation dialog:
-
-```text
-┌─────────────────────────────────────────┐
-│    Use this skill?                      │
-│                                         │
-│    [ Cancel ]    [ OK ]                 │
-└─────────────────────────────────────────┘
-```
-
-FGA handles these automatically:
-
-- Detects confirmation dialog
-- Clicks OK to confirm
-- Continues with next action
-
 ## Animation Waiting
 
 After skill activation:
 
-1. FGA waits for battle screen to disappear
-2. Skill animation plays
-3. FGA waits for battle screen to return
-4. Continues with next command
+1. FGA waits for the battle screen to disappear.
+2. The skill animation plays.
+3. FGA waits for the battle screen to return.
+4. It continues with the next command.
 
-### Timeout Handling
-
-- Default wait: 5 seconds
-- If screen doesn't return, may retry
-- Prevents soft-locks from slow animations
-
-## Using Command Spells
-
-### Opening the Menu
-
-```text
-┌─────────────────────────────────────────┐
-│    Click Command Spell icon             │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Wait for menu to open                │
-│    Verify Cancel button visible         │
-└─────────────────────┬───────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────┐
-│    Select specific spell                │
-│    Handle targets if needed             │
-└─────────────────────────────────────────┘
-```
-
-### Available Spells
-
-| Command | Effect                        |
-| ------- | ----------------------------- |
-| o       | Full NP - 100% NP for servant |
-| p       | Full HP - Restore party HP    |
-
-## Special Skill Handling
-
-### Transform Skills (Mélusine)
-
-When a servant transforms:
-
-1. FGA detects transformation
-2. Updates servant tracking
-3. Recaptures new skill icons
-4. Continues normally
-
-### Skills with Multiple Effects
-
-Some skills have multiple phases:
-
-1. First effect activates
-2. May need second target selection
-3. FGA handles each phase
-
-## Common Skill Command Patterns
-
-### Standard Buff Setup
-
-```text
-Wave 1: a, d, g
-(All servants use Skill 1: A=a, B=d, C=g)
-```
-
-### Boss Wave Setup
-
-```text
-Wave 3: j1, a, b, c, e1
-(Master skill 1 targets servant A, Servant A uses all skills, Servant B skill 2 targets A)
-```
-
-### Order Change Pattern
-
-```text
-Wave 1: a, b, x13, ...
-(Servant A uses skills 1 and 2, then swaps with backup servant 3)
-```
+!!! info "Timeout Handling"
+    Default wait is 5 seconds. If the screen doesn't return (e.g., lag), FGA may retry to prevent soft-locks.
 
 ## Tips for Best Results
 
@@ -254,16 +201,16 @@ Wave 1: a, b, x13, ...
 
 ## Troubleshooting
 
-| Problem                        | Solution                                                                                                                                           |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Skill not being cast           | Check cooldowns and NP/resources; confirm the command code matches `a–i` or `j–l`; ensure the step is placed in the correct wave.                  |
-| Wrong target selected          | Use `1/2/3` for ally targets and `1/2/3` for enemy targets; verify servant positions after Order Change; adjust commands if a servant was swapped. |
-| Animation timeout              | Increase wait time for slower devices or long animations; ensure network stability; rerun after adjusting delays.                                  |
-| Skill confirmation not handled | FGA auto-confirms most dialogs; unusual layouts may fail—retry and capture a screenshot for support.                                               |
-| Order Change fails             | Confirm backup slot exists and the servant is alive; use `x[starting][sub]` with positions 1-3; open Master skills before issuing the swap.        |
+| Problem                        | Solution |
+| ------------------------------ | -------- |
+| **Skill not being cast**       | Check cooldowns and NP/resources; confirm the command code matches `a–i` or `j–l`. |
+| **Wrong target selected**      | Use `1/2/3` for ally targets. Verify servant positions if you used Order Change. |
+| **Animation timeout**          | Increase wait time for slower devices. Ensure network stability. |
+| **Skill confirmation missing** | FGA auto-confirms most dialogs. If it fails, capture a screenshot for support. |
+| **Order Change fails**         | Confirm backup slot exists and is alive. Use `x` followed by field pos (1-3) and sub pos (1-3). |
 
 ## Related Documentation
 
-- [Skill Maker](../../battle-setup/skill-maker.md) - Create skill commands
+- [Skill Maker](../../battle-setup/skill-maker.md) - Create skill commands visually
 - [Auto Battle](../auto-battle.md) - Overall battle automation
-- [Servant Tracking](../tracking/servant-tracking.md) - Position tracking
+- [Servant Tracking](../tracking/servant-tracking.md) - How FGA tracks servant positions
