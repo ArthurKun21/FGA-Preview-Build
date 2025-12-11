@@ -1,1 +1,11 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/ArthurKun21/FGA-Preview-Build/discussions/categories/general
+    about: View discussions or start one yourself
+  - name: Questions
+    url: https://github.com/ArthurKun21/FGA-Preview-Build/discussions/categories/q-a
+    about: Ask and answer questions
+  - name: FGA-Preview Documentation
+    url: https://arthurkun21.github.io/FGA-Preview-Build/
+    about: View the Documentation to find all relevant information about FGA-Preview
