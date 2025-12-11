@@ -14,17 +14,21 @@ hide:
 
 # FGA Preview
 
-Currently, this documentation is still a work in progress.
-
-[![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
-
 <a href="https://ko-fi.com/arthurkun21">
     <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=4" alt="Buy Me a Coffee" title="Buy Me a Coffee" width="140"/>
 </a>
 
-## Requirement
+## Download APK
 
-Due to the nature of long press gesture, the **minimum Android version of this fork is 8.0**
+### Preview Build
+
+[![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases) [![GitHub downloads](https://img.shields.io/github/downloads/ArthurKun21/fga-preview-build/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
+
+*Requires Android 8.0 or higher.*
+
+### Main Repository Stable Build
+
+<a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> [![GitHub downloads](https://img.shields.io/github/downloads/Fate-Grand-Automata/FGA/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/Fate-Grand-Automata/FGA/releases)
 
 ## What is this?
 
@@ -56,9 +60,16 @@ We implemented some of the following features.
 
 ## Features removed
 
-- Auto Spam
+- **Auto Spam**
 
     I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
+
+- **Screen recording**
+    Currently removed it as newer versions of android no longer allow taking screenshots and recording video at the same time.
+
+- **Root screenshot**
+
+    Removed to simplify the codebase and I don't even used it.
 
 ## Special Acknowledgements
 

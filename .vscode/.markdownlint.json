@@ -7,9 +7,12 @@
     "MD033": {
         "allowed_elements": [
             "a",
-            "img"
+            "img",
+            "div"
         ]
     },
     "MD025": false,
-    "MD013": false
+    "MD013": false,
+    "MD041": false,
+    "MD022": false
 }

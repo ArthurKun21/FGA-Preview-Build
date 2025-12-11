@@ -1,13 +1,29 @@
-# Fate/Grand Automata
+<div align="center">
+<a href="https://arthurkun21.github.io/FGA-Preview-Build/">
+    <img src="docs/assets/icon.png" alt="FGA Preview logo" title="FGA Preview logo" width="80"/>
+</a>
 
-Documentation: https://arthurkun21.github.io/FGA-Preview-Build/
+# Fate/Grand Automata Preview Build
 
-| Stable | Preview |
-|---------|---------|
-| <a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> | [![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases) |
-
+Documentation: [https://arthurkun21.github.io/FGA-Preview-Build/](https://arthurkun21.github.io/FGA-Preview-Build/)
 
 <a href='https://ko-fi.com/arthurkun21' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+## Download APK
+
+### Preview Build
+
+[![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases) [![GitHub downloads](https://img.shields.io/github/downloads/ArthurKun21/fga-preview-build/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
+
+*Requires Android 8.0 or higher.*
+
+### Main Repository Stable Build
+
+<a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> [![GitHub downloads](https://img.shields.io/github/downloads/Fate-Grand-Automata/FGA/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/Fate-Grand-Automata/FGA/releases)
+
+*Requires Android 7.0 or higher.*
+
+</div>
 
 ## Requirement
 
@@ -43,15 +59,14 @@ We implemented some of the following features.
 
 ## Features removed
 
-- Auto Spam
+- **Auto Spam**
 
     I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
 
-- Screen recording
-
+- **Screen recording**
     Currently removed it as newer versions of android no longer allow taking screenshots and recording video at the same time.
 
-- Root screenshot
+- **Root screenshot**
 
     Removed to simplify the codebase and I don't even used it.
 
