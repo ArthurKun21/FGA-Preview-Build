@@ -78,14 +78,15 @@ Control swipe and scroll behavior.
 | **Swipe Duration** | 300ms | 50-1000ms | How long each swipe gesture takes to complete. |
 | **Swipe Multiplier** | 100% | 50-200% | Multiplies the distance of every swipe. **Tip**: Adjust if FGA scrolls past too many items or not enough. |
 
-## Drag Settings
+## Long Press Settings
 
-Control drag-and-drop behavior (used for card selection and adjustments).
+Control duration for long press and drag actions.
 
 | Setting | Default | Range | Description |
 | :--- | :--- | :--- | :--- |
-| **Long Press Duration** | 750ms | 500-3000ms | Time to hold before a press matches a "long press". |
-| **Drag Duration** | 50ms | 50-1000ms | How long drag gestures take to complete. |
+| **Long Press for CE script duration** | 750ms | 500-3000ms | Duration of long press. This is used for dragging CEs in enhancement screen. |
+| **Drag Duration** | 50ms | 50-1000ms | Duration of drag. This is used for dragging CEs in enhancement screen. |
+| **Long Press for Lottery script duration** | 10s | 10-30s | Duration of long press. This is used for rolling Lottery. |
 
 ## Wait Settings
 
