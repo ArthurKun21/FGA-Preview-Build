@@ -44,8 +44,16 @@ flowchart TD
 
 ### Server-Specific Spinning
 
-- **JP Servers**: Uses long press spinning for faster lottery spins
-- **Other Servers**: Uses rapid click spinning (configurable click count)
+On JP servers, you can choose which gesture FGA uses to press the **Spin** button.
+
+| Option          | Behavior                                                       |
+| --------------- | -------------------------------------------------------------- |
+| **Multi-Click** | Taps the spin button multiple times quickly.                   |
+| **Long Press**  | Press-and-hold on the spin button for a configurable duration. |
+| **Mixed**       | Alternates between multi-click and long press.                 |
+
+!!! note
+    On non-JP servers, Auto Lottery uses multi-click spinning.
 
 ### Present Box Full Handling
 
@@ -101,9 +109,8 @@ The script will stop and notify you when any of these conditions occur:
 
 1. **Clear your present box** before starting for longer uninterrupted runs
 2. **Set ember collection limits** to avoid unnecessary inventory management
-3. **Enable auto-collect** to maximize lottery efficiency during events
-4. **Ensure stable connection** as lotteries involve many rapid actions
-5. **JP users**: The long press feature allows faster spinning
+3. **Set the present box to show embers** this is to trigger the auto gift box collection
+4. **For JP users**: It is recommended to use `multi-click` from box 1 to box 10 and then switch to use long press feature for faster spinning for 11th box and beyond.
 
 ## Present Box Integration
 
