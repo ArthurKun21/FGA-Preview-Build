@@ -17,6 +17,10 @@ Documentation: [https://arthurkun21.github.io/FGA-Preview-Build/](https://arthur
 
 *Requires Android 8.0 or higher.*
 
+#### Install Preview Build via Obtainium
+
+Follow this guide to install and update FGA Preview using Obtainium: [Install via Obtainium](https://arthurkun21.github.io/FGA-Preview-Build/post/install-via-obtanium/)
+
 ### Main Repository Stable Build
 
 <a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> [![GitHub downloads](https://img.shields.io/github/downloads/Fate-Grand-Automata/FGA/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/Fate-Grand-Automata/FGA/releases)
