@@ -1,4 +1,6 @@
-# 2273
+# Changelog
+
+## 2273
 
 2025-12-12
 
@@ -9,7 +11,20 @@
 - refactor: perform some code maintainance on Script Runner UI (ArthurKun21/FGA-Preview#932) (@ArthurKun21)
 - feat(Lottery): Added Gesture choice when rolling lottery for JP (ArthurKun21/FGA-Preview#934) (@ArthurKun21)
 
-# Changelog
+### Fixes
+
+- Added a blank English strings resource file to fix localization issues for some devices.
+
+### Feat
+
+#### Lottery
+
+- Added Gesture choice when rolling for lottery in JP Server. You can now choose between `Multi-click`, `Long Press` or `Mixed` gestures when rolling for lottery in JP server.
+    - **Multi-click** is recommended from box 1 to box 10
+    - **Long Press** is recommended from box 11 and onwards
+    - **Mixed** alternates between Multi-click and Long Press to give more flexibility when rolling for lottery.
+- Reduced the default long press for lottery duration from 20s to 10s
+- Added the **long press for lottery** into the Fine-Tune settings
 
 ## 2267
 
