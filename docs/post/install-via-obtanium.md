@@ -85,6 +85,8 @@ You can watch this Youtube walkthrough for installing with Obtainium:
 
 [![Obtainium Walkthrough](https://i.ytimg.com/vi/0MF_v2OBncw/mqdefault.jpg)](https://youtu.be/0MF_v2OBncw)
 
+Source: [https://youtu.be/0MF_v2OBncw](https://youtu.be/0MF_v2OBncw)
+
 ---
 
 ## Common Setup Notes
