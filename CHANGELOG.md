@@ -1,3 +1,14 @@
+# 2273
+
+2025-12-12
+
+- docs: improve guides and update prompt instructions (#920) (@ArthurKun21)
+- feat(ui): add docs link button and reorganize home screen (ArthurKun21/FGA-Preview#924) (@ArthurKun21)
+- fix: add English strings resource file (ArthurKun21/FGA-Preview#930) (@ArthurKun21)
+- Update dependency com.android.tools.build:gradle to v8.13.2 (#931) (@renovate[bot])
+- refactor: perform some code maintainance on Script Runner UI (ArthurKun21/FGA-Preview#932) (@ArthurKun21)
+- feat(Lottery): Added Gesture choice when rolling lottery for JP (ArthurKun21/FGA-Preview#934) (@ArthurKun21)
+
 # Changelog
 
 ## 2267
