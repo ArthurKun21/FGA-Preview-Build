@@ -68,6 +68,7 @@ We implemented some of the following features.
     I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
 
 - **Screen recording**
+
     Currently removed it as newer versions of android no longer allow taking screenshots and recording video at the same time.
 
 - **Root screenshot**
