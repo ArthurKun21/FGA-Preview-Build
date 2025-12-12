@@ -26,9 +26,15 @@ hide:
 
 *Requires Android 8.0 or higher.*
 
+#### Install Preview Build via Obtainium
+
+Follow this guide to install and update FGA Preview using Obtainium: [Install via Obtainium](post/install-via-obtanium.md)
+
 ### Main Repository Stable Build
 
 <a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> [![GitHub downloads](https://img.shields.io/github/downloads/Fate-Grand-Automata/FGA/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/Fate-Grand-Automata/FGA/releases)
+
+*Requires Android 7.0 or higher.*
 
 ## What is this?
 
@@ -65,6 +71,7 @@ We implemented some of the following features.
     I currently don't have the capability to maintain this feature. But I will say I wish to create a better implementation of it in the future.
 
 - **Screen recording**
+
     Currently removed it as newer versions of android no longer allow taking screenshots and recording video at the same time.
 
 - **Root screenshot**
