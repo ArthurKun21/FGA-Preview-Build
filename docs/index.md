@@ -30,6 +30,8 @@ hide:
 
 <a href="https://github.com/Fate-Grand-Automata/FGA/releases" target="_blank"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Fate-Grand-Automata/FGA?include_prereleases"></a> [![GitHub downloads](https://img.shields.io/github/downloads/Fate-Grand-Automata/FGA/total?label=downloads&labelColor=27303D&color=0D1117&logo=github&logoColor=FFFFFF&style=flat)](https://github.com/Fate-Grand-Automata/FGA/releases)
 
+*Requires Android 7.0 or higher.*
+
 ## What is this?
 
 This is a fork version of Fate/Grand Automata (FGA) with different development priorities and some other features.
