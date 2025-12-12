@@ -104,32 +104,30 @@ We implemented some of the following features.
 
 Current things being worked on
 
-1. [X] Migration from hilt to kotlin-inject/metro
-  
-2. [ ] Migrate Battle Configs from prefs to FGA folder.
+1. [ ] Migrate Battle Configs from prefs to FGA folder.
 
-     It will be on the `configs` folder. Plan to enable to allow users to create folder for organization.
+    It will be on the `configs` folder. Plan to enable to allow users to create folder for organization.
 
-3. [ ] Migrate from shared preferences to datastore
-   
-4. [ ] Github Backup and Restore for configs
-  
-5. [ ] FGA Settings Backup and Restore
-  
-6. [ ] Config tags and filter tag
+2. [ ] Migrate from shared preferences to datastore
 
-     It will make it easy to search for at battle launcher.
+3. [ ] Github Backup and Restore for configs
 
-7. [ ] Battle History.
+4. [ ] FGA Settings Backup and Restore
+
+5. [ ] Config tags and filter tag
+
+    It will make it easy to search for at battle launcher.
+
+6. [ ] Battle History.
 
 Ideas want to work on:
 
 1. [ ] Work on Servant Profiles.
-   
+
 2. [ ] Spam V2, it will be based from Servant Profiles to provide better skill usage during spam. It will only take effect once the Command List is empty
 
 3. [ ] On pause, show the remaining commands
-   
+
 4. [ ] Use the current storage settings to auto save all of the configs
 
 5. [ ] Integration with Laplace from [Chaldea](https://github.com/chaldea-center/chaldea).
@@ -146,18 +144,19 @@ Ideas want to work on:
     - When 2 NP used. Find the same one as the higher priority card in the same chain
 
 9. [ ] Need to have full friend list to get the error when sending request with full list.
-    
+
 10. [ ] Select what is the wave/turn the script would start. This is now made possible thanks to the fast lazy column
 
 11. [ ] Different scripts per support.
 
 12. [ ] Auto Creation of Blue Apples, if available
-  
+
 13. [ ] Download Support Servants/CE from another repository. Instead of need to use Support Image Maker. Can just download support files.
 
 Already done:
 
 1. [X] Auto Servant Level
+
     - Other Servers are supported at Main Repository.
 
 2. [X] Auto Skill Level
@@ -168,8 +167,9 @@ Already done:
     1. [X] Append 4 and 5 supported
 
 5. [X] Auto Lottery-Gift Box loop
+
     1. [X] Transition to sell if both present box and servant space are full
-       
+
 6. [X] Auto Friend Point Summon to CE Bomb
 
 7. [X] Auto Screenshot of bond level up
@@ -181,23 +181,25 @@ Already done:
 10. [X] Tea pots but per ~~battle config~~ server settings
 
 11. [X] Recognized Crit stars
-    
+
 12. [X] Update the logic of parsing commands in `Skill Maker`.
 
     Would make the commands be able to know their wave and/or turn order.
 
 13. [X] Append on support selection.
+
     1. [X] Append 4 and 5 supported
 
 14. [X] Support Image Maker to Compose.
 
 15. [X] Command Spell's Full HP/Full NP on the battle script
-    
+
 16. [X] Probably migrate from DocumentFile to Unifile like Mihon
-    
+
 17. [X] Stop on Bond Level Up
-    
+
 18. [X] NP Level recognition
 
 19. [X] Grand Servant Support(mostly good)
 
+20. [X] Migration from hilt to kotlin-inject/metro
