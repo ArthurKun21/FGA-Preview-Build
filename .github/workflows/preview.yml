@@ -59,7 +59,7 @@ jobs:
           cp app/build/outputs/apk/preview/app-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: fga-preview-${{ env.COMMIT_COUNT }}-apk
           path: fga-preview-${{ env.COMMIT_COUNT }}.apk
