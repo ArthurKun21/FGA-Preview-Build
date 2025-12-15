@@ -1,4 +1,4 @@
-name: Build Release App
+name: Release on fork repository
 
 on:
   # Every Saturday at 21:00 UTC
