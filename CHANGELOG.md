@@ -1,5 +1,19 @@
 # Changelog
 
+## 2278
+
+2025-12-15
+
+- Update actions/cache action to v5 (#933) (@renovate[bot])
+- Update actions/upload-artifact action to v6 (#935) (@renovate[bot])
+- fix(imaging): header mat not closed (ArthurKun21/FGA-Preview#937) (@ArthurKun21)
+- feat(ui): add Grand Archer and Grand Caster icons (ArthurKun21/FGA-Preview#938) (@ArthurKun21)
+- fix(Battle): update the rank up image template for JP (ArthurKun21/FGA-Preview#940) (@ArthurKun21)
+
+## Fixes
+
+- Update the rank up template image for JP server as it appears to have been updated.
+
 ## 2273
 
 2025-12-12
