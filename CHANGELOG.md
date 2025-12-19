@@ -1,3 +1,18 @@
+# 2288
+
+2025-12-19
+
+- Update mockk to v1.14.7 (ArthurKun21/FGA-Preview#925) (@renovate[bot])
+- Update metro to v0.9.0 (ArthurKun21/FGA-Preview#915) (@renovate[bot])
+- Update kotlin to v2.3.0 (ArthurKun21/FGA-Preview#942) (@renovate[bot])
+- feat(ui): Update Battle Launcher to use state holder (ArthurKun21/FGA-Preview#946) (@ArthurKun21)
+- Update activity to v1.12.2 (ArthurKun21/FGA-Preview#945) (@renovate[bot])
+- Update dependency com.cheonjaeung.compose.grid:grid to v2.6.0 (ArthurKun21/FGA-Preview#947) (@renovate[bot])
+- feat(battle): Update Party Selection to 15 for all servers (ArthurKun21/FGA-Preview#950) (@ArthurKun21)
+- feat(FriendPoint): Switch all servers to 100x FP summon (ArthurKun21/FGA-Preview#951) (@ArthurKun21)
+- feat(Lottery): Enable Long Press to all servers for faster rolling (ArthurKun21/FGA-Preview#952) (@ArthurKun21)
+- fix(battle): update repeat screen to use new UI (ArthurKun21/FGA-Preview#953) (@ArthurKun21)
+
 # Changelog
 
 ## 2278
