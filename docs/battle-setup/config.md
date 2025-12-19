@@ -86,7 +86,7 @@ Configure what and where you want to farm:
 | Party Selection | ![Party Configuration](../assets/battle/party-config.png) |
 
 !!! info "Party Slots by Server"
-    JP and CN servers have 15 party slots. Other servers have 10 slots. If you select party 15 but play on a 10-slot server, FGA automatically uses slot 10.
+    All servers have been configured to use 15 party slots.
 
 ### Command Card Priority
 
