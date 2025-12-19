@@ -161,16 +161,12 @@ jobs:
           name: FGA Preview ${{ env.COMMIT_COUNT }}
           repository: ArthurKun21/FGA
           body: |
-            # Pre-${{ env.COMMIT_COUNT }}
+            # Preview-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
             
             > [!TIP]
             > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
-
-            ## Commits
-
-            ${{ env.COMMIT_LOGS }}
           files: |
             fga-preview-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
