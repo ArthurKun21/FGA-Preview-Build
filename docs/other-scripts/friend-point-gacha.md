@@ -15,7 +15,7 @@ Automatically performs Friend Point (FP) summons in the Friend Point gacha scree
 
 ## Overview
 
-The Friend Point Gacha script continuously triggers 10x summons using Friend Points. It handles inventory management and can redirect to selling or CE enhancement when the inventory becomes full.
+The Friend Point Gacha script continuously triggers 100x summons using Friend Points. It handles inventory management and can redirect to selling or CE enhancement when the inventory becomes full.
 
 ## How to Start
 
