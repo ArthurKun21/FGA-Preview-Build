@@ -1,4 +1,6 @@
-# 2288
+# Changelog
+
+## 2288
 
 2025-12-19
 
@@ -13,7 +15,16 @@
 - feat(Lottery): Enable Long Press to all servers for faster rolling (ArthurKun21/FGA-Preview#952) (@ArthurKun21)
 - fix(battle): update repeat screen to use new UI (ArthurKun21/FGA-Preview#953) (@ArthurKun21)
 
-# Changelog
+### Feat
+
+- Minor UI update to Battle Launcher and added some text hints
+- Updated Party Selection to 15 for all servers
+- Switched all servers to 100x FP summon
+- Enabled Long Press to all servers for faster rolling
+
+### Fixes
+
+- Fixed the repeat screen to enable to repeat quest again after the UI update.
 
 ## 2278
 
