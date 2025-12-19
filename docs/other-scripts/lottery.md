@@ -44,7 +44,7 @@ flowchart TD
 
 ### Server-Specific Spinning
 
-On JP servers, you can choose which gesture FGA uses to press the **Spin** button.
+You can choose which gesture FGA uses to press the **Spin** button.
 
 | Option          | Behavior                                                       |
 | --------------- | -------------------------------------------------------------- |
@@ -53,7 +53,7 @@ On JP servers, you can choose which gesture FGA uses to press the **Spin** butto
 | **Mixed**       | Alternates between multi-click and long press.                 |
 
 !!! note
-    On non-JP servers, Auto Lottery uses multi-click spinning.
+    Updated all servers to use the same configuration options for consistency.
 
 ### Present Box Full Handling
 
