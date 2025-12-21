@@ -1,5 +1,27 @@
 # Changelog
 
+## 2292
+
+2025-12-21
+
+- fix: improve validation of storage path (ArthurKun21/FGA-Preview#954) (@ArthurKun21)
+- feat(ui): update BattleLauncher colors and enhance visibility of Apple selector (ArthurKun21/FGA-Preview#955) (@ArthurKun21)
+- feat(battle): remove NP level switch to always show NP Level detection (ArthurKun21/FGA-Preview#956) (@ArthurKun21)
+- feat(ui): display app build count in the launcher (ArthurKun21/FGA-Preview#957) (@ArthurKun21)
+
+### Fixes
+
+- Improved the checking of storage path.
+
+### Feat
+
+- Updated the Battle Launcher colors for better visibility.
+- Display the app build count in the launcher for easier tracking of versions.
+
+### Breaking Changes
+
+- Removed the NP level switch to always enable NP level detection. If you no longer want to use NP level detection change it to `Lvl 1`
+
 ## 2288
 
 2025-12-19
