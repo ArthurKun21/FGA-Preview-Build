@@ -26,7 +26,11 @@ hide:
 
 *Requires Android 8.0 or higher.*
 
-#### Install Preview Build via Obtainium
+#### Install the preview build via Obtainium to receive automatic updates.
+
+[https://github.com/ImranR98/Obtainium](https://github.com/ImranR98/Obtainium)
+
+Obtainium allows you to install and update apps directly from their Github releases pages, and receive notifications when new releases are made available.
 
 Follow this guide to install and update FGA Preview using Obtainium: [Install via Obtainium](post/install-via-obtanium.md)
 
