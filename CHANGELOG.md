@@ -1,3 +1,20 @@
+# 2304
+
+2026-01-08
+
+- chore(deps): update compose bom to stable and split material3 deps (ArthurKun21/FGA-Preview#958) (@ArthurKun21)
+- Update metro to v0.9.2 (ArthurKun21/FGA-Preview#949) (@renovate[bot])
+- chore: move ScriptAreaTransforms to libAutomata module (ArthurKun21/FGA-Preview#959) (@ArthurKun21)
+- Update metro to v0.9.3 (ArthurKun21/FGA-Preview#968) (@renovate[bot])
+- fix(battle): Update the Quest Reward template image for NA (ArthurKun21/FGA-Preview#971) (@ArthurKun21)
+- fix(battle): Update skill confirmation template image for TW (@reconman)
+- feat: add Reliquary of Departed Souls to the materials (ArthurKun21/FGA-Preview#972) (@ArthurKun21)
+- docs: Update documentation for various guides and markdowns (ArthurKun21/FGA-Preview#973) (@ArthurKun21)
+- chore: update metro di configuration (ArthurKun21/FGA-Preview#974) (@ArthurKun21)
+- fix(FriendPoint): repeat summon for 100x summons (ArthurKun21/FGA-Preview#970) (@ArthurKun21)
+- Update dependency com.github.ArthurKun21:compose-overlay-window to v1.5.2 (ArthurKun21/FGA-Preview#978) (@renovate[bot])
+- Update dependency org.junit:junit-bom to v6.0.2 (ArthurKun21/FGA-Preview#982) (@renovate[bot])
+
 # Changelog
 
 ## 2292
