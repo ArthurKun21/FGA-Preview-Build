@@ -1,4 +1,6 @@
-# 2304
+# Changelog
+
+## 2304
 
 2026-01-08
 
@@ -15,7 +17,16 @@
 - Update dependency com.github.ArthurKun21:compose-overlay-window to v1.5.2 (ArthurKun21/FGA-Preview#978) (@renovate[bot])
 - Update dependency org.junit:junit-bom to v6.0.2 (ArthurKun21/FGA-Preview#982) (@renovate[bot])
 
-# Changelog
+### Fixes
+
+- Updated the Quest Reward template image for NA server as it appears to have been updated.
+- Updated the skill confirmation template image for TW server
+- Fixed the repeat FP summon logic due to missing template image for 100x summon.
+
+### Feat
+
+- Added Reliquary of Departed Souls to the materials list. I actually forgot about this.
+- Added fallback method for FP summon when 100x summmon isn't detected. It uses the `sell` button to determine that we are on the repeat fp summon screen.
 
 ## 2292
 
