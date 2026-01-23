@@ -2,9 +2,15 @@
 
 ## Unreleased
 
+### Features
+
 - Update Home Screen UI
 - Added Images next to Support Template Images
-- Some optimization for running scripts
+- Update the Battle Script Command Parser. You can now add whitespaces, tabs and new lines for better readability. All of this are going to be ignored when parsing the commands.
+
+### Misc
+
+- Some optimization for running scripts. This is due to updating some of the inner workings of the dependency injection which ties in the program together.
 
 ## 2304
 
