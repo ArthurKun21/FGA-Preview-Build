@@ -4,9 +4,31 @@
 
 ### Features
 
-- Update Home Screen UI
+- Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports
+    
+    <img width="1442" height="502" alt="image" src="https://github.com/user-attachments/assets/8a8ebf13-f011-402e-bae5-a27aadaec450" />
+
+- On app startup, there would be once in a whole app lifecycle where it will scan of the support images in the support directory in order to ensure that the paths are up to date.
 - Added Images next to Support Template Images
+
+    <img width="775" height="383" alt="image" src="https://github.com/user-attachments/assets/ed5fcf09-221b-4338-a3ae-bc244ccf8fc4" />
+
+    <img width="795" height="347" alt="image" src="https://github.com/user-attachments/assets/d0122f8e-f205-4165-967a-45667b4e28ce" />
+
+- On Preferred Support Screen, you can now see support's template images. This will help you when you forgot the name but remember the image like me.
+
+    <img width="524" height="429" alt="image" src="https://github.com/user-attachments/assets/46175ad2-16a0-427c-bdba-51fef43aa321" />
+
 - Update the Battle Script Command Parser. You can now add whitespaces, tabs and new lines for better readability. All of this are going to be ignored when parsing the commands.
+
+    <img width="1070" height="386" alt="image" src="https://github.com/user-attachments/assets/56b8a52b-f520-420c-9741-74358894c508" />
+
+    It also reacts if you type in a wrong command right after you type
+
+    <img width="545" height="258" alt="image" src="https://github.com/user-attachments/assets/1b192526-6081-4b9c-9398-fa9b1f1ada75" />
+
+- The summary in Battle Launcher for the current battle config have now been updated to show all of the current settings in the battle config. It used to be few info only because I got tired to code it in.
+
 
 ### Misc
 
