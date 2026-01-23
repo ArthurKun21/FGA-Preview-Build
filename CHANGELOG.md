@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Update Home Screen UI
+- Added Images next to Support Template Images
+- Some optimization for running scripts
+
 ## 2304
 
 2026-01-08
