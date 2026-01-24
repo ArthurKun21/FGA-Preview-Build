@@ -4,10 +4,11 @@
 
 ### Features
 
-- Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports. Link in Home Screen are now displayed to users.
+- Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports. Links in Home Screen are now displayed to users.
     
     <img width="1442" height="502" alt="image" src="https://github.com/user-attachments/assets/8a8ebf13-f011-402e-bae5-a27aadaec450" />
 
+- Added the Support Gallery Screen, it was mostly for viewing support template images in the support directory. This function can also be viewed as well on Preferred Support Screen.
 - On app startup, there would be once in a whole app lifecycle where it will scan of the support images in the support directory in order to ensure that the paths are up to date.
 - Added Images next to Support Template Images
 
@@ -27,6 +28,7 @@
 
     <img width="545" height="258" alt="image" src="https://github.com/user-attachments/assets/1b192526-6081-4b9c-9398-fa9b1f1ada75" />
 
+- Battle Config got some design update as well. Notes, like edit skill command, are now happening on a separate screen for better User experience.
 - The summary in Battle Launcher for the current battle config have now been updated to show all of the current settings in the battle config. It used to be few info only because I got tired to code it in.
 
 
