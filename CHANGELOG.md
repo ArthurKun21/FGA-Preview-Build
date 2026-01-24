@@ -4,7 +4,7 @@
 
 ### Features
 
-- Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports
+- Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports. Link in Home Screen are now displayed to users.
     
     <img width="1442" height="502" alt="image" src="https://github.com/user-attachments/assets/8a8ebf13-f011-402e-bae5-a27aadaec450" />
 
