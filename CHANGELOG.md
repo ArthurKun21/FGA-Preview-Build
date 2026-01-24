@@ -36,6 +36,10 @@
 
 - Some optimization for running scripts. This is due to updating some of the inner workings of the dependency injection which ties in the program together.
 
+> [!NOTE]
+>
+> We are preparing for v2 of the Supports in the future. This will enable to download the latest support images with support for Translations. But this is going to take a lot of time so we just released the database with the current support template images.
+
 ## 2304
 
 2026-01-08
