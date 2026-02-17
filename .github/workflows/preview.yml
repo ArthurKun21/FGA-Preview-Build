@@ -71,25 +71,25 @@ jobs:
           name: fga-preview-${{ env.COMMIT_COUNT }}-apk
           path: fga-preview-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (arm64-v8a)
+      - name: Upload APK (arm64-v8a)
         uses: actions/upload-artifact@v6
         with:
           name: fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
           path: fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (armeabi-v7a)
+      - name: Upload APK (armeabi-v7a)
         uses: actions/upload-artifact@v6
         with:
           name: fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
           path: fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (x86_64)
+      - name: Upload APK (x86_64)
         uses: actions/upload-artifact@v6
         with:
           name: fga-preview-x86_64-${{ env.COMMIT_COUNT }}-apk
           path: fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (x86)
+      - name: Upload APK (x86)
         uses: actions/upload-artifact@v6
         with:
           name: fga-preview-x86-${{ env.COMMIT_COUNT }}-apk

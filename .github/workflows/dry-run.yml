@@ -83,28 +83,28 @@ jobs:
           name: fga-ci-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (arm64-v8a)
+      - name: Upload APK (arm64-v8a)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v6
         with:
           name: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (armeabi-v7a)
+      - name: Upload APK (armeabi-v7a)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v6
         with:
           name: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (x86_64)
+      - name: Upload APK (x86_64)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v6
         with:
           name: fga-ci-x86_64-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
       
-      - name: Update APK (x86)
+      - name: Upload APK (x86)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
         uses: actions/upload-artifact@v6
         with:
