@@ -26,6 +26,8 @@ jobs:
     permissions:
       contents: write
       discussions: write
+    env:
+      COMMIT_COUNT: 0
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -43,7 +45,7 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v5
       
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v5
         with:
           java-version: ${{ env.JAVA_VERSION }}
@@ -58,7 +60,21 @@ jobs:
       
       - name: Clean up build artifacts
         run: |
-          cp app/build/outputs/apk/ci/app-ci.apk fga-ci-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-ci-${{ env.COMMIT_COUNT }}.apk
+
+          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
+
+          cp app/build/outputs/mapping/ci/mapping.txt fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
+      
+      - name: Upload Mapping
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: fga-ci-${{ env.COMMIT_COUNT }}-mapping
+          path: fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
       
       - name: Upload APK
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
@@ -66,3 +82,32 @@ jobs:
         with:
           name: fga-ci-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-${{ env.COMMIT_COUNT }}.apk
+      
+      - name: Upload APK (arm64-v8a)
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
+          path: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+      
+      - name: Upload APK (armeabi-v7a)
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
+          path: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+      
+      - name: Upload APK (x86_64)
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: fga-ci-x86_64-${{ env.COMMIT_COUNT }}-apk
+          path: fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
+      
+      - name: Upload APK (x86)
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: fga-ci-x86-${{ env.COMMIT_COUNT }}-apk
+          path: fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
+
