@@ -137,6 +137,10 @@ jobs:
             # Alpha-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+
+            ## Commits
+
+            ${{ env.COMMIT_LOGS }}
             
             > [!IMPORTANT]
             >
@@ -167,6 +171,10 @@ jobs:
             # Alpha-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+
+            ## Commits
+
+            ${{ env.COMMIT_LOGS }}
             
             > [!IMPORTANT]
             >
