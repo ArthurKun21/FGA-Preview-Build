@@ -134,12 +134,13 @@ jobs:
           tag_name: alpha-${{ env.COMMIT_COUNT }}
           name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
           body: |
-            # Pre-${{ env.COMMIT_COUNT }}
+            # Alpha-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
             
-            > [!TIP]
-            > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
+            > [!IMPORTANT]
+            >
+            > This is an alpha build and may contain bugs.
 
             > [!TIP]
             >
@@ -163,12 +164,13 @@ jobs:
           name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
           repository: ArthurKun21/FGA
           body: |
-            # Preview-${{ env.COMMIT_COUNT }}
+            # Alpha-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
             
-            > [!TIP]
-            > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
+            > [!IMPORTANT]
+            >
+            > This is an alpha build and may contain bugs.
 
             > [!TIP]
             >
