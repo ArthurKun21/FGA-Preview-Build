@@ -68,7 +68,7 @@ jobs:
           echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
           echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
 
-          prev_commit_count=$(echo "${{ env.TAG_NAME }}" | sed -E 's/^(pre|alpha)-//')
+          prev_commit_count=$(echo "${{ env.TAG_NAME }}" | sed -E 's/^pre-([0-9]+)(-alpha)?$/\1/')
 
           commit_count_diff=$(($commit_count - $prev_commit_count))
           echo "commit_count_diff=$commit_count_diff" >> $GITHUB_ENV
@@ -131,7 +131,7 @@ jobs:
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         if: ${{ env.commit_count_diff > 0 }}
         with:
-          tag_name: alpha-${{ env.COMMIT_COUNT }}
+          tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
           name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
           body: |
             # Alpha-${{ env.COMMIT_COUNT }}
@@ -164,7 +164,7 @@ jobs:
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         if: ${{ env.commit_count_diff > 0 }}
         with:
-          tag_name: alpha-${{ env.COMMIT_COUNT }}
+          tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
           name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
           repository: ArthurKun21/FGA
           body: |
