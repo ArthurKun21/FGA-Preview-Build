@@ -1,5 +1,51 @@
 # Changelog
 
+## Unreleased
+
+### Breaking Changes
+
+- Update the Battle Script Command Parser. You can now add whitespaces, tabs and new lines for better readability. All of this are going to be ignored when parsing the commands.
+
+    <img width="1070" height="386" alt="image" src="https://github.com/user-attachments/assets/56b8a52b-f520-420c-9741-74358894c508" />
+
+    It also reacts if you type in a wrong command right after you type
+
+    <img width="545" height="258" alt="image" src="https://github.com/user-attachments/assets/1b192526-6081-4b9c-9398-fa9b1f1ada75" />
+
+### Features
+
+- Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports. Links in Home Screen are now displayed to users.
+    
+    <img width="1442" height="502" alt="image" src="https://github.com/user-attachments/assets/8a8ebf13-f011-402e-bae5-a27aadaec450" />
+
+- Added the Support Gallery Screen, it was mostly for viewing support template images in the support directory. This function can also be viewed as well on Preferred Support Screen.
+- On app startup, there would be once in a whole app lifecycle where it will scan of the support images in the support directory in order to ensure that the paths are up to date.
+- Added Images next to Support Template Images
+
+    <img width="775" height="383" alt="image" src="https://github.com/user-attachments/assets/ed5fcf09-221b-4338-a3ae-bc244ccf8fc4" />
+
+    <img width="795" height="347" alt="image" src="https://github.com/user-attachments/assets/d0122f8e-f205-4165-967a-45667b4e28ce" />
+
+- On Preferred Support Screen, you can now see support's template images. This will help you when you forgot the name but remember the image like me.
+
+    <img width="524" height="429" alt="image" src="https://github.com/user-attachments/assets/46175ad2-16a0-427c-bdba-51fef43aa321" />
+
+- Battle Config got some design update as well. Notes, like edit skill command, are now happening on a separate screen for better User experience.
+- The summary in Battle Launcher for the current battle config have now been updated to show all of the current settings in the battle config. It used to be few info only because I got tired to code it in.
+
+- Storage now defaults to internal Storage unless changed by user. This gives a workaround to issues with certain devices
+  - [Fate-Grand-Automata#1673](https://redirect.github.com/Fate-Grand-Automata/FGA/issues/1673)
+  - [Fate-Grand-Automata#1168](https://redirect.github.com/Fate-Grand-Automata/FGA/issues/1168)
+  - [Fate-Grand-Automata#999](https://redirect.github.com/ArthurKun21/FGA-Preview/issues/999)
+
+### Misc
+
+- Some optimization for running scripts. This is due to updating some of the inner workings of the dependency injection which ties in the program together.
+
+> [!NOTE]
+>
+> We are preparing for v2 of the Supports in the future. This will enable to download the latest support images with support for Translations. But this is going to take a lot of time so we just released the database with the current support template images.
+
 ## 2304
 
 2026-01-08
