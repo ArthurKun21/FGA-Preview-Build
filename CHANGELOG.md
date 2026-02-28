@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Breaking Changes
+
+- Update the Battle Script Command Parser. You can now add whitespaces, tabs and new lines for better readability. All of this are going to be ignored when parsing the commands.
+
+    <img width="1070" height="386" alt="image" src="https://github.com/user-attachments/assets/56b8a52b-f520-420c-9741-74358894c508" />
+
+    It also reacts if you type in a wrong command right after you type
+
+    <img width="545" height="258" alt="image" src="https://github.com/user-attachments/assets/1b192526-6081-4b9c-9398-fa9b1f1ada75" />
+
 ### Features
 
 - Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports. Links in Home Screen are now displayed to users.
@@ -19,14 +29,6 @@
 - On Preferred Support Screen, you can now see support's template images. This will help you when you forgot the name but remember the image like me.
 
     <img width="524" height="429" alt="image" src="https://github.com/user-attachments/assets/46175ad2-16a0-427c-bdba-51fef43aa321" />
-
-- Update the Battle Script Command Parser. You can now add whitespaces, tabs and new lines for better readability. All of this are going to be ignored when parsing the commands.
-
-    <img width="1070" height="386" alt="image" src="https://github.com/user-attachments/assets/56b8a52b-f520-420c-9741-74358894c508" />
-
-    It also reacts if you type in a wrong command right after you type
-
-    <img width="545" height="258" alt="image" src="https://github.com/user-attachments/assets/1b192526-6081-4b9c-9398-fa9b1f1ada75" />
 
 - Battle Config got some design update as well. Notes, like edit skill command, are now happening on a separate screen for better User experience.
 - The summary in Battle Launcher for the current battle config have now been updated to show all of the current settings in the battle config. It used to be few info only because I got tired to code it in.
