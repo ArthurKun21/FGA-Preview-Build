@@ -1,0 +1,195 @@
+name: Alpha Release App
+
+on:
+  # Every Saturday at 21:00 UTC
+  # schedule:
+  #   - cron: '0 21 * * 6'
+  # Manual triggers
+  workflow_dispatch:
+
+env:
+  JAVA_VERSION: 21
+  JAVA_DISTRO: 'temurin'
+
+jobs:
+  build-app:
+    runs-on: macos-latest
+    outputs:
+      CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
+      CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
+      COMMIT_COUNT_OUTPUT: ${{ steps.prepare_build.outputs.COMMIT_COUNT_OUTPUT }}
+    env:
+      commit_count_diff: 0
+      PREV_RELEASE_SHA: ''
+      CURRENT_SHA: ''
+      COMMIT_COUNT: 0
+      FGA_VERSION_CODE: 0
+      FGA_VERSION_NAME: ''
+      COMMIT_LOGS: ''
+      TAG_NAME: ''
+    permissions:
+      contents: write
+      discussions: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          repository: 'ArthurKun21/FGA-Preview'
+          token: ${{ secrets.PAT }}
+      
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          path: 'preview'
+      - name: Get previous release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd preview
+          OUTPUT=$(gh release list --exclude-drafts --json tagName --limit 1 --jq 'select(length > 0) | .[0].tagName')
+          if [ -n "$OUTPUT" ]; then
+            echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
+            echo "Latest Tag: $OUTPUT"
+          else
+            echo "Failed to get repository information"
+            exit 1
+          fi
+      - name: Prepare build
+        id: prepare_build
+        run: |
+          commit_count=$(git rev-list --count HEAD)
+          echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
+          echo "COMMIT_COUNT_OUTPUT=$commit_count" >> $GITHUB_OUTPUT
+          current_sha=$(git rev-parse --short HEAD)
+          echo "CURRENT_SHA=$current_sha" >> $GITHUB_ENV
+          
+          echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
+          echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
+
+          prev_commit_count=$(echo "${{ env.TAG_NAME }}" | sed -E 's/^(pre|alpha)-//')
+
+          commit_count_diff=$(($commit_count - $prev_commit_count))
+          echo "commit_count_diff=$commit_count_diff" >> $GITHUB_ENV
+
+          prev_release_sha=$(git rev-parse --short HEAD~$commit_count_diff)
+          echo "PREV_RELEASE_SHA=$prev_release_sha" >> $GITHUB_ENV
+
+          echo "COMMIT_LOGS<<{delimiter}
+          $(curl -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ secrets.PAT }}" \
+            "https://api.github.com/repos/Arthurkun21/fga-preview/compare/$prev_release_sha...$current_sha" \
+            | jq '[.commits[]|{message:(.commit.message | split("\n")), username:.author.login}]' \
+            | jq -r '.[]|"- \(.message | first) (@\(.username))"')
+          {delimiter}" >> $GITHUB_ENV
+      - name: Prepare changelog
+        id: prepare_changelog
+        if: ${{ env.commit_count_diff > 0 }}
+        run: |
+          # Get the current date
+          CURRENT_DATE=$(date +"%Y-%m-%d")
+
+          CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}"
+          
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "CREATE_RELEASE=true" >> $GITHUB_OUTPUT
+
+      - name: Validate Gradle Wrapper
+        if: ${{ env.commit_count_diff > 0 }}
+        uses: gradle/actions/wrapper-validation@v5
+      
+      - name: Set up JDK 21
+        if: ${{ env.commit_count_diff > 0 }}
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRO }}
+  
+      - name: Set up gradle
+        if: ${{ env.commit_count_diff > 0 }}
+        uses: gradle/actions/setup-gradle@v5
+    
+      - name: Build Android Package
+        if: ${{ env.commit_count_diff > 0 }}
+        run: |
+          ./gradlew assembleCi --parallel --no-daemon
+      
+      - name: Clean up build artifacts
+        if: ${{ env.commit_count_diff > 0 }}
+        run: |
+          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+
+          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+
+      - name: Create release
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        if: ${{ env.commit_count_diff > 0 }}
+        with:
+          tag_name: alpha-${{ env.COMMIT_COUNT }}
+          name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
+          body: |
+            # Alpha-${{ env.COMMIT_COUNT }}
+
+            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+
+            ## Commits
+
+            ${{ env.COMMIT_LOGS }}
+            
+            > [!IMPORTANT]
+            >
+            > This is an alpha build and may contain bugs.
+
+            > [!TIP]
+            >
+            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
+          files: |
+            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+          prerelease: true
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release on forked repo
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        if: ${{ env.commit_count_diff > 0 }}
+        with:
+          tag_name: alpha-${{ env.COMMIT_COUNT }}
+          name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
+          repository: ArthurKun21/FGA
+          body: |
+            # Alpha-${{ env.COMMIT_COUNT }}
+
+            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+
+            ## Commits
+
+            ${{ env.COMMIT_LOGS }}
+            
+            > [!IMPORTANT]
+            >
+            > This is an alpha build and may contain bugs.
+
+            > [!TIP]
+            >
+            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
+          files: |
+            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+          prerelease: true
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
