@@ -115,17 +115,17 @@ jobs:
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
         run: |
-          ./gradlew assemblepreview --parallel --no-daemon
+          ./gradlew assembleCi --parallel --no-daemon
       
       - name: Clean up build artifacts
         if: ${{ env.commit_count_diff > 0 }}
         run: |
-          cp app/build/outputs/apk/preview/app-universal-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
 
-          cp app/build/outputs/apk/preview/app-arm64-v8a-preview.apk fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/preview/app-armeabi-v7a-preview.apk fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/preview/app-x86_64-preview.apk fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/preview/app-x86-preview.apk fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
 
       - name: Create release
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
@@ -148,13 +148,13 @@ jobs:
 
             > [!TIP]
             >
-            > If you are unsure which version to download then go with `fga-preview-${{ env.COMMIT_COUNT }}.apk`
+            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
           files: |
-            fga-preview-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
           draft: true
         env:
@@ -182,13 +182,13 @@ jobs:
 
             > [!TIP]
             >
-            > If you are unsure which version to download then go with `fga-preview-${{ env.COMMIT_COUNT }}.apk`
+            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
           files: |
-            fga-preview-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
           draft: false
         env:
