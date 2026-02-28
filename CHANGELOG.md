@@ -33,6 +33,10 @@
 - Battle Config got some design update as well. Notes, like edit skill command, are now happening on a separate screen for better User experience.
 - The summary in Battle Launcher for the current battle config have now been updated to show all of the current settings in the battle config. It used to be few info only because I got tired to code it in.
 
+- Storage now defaults to internal Storage unless changed by user. This gives a workaround to issues with certain devices
+  - [Fate-Grand-Automata#1673](https://redirect.github.com/Fate-Grand-Automata/FGA/issues/1673)
+  - [Fate-Grand-Automata#1168](https://redirect.github.com/Fate-Grand-Automata/FGA/issues/1168)
+  - [Fate-Grand-Automata#999](https://redirect.github.com/ArthurKun21/FGA-Preview/issues/999)
 
 ### Misc
 
