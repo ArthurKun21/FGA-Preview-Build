@@ -71,42 +71,42 @@ jobs:
       
       - name: Upload Mapping
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fga-ci-${{ env.COMMIT_COUNT }}-mapping
           path: fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
       
       - name: Upload APK
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fga-ci-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (arm64-v8a)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (armeabi-v7a)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (x86_64)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fga-ci-x86_64-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (x86)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_apk == 'true' || github.event.inputs.upload_apk == true) }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fga-ci-x86-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
