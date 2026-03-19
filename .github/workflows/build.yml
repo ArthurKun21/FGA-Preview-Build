@@ -128,7 +128,7 @@ jobs:
           cp app/build/outputs/apk/preview/app-x86-preview.apk fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
 
       - name: Create release
-        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
         if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}
@@ -163,7 +163,7 @@ jobs:
       #     keep_latest: 28
       #     delete_tags: true
       - name: Create release on forked repo
-        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
         if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}
