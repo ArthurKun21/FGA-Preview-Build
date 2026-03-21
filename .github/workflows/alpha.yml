@@ -156,7 +156,7 @@ jobs:
             fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
             fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: true
-          draft: false
+          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -190,6 +190,6 @@ jobs:
             fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
             fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: true
-          draft: false
+          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
