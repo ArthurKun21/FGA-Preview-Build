@@ -47,6 +47,8 @@
 - Added CE Templates Images
     - [Great Library of Memories](https://apps.atlasacademy.io/db/JP/craft-essence/2583)
 
+- Added Flora option in Skill Maker
+
 - APKs are now split into different architectures to reduce the APK size with a universal APK option for users who want to have all architectures in one APK. This should help with the installation of the app as well as reduce the storage used by the app.
 - Battle Launcher have now been updated to include more common settings.
 
