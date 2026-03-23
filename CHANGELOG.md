@@ -11,6 +11,10 @@
     It also reacts if you type in a wrong command right after you type
 
     <img width="545" height="258" alt="image" src="https://github.com/user-attachments/assets/1b192526-6081-4b9c-9398-fa9b1f1ada75" />
+  
+  > [!IMPORTANT]
+  >
+  > Any existing battle scripts edited after this version will no longer be compatible with older versions of the app. If you want to use it, you gotta update to remove the whitespaces, tabs and new lines.
 
 ### Features
 
