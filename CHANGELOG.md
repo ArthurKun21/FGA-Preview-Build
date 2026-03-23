@@ -50,6 +50,8 @@
 - APKs are now split into different architectures to reduce the APK size with a universal APK option for users who want to have all architectures in one APK. This should help with the installation of the app as well as reduce the storage used by the app.
 - Battle Launcher have now been updated to include more common settings.
 
+- Added re-request of Media Projection(for screenshot) and Accessibility Service when they're lost. This problem was observed on some devices particularly on Samsung devices when the screen was turned off.
+
 ### Fixes
 
 - EN have now updated its UI to the accomodate the Alignment and Attribute.
