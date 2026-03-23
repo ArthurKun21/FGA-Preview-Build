@@ -38,6 +38,8 @@
     - [Fate-Grand-Automata#1168](https://redirect.github.com/Fate-Grand-Automata/FGA/issues/1168)
     - [Fate-Grand-Automata#999](https://redirect.github.com/ArthurKun21/FGA-Preview/issues/999)
 
+- When the support images cannot be found. Will now throw an error, this should help when there's problems with storage permissions or if the support images are not properly extracted or not found in the storage.
+
 - Added Servant Templates Images
     - [Omii-san](https://apps.atlasacademy.io/db/JP/servant/463)
     - [Flora](https://apps.atlasacademy.io/db/JP/servant/464)
