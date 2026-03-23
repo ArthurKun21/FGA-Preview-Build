@@ -158,8 +158,7 @@ jobs:
             fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: true
           draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
+          token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
 
       - name: Create release
         uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
