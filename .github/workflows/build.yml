@@ -188,8 +188,7 @@ jobs:
             fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: false
           draft: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
+          token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
   
   changelog:
     runs-on: macos-latest
