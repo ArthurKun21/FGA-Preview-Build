@@ -38,6 +38,19 @@
     - [Fate-Grand-Automata#1168](https://redirect.github.com/Fate-Grand-Automata/FGA/issues/1168)
     - [Fate-Grand-Automata#999](https://redirect.github.com/ArthurKun21/FGA-Preview/issues/999)
 
+- Added Servant Templates Images
+    - [Omii-san](https://apps.atlasacademy.io/db/JP/servant/463)
+    - [Flora](https://apps.atlasacademy.io/db/JP/servant/464)
+
+- Added CE Templates Images
+    - [Great Library of Memories](https://apps.atlasacademy.io/db/JP/craft-essence/2583)
+
+### Fixes
+
+- EN have now updated its UI to the accomodate the Alignment and Attribute.
+
+    - <img width="795" height="347" alt="image" src="https://webview.fate-go.us/wp-content/uploads/2026/03/0323_olgamally_quest_2/info_06_sf9b1.png" />
+
 ### Misc
 
 - Some optimization for running scripts. This is due to updating some of the inner workings of the dependency injection which ties in the program together.
