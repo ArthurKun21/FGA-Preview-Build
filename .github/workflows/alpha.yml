@@ -126,40 +126,7 @@ jobs:
           cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
           cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
           cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Create release
-        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
-        if: ${{ env.commit_count_diff > 0 }}
-        with:
-          tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
-          name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
-          body: |
-            # Alpha-${{ env.COMMIT_COUNT }}
-
-            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
-
-            ## Commits
-
-            ${{ env.COMMIT_LOGS }}
-            
-            > [!IMPORTANT]
-            >
-            > This is an alpha build and may contain bugs.
-
-            > [!TIP]
-            >
-            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
-          files: |
-            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
-          prerelease: true
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Create release on forked repo
         uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
         if: ${{ env.commit_count_diff > 0 }}
@@ -193,3 +160,36 @@ jobs:
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
+        if: ${{ env.commit_count_diff > 0 }}
+        with:
+          tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
+          name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
+          body: |
+            # Alpha-${{ env.COMMIT_COUNT }}
+
+            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+
+            ## Commits
+
+            ${{ env.COMMIT_LOGS }}
+            
+            > [!IMPORTANT]
+            >
+            > This is an alpha build and may contain bugs.
+
+            > [!TIP]
+            >
+            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
+          files: |
+            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+          prerelease: true
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
