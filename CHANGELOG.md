@@ -49,6 +49,8 @@
 
 - Added Flora option in Skill Maker
 
+- Updated the Skill Maker UI to actually inline the movement button instead of having it on tooltip. This should make it easier to move the commands.
+
 - APKs are now split into different architectures to reduce the APK size with a universal APK option for users who want to have all architectures in one APK. This should help with the installation of the app as well as reduce the storage used by the app.
 - Battle Launcher have now been updated to include more common settings.
 
