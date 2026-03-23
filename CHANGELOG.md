@@ -1,4 +1,6 @@
-# 2463
+# Changelog
+
+## 2463
 
 2026-03-23
 
@@ -161,10 +163,6 @@
 - fix(battle): update EN to the new face card region (ArthurKun21/FGA-Preview#1168) (@ArthurKun21)
 - revert(logging): roll back database logging pending future update (ArthurKun21/FGA-Preview#1169) (@ArthurKun21)
 - feat(launcher): added more Battle Settings (ArthurKun21/FGA-Preview#1170) (@ArthurKun21)
-
-# Changelog
-
-## Unreleased
 
 ### Breaking Changes
 
