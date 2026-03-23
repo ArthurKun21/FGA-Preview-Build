@@ -53,7 +53,7 @@
 
 - EN have now updated its UI to the accomodate the Alignment and Attribute.
 
-    - <img width="795" height="347" alt="image" src="https://webview.fate-go.us/wp-content/uploads/2026/03/0323_olgamally_quest_2/info_06_sf9b1.png" />
+    - <img width="400" height="347" alt="image" src="https://webview.fate-go.us/wp-content/uploads/2026/03/0323_olgamally_quest_2/info_06_sf9b1.png" />
 
 ### Misc
 
