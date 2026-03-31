@@ -10,7 +10,7 @@
 
 #### Support New Feat
 
-- Added new configuration to enable choosing if the user want to match both CE Slot 1 and 3 or just either one of them. Selecting "Either" should match the current behavior of the main repository.
+- Added new configuration to enable choosing if the user wants to match both CE Slot 1 and 3 or just either one of them. Selecting "Either" should match the current behavior of the main repository.
 
 ## 2463
 
