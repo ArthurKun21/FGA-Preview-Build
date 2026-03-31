@@ -5,6 +5,7 @@
 ### Fixes
 
 - Fix the infinite support screen refresh
+- Fix the face card for TW, now all servers uses the new servant face card region.
 
 ### Feat
 
