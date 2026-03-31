@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+
+- Fix the infinite support screen refresh
+
+### Feat
+
+#### Support New Feat
+
+- Added new configuration to enable choosing if the user want to match both CE Slot 1 and 3 or just either one of them. Selecting "Either" should match the current behavior of the main repository.
+
 ## 2463
 
 2026-03-23
