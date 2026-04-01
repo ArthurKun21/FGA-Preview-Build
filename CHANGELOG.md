@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+
+- Fix the infinite support screen refresh
+- Fix the face card for TW, now all servers uses the new servant face card region.
+
+### Feat
+
+#### Support New Feat
+
+- Added new configuration for grand servants to enable choosing if the user wants to match both CE Slot 1 and 3 or just either one of them. Selecting "Either" should match the current behavior of the main repository.
+- Added preloading of supports at the start of battle script. This should help with the user to know if there's any problem with the support images much earlier rather than waiting until the support screen to show up and then finding out that the images are not loading.
+
 ## 2463
 
 2026-03-23
