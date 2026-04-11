@@ -6,6 +6,9 @@
 
 - Fix the infinite support screen refresh
 - Fix the face card for TW, now all servers uses the new servant face card region.
+- Fix the textfield UI for Support Gallery, Library and Material selection screen where the keyboard won't open for Android even though the textfield is focused.
+- Fix the dialog UI for Support Gallery and Preferred Support where the background is transparent instead of solid color.
+- Update the text for `stop on bond level up` to clarify that it is also includes above the selected target bond level as well.
 
 ### Feat
 
