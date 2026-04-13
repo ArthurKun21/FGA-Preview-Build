@@ -1,5 +1,11 @@
 # Changelog
 
+## unreleased
+
+### Feat
+
+- Added ability to start the script at different step of the battle script(Work-in-progress)
+
 ## 2489
 
 2026-04-13
