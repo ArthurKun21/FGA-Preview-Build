@@ -6,6 +6,9 @@
 
 - Added ability to start the script at different step of the battle script(Work-in-progress)
 
+    <img width="300" height="150" alt="image" src="https://github.com/user-attachments/assets/12a3487b-8a6d-4e07-92a8-61d809ff0239" />
+
+
 ## 2489
 
 2026-04-13
