@@ -1,4 +1,6 @@
-# 2489
+# Changelog
+
+## 2489
 
 2026-04-13
 
@@ -28,10 +30,6 @@
 - fix(ui): replace SearchBar with TopAppBar with TextField for better keyboard handling (ArthurKun21/FGA-Preview#1199) (@ArthurKun21)
 - fix: update bond level up stop summary to clarify it also stops when above target level is reached (ArthurKun21/FGA-Preview#1200) (@ArthurKun21)
 - fix(javacv): dll loading issue on windows by using jdk 25 (ArthurKun21/fga-preview#1201) (@ArthurKun21)
-
-# Changelog
-
-## Unreleased
 
 ### Fixes
 
