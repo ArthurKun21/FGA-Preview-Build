@@ -12,6 +12,12 @@
 
     For the initial run, it would override the wave and/or turn based on the wave and turn from the selected step in the battle script. Subsequent runs will follow the normal battle script flow.
 
+### Fixes
+
+#### Battle
+
+- Improve the logic for checking out of commands/off script.
+
 
 ## 2489
 
