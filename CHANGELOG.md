@@ -4,13 +4,13 @@
 
 ### Feat
 
-- Added ability to start the script at different step of the battle script
+- Added the ability to start the script at a different step of the battle script
 
     <img width="300" height="225" alt="image" src="https://github.com/user-attachments/assets/30d50593-3097-47a8-8e0d-a4d8a3a6154b" />
 
     <img width="750" height="367" alt="image" src="https://github.com/user-attachments/assets/9a2879ee-786a-412d-81a0-251fadd24797" />
 
-    For the initial run, it would override the wave and/or turn based on the wave and turn from the selected step in the battle script. Subsequent runs will follow the normal battle script flow.
+    For the initial run, it overrides the wave and/or turn based on the wave and turn from the selected step in the battle script. Subsequent runs will follow the normal battle script flow.
 
 ### Fixes
 
