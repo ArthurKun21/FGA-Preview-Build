@@ -1,10 +1,10 @@
 # Changelog
 
-## unreleased
+## Unreleased
 
 ### Feat
 
-- Added ability to start the script at different step of the battle script(Work-in-progress)
+- Added ability to start the script at different step of the battle script
 
     <img width="300" height="225" alt="image" src="https://github.com/user-attachments/assets/30d50593-3097-47a8-8e0d-a4d8a3a6154b" />
 
