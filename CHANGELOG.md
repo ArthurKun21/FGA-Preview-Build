@@ -17,7 +17,7 @@
 #### Battle
 
 - Improve the logic for checking out of commands/off script.
-
+- When you imported a battle script with an invalid command, running it will cause the app to crash due to the error not being catch properly. Now it will show the error message properly instead of crashing the app.
 
 ## 2489
 
