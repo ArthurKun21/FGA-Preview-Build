@@ -14,7 +14,7 @@
 
 #### BFGO NP Skip
 
-- Updated NP skip detection for better FGO, new logic currently only improves the 1st NP skip detection. For further improvements of the consecutive NP Skip detection. It is going to require a lot of work to make it work reliably so it is going to be a future update.
+- Updated NP skip detection for better FGO, new logic currently only improves the 1st NP skip detection. For further improvements of the consecutive NP Skip detection(2nd and 3rd NP still uses old logic). It is going to require a lot of work to make it work reliably so it is going to be a future update.
 
 ### Fixes
 
