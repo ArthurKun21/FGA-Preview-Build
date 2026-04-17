@@ -12,6 +12,10 @@
 
     For the initial run, it overrides the wave and/or turn based on the wave and turn from the selected step in the battle script. Subsequent runs will follow the normal battle script flow.
 
+#### BFGO NP Skip
+
+- Updated NP skip detection for better FGO. Currently only supports the 1st NP for NP skip detection. For further improvements of the consecutive NP Skip detection. It is going to require a lot of work to make it work reliably so it is going to be a future update.
+
 ### Fixes
 
 #### Battle
