@@ -18,6 +18,10 @@
 
 ### Fixes
 
+#### UI
+
+- I, mistakenly, used `skill1` instead of `servant1` when I was updating the colors for skill maker commands, this caused the colors to be same for `a` `d` and `g` instead of `a` `b` and `c` and so on. This has now been revert back to older color scheme. Also took the opportunity to update the other skill command colors as well.
+
 #### Battle
 
 - Improve the logic for checking out of commands/off script.
