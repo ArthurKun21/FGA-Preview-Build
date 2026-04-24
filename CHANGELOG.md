@@ -6,7 +6,7 @@
 
 - Added the ability to start the script at a different step of the battle script
 
-    <img width="300" height="225" alt="image" src="https://github.com/user-attachments/assets/30d50593-3097-47a8-8e0d-a4d8a3a6154b" />
+    <img width="576" height="382" alt="image" src="https://github.com/user-attachments/assets/132220ad-c212-4447-b016-cb7f53486ef3" />
 
     <img width="750" height="367" alt="image" src="https://github.com/user-attachments/assets/9a2879ee-786a-412d-81a0-251fadd24797" />
 
