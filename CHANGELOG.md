@@ -1,4 +1,6 @@
-# 2508
+# Changelog
+
+## 2508
 
 2026-04-25
 
@@ -21,10 +23,6 @@
 - Update dependency org.jetbrains.androidx.navigation3:navigation3 to v1.1.0 (ArthurKun21/FGA-Preview#1223) (@renovate[bot])
 - fix(ui): start command selector collapsed by default (ArthurKun21/FGA-Preview#1227) (@ArthurKun21)
 - docs: create DESIGN.md (ArthurKun21/fga-preview#1228) (@ArthurKun21)
-
-# Changelog
-
-## Unreleased
 
 ### Feat
 
