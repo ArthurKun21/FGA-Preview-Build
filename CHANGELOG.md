@@ -1,5 +1,32 @@
 # Changelog
 
+## Unreleased
+
+### Feat
+
+- Added the ability to start the script at a different step of the battle script
+
+    <img width="576" height="382" alt="image" src="https://github.com/user-attachments/assets/132220ad-c212-4447-b016-cb7f53486ef3" />
+
+    <img width="750" height="367" alt="image" src="https://github.com/user-attachments/assets/9a2879ee-786a-412d-81a0-251fadd24797" />
+
+    For the initial run, it overrides the wave and/or turn based on the wave and turn from the selected step in the battle script. Subsequent runs will follow the normal battle script flow.
+
+#### BFGO NP Skip
+
+- Updated NP skip detection for better FGO, new logic currently only improves the 1st NP skip detection. For further improvements of the consecutive NP Skip detection(2nd and 3rd NP still uses old logic). It is going to require a lot of work to make it work reliably so it is going to be a future update.
+
+### Fixes
+
+#### UI
+
+- I, mistakenly, used `skill1` instead of `servant1` when I was updating the colors for skill maker commands, this caused the colors to be same for `a` `d` and `g` instead of `a` `b` and `c` and so on. This has now been revert back to older color scheme. Also took the opportunity to update the other skill command colors as well.
+
+#### Battle
+
+- Improve the logic for checking out of commands/off script.
+- When you imported a battle script with an invalid command, running it will cause the app to crash due to the error not being catch properly. Now it will show the error message properly instead of crashing the app.
+
 ## 2489
 
 2026-04-13
