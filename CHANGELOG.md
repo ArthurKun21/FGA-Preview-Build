@@ -1,12 +1,10 @@
+# Changelog
+
 # 2509
 
 2026-04-26
 
 - feat(skill-maker): add support for Prelati (ArthurKun21/FGA-Preview#1231) (@ArthurKun21)
-
-# Changelog
-
-## Unreleased
 
 ### Feat
 
