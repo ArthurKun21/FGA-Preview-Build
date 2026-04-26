@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Feat
+
+- Added [Prelati](https://apps.atlasacademy.io/db/JP/servant/467) to the Skill Maker
+
+    <img width="200" height="200" alt="image" src="https://static.atlasacademy.io/JP/Faces/f_5056000.png" />
+
 ## 2508
 
 2026-04-25
