@@ -6,7 +6,9 @@
 
 - Added [Prelati](https://apps.atlasacademy.io/db/JP/servant/467) to the Skill Maker
 
-    <img width="200" height="200" alt="image" src="https://static.atlasacademy.io/JP/Faces/f_5056000.png" />
+    <img width="150" height="150" alt="image" src="https://static.atlasacademy.io/JP/Faces/f_5056000.png" />
+
+    <img width="429" height="92" alt="image" src="https://github.com/user-attachments/assets/3029a130-188e-455e-93a7-7824d7c77274" />
 
 ## 2508
 
