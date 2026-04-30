@@ -58,6 +58,8 @@ jobs:
           fi
       - name: Prepare build
         id: prepare_build
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
@@ -77,11 +79,8 @@ jobs:
           echo "PREV_RELEASE_SHA=$prev_release_sha" >> $GITHUB_ENV
 
           echo "COMMIT_LOGS<<{delimiter}
-          $(curl -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: Bearer ${{ secrets.PAT }}" \
-            "https://api.github.com/repos/Arthurkun21/fga-preview/compare/$prev_release_sha...$current_sha" \
-            | jq '[.commits[]|{message:(.commit.message | split("\n")), username:(.author.login // .committer.login // "unknown")}]' \
-            | jq -r '.[]|"- \(.message | first) (`@\(.username)`)"')
+          $(gh api "repos/Arthurkun21/fga-preview/compare/$prev_release_sha...$current_sha" \
+            --jq '.commits[] | "- \(.commit.message | split("\n")[0]) (`@\(.author.login // .committer.login // "unknown")`)"')
           {delimiter}" >> $GITHUB_ENV
       - name: Prepare changelog
         id: prepare_changelog
