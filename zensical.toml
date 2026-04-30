@@ -13,6 +13,9 @@ use_directory_urls = true
 
 extra_css = ["stylesheets/extra.css"]
 
+# Generated from docs/.nav.yml and docs/changelog/.nav.yml by scripts/generate_zensical_config.py.
+# Do not edit this block manually.
+# BEGIN GENERATED NAV
 nav = [
   { "Home" = "index.md" },
   { "Posts" = ["post/auto-level-ce-and-ce-exp-bomb.md", "post/grand-duels.md", "post/install-via-obtanium.md"] },
@@ -26,6 +29,7 @@ nav = [
   { "Other Scripts" = ["other-scripts/friend-point-gacha.md", "other-scripts/gift-box.md", "other-scripts/lottery.md", "other-scripts/play-button-detection.md", "other-scripts/support-image-maker.md"] },
   { "Changelog" = ["changelog/pre-2509.md", "changelog/pre-2508.md", "changelog/pre-2489.md", "changelog/pre-2463.md", "changelog/pre-2304.md", "changelog/pre-2292.md", "changelog/pre-2288.md", "changelog/pre-2278.md", "changelog/pre-2273.md", "changelog/pre-2267.md", "changelog/pre-2263.md", "changelog/pre-2262.md", "changelog/pre-2253.md", "changelog/pre-2252.md", "changelog/pre-2249.md", "changelog/pre-2245.md", "changelog/pre-2208.md", "changelog/pre-2186.md", "changelog/pre-2178.md", "changelog/pre-2163.md", "changelog/pre-2152.md", "changelog/pre-2148.md", "changelog/pre-2146.md", "changelog/pre-2138.md", "changelog/pre-2133.md", "changelog/pre-2126.md", "changelog/pre-2124.md", "changelog/pre-2120.md", "changelog/pre-2116.md", "changelog/pre-2106.md", "changelog/pre-2100.md", "changelog/pre-2098.md", "changelog/pre-2095.md", "changelog/pre-2092.md", "changelog/pre-2090.md", "changelog/pre-2085.md", "changelog/pre-2079.md", "changelog/pre-2075.md", "changelog/pre-2074.md", "changelog/pre-2061.md"] },
 ]
+# END GENERATED NAV
 
 [project.extra]
 generator = false
