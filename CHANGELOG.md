@@ -1,6 +1,15 @@
 # Changelog
 
-# 2509
+## Unreleased
+
+### Breaking Changes
+
+#### Command Card Selection
+
+- Card Priority, Servant Priority and etc now supports turn based configuration.
+- We have now updated how the card priority, servant priority and etc are being written. Any configs updated after this version will be unable to be used on prior versions.
+
+## 2509
 
 2026-04-26
 
