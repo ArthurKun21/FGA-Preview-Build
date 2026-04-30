@@ -5,49 +5,65 @@ on:
       - main
     paths:
       - 'docs/**'
-      - mkdocs.yml
+      - '.python-version'
+      - 'pyproject.toml'
+      - 'zensical.toml'
       - '.github/workflows/docs.yml'
   pull_request:
     branches:
       - docs/**
     paths:
       - 'docs/**'
-      - mkdocs.yml
+      - '.python-version'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'zensical.toml'
       - '.github/workflows/docs.yml'
   # Manual triggers
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  publish-docs:
+  build-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v6
+      - uses: actions/configure-pages@v5
+
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
-          python-version: '3.11'
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+          python-version: '3.14'
+          enable-cache: true
+          cache-python: true
 
-      - uses: actions/cache@v5
+      - name: Sync locked dependencies
+        run: uv sync --locked
+
+      - name: Build documentation site
+        run: uv run zensical build --clean --config-file zensical.toml
+
+      - uses: actions/upload-pages-artifact@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: ~/.cache 
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install -r .github/workflows/requirements.txt
+          path: site
 
-      - run: mkdocs gh-deploy --force
-
+  deploy-docs:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build-docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

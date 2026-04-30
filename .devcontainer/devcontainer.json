@@ -22,11 +22,11 @@
 			]
 		},
 		"settings": {
-			"python.defaultInterpreterPath": "/usr/local/bin/python",
+			"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
 			"terminal.integrated.defaultProfile.linux": "bash"
 		}
 	},
-	"postCreateCommand": "pip install -r .github/workflows/requirements.txt",
+	"postCreateCommand": "python -m pip install uv && uv sync --locked",
 	"remoteUser": "vscode",
 	"portsAttributes": {
 		"8000": {
