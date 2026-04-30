@@ -8,6 +8,7 @@
 
 - Card Priority, Servant Priority and etc now supports turn based configuration.
 - We have now updated how the card priority, servant priority and etc are being written. Any configs updated after this version will be unable to be used on prior versions.
+- `Use Servant Priority` is now turned into `Enable Servant Priority`, and you can now adjust if you want servant priority or not per wave and/or turn.
 
 ## 2509
 
