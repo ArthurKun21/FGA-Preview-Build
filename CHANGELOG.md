@@ -10,6 +10,9 @@
 - Updated the serialization format for Card and Servant Priority. Configurations saved in this version are not backward-compatible with older versions but still maintains backward-compatibility with older versions.
 - Changed the text for new wave configuration from `"\n"` to `"[w]"` and added `"[t]"` for the new turn configuration.
 - `Use Servant Priority` is now turned into `Enable Servant Priority`, and you can now adjust if you want servant priority or not per wave and/or turn.
+
+    <img width="774" height="84" alt="image" src="https://github.com/user-attachments/assets/d5f895bf-1be0-48a1-b5d2-13b8be0855bf" />
+
 - Increase card priority waves from 3 to 4
 
 ### Fix
@@ -17,7 +20,10 @@
 - There were some problem in UI where setting NPs causes it to be sorted out. We already address this problem
     - For technical reason, it was due to us using set instead of list causing it to lost the order, we have now moved it to List
 - When users are manually navigating away from support screen while the auto battle is on, it will cause an infinite loop with the script. We have now fixed this by adding a checking the screen and exit that portion of the script when no longer in the support screen.
-- We have now fixed the preferred support selection and it will now sorted the already selected supports on opening preferred support selection screen.
+- We have now fixed the preferred support selection and it will now sorted the already selected supports on opening preferred support selection screen. This got broken when we migrated from manual query to using database.
+
+    <img width="532" height="410" alt="image" src="https://github.com/user-attachments/assets/51fe5dc6-c640-49a6-9ff5-2cda189d7251" />
+  
 - Fixed the Battle Launcher not updating all of the battle config data causing incorrect values on the summary screen.
 
 ### Feat
