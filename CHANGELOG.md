@@ -1,4 +1,6 @@
-# 2541
+# Changelog
+
+## 2541
 
 2026-05-08
 
@@ -34,10 +36,6 @@
 - Update dependency androidx.paging:paging-compose to v3.5.0 (ArthurKun21/fga-preview#1266) (@renovate[bot])
 - Update dependency org.jetbrains.kotlinx:kotlinx-datetime to v0.8.0-0.6.x-compat (ArthurKun21/FGA-Preview#1267) (@renovate[bot])
 - feat(ui): change the wave/turn buttons to fab in command card screen (ArthurKun21/FGA-Preview#1269) (@ArthurKun21)
-
-# Changelog
-
-## Unreleased
 
 ### Breaking Changes
 
