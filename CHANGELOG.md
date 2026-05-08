@@ -23,6 +23,9 @@
 ### Feat
 
 - Added tracking of preferred support Servants/CEs/Friends. Can show you how many time a certain preferred support got picked
+- Added tracking of last script exit window. You can now see the results of your last script run if you accidentally closed the results fast.
+
+    <img width="174" height="87" alt="image" src="https://github.com/user-attachments/assets/7a442c8c-5b0f-404f-9d59-e4a4445286b8" />
 
 ## 2509
 
