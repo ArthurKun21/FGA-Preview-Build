@@ -1,6 +1,41 @@
 # Changelog
 
-## Unreleased
+## 2541
+
+2026-05-08
+
+- feat(battle): Card Priority Per Turn setup (ArthurKun21/FGA-Preview#1232) (@ArthurKun21)
+- feat(battle): add toggle servant priority per wave and/or turn (ArthurKun21/FGA-Preview#1233) (@ArthurKun21)
+- feat(battle): Servant Priority per Turn setup (ArthurKun21/FGA-Preview#1234) (@ArthurKun21)
+- chore(battle): centralized crud command card data operations (ArthurKun21/FGA-Preview#1236) (@ArthurKun21)
+- feat(battle): Brave Chain per Turn setup (ArthurKun21/FGA-Preview#1239) (@ArthurKun21)
+- feat(battle): Rearrange Card per Turn setup (ArthurKun21/FGA-Preview#1240) (@ArthurKun21)
+- feat(ui): Add support for creating turn config at command card screen (ArthurKun21/FGA-Preview#1241) (@ArthurKun21)
+- Update dependency io.ktor:ktor-client-java to v3.4.3 (ArthurKun21/FGA-Preview#1225) (@renovate[bot])
+- Update kotlin to v2.3.21 (ArthurKun21/FGA-Preview#1226) (@renovate[bot])
+- Update metro to v1 (ArthurKun21/FGA-Preview#1235) (@renovate[bot])
+- Update onnxruntime to v1.25.1 (ArthurKun21/FGA-Preview#1237) (@renovate[bot])
+- Update Gradle to v9.5.0 (ArthurKun21/FGA-Preview#1238) (@renovate[bot])
+- chore(skill-maker): Remove Start SkillMakerEntry and related logic (ArthurKun21/FGA-Preview#1249) (@ArthurKun21)
+- feat(data): added 2nd Ok template for KR (ArthurKun21/FGA-Preview#1250) (@ArthurKun21)
+- chore(skill-maker): simplify SkillMakerEntryModel methods and logic (ArthurKun21/FGA-Preview#1251) (@ArthurKun21)
+- feat(skill-maker): implement dsl configuration for special skills (ArthurKun21/fga-preview#1252) (@ArthurKun21)
+- feat(di): Metro modernization (ArthurKun21/fga-preview#1254) (@ArthurKun21)
+- fix: update highlight logic for image matching (ArthurKun21/FGA-Preview#1255) (@ArthurKun21)
+- fix(skill-maker): NPs getting sorted, should follow order (ArthurKun21/fga-preview#1257) (@ArthurKun21)
+- feat(battle): increase max waves for card priority from 3 to 4 (ArthurKun21/fga-preview#1258) (@ArthurKun21)
+- feat(support): Track preferred support picks during auto-battle runs (ArthurKun21/fga-preview#1259) (@ArthurKun21)
+- fix(support): Break loop when user navigated away from support screen (ArthurKun21/FGA-Preview#1260) (@ArthurKun21)
+- Update filekit to v0.14.1 (ArthurKun21/FGA-Preview#1253) (@renovate[bot])
+- Update dependency org.jetbrains.androidx.navigation3:navigation3-ui to v1.1.1 (ArthurKun21/FGA-Preview#1261) (@renovate[bot])
+- Update agp to v9.2.1 (ArthurKun21/FGA-Preview#1262) (@renovate[bot])
+- fix(ui): Prioritize selected support entries in support selection (ArthurKun21/FGA-Preview#1263) (@ArthurKun21)
+- fix(launcher): battle config data are missing some data and uses default (ArthurKun21/FGA-Preview#1264) (@ArthurKun21)
+- feat(ui): track and re-display last script exit status (ArthurKun21/fga-preview#1246) (@ArthurKun21)
+- feat(data): integrate database with image loader of support images (ArthurKun21/fga-preview#1265) (@ArthurKun21)
+- Update dependency androidx.paging:paging-compose to v3.5.0 (ArthurKun21/fga-preview#1266) (@renovate[bot])
+- Update dependency org.jetbrains.kotlinx:kotlinx-datetime to v0.8.0-0.6.x-compat (ArthurKun21/FGA-Preview#1267) (@renovate[bot])
+- feat(ui): change the wave/turn buttons to fab in command card screen (ArthurKun21/FGA-Preview#1269) (@ArthurKun21)
 
 ### Breaking Changes
 
@@ -8,7 +43,8 @@
 
 - Card Priority, Servant Priority, etc., now support turn-based configuration.
 - Updated the serialization format for Card and Servant Priority. Configurations saved in this version are not backward-compatible with older versions but still maintains backward-compatibility with older versions.
-- Changed the text for new wave configuration from `"\n"` to `"[w]"` and added `"[t]"` for the new turn configuration.
+- Changed the text for new wave configuration from `"
+"` to `"[w]"` and added `"[t]"` for the new turn configuration.
 - `Use Servant Priority` is now turned into `Enable Servant Priority`, and you can now adjust if you want servant priority or not per wave and/or turn.
 - Increase card priority waves from 3 to 4
 
