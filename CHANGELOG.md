@@ -10,10 +10,11 @@
 - Updated the serialization format for Card and Servant Priority. Configurations saved in this version are not backward-compatible with older versions but still maintains backward-compatibility with older versions.
 - Changed the text for new wave configuration from `"\n"` to `"[w]"` and added `"[t]"` for the new turn configuration.
 - `Use Servant Priority` is now turned into `Enable Servant Priority`, and you can now adjust if you want servant priority or not per wave and/or turn.
-
-    <img width="774" height="84" alt="image" src="https://github.com/user-attachments/assets/d5f895bf-1be0-48a1-b5d2-13b8be0855bf" />
-
 - Increase card priority waves from 3 to 4
+
+<img width="524" height="355" alt="image" src="https://github.com/user-attachments/assets/ea653f95-32d9-4012-8f00-72049f740209" />
+
+<img width="774" height="84" alt="image" src="https://github.com/user-attachments/assets/d5f895bf-1be0-48a1-b5d2-13b8be0855bf" />
 
 ### Fix
 
