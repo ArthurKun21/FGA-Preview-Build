@@ -7,18 +7,18 @@
 - Battle script got its own script execution updated with scheduler.
   - BFGO NP Skip was given higher priority at certain points of time making it reliable to skip 3 NPs in a row.
   - Some parts of the battle script are turned off at certain points in time
-  - Some of the screen checks are only check every N turn at certain period of time due to unlikely to match.
+  - Some of the screen checks are only checked every N turns during certain periods of time because they are unlikely to match.
   - The above changes should, in theory, reduce the processing power needed due to not checking all of the screen matches every time.
 - Added missing image template for the Command Spell for KR/CN/TW (untested, but should work in theory)
-- Added Command Card Screen detection(will be referred as Attack screen)
+- Added Command Card Screen detection (will be referred to as the Attack screen)
   - This is the part of the battle script where you will have to choose command cards
-  - In case there was a lag, the script should be able to recover if it was this as the starting point
+  - In case of a lag, the script should be able to recover using this as the starting point
 - Added retry to open the attack screen.
-  - Often lag can make unable to open attack screen. We have added retry to it.
+  - Often, lag can prevent the attack screen from opening. We have added a retry mechanism for this.
 
 ### Fixes
 
-- Updated the library for floating button, it should help with the floating button sometimes are not updating.
+- Updated the library for the floating button, which should help resolve issues where the floating button sometimes does not update.
 
 ## 2541
 
