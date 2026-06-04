@@ -16,6 +16,10 @@
 - Added retry to open the attack screen.
   - Often lag can make unable to open attack screen. We have added retry to it.
 
+### Fixes
+
+- Updated the library for floating button, it should help with the floating button sometimes are not updating.
+
 ## 2541
 
 2026-05-08
