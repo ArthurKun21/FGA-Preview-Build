@@ -15,6 +15,7 @@
   - In case of a lag, the script should be able to recover using this as the starting point
 - Added retry to open the attack screen.
   - Often, lag can prevent the attack screen from opening. We have added a retry mechanism for this.
+- Partial Support for Android 17
 
 ### Fixes
 
