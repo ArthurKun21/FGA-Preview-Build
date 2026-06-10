@@ -16,10 +16,19 @@
 - Added retry to open the attack screen.
   - Often, lag can prevent the attack screen from opening. We have added a retry mechanism for this.
 - Partial Support for Android 17
+- Added two new materials
+  - https://apps.atlasacademy.io/db/JP/item/6564
+    
+    ![Pearl of Creation](https://static.atlasacademy.io/JP/Items/6564.png)
+
+  - https://apps.atlasacademy.io/db/JP/item/6565
+
+    ![Black Sea Amber](https://static.atlasacademy.io/JP/Items/6565.png)
 
 ### Fixes
 
 - Updated the library for the floating button, which should help resolve issues where the floating button sometimes does not update.
+
 
 ## 2541
 
