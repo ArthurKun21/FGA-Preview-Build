@@ -28,6 +28,7 @@
 ### Fixes
 
 - Updated the library for the floating button, which should help resolve issues where the floating button sometimes does not update.
+- Support Image Maker was crashing because I accidentally deleted a string, re-added now.
 
 
 ## 2541
