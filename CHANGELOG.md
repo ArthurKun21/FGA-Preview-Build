@@ -28,7 +28,7 @@
 ### Fixes
 
 - Support Image Maker was crashing because I accidentally deleted a string, re-added now.
-
+- Database crash loading on the Battle configs should be resolved now
 
 ## 2541
 
