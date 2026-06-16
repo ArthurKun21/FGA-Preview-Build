@@ -24,6 +24,7 @@
   - https://apps.atlasacademy.io/db/JP/item/6565
 
     ![Black Sea Amber](https://static.atlasacademy.io/JP/Items/6565.png)
+- Minor performance upgrade thanks to the updated opencv to v5
 
 ### Fixes
 
