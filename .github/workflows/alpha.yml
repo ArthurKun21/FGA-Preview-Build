@@ -131,7 +131,7 @@ jobs:
           cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
       
       - name: Create release on forked repo
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
+        uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3.0.1
         if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
@@ -164,7 +164,7 @@ jobs:
           token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
 
       - name: Create release
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
+        uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3.0.1
         if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
