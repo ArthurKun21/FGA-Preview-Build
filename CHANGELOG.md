@@ -1,4 +1,10 @@
-# 2614
+# Changelog
+
+## Unreleased
+
+None
+
+## pre-2614
 
 2026-06-22
 
@@ -76,10 +82,6 @@
 - Update spotless to v8.7.0 (ArthurKun21/fga-preview#1353) (@renovate[bot])
 - chore: minor project tools update (ArthurKun21/FGA-Preview#1354) (@ArthurKun21)
 
-# Changelog
-
-## Unreleased
-
 ### New features
 
 - Battle script got its own script execution updated with scheduler.
@@ -107,7 +109,6 @@
 ### Fixes
 
 - Support Image Maker was crashing because I accidentally deleted a string, re-added now.
-- Database crash loading on the Battle configs should be resolved now
 
 ## 2541
 
