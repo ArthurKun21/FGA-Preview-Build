@@ -2,8 +2,8 @@ name: Dry Run
 
 on:
   # Everyday at 00:00 UTC
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
   # Manual triggers
   workflow_dispatch:
     inputs:
