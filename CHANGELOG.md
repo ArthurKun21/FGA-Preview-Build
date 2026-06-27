@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-### New features
+### Breaking Changes
 
 - Migration of Battle Configs' shared preferences into Protobuf backed by Proto Datastore.
   - Exporting of configs now would be `.pb` instead of `.json`.
@@ -10,6 +10,9 @@
 - Preferred Servants now have been updated thanks to the migration:
   - Each servants now have their own setup (`Skills`, `Appends`, `NP Level`, etc)
   - Each servants now have local CE and friend configuration. Adding this up would mean it would override the global CE option
+- NP Cards and Command Cards are now explicitly shown.
+  - Also added `{` and `}` at the start and end of the action cards.
+  - Any `n` on the action cards denotes `command card` hence `{4n6}` is NP Servant 1, Command Card, NP Servant 3
 
 ## pre-2614
 
