@@ -2,7 +2,14 @@
 
 ## Unreleased
 
-None
+### New features
+
+- Migration of Battle Configs' shared preferences into Protobuf backed by Proto Datastore.
+  - Exporting of configs now would be `.pb` instead of `.json`.
+  - Importing of configs now have two options: `.pb` the new format and `.json` for the backwards compatibility.
+- Preferred Servants now have been updated thanks to the migration:
+  - Each servants now have their own setup (`Skills`, `Appends`, `NP Level`, etc)
+  - Each servants now have local CE and friend configuration. Adding this up would mean it would override the global CE option
 
 ## pre-2614
 
