@@ -14,7 +14,11 @@
   - Also added `{` and `}` at the start and end of the action cards.
   - Any `n` on the action cards denotes `command card` hence `{4n6}` is NP Servant 1, Command Card, NP Servant 3
 - Multiple Scripts in the same battle config is now available.
-  - UI is still basic, still working on this
+  - UI is still basic, still working on this.
+
+### New features
+
+- Added baseline profiles, should make the startup a bit faster.
 
 ## pre-2614
 
