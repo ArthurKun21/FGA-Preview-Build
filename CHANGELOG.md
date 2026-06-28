@@ -20,6 +20,10 @@
 
 - Added baseline profiles, should make the startup a bit faster.
 
+### Fixes
+
+- Removing of battle config should not crash the battle launcher
+
 ## pre-2614
 
 2026-06-22
