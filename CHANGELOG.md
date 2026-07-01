@@ -2,7 +2,27 @@
 
 ## Unreleased
 
-None
+### Breaking Changes
+
+- Migration of Battle Configs' shared preferences into Protobuf backed by Proto Datastore.
+  - Exported configs are now would be `.pb` instead of `.json`.
+  - Importing configs now supports two formats: `.pb`(the new format) and `.json` (for the backwards compatibility).
+- Preferred Servants now have been updated thanks to the migration:
+  - Each servant now has its own setup (`Skills`, `Appends`, `NP Level`, etc)
+  - Each servant now has local CE and friend configurations, which override the global CE and friend option.
+- NP Cards and Command Cards are now explicitly shown.
+  - Also added `{` and `}` at the start and end of the action cards.
+  - Any `n` on the action cards denotes `command card` hence `{4n6}` is NP Servant 1, Command Card, NP Servant 3
+- Multiple Scripts in the same battle config is now available.
+  - UI is still basic, still working on this.
+
+### New features
+
+- Added baseline profiles, should make the startup a bit faster.
+
+### Fixes
+
+- Removing of battle config should not crash the battle launcher
 
 ## pre-2614
 
