@@ -19,6 +19,8 @@
 ### New features
 
 - Added baseline profiles, should make the startup a bit faster.
+- Added Support for Leveling Append 4 and 5 for all servers
+- Added Support for selecting Append 4 and 5 in Preferred Support Servant
 
 ### Fixes
 
