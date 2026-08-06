@@ -125,28 +125,24 @@ jobs:
       - name: Clean up build artifacts
         if: ${{ env.commit_count_diff > 0 }}
         run: |
-          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
 
-          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
       
       - name: Create release on forked repo
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         if: ${{ env.commit_count_diff > 0 }}
         with:
-          tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
-          name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
+          tag_name: wip-${{ env.COMMIT_COUNT }}-alpha
+          name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}
           repository: ArthurKun21/FGA
           body: |
             # Alpha-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
-
-            ## Commits
-
-            ${{ env.COMMIT_LOGS }}
             
             > [!IMPORTANT]
             >
@@ -154,13 +150,13 @@ jobs:
 
             > [!TIP]
             >
-            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
+            > If you are unsure which version to download then go with `fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk`
           files: |
-            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: true
           draft: true
           token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
@@ -169,16 +165,12 @@ jobs:
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         if: ${{ env.commit_count_diff > 0 }}
         with:
-          tag_name: pre-${{ env.COMMIT_COUNT }}-alpha
-          name: FGA Preview - Alpha ${{ env.COMMIT_COUNT }}
+          tag_name: wip-${{ env.COMMIT_COUNT }}-alpha
+          name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}
           body: |
             # Alpha-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
-
-            ## Commits
-
-            ${{ env.COMMIT_LOGS }}
             
             > [!IMPORTANT]
             >
@@ -186,13 +178,13 @@ jobs:
 
             > [!TIP]
             >
-            > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk`
+            > If you are unsure which version to download then go with `fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk`
           files: |
-            fga-preview-alpha-build-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
+            fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
           prerelease: true
           draft: true
         env:
