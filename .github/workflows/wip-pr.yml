@@ -82,11 +82,11 @@ jobs:
           name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
           repository: ArthurKun21/FGA
           body: |
-            # Alpha-${{ env.COMMIT_COUNT }}
+            # WIP-Alpha-${{ env.COMMIT_COUNT }}
             
             > [!IMPORTANT]
             >
-            > This is an alpha build and may contain bugs.
+            > This is an alpha build and may contain bugs. Currently work-in-progress alpha build.
 
             > [!TIP]
             >
@@ -107,11 +107,11 @@ jobs:
           tag_name: wip-${{ env.COMMIT_COUNT }}-alpha-${{ env.TIME_STAMP }}
           name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
           body: |
-            # Alpha-${{ env.COMMIT_COUNT }}
+            # WIP-Alpha-${{ env.COMMIT_COUNT }}
             
             > [!IMPORTANT]
             >
-            > This is an alpha build and may contain bugs.
+            > This is an alpha build and may contain bugs. Currently work-in-progress alpha build.
 
             > [!TIP]
             >
