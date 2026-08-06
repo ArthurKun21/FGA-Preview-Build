@@ -17,8 +17,8 @@ jobs:
     runs-on: macos-latest
     env:
       COMMIT_COUNT: 0
-      FGA_VERSION_CODE: 0
-      FGA_VERSION_NAME: ''
+      FGA_VERSION_CODE: 1
+      FGA_VERSION_NAME: '0.1.0'
       TIME_STAMP: ""
     permissions:
       contents: write
