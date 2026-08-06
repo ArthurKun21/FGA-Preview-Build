@@ -83,8 +83,6 @@ jobs:
           repository: ArthurKun21/FGA
           body: |
             # Alpha-${{ env.COMMIT_COUNT }}
-
-            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
             
             > [!IMPORTANT]
             >
@@ -110,8 +108,6 @@ jobs:
           name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
           body: |
             # Alpha-${{ env.COMMIT_COUNT }}
-
-            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
             
             > [!IMPORTANT]
             >
