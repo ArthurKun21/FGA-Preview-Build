@@ -15,19 +15,10 @@ env:
 jobs:
   build-app:
     runs-on: macos-latest
-    outputs:
-      CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.CREATE_RELEASE }}
-      CHANGELOG: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
-      COMMIT_COUNT_OUTPUT: ${{ steps.prepare_build.outputs.COMMIT_COUNT_OUTPUT }}
     env:
-      commit_count_diff: 0
-      PREV_RELEASE_SHA: ''
-      CURRENT_SHA: ''
       COMMIT_COUNT: 0
       FGA_VERSION_CODE: 0
       FGA_VERSION_NAME: ''
-      COMMIT_LOGS: ''
-      TAG_NAME: ''
     permissions:
       contents: write
       discussions: write
@@ -63,59 +54,20 @@ jobs:
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
-          echo "COMMIT_COUNT_OUTPUT=$commit_count" >> $GITHUB_OUTPUT
-          current_sha=$(git rev-parse --short HEAD)
-          echo "CURRENT_SHA=$current_sha" >> $GITHUB_ENV
-          
-          echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
-          echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
-
-          prev_commit_count=$(echo "${{ env.TAG_NAME }}" | sed -E 's/^pre-([0-9]+)(-alpha)?$/\1/')
-
-          commit_count_diff=$(($commit_count - $prev_commit_count))
-          echo "commit_count_diff=$commit_count_diff" >> $GITHUB_ENV
-
-          prev_release_sha=$(git rev-parse --short HEAD~$commit_count_diff)
-          echo "PREV_RELEASE_SHA=$prev_release_sha" >> $GITHUB_ENV
-
-          echo "COMMIT_LOGS<<{delimiter}
-          $(curl -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: Bearer ${{ secrets.PAT }}" \
-            "https://api.github.com/repos/Arthurkun21/fga-preview/compare/$prev_release_sha...$current_sha" \
-            | jq '[.commits[]|{message:(.commit.message | split("\n")), username:.author.login}]' \
-            | jq -r '.[]|"- \(.message | first) (@\(.username))"')
-          {delimiter}" >> $GITHUB_ENV
-      - name: Prepare changelog
-        id: prepare_changelog
-        if: ${{ env.commit_count_diff > 0 }}
-        run: |
-          # Get the current date
-          CURRENT_DATE=$(date +"%Y-%m-%d")
-
-          CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}"
-          
-          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "CREATE_RELEASE=true" >> $GITHUB_OUTPUT
 
       - name: Validate Gradle Wrapper
-        if: ${{ env.commit_count_diff > 0 }}
         uses: gradle/actions/wrapper-validation@v6.2.0
       
-      - name: Set up JDK 21
-        if: ${{ env.commit_count_diff > 0 }}
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v5
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRO }}
   
       - name: Set up gradle
-        if: ${{ env.commit_count_diff > 0 }}
         uses: gradle/actions/setup-gradle@v6.2.0
     
       - name: Build Android Package
-        if: ${{ env.commit_count_diff > 0 }}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -123,7 +75,6 @@ jobs:
           ./gradlew assembleCi --parallel --no-daemon
       
       - name: Clean up build artifacts
-        if: ${{ env.commit_count_diff > 0 }}
         run: |
           cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
 
@@ -134,7 +85,6 @@ jobs:
       
       - name: Create release on forked repo
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
-        if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: wip-${{ env.COMMIT_COUNT }}-alpha
           name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}
@@ -163,7 +113,6 @@ jobs:
 
       - name: Create release
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
-        if: ${{ env.commit_count_diff > 0 }}
         with:
           tag_name: wip-${{ env.COMMIT_COUNT }}-alpha
           name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}
