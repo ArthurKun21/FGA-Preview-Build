@@ -37,19 +37,7 @@ jobs:
         with:
           fetch-depth: 0
           path: 'preview'
-      - name: Get previous release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd preview
-          OUTPUT=$(gh release list --exclude-drafts --json tagName --limit 1 --jq 'select(length > 0) | .[0].tagName')
-          if [ -n "$OUTPUT" ]; then
-            echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
-            echo "Latest Tag: $OUTPUT"
-          else
-            echo "Failed to get repository information"
-            exit 1
-          fi
+
       - name: Prepare build
         id: prepare_build
         run: |
