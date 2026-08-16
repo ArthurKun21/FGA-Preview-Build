@@ -48,7 +48,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd preview
-          OUTPUT=$(gh release list --exclude-drafts --json tagName --limit 1 --jq 'select(length > 0) | .[0].tagName')
+          OUTPUT=$(gh release list \
+            --exclude-drafts \
+            --json tagName \
+            --limit 100 \
+            --jq '[.[] | select(.tagName | test("^pre-[0-9]+-alpha$"))] | .[0].tagName')
+                    
           if [ -n "$OUTPUT" ]; then
             echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
             echo "Latest Tag: $OUTPUT"
