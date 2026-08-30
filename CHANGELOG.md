@@ -25,6 +25,7 @@
 ### Fixes
 
 - Removing of battle config should not crash the battle launcher
+- Duplicate keys causes error when using `CN` locale
 
 ## pre-2614
 
