@@ -21,7 +21,7 @@ env:
   JAVA_DISTRO: 'temurin'
 
 jobs:
-  build-app:
+  android-app:
     runs-on: macos-latest
     permissions:
       contents: write
