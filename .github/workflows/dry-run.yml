@@ -169,6 +169,9 @@ jobs:
           ./gradlew :desktopApp:suggestRuntimeModules
       
       - name: Build Desktop Release for ${{ matrix.os }}
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew :DesktopApp:packageGraalvmNativeDistributionForCurrentOS
       
