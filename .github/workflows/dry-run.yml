@@ -170,7 +170,7 @@ jobs:
       
       - name: Build Desktop Release for ${{ matrix.os }}
         run: |
-          ./gradlew :DesktopApp:packageReleaseDistributionForCurrentOS
+          ./gradlew :DesktopApp:packageGraalvmNativeDistributionForCurrentOS
       
       - name: Upload ${{ matrix.os }} Build
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
