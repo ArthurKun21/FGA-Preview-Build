@@ -11,6 +11,10 @@ on:
         description: 'Upload Build to GitHub Actions'
         required: false
         default: 'false'
+      suggest_runtime:
+        description: 'Suggest Runtime Modules'
+        required: false
+        default: 'false'
       repo_branch:
         description: 'Repository branch to build from'
         required: false
@@ -158,6 +162,11 @@ jobs:
   
       - name: Set up gradle
         uses: gradle/actions/setup-gradle@v6.3.0
+      
+      - name: Suggest Runtime modules for ${{ matrix.os }}
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.suggest_runtime == 'true' || github.event.inputs.suggest_runtime == true) }}
+        run: |
+          ./gradlew :desktopApp:suggestRuntimeModules
       
       - name: Build Desktop Release for ${{ matrix.os }}
         run: |
