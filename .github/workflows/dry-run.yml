@@ -135,10 +135,17 @@ jobs:
           token: ${{ secrets.PAT }}
           ref: ${{ github.event.inputs.repo_branch || 'development' }}
 
-      - name: Prepare build
+      - name: Prepare build (macos/ubuntu)
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
+      
+      - name: Prepare build (windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          $commit_count = git rev-list --count HEAD
+          "COMMIT_COUNT=$commit_count" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v6.3.0
