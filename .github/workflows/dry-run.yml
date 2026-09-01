@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       upload_build:
-        description: 'Upload APK to GitHub Actions'
+        description: 'Upload Build to GitHub Actions'
         required: false
         default: 'false'
       repo_branch:
