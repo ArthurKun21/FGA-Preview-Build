@@ -167,5 +167,5 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
         uses: actions/upload-artifact@v7
         with:
-          name: fga-desktop-alpha-${{ env.COMMIT_COUNT }}-${{ matrix.os }}
+          name: fga-ci-${{ matrix.os }}-desktop-${{ env.COMMIT_COUNT }}
           path: ./desktopApp/build/compose/binaries/main-release/
