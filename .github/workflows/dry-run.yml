@@ -177,4 +177,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: fga-ci-${{ matrix.os }}-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/
+          path: ./desktopApp/build/compose/binaries/**/graalvm-*/**
