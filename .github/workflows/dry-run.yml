@@ -60,7 +60,6 @@ jobs:
     
       - name: Build Android Package
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assembleCi --parallel
@@ -169,6 +168,8 @@ jobs:
           ./gradlew :desktopApp:suggestRuntimeModules
       
       - name: Build Desktop Release for ${{ matrix.os }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew :DesktopApp:packageReleaseDistributionForCurrentOS
       

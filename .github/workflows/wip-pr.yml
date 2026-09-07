@@ -55,7 +55,6 @@ jobs:
     
       - name: Build Android Package
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assembleCi --parallel --no-daemon
