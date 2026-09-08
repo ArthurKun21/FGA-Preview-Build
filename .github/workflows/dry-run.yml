@@ -10,11 +10,13 @@ on:
       upload_build:
         description: 'Upload Build to GitHub Actions'
         required: false
-        default: 'false'
+        type: boolean
+        default: false
       suggest_runtime:
         description: 'Suggest Runtime Modules'
         required: false
-        default: 'false'
+        type: boolean
+        default: false
       repo_branch:
         description: 'Repository branch to build from'
         required: false
@@ -174,7 +176,9 @@ jobs:
           ./gradlew :DesktopApp:packageReleaseDistributionForCurrentOS
       
       - name: Upload ${{ matrix.os }} Build
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
+        if: >
+          github.event_name == 'workflow_dispatch' &&
+          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true)
         uses: actions/upload-artifact@v7
         with:
           name: fga-ci-${{ matrix.os }}-desktop-${{ env.COMMIT_COUNT }}
