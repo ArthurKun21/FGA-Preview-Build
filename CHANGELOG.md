@@ -21,6 +21,10 @@
 - Added baseline profiles, should make the startup a bit faster.
 - Added Support for Leveling Append 4 and 5 for all servers
 - Added Support for selecting Append 4 and 5 in Preferred Support Servant
+- Added number of configs per server tab in the library
+
+  <img width="799" height="162" alt="image" src="https://github.com/user-attachments/assets/890bb1e8-04d2-47c4-bb9a-489f8d45553b" />
+
 
 ### Fixes
 
