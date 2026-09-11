@@ -120,6 +120,7 @@ jobs:
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
         env:
+          GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assembleCi --parallel --no-daemon

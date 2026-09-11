@@ -54,6 +54,7 @@ jobs:
     
       - name: Build Android Package
         env:
+          GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assemblePreview --parallel
