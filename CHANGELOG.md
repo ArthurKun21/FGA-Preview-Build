@@ -31,6 +31,10 @@
 - Removing of battle config should not crash the battle launcher
 - Duplicate keys causes error when using `CN` locale
 
+## Misc
+
+- We have moved to using the Github packages for the custom libraries that I've used. This should add an extra security at the very least with the libraries that I made.
+
 ## pre-2614
 
 2026-06-22
