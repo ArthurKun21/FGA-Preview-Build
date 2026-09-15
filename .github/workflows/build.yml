@@ -111,6 +111,19 @@ jobs:
       - name: Set up gradle
         if: ${{ env.commit_count_diff > 0 }}
         uses: gradle/actions/setup-gradle@v6.3.0
+
+      - name: Download latest FGA Data release
+        if: ${{ env.commit_count_diff > 0 }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download --repo ArthurKun21/fga-data-parser --pattern '*.pb'
+
+      - name: Move the downloaded FGA Data release to the correct location
+        if: ${{ env.commit_count_diff > 0 }}
+        run: |
+          mkdir -p data/src/commonMain/composeResources/files/atlas/
+          mv *.pb data/src/commonMain/composeResources/files/atlas/
     
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
