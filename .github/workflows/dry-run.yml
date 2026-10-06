@@ -207,7 +207,8 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: fga-ci-windows-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/portable/*.exe
+          path: ./desktopApp/build/compose/binaries/main-release/msi/*.msi
+          # path: ./desktopApp/build/compose/binaries/main-release/portable/*.exe
       
       - name: Upload Linux Build
         if: >
