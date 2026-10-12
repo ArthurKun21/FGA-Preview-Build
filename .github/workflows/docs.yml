@@ -5,49 +5,62 @@ on:
       - main
     paths:
       - 'docs/**'
-      - mkdocs.yml
+      - zensical.toml
       - '.github/workflows/docs.yml'
   pull_request:
     branches:
-      - docs/**
+      - main
     paths:
       - 'docs/**'
-      - mkdocs.yml
+      - zensical.toml
       - '.github/workflows/docs.yml'
   # Manual triggers
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  publish-docs:
+  build-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
         with:
-          fetch-depth: 0
+          enable-cache: true
 
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v7
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Build docs
+        run: uv run zensical build --clean
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
         with:
-          python-version: '3.11'
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+          path: site
 
-      - uses: actions/cache@v6
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: ~/.cache 
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install -r .github/workflows/requirements.txt
+  deploy-docs:
+    # PRs are build-validated only; deploys happen on pushes to main and manual runs
+    if: github.event_name != 'pull_request'
+    needs: build-docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
 
-      - run: mkdocs gh-deploy --force
-
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
