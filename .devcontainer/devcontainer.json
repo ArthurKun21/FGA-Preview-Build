@@ -22,11 +22,11 @@
 			]
 		},
 		"settings": {
-			"python.defaultInterpreterPath": "/usr/local/bin/python",
+			"python.defaultInterpreterPath": ".venv/bin/python",
 			"terminal.integrated.defaultProfile.linux": "bash"
 		}
 	},
-	"postCreateCommand": "pip install -r .github/workflows/requirements.txt",
+	"postCreateCommand": "uv sync",
 	"remoteUser": "vscode",
 	"portsAttributes": {
 		"8000": {

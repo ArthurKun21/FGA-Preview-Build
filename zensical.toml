@@ -1,0 +1,102 @@
+[project]
+site_name = "FGA Preview - Fate/Grand Automata Fork"
+site_url = "https://arthurkun21.github.io/FGA-Preview-Build/"
+site_description = "FGA Preview is an enhanced fork of Fate/Grand Automata (FGA) for Android. Features auto-leveling skills, CE, servants, append skills, NP detection, and automated farming scripts for FGO."
+site_author = "ArthurKun21"
+repo_name = "FGA Preview"
+repo_url = "https://github.com/ArthurKun21/fga-preview-build"
+edit_uri = "edit/main/docs/"
+copyright = "Copyright &copy; 2024 - 2025 ArthurKun21"
+use_directory_urls = true
+
+# Validate internal links at build time (fails CI on broken links)
+strict = true
+
+extra_css = ["stylesheets/extra.css"]
+
+[project.extra]
+generator = false
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/ArthurKun21/fga-preview-build"
+name = "FGA Preview on GitHub"
+
+[[project.extra.social]]
+icon = "fontawesome/solid/mug-hot"
+link = "https://ko-fi.com/arthurkun21"
+name = "Support on Ko-fi"
+
+[project.theme]
+variant = "modern"
+logo = "assets/icon.png"
+favicon = "assets/icon.ico"
+language = "en"
+custom_dir = "docs/overrides"
+features = [
+    "navigation.tabs",
+    "navigation.tabs.sticky",
+    "navigation.top",
+    "navigation.footer",
+    "navigation.sections",
+    "navigation.expand",
+    "toc.follow",
+    "search.suggest",
+    "search.share",
+    "search.highlight",
+    "content.action.edit",
+    "content.action.view",
+    "content.code.copy",
+]
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+scheme = "default"
+primary = "red"
+toggle.icon = "material/brightness-7"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+scheme = "slate"
+primary = "red"
+toggle.icon = "material/brightness-4"
+toggle.name = "Switch to light mode"
+
+[project.plugins]
+awesome-nav = {}
+meta = {}
+tags = {}
+
+[project.plugins.search]
+separator = '[\s\-\.]+'
+
+[project.plugins.minify]
+minify_html = true
+
+[project.plugins.social.cards_layout_options]
+background_color = "#c62828"
+
+[project.markdown_extensions]
+admonition = {}
+def_list = {}
+toc.permalink = true
+toc.title = "On this page"
+toc.toc_depth = 3
+footnotes = {}
+tables = {}
+attr_list = {}
+md_in_html = {}
+pymdownx.details = {}
+pymdownx.superfences.custom_fences = [
+    { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.betterem = {}
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.highlight.anchor_linenums = false
+pymdownx.inlinehilite = {}
+pymdownx.snippets = {}
+pymdownx.mark = {}
+pymdownx.keys = {}

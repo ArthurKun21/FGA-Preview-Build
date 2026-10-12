@@ -1,1 +1,4 @@
 .cache/
+.venv/
+site/
+.zcode/**
