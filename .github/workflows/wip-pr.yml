@@ -57,7 +57,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release download --repo ArthurKun21/fga-data-parser --pattern '*.pb'
+          gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
 
       - name: Move the downloaded FGA Data release to the correct location
         run: |
