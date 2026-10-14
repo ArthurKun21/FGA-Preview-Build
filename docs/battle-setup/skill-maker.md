@@ -1,6 +1,6 @@
 ---
 title: Skill Maker Guide
-description: Build battle commands visually in FGA Preview. Configure servant skills, master skills, order changes, NP usage, and enemy targeting for automated battles.
+description: Create and manage battle scripts in FGA Preview. Set skills, attacks, targets, Master Skills, and start points for automated battles.
 tags:
     - battle
     - skills
@@ -10,353 +10,326 @@ tags:
 
 # Skill Maker Guide
 
-Build battle commands visually so you do not have to memorize the full command string. This guide walks you through the Skill Maker screen and gives ready-to-use references for every button.
+Skill Maker creates battle scripts. A battle script is a list of commands. Automation runs the commands during a battle.
 
----
+A battle config can contain several scripts. One script is active for each battle. Each script has its own commands, name, notes, start point, and Mystic Code.
 
-## Overview
+## Open Skill Maker
 
-The Skill Maker is FGA's visual command builder. Instead of typing complex command strings like `abc1jkl456` by hand, you tap buttons to build commands step by step. Each tap adds an entry to the command string that the Battle script executes during automated gameplay.
+1. Open a battle config.
+2. In **Battle Scripts**, tap the script card.
 
-**What problem does it solve?**
+Skill Maker opens the script list. Tap a script to open its editor.
 
-- Eliminates the need to memorize skill codes (`a-i` for servants, `j-l` for master)
-- Prevents typos and syntax errors in command strings
-- Provides a visual history of your commands for easy editing
-- Shows real-time wave and turn tracking as you build
+## Manage the Script List
 
-**Who should use it?**
+The script list lists the exit settings and every script. Each script card has these items:
 
-Every FGA user who wants to automate battles with specific skill rotations. Whether you are setting up a simple 3-turn farm or a complex looping setup with Order Changes, the Skill Maker makes command creation intuitive.
+| Item | Use |
+| ---- | --- |
+| **Active** | Select the script that automation uses. Only one script is active. |
+| **Delete** | Delete the script. This item appears only when the config has more than one script. |
+| **Notes** | Add or edit the notes for the script. |
+| **Edit** | Open the command text editor for the script. |
 
----
+Each card also contains a summary of the commands by wave and turn, and the start selector.
 
-## Key Features
+Use the toolbar at the bottom of the list:
 
-- **Visual command building**: Tap buttons instead of typing codes
-- **Color-coded skills**: Red for Servant 1, yellow for Servant 2, blue for Servant 3
-- **Smart targeting**: Double-tap skills that need targets to open a selection menu
-- **History bar**: Scroll through and edit commands you have already added
-- **Wave and turn tracking**: See exactly where you are in the battle sequence
-- **Support for special skills**: Transform skills, choice skills, and NP type changes
-- **Order Change support**: Easily swap front-line and back-line servants
-- **Multiple enemy formations**: Handle 3-enemy, 6-enemy, and raid battles
+- **Add** creates a script.
+- The up and down arrows open the previous or next script.
 
----
+## Rename a Script
 
-## How to Access
+Tap the script name in the editor title bar. Enter a name, then tap **Confirm**. The name cannot be blank. A script without a name uses its position, such as **Script 2**.
 
-1. Open FGA settings.
-2. Go to **Battle Config** → **Skill Command**.
-3. Tap **Edit** to launch the Skill Maker screen.
+## Set Exit Settings
 
----
+The battle config has two exit settings. The script list lists them at the top.
 
-## Screen Layout
+- **Out of Commands Exit** ends the battle when the script has no commands left.
+- **Off-script Exit** ends the battle when the battle reaches a wave or turn that the script does not define.
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  [Save]        [Settings] [Wave/Turn]    [Delete] [Clear]   │
-├─────────────────────────────────────────────────────────────┤
-│  Command History Bar (scrollable)                           │
-│  [Start] → [a] → [b] → [c] → [1] → [,] → ...               │
-├─────────────────────────────────────────────────────────────┤
-│                    Enemy Targets                            │
-│              [Enemy 1] [Enemy 2] [Enemy 3]                  │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────┬──────────────┬──────────────┐            │
-│  │  SERVANT 1   │  SERVANT 2   │  SERVANT 3   │            │
-│  │  [S1][S2][S3]│  [S1][S2][S3]│  [S1][S2][S3]│            │
-│  └──────────────┴──────────────┴──────────────┘            │
-├─────────────────────────────────────────────────────────────┤
-│  [Master Skills]    [Order Change]    [Command Spells]      │
-│                                                             │
-│           [Attack]  ←  Main action buttons  →  [End Turn]   │
-└─────────────────────────────────────────────────────────────┘
-```
+## Set the Start Point
 
-- **Top bar**: Save the command, open settings, see the current wave/turn, or delete/clear entries.
-- **History bar**: Scroll through every entry you have added; tap to select one for editing.
-- **Enemy targets**: Set the current enemy target before adding skills or attacks.
-- **Servant rows**: Tap servant skills, then add targets when needed.
-- **Master bar**: Use Mystic Code skills, Order Change, and Command Spells.
-- **Action row**: Add attacks, Noble Phantasms (NPs), cards before NPs, and end turns.
+The start point sets where automation starts a script. Use the start selector on the script card.
 
----
+- The start point applies to the first run only. Later runs start at the first command.
+- If the start point is no longer valid, automation starts at the first command.
+- Saving the command text resets the start point to the first command.
 
-## Understand How Command Strings Are Built
+## Save Changes
 
-Each tap appends a code to the command string that FGA runs during battle. Example command:
+The editor saves your changes when you tap **Back**. The editor has no Save button for skills and targets.
+
+The command text editor has its own **Save** button. See [Edit Command Text](#edit-command-text).
+
+## Editor Layout
 
 ```text
-abc1jkl2456,
+┌──────────────────────────────────────────────────────────┐
+│ [Script name]          [Settings] [Delete] [Clear All]   │
+├──────────────────────────────────────────────────────────┤
+│ Wave and turn indicator | Action history                 │
+├──────────────────────────────────────────────────────────┤
+│ Enemy targets                                            │
+├──────────────────────────────────────────────────────────┤
+│ Servant 1 [target chip] [a] [b] [c]                      │
+│ Servant 2 [target chip] [d] [e] [f]                      │
+│ Servant 3 [target chip] [g] [h] [i]                      │
+│ Gesture hint                                             │
+├──────────────────────────────────────────────────────────┤
+│ [Command Spell] [Master Skills] [Order Change] [Attack]  │
+└──────────────────────────────────────────────────────────┘
 ```
 
-| Segment | Meaning |
-| ------- | ------- |
-| `ab` | Use Servant 1 skills 1, 2 |
-| `c1` | Use Servant 1 skill 3 to target servant A (front position) |
-| `jk` | Use Master skills 1, 2 |
-| `l2` | Use Master skill 3 to target servant B (second position) |
-| `456` | Fire all three NPs |
-| `,` | End turn |
+- **Top bar**: Rename the script, open **Settings**, delete the selected action, or clear all actions.
+- **Action history**: Lists the actions of the script. Tap an action to select it.
+- **Wave and turn indicator**: Displays the wave and turn of the selected action.
+- **Enemy targets**: Contains the enemy buttons for the selected enemy formation.
+- **Servant rows**: Contain the skill buttons and target chips for each servant.
+- **Bottom bar**: Opens Command Spell, Master Skills, Order Change, and Attack.
 
-!!! tip "Command Flow"
-    The command runs left to right. End each turn with `,` or use `,#,` when you expect a wave change.
+The layout changes to fit the screen size.
 
----
+## Add Skills and Targets
 
-## Build Commands Step by Step
+Each servant has three skills. The codes are `a` to `i`: `a` to `c` for Servant 1, `d` to `f` for Servant 2, and `g` to `i` for Servant 3.
 
-### Use Servant Skills With or Without Targets
+### Select a Target
 
-- Single tap a servant skill to add it without a target.
-- Double tap to open target selection when the skill needs a target.
-- Color coding keeps skills easy to spot: red for Servant 1 (`a`, `b`, `c`), yellow for Servant 2 (`d`, `e`, `f`), blue for Servant 3 (`g`, `h`, `i`).
+Each servant row has a target chip labeled **Servant 1**, **Servant 2**, or **Servant 3**.
 
-### Aim Skills at Allies or Options
+- Tap a chip to select that servant as the target.
+- Tap the selected chip again to clear the target.
 
-1. Double tap the skill button.
-2. Pick the target servant (A, B, or C).
-3. If the skill has special options, choose from Transform, Choice, or NP Type Change when prompted.
+The selected target stays active until you change it.
 
-### Trigger Master Skills from the Mystic Code
+### Set Smart Target
 
-Tap **Master Skills** and pick:
+Smart Target sets which gesture adds a skill directly. Open **Settings** and select a Smart Target option.
 
-- `j` for Mystic Code skill 1.
-- `k` for Mystic Code skill 2.
-- `l` for Mystic Code skill 3.
+| Smart Target | Tap a skill | Long press a skill |
+| ------------ | ----------- | ------------------ |
+| On | Adds the skill with the selected target. | Opens **Choose Target**. |
+| Off | Opens **Choose Target**. | Adds the skill with the selected target. |
 
-Some Master skills ask for a target—select one when prompted.
+If you select no servant target, the direct gesture adds the skill without a target.
 
-### Swap Servants with Order Change
+The hint below the servant rows states the current gestures. The hint uses the word **Hold** for a long press.
 
-1. Tap **Order Change**.
-2. Select the starting (front) servant: 1, 2, or 3.
-3. Select the sub (back) servant: 1, 2, or 3.
-4. Confirm to add `x[start][sub]` (for example, `x13` swaps front 1 with back 3).
+### Choose a Target
 
-### Spend Command Spells Carefully
+**Choose Target** lists **Servant 1**, **Servant 2**, **Servant 3**, and **No Target**. Select one option to add the skill with that target.
 
-Tap **Command Spells** to add:
+### Select Special Options
+
+Some skills have extra options. Skill Maker opens a special option screen for these skills. Options can include:
+
+- A choice between two or three options.
+- An NP type change with two or three types.
+- A transform.
+
+For some servants, the screen has a card grid. Tap a card to select it. Tap the selected card again to clear it. Follow the label above the cards.
+
+Some skills need a special option and a target. Parentheses hold both. For example, `e([Ch2A]2)`.
+
+## Configure Master Skills
+
+Tap **Master Skills** to open the Master Skills screen. The **Mystic Code** row contains the Mystic Code of the script.
+
+- Tap **Mystic Code** to choose a Mystic Code from the Atlas data. The selected code displays its skill names and icon.
+- Use **Display options** to change how the Mystic Code icon appears.
+- Clear the selection to use the default Master Skill buttons. The row displays **No mystic code set** when you select no code.
+
+Master Skill codes are `j`, `k`, and `l`. Each Master Skill uses the target type that the Atlas data defines for it.
+
+| Target type | Result |
+| ----------- | ------ |
+| No target | Adds the skill at once. |
+| One servant | The direct gesture adds the skill with the selected servant. The other gesture opens **Choose Target** with Servant 1, 2, and 3 only. |
+| Order Change | Opens **Order Change**. |
+| Special option | Opens the special option screen. |
+
+## Set Order Change
+
+Tap **Order Change** in the bottom bar.
+
+1. Select the starting member. This servant is in the front line.
+2. Select the sub member. This servant is in the back line.
+3. Tap **Ok** to add the action. Tap **Cancel** to close the screen without a change.
+
+The command text is `l[x13]`. Master Skill 3 switches front position 1 with back position 3.
+
+If the last action is a bare `l` (Master Skill 3 with no target), Skill Maker deletes it before it adds the Order Change action.
+
+## Add Command Spells
+
+Tap **Command Spell**. The dialog title displays how many uses remain, such as **Command Spell (2)**.
+
+Tap a spell, then choose a servant target.
 
 | Code | Spell | Effect |
 | ---- | ----- | ------ |
-| `o` | CS1 | Full NP charge (choose a servant) |
-| `p` | CS2 | Full HP heal (choose a servant) |
+| `o` | CS1 | Full NP charge |
+| `p` | CS2 | Full HP restore |
 
-!!! warning "Limited Resource"
-    Command Spells are limited to 3 per day; only add them when you truly need them.
+Each script can contain up to three command spells. If no uses remain, Skill Maker displays **Ran out of Command Spell(s)** instead.
 
-### Pick Enemies Before Firing Skills or NPs
+## Add an Attack
 
-1. Tap an enemy target button (Enemy 1, 2, or 3 or raid-specific buttons when shown).
-2. The choice stays active until you change it, so you can add several skills aimed at the same target.
+Tap **Attack** to open the attack screen.
 
-### End Turns and Set Attacks from the Action Row
+1. Select up to three cards. Select NP cards for Servant 1, 2, or 3, and Command Cards as needed.
+2. Select a Command Card more than once if needed. Each NP card can appear only once.
+3. Command Cards fill the empty slots.
+4. Tap a card in the sequence to delete it.
+5. Tap **Next Turn in same wave** or **Next Wave**.
 
-- Tap **Attack** to open NP selection and card options.
-- Select NPs to fire this turn: `4` (Servant 1), `5` (Servant 2), `6` (Servant 3).
-- Choose cards before NP: `n0` (none), `n1` (one card), or `n2` (two cards).
-- Finish the turn with `,` or finish the wave with `,#,`.
+**Next Turn in same wave** adds the attack and moves to the next turn. **Next Wave** adds the attack and moves to the next wave.
 
-### Handle Special Skill Behaviors
+| Code | Meaning |
+| ---- | ------- |
+| `{` and `}` | Start and end one attack. |
+| `4`, `5`, `6` | NP for Servant 1, 2, or 3. |
+| `N` | Command Card. |
+| `n0`, `n1`, `n2` | Legacy codes for zero, one, or two Command Cards before the NP. |
+| `,` | End the turn. |
+| `,#,` | End the wave. |
 
-- **Transform skills**: double tap, choose the NP type, and add `[Tfrm]`.
-- **Choice skills with 2 options**: pick `[Ch2A]` or `[Ch2B]`.
-- **Choice skills with 3 options**: pick `[Ch3A]`, `[Ch3B]`, or `[Ch3C]`.
-- **NP type change with 2 options**: use `7` (left) or `8` (right).
-- **NP type change with 3 options**: pick from the on-screen options when prompted.
+For example, `{4NN},` is one attack in a turn. It uses the NP for Servant 1, and two Command Cards fill the other slots.
 
-### Target Multiple Skills When Needed
+## Set Enemy Targets
 
-Use parentheses to add one skill that uses multiple skill targets. For example:
+Open **Settings** and select the **Enemy Formation**: **3**, **6**, or **Raid**. The enemy buttons match the formation.
 
-```text
-b([Ch2B]2)
-```
+- Tap an enemy to add an enemy target action to the command.
+- Tap the same enemy again to clear it.
 
-This example targets servants `[Ch2B]` and `2` with skill `b`. This example with multiple skill target is from Kukulcan's 2nd skill, which uses both a choice option and a target.
-
----
-
-## Reference Tables
-
-### Servant Skills
-
-| Code | Servant | Skill |
-| ---- | ------- | ----- |
-| `a` | Servant 1 | Skill 1 |
-| `b` | Servant 1 | Skill 2 |
-| `c` | Servant 1 | Skill 3 |
-| `d` | Servant 2 | Skill 1 |
-| `e` | Servant 2 | Skill 2 |
-| `f` | Servant 2 | Skill 3 |
-| `g` | Servant 3 | Skill 1 |
-| `h` | Servant 3 | Skill 2 |
-| `i` | Servant 3 | Skill 3 |
-
-### Master Skills (Mystic Code)
-
-| Code | Skill |
-| ---- | ----- |
-| `j` | Master Skill 1 |
-| `k` | Master Skill 2 |
-| `l` | Master Skill 3 |
-
-### Command Spells
-
-| Code | Effect |
-| ---- | ------ |
-| `o` | Full NP charge (single servant) |
-| `p` | Full HP heal (single servant) |
-
-### Noble Phantasms
-
-| Code | NP |
-| ---- | -- |
-| `4` | Servant 1 NP |
-| `5` | Servant 2 NP |
-| `6` | Servant 3 NP |
-
-### Skill Targets
-
-| Code | Target |
-| ---- | ------ |
-| `1` | Target Servant A (position 1) |
-| `2` | Target Servant B (position 2) |
-| `3` | Target Servant C (position 3) |
-| `7` | Left option (NP type change or 2-option skills) |
-| `8` | Right option (NP type change or 2-option skills) |
-
-### Enemy Targets
+Select an enemy target before you add an action that needs one.
 
 | Code | Target | Formation |
 | ---- | ------ | --------- |
-| `t1` | Enemy 1 (left) | 3-enemy |
-| `t2` | Enemy 2 (center) | 3-enemy |
-| `t3` | Enemy 3 (right) | 3-enemy |
-| `t4` | Enemy A | 6-enemy |
-| `t5` | Enemy B | 6-enemy |
-| `t6` | Enemy C | 6-enemy |
-| `t7` | Enemy D | 6-enemy |
-| `t8` | Enemy E | 6-enemy |
-| `t9` | Enemy F | 6-enemy |
-| `tR` | Raid Boss | Raid |
-| `tX` | Raid Minion 1 | Raid |
-| `tY` | Raid Minion 2 | Raid |
-| `tZ` | Raid Minion 3 | Raid |
+| `t1` | Enemy 1, left | 3 enemies |
+| `t2` | Enemy 2, center | 3 enemies |
+| `t3` | Enemy 3, right | 3 enemies |
+| `t4` to `t9` | Enemies A to F | 6 enemies |
+| `tR` | Raid boss | Raid |
+| `tX` | Raid minion 1 | Raid |
+| `tY` | Raid minion 2 | Raid |
+| `tZ` | Raid minion 3 | Raid |
 
-### Special Commands
+## Edit the Action History
+
+- Tap an action to select it.
+- Tap the up or down arrow to move the selected action earlier or later.
+- Tap **Delete** in the top bar to delete the selected action.
+- Tap **Clear All**, then tap **Clear** to delete every action from the script.
+
+## Edit Command Text
+
+Use the command text editor to change the command text by wave and turn.
+
+1. Open the script list.
+2. Tap **Edit** on the script card.
+3. Change the text in a wave or turn card.
+4. Tap **Save** in the top bar.
+
+- **Add Wave** adds a wave with one empty turn.
+- **Add Turn** adds a turn to the last wave.
+- The delete icon on a card deletes that turn. A wave without turns is also deleted. You cannot delete the last turn.
+- An error message appears on the card that has the error. A banner lists errors for the whole command, such as more than three command spells.
+- You cannot tap **Save** while an error exists.
+- Saving resets the start point to the first command.
+
+## Remaining Commands During a Run
+
+When you pause a battle, the pause screen lists the commands that the current run has not run yet. The list groups commands by wave and turn. A command leaves the list after automation runs it.
+
+## Command Reference
+
+### Servant Skills
+
+| Code | Servant | Skill | Color |
+| ---- | ------- | ----- | ----- |
+| `a`, `b`, `c` | Servant 1 | Skills 1, 2, 3 | Red |
+| `d`, `e`, `f` | Servant 2 | Skills 1, 2, 3 | Blue |
+| `g`, `h`, `i` | Servant 3 | Skills 1, 2, 3 | Orange |
+
+### Master Skills and Command Spells
 
 | Code | Action |
 | ---- | ------ |
-| `x` | Order Change (followed by starting + sub position) |
-| `n` | Cards before NP (followed by count 0-2) |
-| `,` | End turn (same wave) |
-| `,#,` | End wave (next wave) |
+| `j`, `k`, `l` | Master Skills 1, 2, 3 |
+| `o` | Command Spell CS1: full NP charge |
+| `p` | Command Spell CS2: full HP restore |
 
-### Special Skill Targets
+### Servant Targets and Special Options
 
-| Code | Usage |
-| ---- | ----- |
-| `[Ch2A]` | Choice skill Option A (2-choice skills) |
-| `[Ch2B]` | Choice skill Option B (2-choice skills) |
-| `[Ch3A]` | Choice skill Option A (3-choice skills) |
-| `[Ch3B]` | Choice skill Option B (3-choice skills) |
-| `[Ch3C]` | Choice skill Option C (3-choice skills) |
-| `[Tfrm]` | Transform skill |
+| Code | Meaning |
+| ---- | ------- |
+| `1`, `2`, `3` | Target Servant 1, 2, or 3 |
+| `7`, `8` | Left or right button for a two-option action |
+| `K`, `U` | Legacy codes for the first or second option |
+| `[Ch2A]`, `[Ch2B]` | Option A or B for a two-choice skill |
+| `[Ch3A]`, `[Ch3B]`, `[Ch3C]` | Option A, B, or C for a three-choice skill |
+| `[Tfrm]` | Transform action |
+| `[x12]` | Order Change target. Use it with Master Skill 3, such as `l[x12]`. |
 
-### Multi-Target Syntax
+Some skills need more than one target. Use parentheses for multiple targets. For example, `e([Ch2A]2)` applies skill `e` with option A and servant target 2.
 
-| Syntax | Meaning |
-| ------ | ------- |
-| `([Ch2B]2)` | Target multiple skill targets, such as a choice option and a servant |
+Order Change in older command text can use `x12` without Master Skill 3. Skill Maker still reads this form.
 
----
+## Example Commands
 
-## Edit or Restore Entries from the History Bar
+The examples below use command text. The editor writes attacks in braces, such as `{4NN},`. Command text without braces is also valid.
 
-- Tap any entry to highlight it, then use **Delete** to remove it or **Clear** to remove everything after it.
-- Long press to reorder entries when you want to move a skill earlier in the turn.
-- Use the navigation arrows to scroll through long commands without losing your place.
-
----
-
-## Tune Settings for Targeting and Formation
-
-Open **Settings** from the top bar:
-
-| Setting | Description |
-| ------- | ----------- |
-| **Smart Target** | Remembers the last target you used for each skill type to save taps. |
-| **Enemy Formation** | Choose 3-enemy, 6-enemy, or raid to match the battle so targeting buttons stay accurate. |
-
----
-
-## Example Command Strings
-
-### Simple 3-Turn Farm
+### Three-Wave Farm
 
 ```text
 abc1jkl,#,def2,#,ghi3
 ```
 
-- Wave 1: Servant 1 skills 1 and 2 on (self/all/no target) and skill 3 on target A, then Master skills.
-- Wave 2: Servant 2 skills 1 and 2 on (self/all/no target) and skill 3 on target B.
-- Wave 3: Servant 3 skills 1 and 2 on (self/all/no target) and skill 3 on target C.
+- Wave 1: skills `a` and `b`, skill `c` on Servant 1, then Master Skills `j`, `k`, and `l`.
+- Wave 2: skills `d` and `e`, skill `f` on Servant 2.
+- Wave 3: skills `g` and `h`, skill `i` on Servant 3.
 
-### Looping Setup
+### NP Loop
 
 ```text
 a1b1c1j1456,#,456,#,456
 ```
 
-- Wave 1: All Servant 1 skills at target A, Master skill 1 at target A, all NPs.
-- Wave 2: All NPs.
-- Wave 3: All NPs.
+- Wave 1: skills `a`, `b`, and `c` on Servant 1, Master Skill `j` on Servant 1, then NPs 4, 5, and 6.
+- Waves 2 and 3: NPs 4, 5, and 6.
 
-### With Order Change Mid-Battle
+### Order Change
 
 ```text
-a1b1x13k2456,#,456,#,456
+a1b1l[x13]k2456,#,456,#,456
 ```
 
-- Wave 1: Servant 1 skills (a, b) at target A, swap front 1 with back 3, Master skill 2 at target B, all NPs.
-- Waves 2 and 3: All NPs.
-
----
-
-## Tips for Best Results
-
-1. **Start with simple commands**: Begin with basic skill sequences before adding Order Changes or special skills. Test each wave independently to ensure it works.
-
-2. **Use the history bar for editing**: Tap any entry in the history bar to select it, then use **Delete** to remove just that entry or **Clear** to remove everything after it.
-
-3. **Double-tap for targeted skills**: When a skill needs a target (like single-target buffs), double-tap the skill button to open the target selection menu instead of single-tapping.
-
-4. **Match enemy formation settings**: Before building commands, set the **Enemy Formation** in settings to match the battle (3-enemy, 6-enemy, or raid) so targeting buttons appear correctly.
-
-5. **Save frequently**: Tap **Save** often while building complex commands. If you make a mistake, you can reload your last saved version instead of starting over.
-
----
+- Wave 1: skills `a` and `b` on Servant 1.
+- Order Change switches front position 1 with back position 3.
+- Master Skill `k` on Servant 2, then NPs 4, 5, and 6.
+- Waves 2 and 3: NPs 4, 5, and 6.
 
 ## Troubleshooting
 
-| Problem | Solution |
-| ------- | -------- |
-| Skills do not execute during battle | Check that skill cooldowns are available. Confirm the target you selected matches your actual party order in the game. |
-| Wrong servant gets targeted | Verify target codes `1`, `2`, `3` match your current front-line positions. Remember that Order Change affects positions. |
-| Command string is too long to manage | Split complex setups into separate battle configs. Use one config per farming node for easier maintenance. |
-| NP does not fire when expected | Confirm NP codes `4`, `5`, `6` are included in the turn. Check that the servant's NP gauge is full before executing. |
-| Order Change does not swap servants | Verify you selected both a starting position (1-3) and a sub position (1-3). The format should be `x[start][sub]`, for example `x13`. |
-| Enemy targeting seems off | Check the **Enemy Formation** setting matches the actual battle. Use `t1`, `t2`, `t3` for standard 3-enemy battles. |
-| Special skill options not appearing | For choice skills, double-tap the skill to open the extended menu with `[Ch2A]`, `[Ch2B]`, or 3-option variants. |
-
----
+| Problem | Review |
+| ------- | ------ |
+| Automation uses a different script | Select **Active** on the script that you want in the script list. |
+| A skill uses the wrong target | Review the target chip for the servant row. Review the Smart Target setting and the gesture you used. |
+| A skill adds without a target | You did not select a servant target. Tap a target chip before you tap the skill. |
+| A skill option screen does not appear | Only skills with special options open the special option screen. |
+| Automation starts at the wrong command | Review the start selector on the script card. The start point applies to the first run only. |
+| An enemy button does not appear | Review the **Enemy Formation** setting in **Settings**. |
+| Order Change does not select the expected servants | Review the starting and sub members. The command text uses `l[x..]`. |
+| Command Spell cannot be added | Each script allows three command spells. Delete one from the script to add another. |
+| The text editor cannot save | Fix the error shown on the card or in the banner. You cannot tap **Save** until you fix the error. |
+| Automation exits at a turn | Review the **Off-script Exit** and **Out of Commands Exit** settings. |
 
 ## Related Documentation
 
-- [Auto Battle](../in-battle/auto-battle.md) — Explains how the battle automation runs the command string.
-- [Card Priority](card-priority.md) — Covers how face cards are chosen when NP is not used.
+- [Auto Battle](../in-battle/auto-battle.md) explains how automation executes battle commands.
+- [Card Priority](card-priority.md) explains how automation selects face cards.
