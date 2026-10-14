@@ -1,6 +1,6 @@
 ---
 title: Battle Config
-description: Complete guide to setting up FGA Preview battle configurations. Learn how to configure battle names, skill commands, party setup, materials farming, and support selection.
+description: Set up FGA Preview battle configurations. Configure battle scripts, default run limits, farming, command card rules, support selection, raid options, and usage records.
 tags:
     - battle
     - configuration
@@ -10,193 +10,210 @@ tags:
 
 # Battle Config
 
-Battle configs store all the settings for automated farming runs. Each config defines how FGA runs battles, selects supports, and picks command cards.
+A battle config stores the settings for one automated farming task. FGA reads the config when it runs battles, selects supports, and picks command cards.
 
 ## Overview
 
-A battle config contains:
+A battle config contains these groups:
 
-- **Identity settings** - Name, notes, and favorite status
-- **Skill commands** - The sequence of skills to use each turn
-- **Default run settings** - How many runs, materials, and resources to use
-- **Farming options** - Materials to track, server restrictions, and party selection
-- **Command card priorities** - How to pick attack cards each turn
-- **Support selection** - Which friend support to choose
-- **Battle behavior** - Exit conditions, raid delays, and other options
+| Group | What it controls |
+| ----- | ---------------- |
+| **General** | Name, notes, and favorite status |
+| **Battle Scripts** | The skill commands that automation runs |
+| **Default Run Configuration** | The starting limits for runs, CEs, teapots, and Ordeal Call pods |
+| **Farming** | Materials, game servers, and the party |
+| **Command Card** | The rule that picks attack cards |
+| **Support** | How FGA picks a support servant |
+| **Raid** | Turn delays and intro skipping for raid battles |
+| **Additional Settings** | Target selection and card shuffling |
+| **Records** | Read-only usage statistics |
 
-## Key Features
+## General
 
-### Identity Settings
-
-Give your config a recognizable name and add notes for reference.
-
-| Name and Notes                                         | Edit Dialog                                                          |
+| Name and Notes                                         | Name Edit Dialog                                                     |
 | ------------------------------------------------------ | -------------------------------------------------------------------- |
-| ![Name and notes](../assets/battle/name-and-notes.png) | ![Name and notes dialog](../assets/battle/name-and-notes-dialog.png) |
+| ![Name and notes](../assets/battle/name-and-notes.png) | ![Name edit dialog](../assets/battle/name-and-notes-dialog.png)      |
 
-- **Name** - A unique identifier for the battle config (required)
-- **Notes** - Multi-line text for additional information (text only, no images)
-- **Favorite** - Mark important configs for easy access
+- **Name** identifies the config. The name cannot be blank.
+- **Notes** is multi-line text for extra information.
+- **Favorite** marks the config. Favorite configs sort to the top of the config list.
 
-Tap the name or notes field to open the edit dialog.
+Tap **Name** to open the edit dialog. Tap **Notes** to open the notes editor.
 
-### Skill Commands
+## Battle Scripts
 
-Skill commands define which skills to activate each turn and wave.
+![Battle script card](../assets/battle/skill-command.png)
 
-| Skill Command                                        | Quick Edit Dialog                                                  |
-| ---------------------------------------------------- | ------------------------------------------------------------------ |
-| ![skill command](../assets/battle/skill-command.png) | ![skill command dialog](../assets/battle/skill-command-dialog.png) |
+A battle script holds the skill commands for every wave and turn. A config can contain several scripts. Automation runs only the active script.
 
-Two ways to edit skill commands:
+Tap the script card to open the [Skill Maker](skill-maker.md). In the Skill Maker you manage the script list, edit the commands, and set the start point.
 
-1. **Skill Maker** - Tap the command to open the full [Skill Maker](skill-maker.md) editor
-2. **Quick Edit** - Tap the terminal icon for a text-based popup dialog
+## Script Exit Settings
 
-### Default Run Configuration
+Each battle script owns its exit settings. The Skill Maker lists them at the top of the script list:
+
+- **Out of Commands Exit** ends the battle when the script has no commands left.
+- **Off-script Exit** ends the battle when the battle reaches a wave or turn that the script does not define.
+
+See [Set Exit Settings](skill-maker.md#set-exit-settings) in the Skill Maker Guide.
+
+## Default Run Configuration
 
 ![Default Run Configuration](../assets/battle/default-run-config.png)
 
-Set the starting values for each farming session:
+| Setting                      | Description                                  | Range |
+| ---------------------------- | -------------------------------------------- | ----- |
+| **Default Runs**             | The number of battle loops                   | 1-300 |
+| **Default CEs**              | Stop after this many Craft Essence drops     | 1-300 |
+| **Default Teapots**          | Stop after using this many teapots           | 1-300 |
+| **Default Ordeal Call Pods** | Stop after using this many Ordeal Call pods  | 1-9   |
 
-| Setting       | Description                                    | Range |
-| ------------- | ---------------------------------------------- | ----- |
-| **Runs**      | Number of battle loops to complete             | 1-300 |
-| **Materials** | Stop after collecting this many materials      | 1-300 |
-| **CEs**       | Stop after collecting this many Craft Essences | 1-300 |
-| **Teapots**   | Number of golden apples or teapots to use      | 1-300 |
+The **Default** button in the [Battle Launcher](launcher.md) restores the current limits to these values. The **Reset All** button sets every limit to 1.
 
-These values reset to defaults when the previous run completes its target.
+When the script reaches a limit, the limit turns off and its value returns to the default. Each tracked material has its own limit and default limit. Set them in the [Materials](materials.md) editor.
 
-!!! note "Current Limitation"
-    The current values only reset after reaching their limits. Use the reset button in the Battle Launcher to manually restore default values.
-
-### Farming Configuration
+## Farming
 
 ![Farming Configuration](../assets/battle/farming-config.png)
 
-Configure what and where you want to farm:
+- **Materials** selects the materials to track. Tap the materials card to open the [Materials](materials.md) editor.
+- **Server** selects one or more game servers. The config appears only on the selected servers. No selection means every server.
+- **Party** selects the party slot for battles. **Use existing** keeps the party that the game already selected.
 
-- **Materials** - Select which materials to track. Tap to open the [Materials](materials.md) editor.
-- **Server** - Restrict this config to a specific game server, or leave as "Default" for all servers.
-- **Party** - Choose which party slot to use for battles.
+| Setting          | Preview                                                    |
+| ---------------- | ---------------------------------------------------------- |
+| Party Selection  | ![Party Configuration](../assets/battle/party-config.png)  |
 
-| Setting        | Preview                                                   |
-| -------------- | --------------------------------------------------------- |
-| Party Selection | ![Party Configuration](../assets/battle/party-config.png) |
+!!! info "Party Slots"
+    All servers use 15 party slots.
 
-!!! info "Party Slots by Server"
-    All servers have been configured to use 15 party slots.
-
-### Command Card Priority
+## Command Card
 
 ![Command Card](../assets/battle/command-card.png)
 
-Control how FGA picks command cards each turn:
+A config can contain several named command-card rules. One rule is active. Automation uses the active rule to pick attack cards.
 
-| Option                            | Effect                                              |
-| --------------------------------- | --------------------------------------------------- |
-| **Skip servant face-card checks** | Faster card selection but may pick weaker cards     |
-| **Use Servant Priority**          | Prioritize specific servants' cards over card types |
-| **Use Crit Stars Priority**       | Prefer cards with 80-100% critical chance           |
+Tap the rule card to open the [Command Card Priority](card-priority.md) editor. The card shows the rule name, the notes, and a chip when **Skip servant face-card checks** is on.
 
-Tap the priority summary to open the [Command Card Priority](card-priority.md) editor.
+!!! note "Priority options moved"
+    The servant priority and critical-star priority switches are now wave and turn settings inside each rule. See [Command Card Priority](card-priority.md).
 
-### Support Selection
+## Support Selection
 
-Choose how FGA picks a friend support servant.
+Choose how FGA picks a support servant.
 
-| General Setup                                                        | Preferred Setup                                                           |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| General Setup                                                        | Preferred Setup                                                          |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | ![General Support Setup](../assets/battle/general-support-setup.png) | ![Preferred Support Setup](../assets/battle/preferred-support-setup.png) |
 
-#### Selection Modes
+- **Class** selects the class tab that FGA searches first.
+- **Also Check All** searches the **All** tab when FGA does not find the preferred support in the selected class.
 
-| Mode          | Behavior                                                  |
-| ------------- | --------------------------------------------------------- |
-| **First**     | Selects the first available support immediately           |
-| **Manual**    | Pauses the script for manual selection, then resume       |
-| **Preferred** | Searches for specific servants or CEs before falling back |
+### Selection Modes
 
-#### Preferred Mode Options
+| Mode          | Behavior                                                                |
+| ------------- | ----------------------------------------------------------------------- |
+| **First**     | Selects the first support in the list.                                  |
+| **Manual**    | Waits on the support screen. You select the support yourself.           |
+| **Preferred** | Searches for your preferred servants or Craft Essences.                 |
 
-When using Preferred mode:
+By default, FGA continues the script after you select a support. Enable **Exit on Manual Support Selection** in the app settings to pause the script instead. Then resume the script manually.
 
-- **Fallback** - What to do if the preferred support is not found (First or Manual)
-- **Servant/CE Selection** - Configure in the [Support Setup](support.md) page
-- **Also Check All** - Search the "All" class tab in addition to the selected class
-- **Auto Friend Request** - Send friend requests to non-friends after battle
+### Preferred Mode Options
 
-### Script Exit Conditions
+When you select **Preferred** mode:
 
-Control when FGA stops the battle script:
+- **Fallback** is the selection mode that FGA uses when the preferred support is not found. Choose **First** or **Manual**.
+- **Enable Send Friend Request** is the master switch for sending friend requests. See [Support](support.md).
+- **Preferred Support** is the summary of your preferred servants and default Craft Essence. Tap it to open the [Support](support.md) editor.
 
-| Setting                  | Effect                                                    |
-| ------------------------ | --------------------------------------------------------- |
-| **Out of Commands Exit** | Exit battle when no more skill commands remain            |
-| **Off-script Exit**      | Exit when reaching a turn or wave not covered by commands |
+!!! note "Preferred mode needs a criterion"
+    Preferred mode needs at least one enabled servant or a configured default Craft Essence. FGA shows a warning when the config has none.
 
-Enabling "Off-script Exit" also triggers an exit when commands run out.
-
-### Raid Settings
+## Raid Settings
 
 Special options for raid battles like Tunguska or event raids:
 
-| Setting            | Effect                                 |
-| ------------------ | -------------------------------------- |
-| **Raid Delay**     | Enable a delay before the first action |
-| **Delay Duration** | Wait time in seconds (1-10)            |
-| **Skip Intro**     | Automatically skip story introductions |
+| Setting            | Effect                                                     |
+| ------------------ | ---------------------------------------------------------- |
+| **Raid Delay**     | Adds a delay before the first action                       |
+| **Delay Duration** | Wait time in seconds (1-10)                                |
+| **Skip Intro**     | Skips story introductions. This setting is experimental.   |
 
 !!! tip "Why Use Raid Delay?"
-    Some raid battles display kill counters that interfere with FGA's timing. Adding a delay allows the overlay to disappear before FGA starts acting.
+    Some raid battles show kill counters that interfere with FGA's timing. Adding a delay allows the overlay to disappear before FGA starts acting.
 
     [![Tunguska Raid Example](https://i.ytimg.com/vi/Kpg2DsgQRBg/mqdefault.jpg)](https://youtu.be/Kpg2DsgQRBg?t=123)
 
-### Additional Options
+## Additional Settings
 
 | Setting                | Effect                                                       |
 | ---------------------- | ------------------------------------------------------------ |
-| **Auto-Choose Target** | Automatically select enemies tagged as "servant" or "danger" |
-| **Shuffle Cards**      | Re-deal command cards based on specified conditions          |
-| **Shuffle Wave**       | Which wave to trigger card shuffling (1-3)                   |
+| **Auto Choose Target** | Targets the first Danger or Servant enemy                    |
+| **Shuffle Cards**      | The condition that re-deals the command cards                |
+| **Wave**               | The wave that triggers the shuffle (1-3)                     |
 
-### Config Management
+Shuffle conditions:
 
-Use the top bar buttons to manage your config:
+| Option                  | Condition                                                     |
+| ----------------------- | ------------------------------------------------------------- |
+| **None**                | Never shuffle cards.                                          |
+| **No effective cards**  | The hand has no card that is effective against the enemies.   |
+| **No cards matching NP**| The hand has no card that matches the Noble Phantasm.         |
 
-- **Export** - Save the config as a JSON file to share or backup
-- **Copy** - Create a duplicate of the current config
-- **Delete** - Remove the config permanently
+The **Wave** stepper appears when you select a shuffle condition other than **None**.
+
+## Records
+
+You cannot edit the Records section. FGA updates it after each battle session:
+
+| Item                 | Description                                          |
+| -------------------- | ---------------------------------------------------- |
+| **Usage Count**      | How many runs FGA completed with this config         |
+| **Total Usage Time** | The total battle time for this config                |
+| **Last Used**        | When FGA last used this config                       |
+
+## Config Management
+
+Use the top bar of the config editor:
+
+- **Copy** creates a duplicate of this config.
+- **Delete** deletes this config. FGA opens a dialog before the deletion.
+
+The more options menu contains:
+
+- **Export** saves the config as a JSON file for backup or sharing.
+- **Summary** opens a read-only summary of every setting. You can also switch the active script and the active command-card rule there.
+- **View Raw Data** shows the raw JSON of the config. Tap **Copy** to copy it to the clipboard.
 
 ## Tips for Best Results
 
 1. **Start simple** - Create basic configs first, then add complexity as needed
 2. **Use descriptive names** - Include the quest name and farming target (e.g., "Doors - QP Farming")
-3. **Test your skill commands** - Run once manually to verify timing before long farming sessions
+3. **Test your scripts** - Run the quest once manually before a long farming session
 4. **Set realistic limits** - Match run counts to your available AP and apples
-5. **Use Preferred support wisely** - Set a reasonable fallback for when friends are unavailable
+5. **Prepare Preferred mode** - Add at least one criterion and set a fallback for when friends are unavailable
 
 ## Troubleshooting
 
 ### Config shows on wrong server
 
-Set the Server option to restrict configs to specific servers, or use "Default" for all servers.
+Select the servers for this config with the **Server** option. Clear every server to use the config on all servers.
 
-### Skill commands not executing correctly
+### Scripts do not execute correctly
 
-Open the Skill Maker and verify the command sequence matches your intended rotation. Check that wave timings align with enemy counts.
+Open the [Skill Maker](skill-maker.md) and check the command sequence for each wave and turn. Check that the wave timings match the enemy counts.
 
 ### Support selection fails
 
-- Verify servant and CE images in the [Support Setup](support.md)
-- Ensure the correct class is selected
-- Enable "Also Check All" to search additional tabs
+- Add at least one preferred servant or Craft Essence
+- Check servant and CE images in the [Support Setup](support.md)
+- Enable **Also Check All** to search additional tabs
 - Set a fallback option for when preferred supports are unavailable
 
 ### Battle exits unexpectedly
 
-Check exit condition settings:
+Check the exit settings in the [Skill Maker](skill-maker.md):
 
-- Disable "Out of Commands Exit" if you want FGA to continue with card selection
-- Disable "Off-script Exit" if battles may have variable turn counts
+- Disable **Out of Commands Exit** if you want FGA to continue with card selection
+- Disable **Off-script Exit** if battles may have variable turn counts
