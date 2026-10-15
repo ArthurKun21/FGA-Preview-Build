@@ -36,7 +36,7 @@ jobs:
       COMMIT_COUNT: 0
     steps:
       - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           repository: 'ArthurKun21/FGA-Preview'
@@ -49,16 +49,16 @@ jobs:
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
 
       - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@3f5f9adaf7d9fecd50b5935e54106014257a94e6
+        uses: gradle/actions/wrapper-validation@v6.4.0
       
       - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6
+        uses: actions/setup-java@v6.0.1
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRO }}
   
       - name: Set up gradle
-        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6
+        uses: gradle/actions/setup-gradle@v6.4.0
 
       - name: Download latest FGA Data release
         env:
@@ -91,42 +91,42 @@ jobs:
       
       - name: Upload Mapping
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-${{ env.COMMIT_COUNT }}-mapping
           path: fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
       
       - name: Upload APK
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (arm64-v8a)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (armeabi-v7a)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (x86_64)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-x86_64-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
       
       - name: Upload APK (x86)
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-x86-${{ env.COMMIT_COUNT }}-apk
           path: fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
@@ -145,7 +145,7 @@ jobs:
       COMMIT_COUNT: 0
     steps:
       - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           repository: 'ArthurKun21/FGA-Preview'
@@ -165,16 +165,16 @@ jobs:
           "COMMIT_COUNT=$commit_count" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@3f5f9adaf7d9fecd50b5935e54106014257a94e6
+        uses: gradle/actions/wrapper-validation@v6.4.0
       
       - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6
+        uses: actions/setup-java@v6.0.1
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRO }}
   
       - name: Set up gradle
-        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6
+        uses: gradle/actions/setup-gradle@v6.4.0
       
       - name: Suggest Runtime modules for ${{ matrix.os }}
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.suggest_runtime == 'true' || github.event.inputs.suggest_runtime == true) }}
@@ -204,7 +204,7 @@ jobs:
           github.event_name == 'workflow_dispatch' &&
           (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
           startsWith(matrix.os, 'windows')
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-windows-desktop-${{ env.COMMIT_COUNT }}
           path: ./desktopApp/build/compose/binaries/main-release/msi/*.msi
@@ -215,7 +215,7 @@ jobs:
           github.event_name == 'workflow_dispatch' &&
           (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
           startsWith(matrix.os, 'ubuntu')
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-linux-desktop-${{ env.COMMIT_COUNT }}
           path: ./desktopApp/build/compose/binaries/main-release/**/*.deb
@@ -225,7 +225,7 @@ jobs:
           github.event_name == 'workflow_dispatch' &&
           (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
           startsWith(matrix.os, 'macos')
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: fga-ci-macos-desktop-${{ env.COMMIT_COUNT }}
           path: ./desktopApp/build/compose/binaries/main-release/**/*.dmg
