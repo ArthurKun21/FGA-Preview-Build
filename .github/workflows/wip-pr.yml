@@ -49,7 +49,7 @@ jobs:
           ./gradlew assembleCi --parallel --no-daemon
 
       - name: Upload Alpha
-        uses: $/.github/actions/upload-ci
+        uses: $/.github/actions/upload-alpha
         with:
           commit-count: ${{ env.COMMIT_COUNT }}
           artifact-prefix: fga-preview-wip-alpha-build

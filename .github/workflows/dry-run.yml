@@ -58,7 +58,7 @@ jobs:
 
       - name: Upload Alpha
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: $/.github/actions/upload-ci
+        uses: $/.github/actions/upload-alpha
         with:
           commit-count: ${{ env.COMMIT_COUNT }}
           upload-build: ${{ github.event.inputs.upload_build }}
