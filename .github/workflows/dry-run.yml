@@ -83,8 +83,6 @@ jobs:
     permissions:
       contents: write
       discussions: write
-    env:
-      COMMIT_COUNT: 0
     steps:
       - name: Checkout FGA Preview
         uses: $/.github/actions/checkout-project
@@ -95,57 +93,14 @@ jobs:
       - name: Setup project defaults
         uses: $/.github/actions/setup-project-defaults
 
-      - name: Prepare build (macos/ubuntu)
-        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-        run: |
-          commit_count=$(git rev-list --count HEAD)
-          echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
-
-      - name: Prepare build (windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          $commit_count = git rev-list --count HEAD
-          "COMMIT_COUNT=$commit_count" | Out-File -FilePath $env:GITHUB_ENV -Append
-
       - name: Suggest Runtime modules for ${{ matrix.os }}
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.suggest_runtime == 'true' || github.event.inputs.suggest_runtime == true) }}
         run: |
           ./gradlew :desktopApp:suggestRuntimeModules
 
-      - name: Build Desktop Release for ${{ matrix.os }}
-        env:
-          GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ./gradlew :DesktopApp:packageReleaseDistributionForCurrentOS
-
-      - name: Upload Windows Build
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
-          startsWith(matrix.os, 'windows')
-        uses: actions/upload-artifact@v7.0.2
+      - name: Build and Upload Desktop for ${{ matrix.os }}
+        uses: $/.github/actions/desktop-build
         with:
-          name: fga-ci-windows-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/msi/*.msi
-          # path: ./desktopApp/build/compose/binaries/main-release/portable/*.exe
-
-      - name: Upload Linux Build
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
-          startsWith(matrix.os, 'ubuntu')
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-linux-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/**/*.deb
-
-      - name: Upload Macos Build
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
-          startsWith(matrix.os, 'macos')
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-macos-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/**/*.dmg
+          os: ${{ matrix.os }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          upload-build: ${{ github.event.inputs.upload_build }}
