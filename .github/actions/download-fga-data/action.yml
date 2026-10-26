@@ -1,0 +1,18 @@
+name: Download FGA Data
+description: Download the latest FGA Data release and move the files to the atlas composeResources directory.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download latest FGA Data release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
+
+    - name: Move the downloaded FGA Data release to the correct location
+      shell: bash
+      run: |
+        mkdir -p data/src/commonMain/composeResources/files/atlas/
+        mv *.pb data/src/commonMain/composeResources/files/atlas/
