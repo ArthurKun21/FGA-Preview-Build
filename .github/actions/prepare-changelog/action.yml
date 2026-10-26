@@ -89,7 +89,7 @@ runs:
 
         commit_logs=$(curl -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: Bearer $GH_PAT" \
-          "https://api.github.com/repos/Arthurkun21/fga-preview/compare/$prev_release_sha...$current_sha" \
+          "https://api.github.com/repos/ArthurKun21/FGA-Preview/compare/$prev_release_sha...$current_sha" \
           | jq '[.commits[]|{message:(.commit.message | split("\n")), username:.author.login}]' \
           | jq -r '.[]|"- \(.message | first) (@\(.username))"')
 

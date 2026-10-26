@@ -94,6 +94,7 @@ jobs:
 
       - name: Suggest Runtime modules for ${{ matrix.os }}
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.suggest_runtime == 'true' || github.event.inputs.suggest_runtime == true) }}
+        shell: bash
         run: |
           ./gradlew :desktopApp:suggestRuntimeModules
 

@@ -38,11 +38,6 @@ jobs:
         with:
           secret-pat: ${{ secrets.PAT }}
 
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
-        with:
-          fetch-depth: 0
-          path: 'preview'
       - name: Prepare changelog
         id: prepare_changelog
         uses: $/.github/actions/prepare-changelog
@@ -69,7 +64,7 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./gradlew assemblepreview --parallel --no-daemon
+          ./gradlew assemblePreview --parallel --no-daemon
 
       - name: Upload Android release
         if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
@@ -117,10 +112,12 @@ jobs:
 
       - name: Update CHANGELOG.md
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
+        env:
+          CHANGELOG: ${{ needs.build-app.outputs.CHANGELOG }}
         run: |
           git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
 
-          echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          { printf '%s\n\n' "$CHANGELOG"; cat CHANGELOG.md; } > CHANGELOG.md
 
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -135,7 +132,7 @@ jobs:
             exit 1
           fi
 
-          echo -e "${{ needs.build-app.outputs.CHANGELOG }}" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
+          printf '%s\n' "$CHANGELOG" > docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
 
           git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"

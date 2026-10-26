@@ -22,10 +22,6 @@ jobs:
   build-app:
     needs: data
     runs-on: ubuntu-latest
-    outputs:
-      CREATE_RELEASE: ${{ steps.prepare_changelog.outputs.create-release }}
-      CHANGELOG: ${{ steps.prepare_changelog.outputs.changelog }}
-      COMMIT_COUNT_OUTPUT: ${{ steps.prepare_changelog.outputs.commit-count }}
     env:
       FGA_VERSION_CODE: 0
       FGA_VERSION_NAME: ''
@@ -38,11 +34,6 @@ jobs:
         with:
           secret-pat: ${{ secrets.PAT }}
 
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
-        with:
-          fetch-depth: 0
-          path: 'preview'
       - name: Prepare changelog
         id: prepare_changelog
         uses: $/.github/actions/prepare-changelog

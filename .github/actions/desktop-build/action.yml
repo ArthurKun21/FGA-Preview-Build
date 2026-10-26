@@ -37,7 +37,7 @@ runs:
         GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
         GITHUB_TOKEN: ${{ inputs.github-token }}
       run: |
-        ./gradlew :DesktopApp:packageReleaseDistributionForCurrentOS
+        ./gradlew :desktopApp:packageReleaseDistributionForCurrentOS
 
     - name: Upload Windows Build
       if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'windows') }}
