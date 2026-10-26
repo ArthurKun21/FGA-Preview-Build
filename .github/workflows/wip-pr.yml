@@ -8,6 +8,9 @@ on:
         required: false
         default: 'development'
 
+permissions:
+  contents: read
+
 env:
   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
@@ -21,7 +24,6 @@ jobs:
       TIME_STAMP: ""
     permissions:
       contents: write
-      discussions: write
     steps:
       - name: Checkout FGA Preview
         uses: $/.github/actions/checkout-project

@@ -22,6 +22,9 @@ on:
         required: false
         default: 'development'
 
+permissions:
+  contents: read
+
 env:
   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
@@ -29,8 +32,7 @@ jobs:
   android-app:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      discussions: write
+      contents: read
     env:
       COMMIT_COUNT: 0
     steps:
@@ -70,8 +72,7 @@ jobs:
         os: [ ubuntu-latest, macos-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
     permissions:
-      contents: write
-      discussions: write
+      contents: read
     steps:
       - name: Checkout FGA Preview
         uses: $/.github/actions/checkout-project

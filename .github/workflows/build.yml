@@ -7,6 +7,9 @@ on:
   # Manual triggers
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 env:
   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
@@ -22,7 +25,6 @@ jobs:
       FGA_VERSION_NAME: ''
     permissions:
       contents: write
-      discussions: write
     steps:
       - name: Checkout FGA Preview
         uses: $/.github/actions/checkout-project

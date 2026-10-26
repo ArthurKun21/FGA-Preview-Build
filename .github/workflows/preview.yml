@@ -9,6 +9,9 @@ on:
         required: false
         default: 'development'
 
+permissions:
+  contents: read
+
 env:
   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
@@ -16,8 +19,7 @@ jobs:
   build-app:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      discussions: write
+      contents: read
     env:
       COMMIT_COUNT: 0
     steps:
