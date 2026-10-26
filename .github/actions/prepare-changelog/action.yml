@@ -1,0 +1,130 @@
+name: Prepare Changelog
+description: >-
+  Find the previous release for a channel, count commits since then, and build the release changelog.
+  Requires actions/checkout with fetch-depth: 0 to run first in the FGA source checkout (workspace root).
+
+inputs:
+  channel:
+    description: Release channel to compare against (alpha or preview)
+    required: true
+  github-token:
+    description: GitHub token used to list the previous release
+    required: true
+  secret-pat:
+    description: PAT used to query the compare API
+    required: true
+
+outputs:
+  prev-tag:
+    description: Tag of the previous release
+    value: ${{ steps.previous-release.outputs.prev-tag }}
+  commit-count:
+    description: Commit count of the checked out source
+    value: ${{ steps.commits.outputs.commit-count }}
+  commit-count-diff:
+    description: Number of commits since the previous release
+    value: ${{ steps.commits.outputs.commit-count-diff }}
+  current-sha:
+    description: Short SHA of the checked out source
+    value: ${{ steps.commits.outputs.current-sha }}
+  prev-release-sha:
+    description: Short SHA of the previous release
+    value: ${{ steps.commits.outputs.prev-release-sha }}
+  commit-logs:
+    description: Formatted list of commits since the previous release
+    value: ${{ steps.commits.outputs.commit-logs }}
+  changelog:
+    description: Changelog body for the new release
+    value: ${{ steps.changelog.outputs.changelog }}
+  create-release:
+    description: Whether there are new commits to release (true or false)
+    value: ${{ steps.changelog.outputs.create-release }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get previous release
+      id: previous-release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        CHANNEL: ${{ inputs.channel }}
+      run: |
+        case "$CHANNEL" in
+          alpha)
+            tag=$(gh release list --repo "$GITHUB_REPOSITORY" --exclude-drafts --limit 100 --json tagName \
+              --jq '[.[] | select(.tagName | test("^pre-[0-9]+-alpha$"))] | first | .tagName // empty')
+            ;;
+          preview)
+            tag=$(gh release list --repo "$GITHUB_REPOSITORY" --exclude-drafts --exclude-pre-releases --limit 1 --json tagName \
+              --jq '.[0].tagName // empty')
+            ;;
+          *)
+            echo "Unknown channel: $CHANNEL"
+            exit 1
+            ;;
+        esac
+
+        if [ -z "$tag" ]; then
+          echo "Failed to get repository information"
+          exit 1
+        fi
+
+        echo "prev-tag=$tag" >> "$GITHUB_OUTPUT"
+        echo "Latest Tag: $tag"
+
+    - name: Compare commits
+      id: commits
+      shell: bash
+      env:
+        PREV_TAG: ${{ steps.previous-release.outputs.prev-tag }}
+        GH_PAT: ${{ inputs.secret-pat }}
+      run: |
+        commit_count=$(git rev-list --count HEAD)
+        current_sha=$(git rev-parse --short HEAD)
+
+        prev_commit_count=$(echo "$PREV_TAG" | sed -E 's/^pre-([0-9]+).*$/\1/')
+        commit_count_diff=$((commit_count - prev_commit_count))
+        prev_release_sha=$(git rev-parse --short "HEAD~$commit_count_diff")
+
+        commit_logs=$(curl -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: Bearer $GH_PAT" \
+          "https://api.github.com/repos/Arthurkun21/fga-preview/compare/$prev_release_sha...$current_sha" \
+          | jq '[.commits[]|{message:(.commit.message | split("\n")), username:.author.login}]' \
+          | jq -r '.[]|"- \(.message | first) (@\(.username))"')
+
+        delimiter=$(openssl rand -hex 16)
+        {
+          echo "commit-count=$commit_count"
+          echo "commit-count-diff=$commit_count_diff"
+          echo "current-sha=$current_sha"
+          echo "prev-release-sha=$prev_release_sha"
+          echo "commit-logs<<$delimiter"
+          printf '%s\n' "$commit_logs"
+          echo "$delimiter"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Prepare changelog
+      id: changelog
+      shell: bash
+      env:
+        COMMIT_COUNT: ${{ steps.commits.outputs.commit-count }}
+        COMMIT_COUNT_DIFF: ${{ steps.commits.outputs.commit-count-diff }}
+        COMMIT_LOGS: ${{ steps.commits.outputs.commit-logs }}
+      run: |
+        current_date=$(date +"%Y-%m-%d")
+        changelog=$(printf '# %s\n\n%s\n\n%s' "$COMMIT_COUNT" "$current_date" "$COMMIT_LOGS")
+
+        if [ "$COMMIT_COUNT_DIFF" -gt 0 ]; then
+          create_release=true
+        else
+          create_release=false
+        fi
+
+        delimiter=$(openssl rand -hex 16)
+        {
+          echo "changelog<<$delimiter"
+          printf '%s\n' "$changelog"
+          echo "$delimiter"
+          echo "create-release=$create_release"
+        } >> "$GITHUB_OUTPUT"
