@@ -3,7 +3,7 @@ name = "fga-preview-build"
 version = "0.1.0"
 description = "Documentation site for FGA Preview, an enhanced fork of Fate/Grand Automata (FGA) for Android"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.15"
 dependencies = [
     "zensical>=0.0.69",
 ]
