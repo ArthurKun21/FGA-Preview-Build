@@ -24,9 +24,6 @@ inputs:
   body:
     description: Release body for the main repository release
     required: true
-  fork-body:
-    description: Release body for the fork repository release
-    required: true
   fork-repository:
     description: Fork repository (owner/name) that receives the release
     required: true
@@ -73,7 +70,7 @@ runs:
         tag_name: ${{ inputs.tag-name }}
         name: ${{ inputs.release-name }}
         repository: ${{ inputs.fork-repository }}
-        body: ${{ inputs.fork-body }}
+        body: ${{ inputs.body }}
         prerelease: ${{ inputs.fork-prerelease }}
         draft: ${{ inputs.fork-draft }}
         files: |
