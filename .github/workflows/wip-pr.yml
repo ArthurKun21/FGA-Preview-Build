@@ -25,13 +25,13 @@ jobs:
       discussions: write
     steps:
       - name: Checkout FGA Preview
-        uses: ./.github/actions/checkout-project
+        uses: $/.github/actions/checkout-project
         with:
           secret-pat: ${{ secrets.PAT }}
           branch: ${{ github.event.inputs.repo_branch || 'development' }}
 
       - name: Setup project defaults
-        uses: ./.github/actions/setup-project-defaults
+        uses: $/.github/actions/setup-project-defaults
 
       - name: Prepare build
         id: prepare_build

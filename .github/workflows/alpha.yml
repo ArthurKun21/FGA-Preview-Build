@@ -32,7 +32,7 @@ jobs:
       discussions: write
     steps:
       - name: Checkout FGA Preview
-        uses: ./.github/actions/checkout-project
+        uses: $/.github/actions/checkout-project
         with:
           secret-pat: ${{ secrets.PAT }}
 
@@ -102,7 +102,7 @@ jobs:
 
       - name: Setup project defaults
         if: ${{ env.commit_count_diff > 0 }}
-        uses: ./.github/actions/setup-project-defaults
+        uses: $/.github/actions/setup-project-defaults
 
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
