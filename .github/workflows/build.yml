@@ -35,13 +35,6 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-          repository: 'ArthurKun21/FGA-Preview'
-          token: ${{ secrets.PAT }}
-      
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
-        with:
-          fetch-depth: 0
           path: 'preview'
       - name: Get previous release
         env:
@@ -64,7 +57,7 @@ jobs:
           echo "COMMIT_COUNT_OUTPUT=$commit_count" >> $GITHUB_OUTPUT
           current_sha=$(git rev-parse --short HEAD)
           echo "CURRENT_SHA=$current_sha" >> $GITHUB_ENV
-          
+
           echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
           echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
 
@@ -91,40 +84,18 @@ jobs:
           CURRENT_DATE=$(date +"%Y-%m-%d")
 
           CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}"
-          
+
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
           echo "CREATE_RELEASE=true" >> $GITHUB_OUTPUT
 
-      - name: Validate Gradle Wrapper
+      - name: Setup project defaults
         if: ${{ env.commit_count_diff > 0 }}
-        uses: gradle/actions/wrapper-validation@v6.4.0
-      
-      - name: Set up JDK 21
-        if: ${{ env.commit_count_diff > 0 }}
-        uses: actions/setup-java@v6.0.1
+        uses: ./.github/actions/setup-project-defaults
         with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRO }}
-  
-      - name: Set up gradle
-        if: ${{ env.commit_count_diff > 0 }}
-        uses: gradle/actions/setup-gradle@v6.4.0
+          secret-pat: ${{ secrets.PAT }}
 
-      - name: Download latest FGA Data release
-        if: ${{ env.commit_count_diff > 0 }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
-
-      - name: Move the downloaded FGA Data release to the correct location
-        if: ${{ env.commit_count_diff > 0 }}
-        run: |
-          mkdir -p data/src/commonMain/composeResources/files/atlas/
-          mv *.pb data/src/commonMain/composeResources/files/atlas/
-    
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
         env:
@@ -132,7 +103,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assemblepreview --parallel --no-daemon
-      
+
       - name: Clean up build artifacts
         if: ${{ env.commit_count_diff > 0 }}
         run: |
@@ -142,7 +113,7 @@ jobs:
           cp app/build/outputs/apk/preview/app-armeabi-v7a-preview.apk fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
           cp app/build/outputs/apk/preview/app-x86_64-preview.apk fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
           cp app/build/outputs/apk/preview/app-x86-preview.apk fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
-      
+
       - name: Create release on forked repo
         uses: softprops/action-gh-release@v3.0.3
         if: ${{ env.commit_count_diff > 0 }}
@@ -154,7 +125,7 @@ jobs:
             # Preview-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
-            
+
             > [!TIP]
             > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
 
@@ -181,7 +152,7 @@ jobs:
             # Pre-${{ env.COMMIT_COUNT }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
-            
+
             > [!TIP]
             > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
 
@@ -206,7 +177,7 @@ jobs:
       #   with:
       #     keep_latest: 28
       #     delete_tags: true
-  
+
   changelog:
     runs-on: macos-latest
     needs: build-app
@@ -218,7 +189,7 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      
+
       - name: Update CHANGELOG.md
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         run: |
@@ -227,7 +198,7 @@ jobs:
           echo -e "${{ needs.build-app.outputs.CHANGELOG }}\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com' 
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
           # Use ISO-8601 format for consistency
           CURRENT_DATE_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -244,7 +215,7 @@ jobs:
           git add CHANGELOG.md docs/changelog/pre-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}.md
           git commit -m "Update CHANGELOG.md @ ${CURRENT_DATE_TIME}"
           git push -u origin update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
-        
+
       - name: Create pull request
         if: ${{ needs.build-app.outputs.CREATE_RELEASE == 'true' }}
         env:
@@ -257,4 +228,3 @@ jobs:
             echo "Failed to create pull request. Please check branch existence, authentication, or network connectivity."
             exit 1
           fi
-

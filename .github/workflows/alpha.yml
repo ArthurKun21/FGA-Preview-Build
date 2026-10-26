@@ -35,13 +35,6 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-          repository: 'ArthurKun21/FGA-Preview'
-          token: ${{ secrets.PAT }}
-      
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
-        with:
-          fetch-depth: 0
           path: 'preview'
       - name: Get previous release
         env:
@@ -53,7 +46,7 @@ jobs:
             --json tagName \
             --limit 100 \
             --jq '[.[] | select(.tagName | test("^pre-[0-9]+-alpha$"))] | .[0].tagName')
-                    
+
           if [ -n "$OUTPUT" ]; then
             echo "TAG_NAME=$OUTPUT" >> $GITHUB_ENV
             echo "Latest Tag: $OUTPUT"
@@ -69,7 +62,7 @@ jobs:
           echo "COMMIT_COUNT_OUTPUT=$commit_count" >> $GITHUB_OUTPUT
           current_sha=$(git rev-parse --short HEAD)
           echo "CURRENT_SHA=$current_sha" >> $GITHUB_ENV
-          
+
           echo "FGA_VERSION_CODE=$commit_count" >>${GITHUB_ENV}
           echo "FGA_VERSION_NAME=$current_sha" >>${GITHUB_ENV}
 
@@ -96,40 +89,18 @@ jobs:
           CURRENT_DATE=$(date +"%Y-%m-%d")
 
           CHANGELOG="# ${COMMIT_COUNT}\n\n$CURRENT_DATE\n\n${COMMIT_LOGS}"
-          
+
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           echo -e "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
           echo "CREATE_RELEASE=true" >> $GITHUB_OUTPUT
 
-      - name: Validate Gradle Wrapper
+      - name: Setup project defaults
         if: ${{ env.commit_count_diff > 0 }}
-        uses: gradle/actions/wrapper-validation@v6.4.0
-      
-      - name: Set up JDK 21
-        if: ${{ env.commit_count_diff > 0 }}
-        uses: actions/setup-java@v6.1.0
+        uses: ./.github/actions/setup-project-defaults
         with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRO }}
-  
-      - name: Set up gradle
-        if: ${{ env.commit_count_diff > 0 }}
-        uses: gradle/actions/setup-gradle@v6.4.0
-      
-      - name: Download latest FGA Data release
-        if: ${{ env.commit_count_diff > 0 }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
+          secret-pat: ${{ secrets.PAT }}
 
-      - name: Move the downloaded FGA Data release to the correct location
-        if: ${{ env.commit_count_diff > 0 }}
-        run: |
-          mkdir -p data/src/commonMain/composeResources/files/atlas/
-          mv *.pb data/src/commonMain/composeResources/files/atlas/
-    
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
         env:
@@ -137,7 +108,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assembleCi --parallel --no-daemon
-      
+
       - name: Clean up build artifacts
         if: ${{ env.commit_count_diff > 0 }}
         run: |
@@ -147,7 +118,7 @@ jobs:
           cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
           cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
           cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
-      
+
       - name: Create release on forked repo
         uses: softprops/action-gh-release@v3.0.3
         if: ${{ env.commit_count_diff > 0 }}
@@ -163,7 +134,7 @@ jobs:
             ## Commits
 
             ${{ env.COMMIT_LOGS }}
-            
+
             > [!IMPORTANT]
             >
             > This is an alpha build and may contain bugs.
@@ -193,7 +164,7 @@ jobs:
             ## Commits
 
             ${{ env.COMMIT_LOGS }}
-            
+
             > [!IMPORTANT]
             >
             > This is an alpha build and may contain bugs.
