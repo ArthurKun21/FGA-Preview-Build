@@ -190,7 +190,7 @@ jobs:
       #     delete_tags: true
 
   changelog:
-    runs-on: macos-latest
+    runs-on: ubuntu-slim
     needs: build-app
     permissions:
       contents: write
