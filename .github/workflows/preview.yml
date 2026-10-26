@@ -22,13 +22,6 @@ jobs:
       - name: Download FGA Data
         uses: $/.github/actions/download-fga-data
 
-      - name: Upload FGA Data artifact
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-data
-          path: data/src/commonMain/composeResources/files/atlas/*.pb
-          retention-days: 1
-
   build-app:
     needs: download-fga-data
     runs-on: macos-latest
@@ -46,12 +39,6 @@ jobs:
 
       - name: Setup project defaults
         uses: $/.github/actions/setup-project-defaults
-
-      - name: Download FGA Data artifact
-        uses: actions/download-artifact@v8.0.2
-        with:
-          name: fga-data
-          path: data/src/commonMain/composeResources/files/atlas/
 
       - name: Prepare build
         run: |

@@ -1,5 +1,5 @@
 name: Download FGA Data
-description: Download the latest FGA Data release and move the files to the atlas composeResources directory.
+description: Download the latest FGA Data release and upload the files as an artifact.
 
 runs:
   using: "composite"
@@ -11,8 +11,9 @@ runs:
       run: |
         gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
 
-    - name: Move the downloaded FGA Data release to the correct location
-      shell: bash
-      run: |
-        mkdir -p data/src/commonMain/composeResources/files/atlas/
-        mv *.pb data/src/commonMain/composeResources/files/atlas/
+    - name: Upload FGA Data artifact
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-data
+        path: '*.pb'
+        retention-days: 1
