@@ -23,8 +23,7 @@ on:
         default: 'development'
 
 env:
-  JAVA_VERSION: 25
-  JAVA_DISTRO: 'temurin'
+  GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
 jobs:
   download-fga-data:
@@ -37,7 +36,7 @@ jobs:
 
   android-app:
     needs: download-fga-data
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       discussions: write
