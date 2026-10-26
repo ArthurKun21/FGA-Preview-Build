@@ -71,51 +71,15 @@ jobs:
         run: |
           ./gradlew assemblepreview --parallel --no-daemon
 
-      - name: Clean up build artifacts
+      - name: Upload Android release
         if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
-        run: |
-          COMMIT_COUNT=${{ steps.prepare_changelog.outputs.commit-count }}
-          cp app/build/outputs/apk/preview/app-universal-preview.apk fga-preview-$COMMIT_COUNT.apk
-
-          cp app/build/outputs/apk/preview/app-arm64-v8a-preview.apk fga-preview-arm64-v8a-$COMMIT_COUNT.apk
-          cp app/build/outputs/apk/preview/app-armeabi-v7a-preview.apk fga-preview-armeabi-v7a-$COMMIT_COUNT.apk
-          cp app/build/outputs/apk/preview/app-x86_64-preview.apk fga-preview-x86_64-$COMMIT_COUNT.apk
-          cp app/build/outputs/apk/preview/app-x86-preview.apk fga-preview-x86-$COMMIT_COUNT.apk
-
-      - name: Create release on forked repo
-        uses: softprops/action-gh-release@v3.0.3
-        if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
+        uses: $/.github/actions/upload-android-release
         with:
-          tag_name: pre-${{ steps.prepare_changelog.outputs.commit-count }}
-          name: FGA Preview ${{ steps.prepare_changelog.outputs.commit-count }}
-          repository: ArthurKun21/FGA
-          body: |
-            # Preview-${{ steps.prepare_changelog.outputs.commit-count }}
-
-            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
-
-            > [!TIP]
-            > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
-
-            > [!TIP]
-            >
-            > If you are unsure which version to download then go with `fga-preview-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
-          files: |
-            fga-preview-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-arm64-v8a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-armeabi-v7a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-x86_64-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-x86-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-          prerelease: false
-          draft: false
-          token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
-
-      - name: Create release
-        uses: softprops/action-gh-release@v3.0.3
-        if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
-        with:
-          tag_name: pre-${{ steps.prepare_changelog.outputs.commit-count }}
-          name: FGA Preview ${{ steps.prepare_changelog.outputs.commit-count }}
+          commit-count: ${{ steps.prepare_changelog.outputs.commit-count }}
+          artifact-prefix: fga-preview
+          apk-variant: preview
+          tag-name: pre-${{ steps.prepare_changelog.outputs.commit-count }}
+          release-name: FGA Preview ${{ steps.prepare_changelog.outputs.commit-count }}
           body: |
             # Pre-${{ steps.prepare_changelog.outputs.commit-count }}
 
@@ -127,16 +91,22 @@ jobs:
             > [!TIP]
             >
             > If you are unsure which version to download then go with `fga-preview-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
-          files: |
-            fga-preview-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-arm64-v8a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-armeabi-v7a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-x86_64-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-x86-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-          prerelease: false
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          fork-body: |
+            # Preview-${{ steps.prepare_changelog.outputs.commit-count }}
+
+            Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
+
+            > [!TIP]
+            > Check out our [CHANGELOG](https://github.com/ArthurKun21/FGA-Preview-Build/blob/main/CHANGELOG.md) for some of the past releases.
+
+            > [!TIP]
+            >
+            > If you are unsure which version to download then go with `fga-preview-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
+          fork-repository: ArthurKun21/FGA
+          draft: 'true'
+          release-token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       # - name: Prune old releases
       #   uses: dev-drprasad/delete-older-releases@dfbe6be2a006e9475dfcbe5b8d201f1824c2a9fe # v0.3.4
       #   if: ${{ env.commit_count_diff > 0 }}

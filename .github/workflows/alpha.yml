@@ -71,24 +71,15 @@ jobs:
         run: |
           ./gradlew assembleCi --parallel --no-daemon
 
-      - name: Clean up build artifacts
+      - name: Upload Android release
         if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
-        run: |
-          COMMIT_COUNT=${{ steps.prepare_changelog.outputs.commit-count }}
-          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-alpha-build-$COMMIT_COUNT.apk
-
-          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-alpha-build-arm64-v8a-$COMMIT_COUNT.apk
-          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-alpha-build-armeabi-v7a-$COMMIT_COUNT.apk
-          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-alpha-build-x86_64-$COMMIT_COUNT.apk
-          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-alpha-build-x86-$COMMIT_COUNT.apk
-
-      - name: Create release on forked repo
-        uses: softprops/action-gh-release@v3.0.3
-        if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
+        uses: $/.github/actions/upload-android-release
         with:
-          tag_name: pre-${{ steps.prepare_changelog.outputs.commit-count }}-alpha
-          name: FGA Preview - Alpha ${{ steps.prepare_changelog.outputs.commit-count }}
-          repository: ArthurKun21/FGA
+          commit-count: ${{ steps.prepare_changelog.outputs.commit-count }}
+          artifact-prefix: fga-preview-alpha-build
+          apk-variant: ci
+          tag-name: pre-${{ steps.prepare_changelog.outputs.commit-count }}-alpha
+          release-name: FGA Preview - Alpha ${{ steps.prepare_changelog.outputs.commit-count }}
           body: |
             # Alpha-${{ steps.prepare_changelog.outputs.commit-count }}
 
@@ -105,21 +96,7 @@ jobs:
             > [!TIP]
             >
             > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
-          files: |
-            fga-preview-alpha-build-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-arm64-v8a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-armeabi-v7a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-x86_64-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-x86-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-          token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
-
-      - name: Create release
-        uses: softprops/action-gh-release@v3.0.3
-        if: ${{ steps.prepare_changelog.outputs.commit-count-diff > 0 }}
-        with:
-          tag_name: pre-${{ steps.prepare_changelog.outputs.commit-count }}-alpha
-          name: FGA Preview - Alpha ${{ steps.prepare_changelog.outputs.commit-count }}
-          body: |
+          fork-body: |
             # Alpha-${{ steps.prepare_changelog.outputs.commit-count }}
 
             Check out our documentation website: https://arthurkun21.github.io/FGA-Preview-Build/
@@ -135,13 +112,8 @@ jobs:
             > [!TIP]
             >
             > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
-          files: |
-            fga-preview-alpha-build-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-arm64-v8a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-armeabi-v7a-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-x86_64-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-            fga-preview-alpha-build-x86-${{ steps.prepare_changelog.outputs.commit-count }}.apk
-          prerelease: true
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          fork-repository: ArthurKun21/FGA
+          prerelease: 'true'
+          draft: 'true'
+          release-token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
