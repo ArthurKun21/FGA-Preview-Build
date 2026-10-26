@@ -34,6 +34,7 @@ workflows:
     '.github/workflows/wip-pr.yml':
         - 'actions/checkout@v7.0.1'
         - 'actions/setup-java@v6.1.0'
+        - 'actions/upload-artifact@v7.0.2'
         - 'gradle/actions@v6.4.0'
         - 'softprops/action-gh-release@v3.0.3'
 dependencies:

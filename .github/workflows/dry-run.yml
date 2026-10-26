@@ -56,58 +56,12 @@ jobs:
         run: |
           ./gradlew assembleCi --parallel
 
-      - name: Clean up build artifacts
-        run: |
-          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-ci-${{ env.COMMIT_COUNT }}.apk
-
-          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
-
-          cp app/build/outputs/mapping/ci/mapping.txt fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
-
-      - name: Upload Mapping
+      - name: Upload Alpha
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
+        uses: $/.github/actions/upload-ci
         with:
-          name: fga-ci-${{ env.COMMIT_COUNT }}-mapping
-          path: fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
-
-      - name: Upload APK
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (arm64-v8a)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (armeabi-v7a)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (x86_64)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-x86_64-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (x86)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-x86-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
+          commit-count: ${{ env.COMMIT_COUNT }}
+          upload-build: ${{ github.event.inputs.upload_build }}
 
   Desktop-App:
     timeout-minutes: 60

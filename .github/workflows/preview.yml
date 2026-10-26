@@ -48,41 +48,7 @@ jobs:
         run: |
           ./gradlew assemblePreview --parallel
 
-      - name: Clean up build artifacts
-        run: |
-          cp app/build/outputs/apk/preview/app-universal-preview.apk fga-preview-${{ env.COMMIT_COUNT }}.apk
-
-          cp app/build/outputs/apk/preview/app-arm64-v8a-preview.apk fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/preview/app-armeabi-v7a-preview.apk fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/preview/app-x86_64-preview.apk fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/preview/app-x86-preview.apk fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v7.0.2
+      - name: Upload Preview
+        uses: $/.github/actions/upload-preview
         with:
-          name: fga-preview-${{ env.COMMIT_COUNT }}-apk
-          path: fga-preview-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (arm64-v8a)
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
-          path: fga-preview-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (armeabi-v7a)
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
-          path: fga-preview-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (x86_64)
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-preview-x86_64-${{ env.COMMIT_COUNT }}-apk
-          path: fga-preview-x86_64-${{ env.COMMIT_COUNT }}.apk
-
-      - name: Upload APK (x86)
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-preview-x86-${{ env.COMMIT_COUNT }}-apk
-          path: fga-preview-x86-${{ env.COMMIT_COUNT }}.apk
+          commit-count: ${{ env.COMMIT_COUNT }}

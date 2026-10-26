@@ -1,0 +1,50 @@
+name: Upload Preview Artifacts
+description: Upload artifacts made with the Preview build
+
+inputs:
+  commit-count:
+    description: The commit count to use for naming the artifacts
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Clean up build artifacts
+      shell: bash
+      run: |
+        cp app/build/outputs/apk/preview/app-universal-preview.apk fga-preview-${{ inputs.commit-count }}.apk
+
+        cp app/build/outputs/apk/preview/app-arm64-v8a-preview.apk fga-preview-arm64-v8a-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/preview/app-armeabi-v7a-preview.apk fga-preview-armeabi-v7a-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/preview/app-x86_64-preview.apk fga-preview-x86_64-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/preview/app-x86-preview.apk fga-preview-x86-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-preview-${{ inputs.commit-count }}-apk
+        path: fga-preview-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (arm64-v8a)
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-preview-arm64-v8a-${{ inputs.commit-count }}-apk
+        path: fga-preview-arm64-v8a-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (armeabi-v7a)
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-preview-armeabi-v7a-${{ inputs.commit-count }}-apk
+        path: fga-preview-armeabi-v7a-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (x86_64)
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-preview-x86_64-${{ inputs.commit-count }}-apk
+        path: fga-preview-x86_64-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (x86)
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-preview-x86-${{ inputs.commit-count }}-apk
+        path: fga-preview-x86-${{ inputs.commit-count }}.apk

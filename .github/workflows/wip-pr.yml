@@ -48,14 +48,11 @@ jobs:
         run: |
           ./gradlew assembleCi --parallel --no-daemon
 
-      - name: Clean up build artifacts
-        run: |
-          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
-
-          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
+      - name: Upload Alpha
+        uses: $/.github/actions/upload-ci
+        with:
+          commit-count: ${{ env.COMMIT_COUNT }}
+          artifact-prefix: fga-preview-wip-alpha-build
 
       - name: Create release on forked repo
         uses: softprops/action-gh-release@v3.0.3
