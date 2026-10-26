@@ -8,24 +8,10 @@ inputs:
   distribution:
     description: Java distribution
     default: 'temurin'
-  secret-pat:
-    description: GitHub token or PAT
-    required: true
-  branch:
-    description: Git branch to checkout
-    default: 'development'
 
 runs:
   using: "composite"
   steps:
-    - name: Checkout code
-      uses: actions/checkout@v7.0.1
-      with:
-        fetch-depth: 0
-        repository: 'ArthurKun21/FGA-Preview'
-        token: ${{ inputs.secret-pat }}
-        ref: ${{ inputs.branch }}
-
     - name: Validate Gradle Wrapper
       uses: gradle/actions/wrapper-validation@v6.4.0
 

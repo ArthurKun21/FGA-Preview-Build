@@ -22,11 +22,14 @@ jobs:
     env:
       COMMIT_COUNT: 0
     steps:
-      - name: Setup project defaults
-        uses: ./.github/actions/setup-project-defaults
+      - name: Checkout FGA Preview
+        uses: ./.github/actions/checkout-project
         with:
           secret-pat: ${{ secrets.PAT }}
           branch: ${{ github.event.inputs.repo_branch || 'development' }}
+
+      - name: Setup project defaults
+        uses: ./.github/actions/setup-project-defaults
 
       - name: Prepare build
         run: |

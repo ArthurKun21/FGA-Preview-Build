@@ -1,0 +1,21 @@
+name: Checkout FGA Preview
+description: 'Action to checkout the FGA Preview project'
+
+inputs:
+  secret-pat:
+    description: GitHub token or PAT
+    required: true
+  branch:
+    description: Git branch to checkout
+    default: 'development'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v7.0.1
+      with:
+        fetch-depth: 0
+        repository: 'ArthurKun21/FGA-Preview'
+        token: ${{ inputs.secret-pat }}
+        ref: ${{ inputs.branch }}

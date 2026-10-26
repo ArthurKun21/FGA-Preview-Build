@@ -31,6 +31,11 @@ jobs:
       contents: write
       discussions: write
     steps:
+      - name: Checkout FGA Preview
+        uses: ./.github/actions/checkout-project
+        with:
+          secret-pat: ${{ secrets.PAT }}
+
       - name: Checkout code
         uses: actions/checkout@v7.0.1
         with:
@@ -93,8 +98,6 @@ jobs:
       - name: Setup project defaults
         if: ${{ env.commit_count_diff > 0 }}
         uses: ./.github/actions/setup-project-defaults
-        with:
-          secret-pat: ${{ secrets.PAT }}
 
       - name: Build Android Package
         if: ${{ env.commit_count_diff > 0 }}
