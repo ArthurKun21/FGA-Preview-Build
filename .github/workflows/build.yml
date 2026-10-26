@@ -79,6 +79,8 @@ jobs:
             > If you are unsure which version to download then go with `fga-preview-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
           release-token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: 'false'
+          draft: 'true'
 
       # - name: Prune old releases
       #   uses: dev-drprasad/delete-older-releases@dfbe6be2a006e9475dfcbe5b8d201f1824c2a9fe # v0.3.4

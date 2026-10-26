@@ -20,6 +20,22 @@ inputs:
   body:
     description: Release body for the main repository release
     required: true
+  prerelease:
+    description: Whether the main repository release is marked as a pre-release
+    required: false
+    default: 'true'
+  draft:
+    description: Whether the main repository release is created as a draft
+    required: false
+    default: 'true'
+  fork-prerelease:
+    description: Whether the fork repository release is marked as a pre-release
+    required: false
+    default: 'false'
+  fork-draft:
+    description: Whether the fork repository release is created as a draft
+    required: false
+    default: 'false'
   release-token:
     description: Token with write access to the fork repository
     required: true
@@ -47,6 +63,8 @@ runs:
         name: ${{ inputs.release-name }}
         repository: ArthurKun21/FGA
         body: ${{ inputs.body }}
+        prerelease: ${{ inputs.fork-prerelease }}
+        draft: ${{ inputs.fork-draft }}
         files: |
           ${{ inputs.artifact-prefix }}-${{ inputs.commit-count }}.apk
           ${{ inputs.artifact-prefix }}-arm64-v8a-${{ inputs.commit-count }}.apk
@@ -61,8 +79,8 @@ runs:
         tag_name: ${{ inputs.tag-name }}
         name: ${{ inputs.release-name }}
         body: ${{ inputs.body }}
-        prerelease: true
-        draft: true
+        prerelease: ${{ inputs.prerelease }}
+        draft: ${{ inputs.draft }}
         files: |
           ${{ inputs.artifact-prefix }}-${{ inputs.commit-count }}.apk
           ${{ inputs.artifact-prefix }}-arm64-v8a-${{ inputs.commit-count }}.apk
