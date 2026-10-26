@@ -96,8 +96,5 @@ jobs:
             > [!TIP]
             >
             > If you are unsure which version to download then go with `fga-preview-alpha-build-${{ steps.prepare_changelog.outputs.commit-count }}.apk`
-          fork-repository: ArthurKun21/FGA
-          prerelease: 'true'
-          draft: 'true'
           release-token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
