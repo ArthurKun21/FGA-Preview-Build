@@ -26,16 +26,7 @@ env:
   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
 jobs:
-  data:
-    runs-on: ubuntu-slim
-    permissions:
-      contents: read
-    steps:
-      - name: Download FGA Data
-        uses: $/.github/actions/download-fga-data
-
   android-app:
-    needs: data
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -72,7 +63,6 @@ jobs:
           upload-build: ${{ github.event.inputs.upload_build }}
 
   Desktop-App:
-    needs: data
     timeout-minutes: 60
     strategy:
       fail-fast: false

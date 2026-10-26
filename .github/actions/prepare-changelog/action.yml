@@ -15,9 +15,6 @@ inputs:
     required: true
 
 outputs:
-  prev-tag:
-    description: Tag of the previous release
-    value: ${{ steps.previous-release.outputs.prev-tag }}
   commit-count:
     description: Commit count of the checked out source
     value: ${{ steps.commits.outputs.commit-count }}
@@ -27,9 +24,6 @@ outputs:
   current-sha:
     description: Short SHA of the checked out source
     value: ${{ steps.commits.outputs.current-sha }}
-  prev-release-sha:
-    description: Short SHA of the previous release
-    value: ${{ steps.commits.outputs.prev-release-sha }}
   commit-logs:
     description: Formatted list of commits since the previous release
     value: ${{ steps.commits.outputs.commit-logs }}
@@ -98,7 +92,6 @@ runs:
           echo "commit-count=$commit_count"
           echo "commit-count-diff=$commit_count_diff"
           echo "current-sha=$current_sha"
-          echo "prev-release-sha=$prev_release_sha"
           echo "commit-logs<<$delimiter"
           printf '%s\n' "$commit_logs"
           echo "$delimiter"

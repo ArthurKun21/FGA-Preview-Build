@@ -11,10 +11,6 @@ inputs:
   apk-variant:
     description: Build variant directory and suffix of the source APKs (ci or preview)
     required: true
-  rename-apks:
-    description: Whether to copy the source APKs to the renamed file names
-    required: false
-    default: 'true'
   tag-name:
     description: Tag name used for both releases
     required: true
@@ -35,7 +31,6 @@ runs:
   using: "composite"
   steps:
     - name: Rename APKs
-      if: ${{ inputs.rename-apks == 'true' }}
       shell: bash
       run: |
         cp app/build/outputs/apk/${{ inputs.apk-variant }}/app-universal-${{ inputs.apk-variant }}.apk ${{ inputs.artifact-prefix }}-${{ inputs.commit-count }}.apk

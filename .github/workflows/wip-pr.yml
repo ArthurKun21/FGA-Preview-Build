@@ -12,16 +12,7 @@ env:
   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
 jobs:
-  data:
-    runs-on: ubuntu-slim
-    permissions:
-      contents: read
-    steps:
-      - name: Download FGA Data
-        uses: $/.github/actions/download-fga-data
-
   build-app:
-    needs: data
     runs-on: ubuntu-latest
     env:
       COMMIT_COUNT: 0
@@ -57,19 +48,12 @@ jobs:
         run: |
           ./gradlew assembleCi --parallel --no-daemon
 
-      - name: Upload Alpha
-        uses: $/.github/actions/upload-alpha
-        with:
-          commit-count: ${{ env.COMMIT_COUNT }}
-          artifact-prefix: fga-preview-wip-alpha-build
-
       - name: Upload Android release
         uses: $/.github/actions/upload-android-release
         with:
           commit-count: ${{ env.COMMIT_COUNT }}
           artifact-prefix: fga-preview-wip-alpha-build
           apk-variant: ci
-          rename-apks: 'false'
           tag-name: wip-${{ env.COMMIT_COUNT }}-alpha-${{ env.TIME_STAMP }}
           release-name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
           body: |
