@@ -1,0 +1,90 @@
+name: Upload Android Release
+description: Rename the Android APKs and create the fork and main GitHub releases
+
+inputs:
+  commit-count:
+    description: The commit count used in the APK and release names
+    required: true
+  artifact-prefix:
+    description: Prefix used for the renamed APK file names
+    required: true
+  apk-variant:
+    description: Build variant directory and suffix of the source APKs (ci or preview)
+    required: true
+  tag-name:
+    description: Tag name used for both releases
+    required: true
+  release-name:
+    description: Release name used for both releases
+    required: true
+  body:
+    description: Release body for the main repository release
+    required: true
+  prerelease:
+    description: Whether the main repository release is marked as a pre-release
+    required: false
+    default: 'true'
+  draft:
+    description: Whether the main repository release is created as a draft
+    required: false
+    default: 'true'
+  fork-prerelease:
+    description: Whether the fork repository release is marked as a pre-release
+    required: false
+    default: 'false'
+  fork-draft:
+    description: Whether the fork repository release is created as a draft
+    required: false
+    default: 'false'
+  release-token:
+    description: Token with write access to the fork repository
+    required: true
+  github-token:
+    description: Token used to create the main repository release
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Rename APKs
+      shell: bash
+      run: |
+        cp app/build/outputs/apk/${{ inputs.apk-variant }}/app-universal-${{ inputs.apk-variant }}.apk ${{ inputs.artifact-prefix }}-${{ inputs.commit-count }}.apk
+
+        cp app/build/outputs/apk/${{ inputs.apk-variant }}/app-arm64-v8a-${{ inputs.apk-variant }}.apk ${{ inputs.artifact-prefix }}-arm64-v8a-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/${{ inputs.apk-variant }}/app-armeabi-v7a-${{ inputs.apk-variant }}.apk ${{ inputs.artifact-prefix }}-armeabi-v7a-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/${{ inputs.apk-variant }}/app-x86_64-${{ inputs.apk-variant }}.apk ${{ inputs.artifact-prefix }}-x86_64-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/${{ inputs.apk-variant }}/app-x86-${{ inputs.apk-variant }}.apk ${{ inputs.artifact-prefix }}-x86-${{ inputs.commit-count }}.apk
+
+    - name: Create release on forked repo
+      uses: softprops/action-gh-release@v3.0.3
+      with:
+        tag_name: ${{ inputs.tag-name }}
+        name: ${{ inputs.release-name }}
+        repository: ArthurKun21/FGA
+        body: ${{ inputs.body }}
+        prerelease: ${{ inputs.fork-prerelease }}
+        draft: ${{ inputs.fork-draft }}
+        files: |
+          ${{ inputs.artifact-prefix }}-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-arm64-v8a-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-armeabi-v7a-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-x86_64-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-x86-${{ inputs.commit-count }}.apk
+        token: ${{ inputs.release-token }}
+
+    - name: Create release
+      uses: softprops/action-gh-release@v3.0.3
+      with:
+        tag_name: ${{ inputs.tag-name }}
+        name: ${{ inputs.release-name }}
+        body: ${{ inputs.body }}
+        prerelease: ${{ inputs.prerelease }}
+        draft: ${{ inputs.draft }}
+        files: |
+          ${{ inputs.artifact-prefix }}-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-arm64-v8a-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-armeabi-v7a-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-x86_64-${{ inputs.commit-count }}.apk
+          ${{ inputs.artifact-prefix }}-x86-${{ inputs.commit-count }}.apk
+        token: ${{ inputs.github-token }}

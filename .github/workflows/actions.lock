@@ -10,7 +10,7 @@ workflows:
         - 'softprops/action-gh-release@v3.0.3'
     '.github/workflows/build.yml':
         - 'actions/checkout@v7.0.1'
-        - 'actions/setup-java@v6.0.1'
+        - 'actions/setup-java@v6.1.0'
         - 'gradle/actions@v6.4.0'
         - 'softprops/action-gh-release@v3.0.3'
     '.github/workflows/docs.yml':
@@ -21,17 +21,19 @@ workflows:
         - 'astral-sh/setup-uv@v10.3.0'
     '.github/workflows/dry-run.yml':
         - 'actions/checkout@v7.0.1'
-        - 'actions/setup-java@v6.0.1'
+        - 'actions/setup-java@v6.1.0'
         - 'actions/upload-artifact@v7.0.2'
         - 'gradle/actions@v6.4.0'
     '.github/workflows/preview.yml':
         - 'actions/checkout@v7.0.1'
-        - 'actions/setup-java@v6.0.1'
+        - 'actions/setup-java@v6.1.0'
         - 'actions/upload-artifact@v7.0.2'
         - 'gradle/actions@v6.4.0'
+    '.github/workflows/verify-lockfile.yml':
+        - 'actions/checkout@v7.0.1'
     '.github/workflows/wip-pr.yml':
         - 'actions/checkout@v7.0.1'
-        - 'actions/setup-java@v6.0.1'
+        - 'actions/setup-java@v6.1.0'
         - 'gradle/actions@v6.4.0'
         - 'softprops/action-gh-release@v3.0.3'
 dependencies:
@@ -50,11 +52,6 @@ dependencies:
         commit: 'sha1-368f82528645a54fb793d4d04e342629a3f51346'
         owner_id: 44036562
         repo_id: 438112499
-    'actions/setup-java@v6.0.1':
-        ref: 'v6.0.1'
-        commit: 'sha1-de7274f081f381c8f8158605e0321c36c376e2e6'
-        owner_id: 44036562
-        repo_id: 196057608
     'actions/setup-java@v6.1.0':
         ref: 'v6.1.0'
         commit: 'sha1-b843ebf9b913146b38da2eaa7aeddf76074ae1ad'

@@ -22,114 +22,47 @@ on:
         required: false
         default: 'development'
 
+permissions:
+  contents: read
+
 env:
-  JAVA_VERSION: 25
-  JAVA_DISTRO: 'temurin'
+  GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
 jobs:
   android-app:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
-      contents: write
-      discussions: write
+      contents: read
     env:
       COMMIT_COUNT: 0
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
+      - name: Checkout FGA Preview
+        uses: $/.github/actions/checkout-project
         with:
-          fetch-depth: 0
-          repository: 'ArthurKun21/FGA-Preview'
-          token: ${{ secrets.PAT }}
-          ref: ${{ github.event.inputs.repo_branch || 'development' }}
+          secret-pat: ${{ secrets.PAT }}
+          branch: ${{ github.event.inputs.repo_branch || 'development' }}
+
+      - name: Setup project defaults
+        uses: $/.github/actions/setup-project-defaults
 
       - name: Prepare build
         run: |
           commit_count=$(git rev-list --count HEAD)
           echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
 
-      - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v6.4.0
-      
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v6.0.1
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRO }}
-  
-      - name: Set up gradle
-        uses: gradle/actions/setup-gradle@v6.4.0
-
-      - name: Download latest FGA Data release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
-
-      - name: Move the downloaded FGA Data release to the correct location
-        run: |
-          mkdir -p data/src/commonMain/composeResources/files/atlas/
-          mv *.pb data/src/commonMain/composeResources/files/atlas/
-    
       - name: Build Android Package
         env:
           GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assembleCi --parallel
-      
-      - name: Clean up build artifacts
-        run: |
-          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-ci-${{ env.COMMIT_COUNT }}.apk
 
-          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
-
-          cp app/build/outputs/mapping/ci/mapping.txt fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
-      
-      - name: Upload Mapping
+      - name: Upload Alpha
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
+        uses: $/.github/actions/upload-alpha
         with:
-          name: fga-ci-${{ env.COMMIT_COUNT }}-mapping
-          path: fga-ci-${{ env.COMMIT_COUNT }}-mapping.txt
-      
-      - name: Upload APK
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-${{ env.COMMIT_COUNT }}.apk
-      
-      - name: Upload APK (arm64-v8a)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-      
-      - name: Upload APK (armeabi-v7a)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-      
-      - name: Upload APK (x86_64)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-x86_64-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-x86_64-${{ env.COMMIT_COUNT }}.apk
-      
-      - name: Upload APK (x86)
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-x86-${{ env.COMMIT_COUNT }}-apk
-          path: fga-ci-x86-${{ env.COMMIT_COUNT }}.apk
+          commit-count: ${{ env.COMMIT_COUNT }}
+          upload-build: ${{ github.event.inputs.upload_build }}
 
   Desktop-App:
     timeout-minutes: 60
@@ -139,95 +72,26 @@ jobs:
         os: [ ubuntu-latest, macos-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
     permissions:
-      contents: write
-      discussions: write
-    env:
-      COMMIT_COUNT: 0
+      contents: read
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
+      - name: Checkout FGA Preview
+        uses: $/.github/actions/checkout-project
         with:
-          fetch-depth: 0
-          repository: 'ArthurKun21/FGA-Preview'
-          token: ${{ secrets.PAT }}
-          ref: ${{ github.event.inputs.repo_branch || 'development' }}
+          secret-pat: ${{ secrets.PAT }}
+          branch: ${{ github.event.inputs.repo_branch || 'development' }}
 
-      - name: Prepare build (macos/ubuntu)
-        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-        run: |
-          commit_count=$(git rev-list --count HEAD)
-          echo "COMMIT_COUNT=$commit_count" >> $GITHUB_ENV
-      
-      - name: Prepare build (windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          $commit_count = git rev-list --count HEAD
-          "COMMIT_COUNT=$commit_count" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Setup project defaults
+        uses: $/.github/actions/setup-project-defaults
 
-      - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v6.4.0
-      
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v6.0.1
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRO }}
-  
-      - name: Set up gradle
-        uses: gradle/actions/setup-gradle@v6.4.0
-      
       - name: Suggest Runtime modules for ${{ matrix.os }}
         if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.suggest_runtime == 'true' || github.event.inputs.suggest_runtime == true) }}
+        shell: bash
         run: |
           ./gradlew :desktopApp:suggestRuntimeModules
 
-      - name: Download latest FGA Data release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
-
-      - name: Move the downloaded FGA Data release to the correct location
-        run: |
-          mkdir -p data/src/commonMain/composeResources/files/atlas/
-          mv *.pb data/src/commonMain/composeResources/files/atlas/
-      
-      - name: Build Desktop Release for ${{ matrix.os }}
-        env:
-          GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ./gradlew :DesktopApp:packageReleaseDistributionForCurrentOS
-      
-      - name: Upload Windows Build
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
-          startsWith(matrix.os, 'windows')
-        uses: actions/upload-artifact@v7.0.2
+      - name: Build and Upload Desktop for ${{ matrix.os }}
+        uses: $/.github/actions/desktop-build
         with:
-          name: fga-ci-windows-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/msi/*.msi
-          # path: ./desktopApp/build/compose/binaries/main-release/portable/*.exe
-      
-      - name: Upload Linux Build
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
-          startsWith(matrix.os, 'ubuntu')
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-linux-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/**/*.deb
-      
-      - name: Upload Macos Build
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) &&
-          startsWith(matrix.os, 'macos')
-        uses: actions/upload-artifact@v7.0.2
-        with:
-          name: fga-ci-macos-desktop-${{ env.COMMIT_COUNT }}
-          path: ./desktopApp/build/compose/binaries/main-release/**/*.dmg
-
-
+          os: ${{ matrix.os }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          upload-build: ${{ github.event.inputs.upload_build }}

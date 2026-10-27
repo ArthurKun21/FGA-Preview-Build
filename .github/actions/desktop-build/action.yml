@@ -1,0 +1,53 @@
+name: Build Desktop
+description: 'Build the Desktop release for the current OS and optionally upload its artifacts'
+
+inputs:
+  os:
+    description: 'Runner OS from the workflow matrix, used to select which artifact to upload'
+    required: true
+  github-token:
+    description: 'GitHub token for the Maven GitHub package download'
+    required: true
+  upload-build:
+    description: 'Whether to upload the build artifacts'
+    required: false
+    default: 'false'
+
+runs:
+  using: "composite"
+  steps:
+    - id: commit-count
+      name: Prepare build
+      shell: bash
+      run: |
+        echo "commit-count=$(git rev-list --count HEAD)" >> "$GITHUB_OUTPUT"
+
+    - name: Build Desktop Release
+      shell: bash
+      env:
+        GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        ./gradlew :desktopApp:packageReleaseDistributionForCurrentOS
+
+    - name: Upload Windows Build
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'windows') }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-windows-desktop-${{ steps.commit-count.outputs.commit-count }}
+        path: ./desktopApp/build/compose/binaries/main-release/msi/*.msi
+        # path: ./desktopApp/build/compose/binaries/main-release/portable/*.exe
+
+    - name: Upload Linux Build
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'ubuntu') }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-linux-desktop-${{ steps.commit-count.outputs.commit-count }}
+        path: ./desktopApp/build/compose/binaries/main-release/**/*.deb
+
+    - name: Upload Macos Build
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'macos') }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-macos-desktop-${{ steps.commit-count.outputs.commit-count }}
+        path: ./desktopApp/build/compose/binaries/main-release/**/*.dmg

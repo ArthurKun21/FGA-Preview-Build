@@ -8,13 +8,15 @@ on:
         required: false
         default: 'development'
 
+permissions:
+  contents: read
+
 env:
-  JAVA_VERSION: 21
-  JAVA_DISTRO: 'temurin'
+  GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC"'
 
 jobs:
   build-app:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       COMMIT_COUNT: 0
       FGA_VERSION_CODE: 1
@@ -22,15 +24,15 @@ jobs:
       TIME_STAMP: ""
     permissions:
       contents: write
-      discussions: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
+      - name: Checkout FGA Preview
+        uses: $/.github/actions/checkout-project
         with:
-          fetch-depth: 0
-          repository: 'ArthurKun21/FGA-Preview'
-          token: ${{ secrets.PAT }}
-          ref: ${{ github.event.inputs.repo_branch || 'development' }}
+          secret-pat: ${{ secrets.PAT }}
+          branch: ${{ github.event.inputs.repo_branch || 'development' }}
+
+      - name: Setup project defaults
+        uses: $/.github/actions/setup-project-defaults
 
       - name: Prepare build
         id: prepare_build
@@ -41,53 +43,24 @@ jobs:
           timestamp=$(date '+%Y-%m-%d')
           echo "TIME_STAMP=$timestamp" >> $GITHUB_ENV
 
-      - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v6.4.0
-      
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v6.0.1
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRO }}
-  
-      - name: Set up gradle
-        uses: gradle/actions/setup-gradle@v6.4.0
-
-      - name: Download latest FGA Data release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download --repo ArthurKun21/fga-data --pattern '*.pb'
-
-      - name: Move the downloaded FGA Data release to the correct location
-        run: |
-          mkdir -p data/src/commonMain/composeResources/files/atlas/
-          mv *.pb data/src/commonMain/composeResources/files/atlas/
-    
       - name: Build Android Package
         env:
+          GITHUB_ACTOR: ${{ github.actor }} # For the Maven Github package download
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew assembleCi --parallel --no-daemon
-      
-      - name: Clean up build artifacts
-        run: |
-          cp app/build/outputs/apk/ci/app-universal-ci.apk fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
 
-          cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-          cp app/build/outputs/apk/ci/app-x86-ci.apk fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
-      
-      - name: Create release on forked repo
-        uses: softprops/action-gh-release@v3.0.3
+      - name: Upload Android release
+        uses: $/.github/actions/upload-android-release
         with:
-          tag_name: wip-${{ env.COMMIT_COUNT }}-alpha-${{ env.TIME_STAMP }}
-          name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
-          repository: ArthurKun21/FGA
+          commit-count: ${{ env.COMMIT_COUNT }}
+          artifact-prefix: fga-preview-wip-alpha-build
+          apk-variant: ci
+          tag-name: wip-${{ env.COMMIT_COUNT }}-alpha-${{ env.TIME_STAMP }}
+          release-name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
           body: |
             # WIP-Alpha-${{ env.COMMIT_COUNT }}
-            
+
             > [!IMPORTANT]
             >
             > This is an alpha build and may contain bugs. Currently work-in-progress alpha build.
@@ -95,38 +68,7 @@ jobs:
             > [!TIP]
             >
             > If you are unsure which version to download then go with `fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk`
-          files: |
-            fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
-          prerelease: true
-          draft: true
-          token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
-
-      - name: Create release
-        uses: softprops/action-gh-release@v3.0.3
-        with:
-          tag_name: wip-${{ env.COMMIT_COUNT }}-alpha-${{ env.TIME_STAMP }}
-          name: FGA Preview - WIP ${{ env.COMMIT_COUNT }}-${{ env.TIME_STAMP }}
-          body: |
-            # WIP-Alpha-${{ env.COMMIT_COUNT }}
-            
-            > [!IMPORTANT]
-            >
-            > This is an alpha build and may contain bugs. Currently work-in-progress alpha build.
-
-            > [!TIP]
-            >
-            > If you are unsure which version to download then go with `fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk`
-          files: |
-            fga-preview-wip-alpha-build-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-arm64-v8a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-armeabi-v7a-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-x86_64-${{ env.COMMIT_COUNT }}.apk
-            fga-preview-wip-alpha-build-x86-${{ env.COMMIT_COUNT }}.apk
-          prerelease: true
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          release-token: ${{ secrets.RELEASE_ON_ANOTHER_REPO }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          fork-prerelease: 'true'
+          fork-draft: 'true'

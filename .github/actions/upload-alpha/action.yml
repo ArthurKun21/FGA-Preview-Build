@@ -1,0 +1,68 @@
+name: Upload Alpha Artifacts
+description: Upload artifacts made with the Alpha build
+
+inputs:
+  commit-count:
+    description: The commit count to use for naming the artifacts
+    required: true
+  upload-build:
+    description: Whether to upload the build artifacts
+    required: false
+    default: 'false'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Clean up build artifacts
+      shell: bash
+      run: |
+        cp app/build/outputs/apk/ci/app-universal-ci.apk fga-ci-${{ inputs.commit-count }}.apk
+
+        cp app/build/outputs/apk/ci/app-arm64-v8a-ci.apk fga-ci-arm64-v8a-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/ci/app-armeabi-v7a-ci.apk fga-ci-armeabi-v7a-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/ci/app-x86_64-ci.apk fga-ci-x86_64-${{ inputs.commit-count }}.apk
+        cp app/build/outputs/apk/ci/app-x86-ci.apk fga-ci-x86-${{ inputs.commit-count }}.apk
+
+        cp app/build/outputs/mapping/ci/mapping.txt fga-ci-${{ inputs.commit-count }}-mapping.txt
+
+    - name: Upload Mapping
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-${{ inputs.commit-count }}-mapping
+        path: fga-ci-${{ inputs.commit-count }}-mapping.txt
+
+    - name: Upload APK
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-${{ inputs.commit-count }}-apk
+        path: fga-ci-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (arm64-v8a)
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-arm64-v8a-${{ inputs.commit-count }}-apk
+        path: fga-ci-arm64-v8a-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (armeabi-v7a)
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-armeabi-v7a-${{ inputs.commit-count }}-apk
+        path: fga-ci-armeabi-v7a-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (x86_64)
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-x86_64-${{ inputs.commit-count }}-apk
+        path: fga-ci-x86_64-${{ inputs.commit-count }}.apk
+
+    - name: Upload APK (x86)
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-x86-${{ inputs.commit-count }}-apk
+        path: fga-ci-x86-${{ inputs.commit-count }}.apk
