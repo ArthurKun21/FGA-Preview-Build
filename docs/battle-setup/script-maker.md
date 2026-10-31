@@ -1,5 +1,5 @@
 ---
-title: Skill Maker Guide
+title: Script Maker Guide
 description: Create and manage battle scripts in FGA Preview. Set skills, attacks, targets, Master Skills, and start points for automated battles.
 tags:
     - battle
@@ -8,36 +8,45 @@ tags:
     - configuration
 ---
 
-# Skill Maker Guide
+# Script Maker Guide
 
-Skill Maker creates battle scripts. A battle script is a list of commands. Automation runs the commands during a battle.
+Script Maker creates battle scripts. A battle script is a list of commands. Automation runs the commands during a battle.
 
-A battle config can contain several scripts. One script is active for each battle. Each script has its own commands, name, notes, start point, and Mystic Code.
+A battle config can hold several scripts. One script is active for each battle. Each script has its own commands, name, notes, start point, team, and Mystic Code.
 
-## Open Skill Maker
+The team holds up to six servants and one Mystic Code. The editor reads servant names, faces, skills, and Mystic Codes from the Atlas data. See [Script Team and Field Display](script-team-and-field-display.md).
+
+## Open Script Maker
 
 1. Open a battle config.
-2. In **Battle Scripts**, tap the script card.
+2. Under **Battle Scripts**, tap the script card.
 
-Skill Maker opens the script list. Tap a script to open its editor.
+The script list opens. Tap a script card to open its editor.
 
 ## Manage the Script List
 
-The script list lists the exit settings and every script. Each script card has these items:
+The script list shows the exit settings and every script. When the config has more than one script, the list also shows an **Active** selector at the top. Use this selector to set the script that automation runs.
 
-| Item | Use |
-| ---- | --- |
-| **Active** | Select the script that automation uses. Only one script is active. |
-| **Delete** | Delete the script. This item appears only when the config has more than one script. |
+Each script card shows the script name, its notes, and the team preview. The preview lists one icon per team slot and the equipped Mystic Code. Tap **Edit Team** on the preview to open the team screen. See [Script Team and Field Display](script-team-and-field-display.md).
+
+Tap a card to expand it. The expanded card shows:
+
+- A summary of the commands, grouped by wave and turn.
+- The start selector. See [Set the Start Point](#set-the-start-point).
+
+Each card also has these actions:
+
+| Action | Use |
+| ------ | --- |
 | **Notes** | Add or edit the notes for the script. |
-| **Edit** | Open the command text editor for the script. |
+| **Delete** | Delete the script. A confirmation dialog opens first. This action appears only when the config has more than one script. |
 
-Each card also contains a summary of the commands by wave and turn, and the start selector.
+Viewing a script does not make it active. Only the **Active** selector changes the script that automation runs.
 
 Use the toolbar at the bottom of the list:
 
 - **Add** creates a script.
-- The up and down arrows open the previous or next script.
+- The up and down arrows open the previous or next script. The toolbar shows the position, such as 2 of 3.
 
 ## Rename a Script
 
@@ -45,32 +54,29 @@ Tap the script name in the editor title bar. Enter a name, then tap **Confirm**.
 
 ## Set Exit Settings
 
-The battle config has two exit settings. The script list lists them at the top.
+The battle config has two exit settings. The script list shows them at the top.
 
 - **Out of Commands Exit** ends the battle when the script has no commands left.
 - **Off-script Exit** ends the battle when the battle reaches a wave or turn that the script does not define.
 
 ## Set the Start Point
 
-The start point sets where automation starts a script. Use the start selector on the script card.
+The start point sets where automation starts a script on the first run. Use the start selector on the expanded script card.
 
 - The start point applies to the first run only. Later runs start at the first command.
 - If the start point is no longer valid, automation starts at the first command.
-- Saving the command text resets the start point to the first command.
 
 ## Save Changes
 
-The editor saves your changes when you tap **Back**. The editor has no Save button for skills and targets.
-
-The command text editor has its own **Save** button. See [Edit Command Text](#edit-command-text).
+The editor saves your changes when you tap **Back**. The editor has no Save button.
 
 ## Editor Layout
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
-│ [Script name]          [Settings] [Delete] [Clear All]   │
+│ [Script name]                    [Settings] [Clear All]  │
 ├──────────────────────────────────────────────────────────┤
-│ Wave and turn indicator | Action history                 │
+│ Wave/turn chip | Action history | [Undo][Redo][History]  │
 ├──────────────────────────────────────────────────────────┤
 │ Enemy targets                                            │
 ├──────────────────────────────────────────────────────────┤
@@ -78,19 +84,22 @@ The command text editor has its own **Save** button. See [Edit Command Text](#ed
 │ Servant 2 [target chip] [d] [e] [f]                      │
 │ Servant 3 [target chip] [g] [h] [i]                      │
 │ Gesture hint                                             │
+│ [Switch team members]                                    │
 ├──────────────────────────────────────────────────────────┤
 │ [Command Spell] [Master Skills] [Order Change] [Attack]  │
 └──────────────────────────────────────────────────────────┘
 ```
 
-- **Top bar**: Rename the script, open **Settings**, delete the selected action, or clear all actions.
-- **Action history**: Lists the actions of the script. Tap an action to select it.
-- **Wave and turn indicator**: Displays the wave and turn of the selected action.
+- **Top bar**: Rename the script, open **Settings**, or clear all actions.
+- **Action history**: Lists the actions of the script in order. Tap an action to select it. New actions are added after the selected action.
+- **Undo, Redo, History**: Undo or redo an edit, or open the Action History pane. See [Undo, Redo, and Action History](#undo-redo-and-action-history).
+- **Wave and turn indicator**: Shows the wave and turn of the selected action.
 - **Enemy targets**: Contains the enemy buttons for the selected enemy formation.
 - **Servant rows**: Contain the skill buttons and target chips for each servant.
+- **Switch team members**: Opens the switch dialog for the field display.
 - **Bottom bar**: Opens Command Spell, Master Skills, Order Change, and Attack.
 
-The layout changes to fit the screen size.
+The layout changes to fit the screen size. On small screens in portrait, the action history sits above the row with the Undo, Redo, and History buttons. On all other screen sizes, they share one row.
 
 ## Add Skills and Targets
 
@@ -118,19 +127,81 @@ If you select no servant target, the direct gesture adds the skill without a tar
 
 The hint below the servant rows states the current gestures. The hint uses the word **Hold** for a long press.
 
+The Smart Target table applies to skill buttons without Atlas data. See the next section.
+
+### Servant Skills with Atlas Data
+
+When the team has a servant in a field slot, that servant's row uses the Atlas data:
+
+- The row and the target chip show the servant's face and name.
+- Each skill button shows the icon of its Atlas skill.
+- A button without an Atlas skill keeps its letter code.
+
+A skill button with an Atlas skill ignores the Smart Target setting. The button behaves as if Smart Target is On.
+
+| Atlas target type | Tap the skill button |
+| ----------------- | -------------------- |
+| Special options | Opens the special option screen. See [Select Special Options](#select-special-options). |
+| All allies | Adds the plain command at once. |
+| One servant, or no target data | Adds the skill with the selected target chip. Without a selected chip, **Choose Target** opens. |
+
+Long press a skill button with an Atlas skill to open the skill description. The description shows the skill name, icon, cooldown, and skill text.
+
+- Tap **Use** to add the skill. **Use** does the same as a tap on the skill button.
+- Tap **Dismiss** to close the description without a change.
+
+See [Script Team and Field Display](script-team-and-field-display.md) to learn how the editor assigns servants to the field slots.
+
 ### Choose a Target
 
-**Choose Target** lists **Servant 1**, **Servant 2**, **Servant 3**, and **No Target**. Select one option to add the skill with that target.
+**Choose Target** lists **Servant 1**, **Servant 2**, **Servant 3**, **No Target**, and **Custom Target**. When the team has servants, each servant button shows that servant's face and name.
+
+Select one option to add the skill with that target.
+
+### Build a Custom Target
+
+Some skills apply several targets in a row. Use the Custom Target screen to build such a sequence.
+
+1. Tap **Custom Target** on the **Choose Target** screen.
+2. Tap the targets in the order in which the skill should perform them.
+3. Tap **Apply**. Tap **Cancel** to discard the sequence.
+
+The screen lists these target groups:
+
+| Group | Options |
+| ----- | ------- |
+| Field Targets | Servant 1, Servant 2, Servant 3. Also Left and Right when only two servants are on the field. |
+| Choice (2 Options) | Option 1 or Option 2 of a two-choice popup. |
+| Choice (3 Options) | Option 1, 2, or 3 of a three-choice popup. |
+| Transform | The transform action. |
+
+The **Selected Targets** section shows the sequence in order. Tap a target in the section to remove it.
+
+For Master Skills and Command Spells, only the first target of the sequence applies.
+
+The result is one command with several targets, such as `e([Ch2A]2)`. See [Servant Targets and Special Options](#servant-targets-and-special-options).
 
 ### Select Special Options
 
-Some skills have extra options. Skill Maker opens a special option screen for these skills. Options can include:
+Some skills open a popup in the game: a choice between two or three options, an NP type change, or a transform. Script Maker reads these skills and their options from the Atlas data. New servants and new options appear with an Atlas data update. You do not need to update the app.
 
-- A choice between two or three options.
-- An NP type change with two or three types.
-- A transform.
+When you tap a skill that has special options, the Choose Target screen shows a **Servants with special skills** section. It lists every servant whose skill in the same position has special options. Each card shows the servant face icon and the skill icon.
 
-For some servants, the screen has a card grid. Tap a card to select it. Tap the selected card again to clear it. Follow the label above the cards.
+- Tap the card to open the special option screen.
+- Tap the info button on the card to see the skill description and an image of the in-game popup.
+
+The special option screen shows the skill icon, name, and cooldown, and the skill description. The screen also shows:
+
+| Item | Meaning |
+| ---- | ------- |
+| Transform line | The form of a transform that is not tied to an option. |
+| Popup title | The title of the in-game popup. |
+| Option buttons | One button per popup option. The labels are the option names from the Atlas data. |
+| Transform caption | Below an option button, the form that this option changes the servant into. A caption for a different servant also shows the face icon of that form. |
+| Transform button | The only button for a skill that only transforms the servant. |
+| Info button | Shows the image of the in-game popup. |
+
+Tap an option button to add the skill with that option. Some options also need a servant target. Choose Target opens when you tap such an option. Select the servant there.
 
 Some skills need a special option and a target. Parentheses hold both. For example, `e([Ch2A]2)`.
 
@@ -138,9 +209,11 @@ Some skills need a special option and a target. Parentheses hold both. For examp
 
 Tap **Master Skills** to open the Master Skills screen. The **Mystic Code** row contains the Mystic Code of the script.
 
-- Tap **Mystic Code** to choose a Mystic Code from the Atlas data. The selected code displays its skill names and icon.
+- Tap **Mystic Code** to choose a Mystic Code from the Atlas data. The selected code shows its skill names and icon.
 - Use **Display options** to change how the Mystic Code icon appears.
-- Clear the selection to use the default Master Skill buttons. The row displays **No mystic code set** when you select no code.
+- Clear the selection to use the default Master Skill buttons. The row shows **No mystic code set** when you select no code.
+
+The **Master Skills** button in the bottom bar shows the icon of the equipped Mystic Code. Without an equipped code, the button shows the standard icon.
 
 Master Skill codes are `j`, `k`, and `l`. Each Master Skill uses the target type that the Atlas data defines for it.
 
@@ -149,7 +222,6 @@ Master Skill codes are `j`, `k`, and `l`. Each Master Skill uses the target type
 | No target | Adds the skill at once. |
 | One servant | The direct gesture adds the skill with the selected servant. The other gesture opens **Choose Target** with Servant 1, 2, and 3 only. |
 | Order Change | Opens **Order Change**. |
-| Special option | Opens the special option screen. |
 
 ## Set Order Change
 
@@ -161,11 +233,13 @@ Tap **Order Change** in the bottom bar.
 
 The command text is `l[x13]`. Master Skill 3 switches front position 1 with back position 3.
 
-If the last action is a bare `l` (Master Skill 3 with no target), Skill Maker deletes it before it adds the Order Change action.
+If the last action is a bare `l` (Master Skill 3 with no target), Script Maker deletes it before it adds the Order Change action.
+
+Recording an Order Change also moves the matching servants in the editor's field display, so later skill codes keep resolving against the right servants. See [Script Team and Field Display](script-team-and-field-display.md).
 
 ## Add Command Spells
 
-Tap **Command Spell**. The dialog title displays how many uses remain, such as **Command Spell (2)**.
+Tap **Command Spell**. The dialog title shows how many uses remain, such as **Command Spell (2)**.
 
 Tap a spell, then choose a servant target.
 
@@ -174,7 +248,7 @@ Tap a spell, then choose a servant target.
 | `o` | CS1 | Full NP charge |
 | `p` | CS2 | Full HP restore |
 
-Each script can contain up to three command spells. If no uses remain, Skill Maker displays **Ran out of Command Spell(s)** instead.
+Each script can contain up to three command spells. If no uses remain, Script Maker shows **Ran out of Command Spell(s)** instead.
 
 ## Add an Attack
 
@@ -187,6 +261,8 @@ Tap **Attack** to open the attack screen.
 5. Tap **Next Turn in same wave** or **Next Wave**.
 
 **Next Turn in same wave** adds the attack and moves to the next turn. **Next Wave** adds the attack and moves to the next wave.
+
+When the team has servants, each NP button shows that servant's face and NP name. The attack sequence shows the same face and NP name for each NP card.
 
 | Code | Meaning |
 | ---- | ------- |
@@ -201,46 +277,42 @@ For example, `{4NN},` is one attack in a turn. It uses the NP for Servant 1, and
 
 ## Set Enemy Targets
 
-Open **Settings** and select the **Enemy Formation**: **3**, **6**, or **Raid**. The enemy buttons match the formation.
+Open **Settings**. Select the **Enemy Formation**: **3**, **6**, **Raid**, or **Raid v2**. The enemy buttons match the formation.
+
+The **Raid** formation shows the raid boss button on top, and three minion buttons below. The **Raid v2** formation shows the raid boss button on top, and six minion buttons in two rows of three.
 
 - Tap an enemy to add an enemy target action to the command.
 - Tap the same enemy again to clear it.
 
-Select an enemy target before you add an action that needs one.
+Select an enemy target before you add an action that needs an enemy target. The button label matches the target name in the table. On a small screen, the button shows only the letter or the minion number.
 
 | Code | Target | Formation |
 | ---- | ------ | --------- |
-| `t1` | Enemy 1, left | 3 enemies |
-| `t2` | Enemy 2, center | 3 enemies |
-| `t3` | Enemy 3, right | 3 enemies |
-| `t4` to `t9` | Enemies A to F | 6 enemies |
-| `tR` | Raid boss | Raid |
-| `tX` | Raid minion 1 | Raid |
-| `tY` | Raid minion 2 | Raid |
-| `tZ` | Raid minion 3 | Raid |
+| `t1` | Enemy A, left | 3 enemies |
+| `t2` | Enemy B, center | 3 enemies |
+| `t3` | Enemy C, right | 3 enemies |
+| `t[A-L2]` to `t[F-L2]` | Enemy A to Enemy F | 6 enemies |
+| `t[RaidBoss-L3]` | Raid boss | Raid |
+| `t[RM1-L3]` to `t[RM3-L3]` | Raid minion 1 to 3 | Raid |
+| `t[RaidBoss-L4]` | Raid boss | Raid v2 |
+| `t[RM1-L4]` to `t[RM6-L4]` | Raid minion 1 to 6 | Raid v2 |
 
-## Edit the Action History
+Script Maker writes the codes in the table when you tap an enemy button. It also reads the legacy codes `t4` to `t9` for the 6-enemy formation, and `tR`, `tX`, `tY`, and `tZ` for the Raid formation. A legacy code targets the same enemy as the new code. The Raid v2 formation has no legacy codes.
 
-- Tap an action to select it.
-- Tap the up or down arrow to move the selected action earlier or later.
-- Tap **Delete** in the top bar to delete the selected action.
-- Tap **Clear All**, then tap **Clear** to delete every action from the script.
+## Undo, Redo, and Action History
 
-## Edit Command Text
+The editor records every change you make. You can undo and redo edits for as long as the editor is open.
 
-Use the command text editor to change the command text by wave and turn.
+- Tap **Undo** to revert the last edit. Tap **Redo** to apply it again.
+- Tap **History** to open the Action History pane.
 
-1. Open the script list.
-2. Tap **Edit** on the script card.
-3. Change the text in a wave or turn card.
-4. Tap **Save** in the top bar.
+The Action History pane lists every recorded action. The **Current** label marks the state of the script now.
 
-- **Add Wave** adds a wave with one empty turn.
-- **Add Turn** adds a turn to the last wave.
-- The delete icon on a card deletes that turn. A wave without turns is also deleted. You cannot delete the last turn.
-- An error message appears on the card that has the error. A banner lists errors for the whole command, such as more than three command spells.
-- You cannot tap **Save** while an error exists.
-- Saving resets the start point to the first command.
+- Tap an earlier entry to restore the script to the state right after that action.
+- Tap a later entry to move forward again.
+- A dialog opens before a large jump. It states how many actions the restore undoes or redoes. Tap **Confirm** to continue.
+
+Tap **Clear All** in the top bar, then tap **Clear**, to delete every action from the script. Clear All is itself an action, so you can undo it.
 
 ## Remaining Commands During a Run
 
@@ -278,7 +350,7 @@ When you pause a battle, the pause screen lists the commands that the current ru
 
 Some skills need more than one target. Use parentheses for multiple targets. For example, `e([Ch2A]2)` applies skill `e` with option A and servant target 2.
 
-Order Change in older command text can use `x12` without Master Skill 3. Skill Maker still reads this form.
+Order Change in older command text can use `x12` without Master Skill 3. Script Maker still reads this form.
 
 ## Example Commands
 
@@ -318,18 +390,23 @@ a1b1l[x13]k2456,#,456,#,456
 
 | Problem | Review |
 | ------- | ------ |
-| Automation uses a different script | Select **Active** on the script that you want in the script list. |
+| Automation uses a different script | Use the **Active** selector at the top of the script list. |
 | A skill uses the wrong target | Review the target chip for the servant row. Review the Smart Target setting and the gesture you used. |
 | A skill adds without a target | You did not select a servant target. Tap a target chip before you tap the skill. |
 | A skill option screen does not appear | Only skills with special options open the special option screen. |
+| A skill button shows a letter, not an icon | The team has no servant in that slot. Or the Atlas data has no skill for that slot. |
+| A long press opens a skill description | Skills with Atlas data use the long press for the description. Tap **Use** in the description to add the skill. |
+| History rows show the command only | The team changed after you recorded the actions. The rows show Atlas data again when the team matches. |
+| Names show in Japanese | The Atlas data has no translation for your language. The app shows the Atlas original. |
 | Automation starts at the wrong command | Review the start selector on the script card. The start point applies to the first run only. |
 | An enemy button does not appear | Review the **Enemy Formation** setting in **Settings**. |
 | Order Change does not select the expected servants | Review the starting and sub members. The command text uses `l[x..]`. |
 | Command Spell cannot be added | Each script allows three command spells. Delete one from the script to add another. |
-| The text editor cannot save | Fix the error shown on the card or in the banner. You cannot tap **Save** until you fix the error. |
+| An edit went wrong | Tap **Undo** to revert it. Or open the Action History pane and restore an earlier state. |
 | Automation exits at a turn | Review the **Off-script Exit** and **Out of Commands Exit** settings. |
 
 ## Related Documentation
 
 - [Auto Battle](../in-battle/auto-battle.md) explains how automation executes battle commands.
 - [Card Priority](card-priority.md) explains how automation selects face cards.
+- [Script Team and Field Display](script-team-and-field-display.md) explains script servant teams, the field display, order changes, and transformations.

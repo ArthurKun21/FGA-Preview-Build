@@ -70,13 +70,17 @@ When you enable this option and you select a class, FGA also searches the "All" 
 !!! note
     This option is not available when you select "None", "All", or "Mix".
 
-### Enable Send Friend Request
+### Friend Requests After Battle
 
-This switch is the master switch for all friend request features.
+After a battle, FGO can display the friend request screen. FGA then decides to send or to reject the request:
 
-- The switch is off by default.
-- When the switch is off, FGA rejects every friend request after battle.
-- FGA keeps the per-servant switch and the default CE switch disabled while the master switch is off.
+- FGA sends the request when the picked servant has **Auto Send Friend Request** on.
+- FGA also sends the request when the picked CE matches the default CE configuration and **Send Friend Request on Default CE Match** is on.
+- Otherwise FGA rejects the request.
+
+FGA always rejects the request when your friend list is full.
+
+The **Send Friend Request** setting in the Battle Launcher can override this behavior for the current server. See [Battle Launcher](launcher.md).
 
 ---
 
@@ -106,7 +110,7 @@ The **Display options** pane has three sections.
 |---------|---------|
 | View | List view or Grid view. |
 | Sort by | No. low to high, No. high to low, Name A to Z, Name Z to A, Rarity low to high, or Rarity high to low. |
-| Filters | Rarity chips, and class chips for servants. Tap **Clear all** to remove every filter. |
+| Filters | Rarity chips, class chips for servants, and type chips for Craft Essences. Tap **Clear all** to clear every filter. |
 
 - The search text and the filters apply to the open list only.
 - The view mode and the sort order persist for each kind.
@@ -128,29 +132,32 @@ The **Display options** pane has three sections.
 
 The app opens the servant detail screen after it adds a servant.
 
-- An atlas servant has a carousel of face images. The app loads these faces from the atlas data.
+- An atlas servant has a carousel of face images. The app loads these faces from the atlas data. The settings also include the skill, Noble Phantasm, and append skill data from the atlas snapshot.
 - An image servant has a carousel of your stored support images.
 
-Tap the remove icon in the top bar. This action removes the servant from this config.
+Tap the delete icon in the top bar. This action deletes the servant from this config.
 
 ### Servant Settings
 
-Each servant has its own settings. Open the servant card to change them.
+Each servant has its own settings. Open the servant card to change them. The layout of some settings depends on the servant type.
 
 | Setting | Behavior |
 |---------|----------|
 | **Use this Servant?** | Enables or disables this servant. A disabled servant stays in the config, but FGA does not search for it. |
-| **Auto Send Friend Request** | Sends a friend request for this servant. The master switch must be on. |
+| **Auto Send Friend Request** | Sends a friend request after a battle when FGA picks this servant. |
 | **Max-ascended** | Accepts only servants that have the golden ascension star. |
-| **Max Skills** | Sets which of the three skills must be at level 10. |
-| **Max Appends** | Turns on the append skill level check. |
-| **Noble Phantasm (Minimum NP Level)** | Sets the minimum NP level from 1 to 5. |
+| **Max Skills** | Sets which of the three skills must be at level 10. An atlas servant displays each skill by name. |
+| **Max Appends** | Turns on the append skill level check. An atlas servant displays each append skill by name. |
+| **Noble Phantasm** | Sets the minimum NP level from 1 to 5. An atlas servant also displays each NP by name. |
 | **Grand Servant** | Sets the Grand servant requirement. This setting appears only on servers that support Grand servants. |
 | **Servant Matching** | Sets the image matching mode and threshold for this servant. |
 
 #### Max Skills
 
-Tap a skill button to change the requirement for that skill.
+Set which of the three skills must be at level 10. The layout depends on the servant type.
+
+- An atlas servant displays one row for each skill. The row displays the skill icon, the skill name, and the skill description from the atlas data. Tap the row to change the requirement for that skill.
+- An image servant displays one row with a button for each of the three skills. Tap a button to change the requirement for that skill.
 
 | Display | Meaning |
 |---------|---------|
@@ -159,14 +166,23 @@ Tap a skill button to change the requirement for that skill.
 
 For example, `10 / X / 10` means that skills 1 and 3 must be maxed. Skill 2 can be at any level.
 
+!!! note "Skill versions"
+    A servant can have more than one version of the same skill. FGO upgrades skills in rank-up quests.
+
+    An atlas servant displays each version as a tab. The tab name is the skill name. The app opens the newest version first.
+
+    All versions of one skill share the same 10 or X setting.
+
 The summary badge has the same value. For example, the badge is `X / X / X` when you set no skill requirement.
 
 #### Max Appends
 
 Turn on this switch to check append skill levels. The editor has five append skill rows. Tap a row to require that append skill at level 10.
 
+- An atlas servant displays the append skill name and description from the atlas data.
+- An image servant displays a generic name and description for each row.
 - The row is `10` when you require that append skill.
-- The row is a dash when you do not require that append skill.
+- The row is `X` when you do not require that append skill.
 - The summary badge is **Any** when the switch is off.
 
 !!! note "How FGA reads append skills"
@@ -181,6 +197,13 @@ Turn on this switch to check append skill levels. The editor has five append ski
 #### Noble Phantasm
 
 Set the minimum NP level. FGA accepts a servant when its NP level is equal to or above this value.
+
+The layout depends on the servant type:
+
+- An atlas servant displays the NP data from the atlas snapshot. Each NP row displays the card type, the NP name, and the NP description. A servant can have more than one NP version. The app displays each version as a tab and opens the newest version first. The **Minimum NP Level** selector below the tabs applies to every version.
+- An image servant displays the selector only. The selector title is **Noble Phantasm (Minimum NP Level)**.
+
+FGA checks the NP level with these rules:
 
 - Level 1 accepts any servant. FGA then does not read the NP text.
 - FGA reads the NP level from a different region in the Grand layout.
@@ -259,6 +282,13 @@ The slot 2 and slot 3 settings appear only on servers that support Grand servant
 
 Use [Mana Prism shop CEs](https://fategrandorder.fandom.com/wiki/Category:Shop_Craft_Essences) in slot 3.
 
+When you open the atlas list from slot 3, the app applies the **Mana Prism/Advanced Quest** type filter first.
+
+- The **Mana Prism/Advanced Quest** chip starts selected in the display options.
+- The list contains only CEs of the selected types. You can change the types in the display options.
+- The list never offers bond CEs or Valentine's CEs. The game does not accept these CEs in slot 3.
+- The pre-applied filter is not persistent. The atlas list for slot 1 starts with no type filter.
+
 ### Max Limit Break (MLB)
 
 Each CE entry has its own **Max-limit broken** switch. Turn on the switch to require the MLB star for that CE.
@@ -294,12 +324,9 @@ This setting decides how FGA combines the slot 1 result and the slot 3 result. T
 
 This switch is in the default CE screen. It controls the friend request that follows a default CE match.
 
-- The master switch **Enable Send Friend Request** must be on.
-- The switch is on by default.
+- The switch is off by default.
 
 When FGA picks a support that uses the default CE, and the picked CE matches your default configuration, FGA sends the friend request. When the picked servant uses a custom CE, this switch has no effect on that pick.
-
-FGA rejects the friend request when your friend list is full.
 
 ---
 
@@ -326,6 +353,64 @@ Turn on this switch to accept only supports from players on your friends list. F
 3. Tap **Save**.
 
 FGA requires a match on one of these names. When you set no name, FGA applies the **Friends Only** gate only.
+
+---
+
+## Battle Defaults
+
+Battle Defaults is a shared store of preferred support configurations. The app stores the entries outside the battle config. Every battle config can use them.
+
+The store has three groups: servants, Craft Essences, and friends. The settings are the same as on the preferred support pages.
+
+### Open the Defaults Screens
+
+| Entry point | Result |
+|-------------|--------|
+| Top bar icon on the servant detail screen | Opens the defaults screen for that servant. |
+| Top bar icon on the default CE screen | Opens the defaults screen for the default CEs. |
+| Top bar icon on the default friend screen | Opens the defaults screen for the default friends. |
+| Top bar icon on the Preferred Support screen | Opens the browser with every group. |
+| **Load Servant**, **Load CE**, or **Load Friend** in the add menu | Opens the browser with one group only. |
+
+### Save a Configuration
+
+1. Configure the servant, the default CEs, or the default friends.
+2. Open the matching defaults screen.
+3. Tap **Save to Battle Defaults**.
+
+The app stores the configuration as a new entry.
+
+- You can save more than one entry for the same servant or selection. The entries become variations of one configuration.
+- When an exactly equal entry is already stored, the app saves nothing and reports a duplicate.
+
+!!! tip "Reuse a configuration in another battle config"
+    Save the configuration once. Open the same defaults screen from another battle config. Tap **Apply**.
+
+### Apply, Overwrite, and Delete an Entry
+
+The defaults screens offer three actions on each entry of your current configuration.
+
+| Action | Behavior |
+|--------|----------|
+| **Overwrite** | Replaces the saved entry with your current configuration. The app asks for confirmation. The entry keeps its position. |
+| **Apply** | Applies the entry to this battle config. The app then opens the detail screen of the configuration. |
+| **Delete** | Deletes the entry. The app asks for confirmation. |
+
+- For a servant, **Apply** replaces the settings of the configured servant with the entry.
+- For CEs or friends, **Apply** replaces the default configuration with the entry.
+- **Overwrite** appears only on the variations of your current configuration. On the CE and friend screens, **Overwrite** appears only when you set a current configuration.
+- The CE and friend defaults screens also list **Other Saved Configurations**. These entries offer **Apply** and **Delete** only.
+
+### The Defaults Browser
+
+The browser lists every saved entry. Tap an entry to load it into this battle config.
+
+- When you set a current CE or friend configuration, the app first asks for confirmation.
+- A servant that is already in the config has the note **Already added**. The app does not add it a second time.
+- Each entry also has a **Delete** action.
+
+!!! note "Images are not part of an entry"
+    The app saves names and settings only. An atlas entry loads its images from the atlas data. An entry from your stored support images loads its images from your device.
 
 ---
 
@@ -526,6 +611,7 @@ A support must meet all of these conditions before FGA selects it:
 
 - Download the atlas data snapshot first.
 - Check the search text and the filter chips.
+- Check the type filter. Slot 3 applies the Mana Prism/Advanced Quest filter before you open the display options.
 - Reload the atlas data from the app settings.
 
 ### Grand Servant features do not appear

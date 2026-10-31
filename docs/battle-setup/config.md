@@ -28,6 +28,16 @@ A battle config contains these groups:
 | **Additional Settings** | Target selection and card shuffling |
 | **Records** | Read-only usage statistics |
 
+!!! note "Changes since `pre-2614`"
+
+    - A config can contain several battle scripts. One script is active.
+    - A config can contain several named command-card rules. One rule is active.
+    - The **Default Ordeal Call Pods** limit is new.
+    - You can select several game servers for one config.
+    - The exit settings moved into the Script Maker script list.
+    - The quick edit dialog for skill commands is gone. Edit commands in the Script Maker.
+    - A Records section tracks the usage of the config.
+
 ## General
 
 | Name and Notes                                         | Name Edit Dialog                                                     |
@@ -46,11 +56,11 @@ Tap **Name** to open the edit dialog. Tap **Notes** to open the notes editor.
 
 A battle script holds the skill commands for every wave and turn. A config can contain several scripts. Automation runs only the active script.
 
-Tap the script card to open the [Script Maker](script-maker.md). In the Skill Maker you manage the script list, edit the commands, and set the start point.
+Tap the script card to open the [Script Maker](script-maker.md). In the Script Maker you manage the script list, edit the commands, and set the start point.
 
 ## Script Exit Settings
 
-Each battle script owns its exit settings. The Skill Maker lists them at the top of the script list:
+Each battle script owns its exit settings. The Script Maker lists them at the top of the script list:
 
 - **Out of Commands Exit** ends the battle when the script has no commands left.
 - **Off-script Exit** ends the battle when the battle reaches a wave or turn that the script does not define.
@@ -189,7 +199,7 @@ The more options menu contains:
 ## Tips for Best Results
 
 1. **Start simple** - Create basic configs first, then add complexity as needed
-2. **Use descriptive names** - Include the quest name and farming target (e.g., "Doors - QP Farming")
+2. **Use descriptive names** - Include the quest name and farming target (for example, "Doors - QP Farming")
 3. **Test your scripts** - Run the quest once manually before a long farming session
 4. **Set realistic limits** - Match run counts to your available AP and apples
 5. **Prepare Preferred mode** - Add at least one criterion and set a fallback for when friends are unavailable

@@ -18,6 +18,7 @@ nav:
       - battle-setup/card-priority.md
       - battle-setup/materials.md
       - battle-setup/script-maker.md
+      - battle-setup/script-team-and-field-display.md
       - battle-setup/support.md
     - How to get started:
       - battle-setup/launcher.md
