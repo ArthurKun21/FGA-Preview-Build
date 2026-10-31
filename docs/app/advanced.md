@@ -1,6 +1,6 @@
 ---
 title: Advanced Settings
-description: Configure FGA Preview advanced settings. Service automation, game area customization, permissions, and debugging options for power users.
+description: Configure FGA Preview advanced settings. Control service automation, the game area, Android permissions, and debugging options.
 tags:
     - app
     - settings
@@ -13,66 +13,106 @@ tags:
 
 ## Overview
 
-Advanced Settings give you control over automation behavior, screen detection boundaries, Android permissions, and debugging options. Most users can leave these at their defaults, but they become useful when troubleshooting detection issues or running on devices with unusual screen layouts.
+Advanced Settings control the automation service, the game area, the Android permissions, and the debugging options.
+
+Most users can keep the default values. Change a value when a detection problem occurs, or when the device has an unusual screen layout.
+
+The Advanced section holds the service options, the game area options, a Permissions group, and a Debugging group. Three rows and the Permissions group show only on Android.
 
 ## Key Features
 
-### Stop accessibility service when the script finishes
+### Stop the accessibility service with the script service
 
-Enable **Auto stop accessibility service** to shut down the accessibility service automatically after stopping service. This ensures there would be no memory leaks and accessibility service would run fresh the next time you start it.
+Enable **Auto stop accessibility service on script service stop** to stop the accessibility service each time the script service stops. The next run then starts with a fresh service, and the service runs without problems.
 
-### Launch the service automatically with the app
+!!! note "Android only"
+    This row shows only on Android.
 
-Turn on **Auto start service** to begin the overlay and accessibility service as soon as you open the app. This saves a tap and gets you into farming faster.
+### Start the service with the app
 
-### Adjust the game area detection mode
+Enable **Auto-start service** to start the overlay service and the accessibility service when you open FGA. You then start a run with one tap.
 
-FGA needs to know where the game is drawn on screen to tap correctly. Three modes are available:
+!!! note "Android only"
+    This row shows only on Android.
 
-| Mode    | When to use                                                                          |
-| ------- | ------------------------------------------------------------------------------------ |
-| Default | Works for most phones in single-app view.                                            |
-| Duo     | Use if you run FGO in a split-screen or floating window alongside another app.       |
-| Custom  | Manually set pixel offsets (left, right, top, bottom) when detection problems occur. |
+### Select the game area mode
 
-Custom offsets can compensate for navigation bars, notches, or display cutouts that shift the game image.
+FGA must know where the game is drawn on the screen. It uses the game area to put each tap in the correct place.
 
-### Use thresholded stage counter
+| Mode     | When to use                                                              |
+| -------- | ------------------------------------------------------------------------ |
+| Default  | Works for most phones in single-app view                                  |
+| Surface Duo | Use this mode when you run FGO in a split screen or a floating window |
+| Custom   | Set the four offsets by hand when the detection fails                     |
 
-Enable this option if FGA has trouble reading the stage counter on some quests. The thresholded mode applies extra image processing to improve accuracy on low-contrast or stylized screens.
+Select **Custom** to show four steppers. Each stepper sets an offset in pixels, from 0 to 999:
 
-### Ignore play button detection warning
+| Stepper | Edge                          |
+| ------- | ----------------------------- |
+| Left    | The left edge of the game area  |
+| Right   | The right edge of the game area |
+| Top     | The top edge of the game area   |
+| Bottom  | The bottom edge of the game area |
 
-Turn this on to suppress the warning that appears when FGA cannot confidently detect the play button. Only enable it if you understand the risk of mis-taps and have verified detection manually.
+Use the offsets to compensate for a navigation bar, a notch, or a screen cutout. Those parts of the screen move the game image.
 
-### Manage system permissions
+### Use the thresholded stage counter
 
-FGA requires several Android permissions to function correctly:
+Enable **Thresholded stage counter detection** when FGA reads the stage counter wrong. The option adds image processing, and it improves the read on screens with low contrast or an unusual style.
 
-- **Notifications** – Required to display progress and completion alerts.
-- **Ignore battery optimization** – Keeps the service alive during long farming sessions. Without this, Android may pause FGA to save power.
-- **Display over other apps (Overlay)** – Allows the floating control panel to appear on top of the game.
+### Ignore the play button warning
 
-Tap each permission row to open the relevant Android settings screen.
+FGA shows a warning when it cannot find the play button with confidence. Enable **Ignore warning about play button's location** to stop the warning.
 
-### Dump crash logs for troubleshooting
+!!! warning "Enable this option with care"
+    With the warning off, FGA can tap a wrong place on the screen. Check the play button detection yourself before you use this option.
 
-If FGA crashes or behaves unexpectedly, tap **Dump crash logs** to save diagnostic information. Share the resulting file when reporting bugs so developers can investigate.
+!!! note "Android only"
+    This row shows only on Android.
+
+## Permissions
+
+The Permissions group holds three rows. Tap a row to open the related screen in the Android settings.
+
+| Row | Why FGA needs it |
+| --- | ---------------- |
+| Notifications | To show the progress of a run and the alerts that report the end of a run |
+| Battery Optimization | To keep the service alive during a long run. Android can otherwise stop FGA to save power. The permission gives FGA unrestricted battery use |
+| Display over other apps | To show the floating control panel above the game |
+
+!!! note "Android only"
+    The Permissions group shows only on Android.
+
+## Debugging
+
+### Share crash logs
+
+Tap **Share crash logs** to save the error logs to a file. Add the file to a bug report so that the developers can investigate the problem.
 
 ### Enable debug mode
 
-**Debug mode** shows extra status messages and logs internal actions. Use it when diagnosing problems; disable it afterward because it can slow down the script and clutter the log.
+Enable **Debug mode** to highlight the regions that FGA matches. Use this option when you diagnose a problem, because the extra work can slow the script.
 
 ## Tips for Best Results
 
-- Grant **Ignore battery optimization** if FGA stops during very long runs (over one hour).
-- After changing game area offsets, run a short test quest to confirm taps land correctly.
-- Leave **Debug mode** off unless actively troubleshooting, since extra logging increases overhead.
-- **Accessibility service** must always be turned off after every farming session to ensure it would run without issues the next time you start it.
+- Grant the **Battery Optimization** permission when FGA stops during a run that lasts more than one hour. The permission gives FGA unrestricted battery use.
+- Run a short test quest after you change a game area offset. The test shows whether each tap lands in the correct place.
+- Keep **Debug mode** off when you do not diagnose a problem.
+- Grant **Notifications** so that you see the progress of a backup, a restore, and a GitHub sync.
 
 ## Troubleshooting
 
-- **Taps land in the wrong place:** Switch to Custom game area mode and adjust offsets until taps align.
-- **Service keeps stopping:** Ensure Ignore battery optimization is enabled and no task-killer app is blocking FGA.
-- **Overlay does not appear:** Open **Display over other apps** permission and grant access to FGA Preview.
-- **Stage counter reads incorrectly:** Enable thresholded stage counter and re-run the quest.
+| Problem | Solution |
+| ------- | -------- |
+| Taps land in the wrong place | Select the **Custom** game area mode. Change the offsets until the taps align with the game. |
+| The service stops during a run | Grant **Battery Optimization**. Check that no task manager stops FGA. |
+| The overlay does not show | Open **Display over other apps**. Grant the permission to FGA. |
+| The stage counter reads wrong | Enable **Thresholded stage counter detection**. Then run the quest again. |
+| FGA taps a wrong place after you disable the play button warning | Disable **Ignore warning about play button's location**. Then check the play button detection yourself. |
+| The script is slow or taps in the wrong place | Disable **Debug mode**. The extra image processing slows the script. |
+
+## Related Documentation
+
+- [Settings](settings.md)
+- [Requirements](requirements.md)
+- [Storage Settings](storage.md)

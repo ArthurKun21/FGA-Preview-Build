@@ -1,6 +1,6 @@
 ---
 title: Grand Servant Selection
-description: Configure FGA Preview for JP server Grand Servant support selection with multi-slot CEs, Bond CE requirements, and special level filtering.
+description: Learn how FGA detects and selects JP server Grand servants, including level filters, the three CE slots, and bond CE requirements.
 tags:
     - support
     - grand servant
@@ -10,255 +10,217 @@ tags:
 
 # Grand Servant Selection
 
-Configure FGA to identify and select Grand Servants on the Japanese (JP) server, including their unique multi-slot CE system, Bond CE requirements, and level-based filtering.
+This page describes how FGA detects and selects Grand servants on the Japanese (JP) server.
 
 ## Overview
 
-Grand Servants are a JP server's new feature where players can showcase a single servant with enhanced support capabilities. These servants can equip up to 3 Craft Essences and display a special Grand Servant indicator.
+A Grand servant is a JP server feature. A player can show one servant with higher support power. A Grand servant can equip up to three Craft Essences. It shows a special Grand indicator.
 
-!!! tip "Important"
-    Grand Servant features are currently only available on JP server's **Grand Duels**. Other server versions do not support these options yet.
+!!! warning "JP server and Grand Duels only"
+    Grand servant features work on the JP server only. The Grand servant tag currently works in **Grand Duels** only. Use in a normal quest can return no match.
 
 ## Key Features
 
-- **Grand Servant detection**: Identify Grand Servants by their special logo
-- **Level-based filtering**: Target specific Grand Servant levels
-- **Triple CE slot support**: Configure preferences for all 3 CE slots
-- **Bond CE requirements**: Specify Bond CE type preferences
-- **Automatic mode switching**: FGA adjusts matching for Grand vs normal supports
+- **Grand detection** - FGA finds a Grand servant by its logo.
+- **Level filter** - Target a Grand servant at level 100 or above level 100.
+- **Three CE slots** - Configure preferences for all three CE slots.
+- **Bond CE requirement** - Set the bond CE type for slot 2.
+- **Automatic layout switch** - FGA changes the match regions for the Grand layout.
 
 ---
 
 ## Grand Servant Detection
 
-FGA identifies Grand Servants by detecting the Grand Servant logo/icon on the support card.
+FGA finds the Grand CE logo on the support card. The logo shows when a servant is set up as a Grand servant.
 
-### Grand Servant Indicator
+FGA treats an entry as a Grand servant when any of these is true:
 
-The Grand CE icon appears on support cards when a servant is set up as a Grand Servant. FGA scans for this indicator to determine whether to use Grand Servant matching logic.
+| Condition | Description |
+|-----------|-------------|
+| **Grand CE logo** | FGA finds the Grand CE logo on the entry. |
+| **Grand servant setting** | You set the Grand servant option for that servant. |
+| **Grand CE configuration** | The CE configuration uses a Grand slot, such as slot 2 or slot 3. |
 
-### Automatic Detection
+When FGA treats the entry as a Grand servant, it uses the Grand layout regions. The regions fit the Grand servant display.
 
-Grand Servant mode activates automatically when ANY of these conditions is true:
-
-| Condition                    | Description                                  |
-| ---------------------------- | -------------------------------------------- |
-| **Slot 3 CEs configured**    | You have CEs set for the third slot          |
-| **Grand Servant Tag filter** | Grand Servant Tag filter is not set to "Any" |
-| **Bond CE preference**       | Bond CE is not set to "Skip"                 |
-
-When Grand Servant mode is active, FGA uses adjusted screen regions optimized for the Grand Servant display format.
+!!! note
+    On a server without Grand support, the Grand servant setting has no effect.
 
 ---
 
-## Grand Servant Tag Filter
+## Grand Servant Level Filter
 
-Filter Grand Servants by their tag.
+Each servant has a **Grand Servant** setting. Use it to filter Grand servants by level.
 
-### Filter Options
+| Option | Behavior |
+|--------|----------|
+| **Any Servant** | Accepts any servant. |
+| **Any Grand Servant** | Accepts a Grand servant at level 100 or higher. |
+| **Only Grand Servant Above Level 100** | Accepts a Grand servant above level 100. |
 
-| Option              | Behavior                                                  |
-| ------------------- | --------------------------------------------------------- |
-| **Any**             | Accept any servant (Grand or normal)                      |
-| **Level 100**       | Only accept Grand Servants at exactly level 100 or higher |
-| **Above Level 100** | Only accept Grand Servants above level 100                |
+How FGA reads the level:
 
-### How Level Detection Works
+- FGA looks for the Grand servant logo and the above-100 logo next to the servant image.
+- **Any Grand Servant** accepts the standard logo or the above-100 logo.
+- **Only Grand Servant Above Level 100** accepts the above-100 logo only.
 
-FGA searches for specific Grand Servant level indicators:
-
-- **Level 100**: Detects either the standard Grand Servant logo OR the "Above 100" indicator
-- **Above Level 100**: Only detects the grailed Grand Servant indicator
-
-This ensures you can target servants that have been grailed beyond the normal level cap.
+FGA checks the Grand servant level in the Grand layout only.
 
 ---
 
 ## Grand Servant CE Configuration
 
-Grand Servants can equip up to 3 Craft Essences. Each slot has different configuration options.
+A Grand servant can equip up to three Craft Essences.
 
 ### Slot 1: Main CE
 
-The primary CE slot, functioning similar to normal support CE selection:
+The primary CE slot. It works the same as the CE slot for a normal support.
 
-| Setting       | Description                   |
-| ------------- | ----------------------------- |
-| **CE Images** | Select preferred CEs to match |
-| **MLB**       | Only accept limit broken CEs  |
-
-Configure through the standard CE selection in Preferred Support settings.
+| Setting | Description |
+|---------|-------------|
+| **CE entries** | The preferred CEs to match. |
+| **MLB** | Each CE entry has its own Max-limit-broken switch. |
 
 ### Slot 2: Bond CE
 
-The second slot is designed specifically for Bond CEs.
+The bond CE slot.
 
-| Option     | Behavior                       |
-| ---------- | ------------------------------ |
-| **Skip**   | Don't check the Bond CE slot   |
-| **Any**    | Accept any Bond CE type        |
-| **Bond**   | Only accept regular Bond CEs   |
-| **Charge** | Only accept NP Charge Bond CEs |
+| Option | Behavior |
+|--------|----------|
+| **Skip** | Does not check slot 2. |
+| **Any** | Accepts any bond CE. |
+| **Bond CE** | Accepts a regular bond CE only. |
+| **NP Charge** | Accepts an NP charge bond CE only. |
 
-**Bond CE Types Explained:**
-
-| Type             | Description                | Use Case               |
-| ---------------- | -------------------------- | ---------------------- |
-| **Regular Bond** | Standard Bond 10 CE        | General stat boosts    |
-| **Charge Bond**  | Bond CE with 50% NP charge | Better starting charge |
+- **Regular bond CE** - The standard Bond 10 Craft Essence.
+- **NP charge bond CE** - A bond CE that gives NP charge at the start.
 
 !!! note
-    FGA detects Bond CEs by their characteristic icon, not the full CE image. The similarity threshold for Bond CE detection is set to 60%.
+    FGA detects the bond CE by its icon, not by the full CE image. The similarity for the bond CE icon is 60 percent.
 
 ### Slot 3: Third CE
 
-The third CE slot for additional support:
+The third CE slot.
 
-| Setting        | Description                                 |
-| -------------- | ------------------------------------------- |
-| **CE Images**  | Select preferred CEs (separate from Slot 1) |
-| **MLB Slot 3** | Only accept limit broken CEs in slot 3      |
+| Setting | Description |
+|---------|-------------|
+| **CE entries** | The preferred CEs, separate from slot 1. |
+| **MLB** | Each CE entry has its own Max-limit-broken switch. |
 
-Slot 3 has its own MLB toggle independent of Slot 1.
+Slot 3 has its own MLB switches, separate from slot 1. Use [Mana Prism shop CEs](https://fategrandorder.fandom.com/wiki/Category:Shop_Craft_Essences) in slot 3.
 
-Slot 3 only accepts [Mana Prism Shop CEs](https://fategrandorder.fandom.com/wiki/Category:Shop_Craft_Essences).
+### Grand Servant CE Match
+
+This setting combines the slot 1 result and the slot 3 result.
+
+| Option | Behavior |
+|--------|----------|
+| **Match Both** | Slot 1 and slot 3 must both match. |
+| **Match Either** | Slot 1 or slot 3 must match. |
+
+See [Preferred CE Selection](preferred-ce.md#grand-servant-ce-match) for more detail.
 
 ---
 
 ## How Grand Servant Matching Works
 
-### Detection Flow
-
 ```mermaid
 flowchart TD
-    A[Check for Grand CE Logo<br/>in support card region] --> B{Grand Logo<br/>Found?}
-    B -->|Yes| C[Use Grand Matching]
-    B -->|No| D{Mode forces<br/>Grand?}
+    A[Check for the Grand CE logo] --> B{Logo found?}
+    B -->|Yes| C[Use the Grand layout]
+    B -->|No| D{Config forces Grand?}
     D -->|Yes| C
-    D -->|No| E[Use Normal Matching]
+    D -->|No| E[Use the normal layout]
 ```
 
-### Grand Matching Checks
+When FGA uses the Grand layout, it runs these checks:
 
-When Grand Servant mode is active:
-
-1. **Level Check**: Verify Grand Servant level meets requirements
-2. **Slot 1 CE**: Match main CE and check MLB if enabled
-3. **Slot 2 Bond CE**: Verify Bond CE type (unless Skip)
-4. **Slot 3 CE**: Match third CE and check MLB if enabled
-5. **Standard Checks**: Servant skills, ascension, NP level still apply
+1. **Level check** - The Grand servant level meets the requirement.
+2. **Slot 1 CE** - The main CE matches, and the MLB star shows when required.
+3. **Slot 2 bond CE** - The bond CE type matches, unless the option is **Skip**.
+4. **Slot 3 CE** - The third CE matches, and the MLB star shows when required.
+5. **Standard checks** - The servant skills, ascension, and NP level still apply.
 
 ### Blank CE Detection
 
-For Grand Servants, FGA checks for blank CEs differently:
-
-- Slot 2 uses a specific blank Bond CE image for detection
-- Detection region is adjusted for Grand Servant layout
-
-!!! note
-    The blank Bond CE image is currently optimized for JP server only.
+- Slot 1 checks for a blank CE in the normal layout only.
+- Slot 2 uses a specific blank bond CE image for the Grand layout.
+- The blank bond CE image is set for the JP server.
 
 ---
 
 ## Configuration Examples
 
-### Maximum Grailed Grand Servant
+### A grailed Grand servant
 
 ```text
-Grand Servant: Above Level 100
-Servant: [Your preferred servant images]
-Max Ascended: Enabled
-Skills: 10/10/10
-Slot 1 CE: [Event CE], MLB: Enabled
-Slot 2 Bond CE: Any
-Slot 3 CE: [Support CE], MLB: Disabled
+Grand Servant: Only Grand Servant Above Level 100
+Servant: [your preferred servant]
+Max-ascended: On
+Max Skills: 10 / 10 / 10
+Slot 1 CE: [event CE], MLB: On
+Slot 2 bond CE: Any
+Slot 3 CE: [support CE], MLB: Off
 ```
 
-### Any Grand with Charge Bond
+### Any Grand servant with a charge bond CE
 
 ```text
-Grand Servant: Level 100
-Servant: [Your preferred servant images]
-Slot 1 CE: [Event CE], MLB: Disabled
-Slot 2 Bond CE: Charge
-Slot 3 CE: Empty
+Grand Servant: Any Grand Servant
+Servant: [your preferred servant]
+Slot 1 CE: [event CE], MLB: Off
+Slot 2 bond CE: NP Charge
+Slot 3 CE: [empty]
 ```
 
-### Non-Grand Compatible Setup
+### A setup that also accepts a normal support
 
 ```text
-Grand Servant: Any
-Servant: [Your preferred servant images]
-Skills: X/10/X
-CE: [Event CE], MLB: Enabled
+Grand Servant: Any Servant
+Servant: [your preferred servant]
+Max Skills: X / 10 / X
+Slot 1 CE: [event CE], MLB: On
 ```
 
 ---
 
-## Tips for Best Results
+## Tips
 
-### Grand Servant Availability
-
-- Not all friends will have Grand Servants set up
-- Grand Servant configuration can only be done if you cleared Ordeal Call Prologue.
-
-### Bond CE Considerations
-
-- Regular Bond CEs provide various stat bonuses
-- Charge Bond CEs provide flat 50% NP charge at start
-- "Any" Bond CE option increases match chances
-
-### Level Filter Usage
-
-- "Above Level 100" is very restrictive
-- "Level 100" includes more potential matches
-- "Any" provides maximum flexibility
-
-### Multi-CE Matching
-
-- Each slot must match for the support to be selected
-- Empty CE lists for slots are skipped
-- MLB requirements apply per-slot
+- Not all friends set up a Grand servant. Keep a normal servant as a fallback.
+- **Any Grand Servant** gives more matches than **Only Grand Servant Above Level 100**.
+- Use **Any** for the bond CE to raise the number of matches.
+- Each slot must match for FGA to select the support.
 
 ---
 
 ## Troubleshooting
 
-### Grand Servant options not appearing
+### The Grand servant options do not show
 
-- Grand Servant features are JP server only
-- Check your Battle Config server setting
-- Ensure you're using a JP server profile
+- Grand servant is a JP server feature.
+- Make sure that your Battle Config uses the JP server.
 
-### Grand Servant not being detected
+### FGA does not detect the Grand servant
 
-- The Grand CE logo must be visible on the support card
-- Friend may not have set up a Grand Servant
-- Try using "Any" to allow normal supports as fallback
+- The Grand CE logo must be visible on the support card.
+- The friend may not have set up a Grand servant.
+- Try **Any Servant** to also accept a normal support.
 
-### Bond CE not matching
+### The bond CE does not match
 
-- Bond CE detection uses icon matching (60% similarity)
-- Try "Any" instead of specific Bond CE type
-- The Bond CE icon must be visible in the expected region
+- Bond CE detection uses the icon at 60 percent similarity.
+- Try **Any** instead of a specific bond CE type.
 
-### Slot 3 CE not checking
+### Slot 3 is not checked
 
-- Ensure you have CEs configured for Slot 3
-- Slot 3 is only checked for Grand Servants
-- Verify the CE images are properly captured
+- Make sure that you configure CEs in slot 3.
+- Slot 3 applies to Grand servants only.
 
-### Level detection failing
+### The level filter fails
 
-- Grailed servants above 100 use a different indicator
-- "Level 100" accepts both 100 and grailed indicators
-- "Above Level 100" is more strict
-
-### Wrong slots being matched
-
-- Grand Servant CE slots have specific positions
-- If matching seems off, verify you're targeting the right slot
-- Recapture CE images using Support Image Maker
+- A servant above level 100 uses a different logo.
+- **Any Grand Servant** accepts both the level 100 logo and the above-100 logo.
+- **Only Grand Servant Above Level 100** accepts the above-100 logo only.
 
 ---
 

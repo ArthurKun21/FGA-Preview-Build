@@ -1,6 +1,6 @@
 ---
 title: Face Card Priority System
-description: Configure how FGA selects command cards during battle. Set card type priorities, servant order, and critical star preferences.
+description: Configure how FGA Preview ranks and selects command cards during battle. Set card type, affinity, critical, and servant priorities for each wave and turn.
 tags:
     - battle
     - cards
@@ -10,203 +10,201 @@ tags:
 
 # Face Card Priority System
 
-Control how FGA selects the best command cards during battle.
+Face card priority is the order in which FGA ranks the five command cards on the attack screen.
 
 ## Overview
 
-The Face Card Priority system determines which command cards FGA clicks during the attack phase. You can configure priorities based on card type (Buster, Arts, Quick), servant order, class affinity, and critical star chance to optimize your farming or boss-killing strategy.
+FGA reads the five face cards on the attack screen, then ranks them with your settings. It fills the face-card positions of the attack sequence from the top of that ranking.
+
+Each command-card rule keeps its own settings for every wave and turn. One turn can use a different card order, a different servant order, and a different critical setting from the next turn.
+
+In `pre-2614`, card priority was a single list of two-letter codes, and the critical-star and servant-priority switches were config-wide. Now each card has a three-letter code, and both switches belong to a single wave and turn.
 
 ## Key Features
 
-- **Card Type Priority**: Prioritize Buster, Arts, or Quick cards
-- **Affinity Sorting**: Prefer cards with class advantage (weak affinity)
-- **Servant Priority**: Group cards by servant before sorting
-- **Critical Star Detection**: Prioritize cards with high critical chance
-- **Per-Wave Configuration**: Different priorities for each quest wave
+- **Card type order**: rank Buster, Arts, and Quick cards.
+- **Affinity order**: put cards with a class advantage first.
+- **Critical variants**: rank critical and non-critical cards separately.
+- **Servant order**: group the cards by servant before you rank them.
+- **Per-turn switches**: the critical and servant settings belong to one wave and turn.
 
 ## How Card Selection Works
 
 ```mermaid
 flowchart TD
-    A[Read 5 Command Cards] --> B[Parse Card Properties<br/>• Card type B/A/Q<br/>• Affinity W/Normal/R<br/>• Critical percentage<br/>• Servant owner]
-    B --> C[Apply Servant Priority if enabled<br/>Group cards by servant order]
-    C --> D[Apply Card Priority<br/>Sort by type + affinity + critical]
-    D --> E[Select Top 3 Cards]
+    A[Read the 5 face cards] --> B[Read the type, the affinity,<br/>the critical state, and the owner]
+    B --> C[Rank by servant order<br/>when servant priority is on]
+    C --> D[Rank by card priority]
+    D --> E[Fill the face-card positions of the sequence]
 ```
 
-## Card Type Priority
+## The Card Code
 
-### Card Types
+Each item in the card priority list is a code of three letters.
 
-| Type       | Icon  | Best For                  |
-| ---------- | ----- | ------------------------- |
-| **Buster** | Red   | Damage output             |
-| **Arts**   | Blue  | NP gauge charging         |
-| **Quick**  | Green | Critical stars generation |
+### First Letter: Affinity
 
-### Affinity Modifiers
+| Letter | Affinity | Effect |
+| ------ | -------- | ------ |
+| **W** | Weak | The servant has a class advantage. Damage increases. |
+| **N** | Normal | The classes are neutral. Damage does not change. |
+| **R** | Resist | The servant has a class disadvantage. Damage decreases. |
 
-| Prefix         | Meaning            | Damage        |
-| -------------- | ------------------ | ------------- |
-| **W** (Weak)   | Class advantage    | +50% to +100% |
-| _(none)_       | Neutral            | Normal        |
-| **R** (Resist) | Class disadvantage | -50%          |
+### Second Letter: Card Type
 
-### Critical Modifier
+| Letter | Type | Main use |
+| ------ | ---- | -------- |
+| **B** | Buster | Damage |
+| **A** | Arts | NP gauge charge |
+| **Q** | Quick | Critical stars |
 
-| Suffix   | Meaning                   |
-| -------- | ------------------------- |
-| **C**    | High critical star chance |
-| _(none)_ | Low or no critical chance |
+### Third Letter: Critical State
 
-### Priority Code Examples
+| Letter | State | Meaning |
+| ------ | ----- | ------- |
+| **C** | Critical | The card can deal a critical hit. |
+| **N** | Non-critical | The card cannot deal a critical hit. |
 
-| Code    | Full Meaning              |
-| ------- | ------------------------- |
-| **WBC** | Weak Buster with Critical |
-| **WB**  | Weak Buster               |
-| **BC**  | Buster with Critical      |
-| **B**   | Normal Buster             |
-| **RA**  | Resist Arts               |
+A resist card has no critical variant. FGA reads a resist card as non-critical.
 
-## Default Priority Order
+### Code Examples
 
-The standard priority from highest to lowest:
+| Code | Meaning |
+| ---- | ------- |
+| **WBC** | Weak Buster, critical |
+| **WBN** | Weak Buster, non-critical |
+| **NQC** | Normal Quick, critical |
+| **RAN** | Resist Arts |
+
+## The Default Order
+
+A new turn starts with a list of nine cards. This is the order from the highest rank to the lowest rank:
 
 ```text
-WBC → WAC → WQC → WB → WA → WQ → BC → AC → QC → B → A → Q → RB → RA → RQ
+WBN, WAN, WQN, NBN, NAN, NQN, RBN, RAN, RQN
 ```
 
-This order:
+The order does three things:
 
-1. Maximizes damage with class advantage cards
-2. Capitalizes on critical opportunities
-3. Falls back to neutral cards
-4. Avoids resist cards unless necessary
-
-## Servant Priority
-
-When enabled, cards are grouped by servant before applying card priority.
-
-### Team Slot Positions
-
-| Slot | Position                 |
-| ---- | ------------------------ |
-| 1    | First servant (leftmost) |
-| 2    | Second servant           |
-| 3    | Third servant            |
-| 4    | First backup             |
-| 5    | Second backup            |
-| 6    | Third backup             |
-
-### Selection Process with Servant Priority
-
-```text
-Example Setup:
-- Servant Priority: [3, 1, 2]
-- Card Priority: [B, A, Q]
-
-Available Cards:
-- Servant 1: Arts, Buster
-- Servant 2: Quick, Quick
-- Servant 3: Buster, Arts
-
-Selection Order:
-1. Servant 3's Buster (highest priority servant + card)
-2. Servant 3's Arts
-3. Servant 1's Buster
-4. Servant 1's Arts
-5. Servant 2's Quick
-6. Servant 2's Quick
-```
+1. It puts the cards with a class advantage first.
+2. It puts the neutral cards next.
+3. It puts the resist cards last.
 
 ## Critical Star Priority
 
-When enabled, FGA reads the critical star percentage on each card and factors it into sorting.
+The **Use Critical Star Priority** switch controls the critical variants of the cards. The switch belongs to one wave and turn, and not to the whole config.
 
-### Detection Method
+Turn the switch off, and the list holds nine non-critical cards. Turn the switch on, and FGA adds the critical variant of each weak card and each normal card. FGA puts each critical variant directly above its non-critical twin. The list then holds 15 cards:
 
-- Scans the star icon area on each card
-- Detects percentage numerically (7% threshold for "critical")
-- Cards with high critical chance are promoted within their priority group
+```text
+WBC, WBN, WAC, WAN, WQC, WQN, NBC, NBN, NAC, NAN, NQC, NQN, RBN, RAN, RQN
+```
 
-### When to Enable
+A card list holds at most 15 items. An item closer to the start of the list has a higher rank.
 
-| Situation                  | Recommendation   |
-| -------------------------- | ---------------- |
-| Consistent star generation | Enable           |
-| Variable star counts       | Enable           |
-| No star generators         | Disable (faster) |
-| Challenge quests           | Enable           |
+### When to Turn the Switch On
 
-## Per-Wave Configuration
+| Your team | Recommendation |
+| --------- | -------------- |
+| Makes many stars | Turn the switch on |
+| Makes few stars | Turn the switch off |
 
-Different waves may need different strategies:
+FGA reads the star percentage on each card, so the switch adds work to each turn.
 
-### Wave 1 (Farming)
+## A Complete List
 
-- Focus: NP generation
-- Priority: Arts cards
-- Goal: Charge NP for later waves
+FGA always works with a full list of known cards. A list holds at most 15 items, and FGA puts back every known card that you leave out.
 
-### Wave 2 (Transition)
+FGA builds the full list by these rules:
 
-- Focus: Clear enemies efficiently
-- Priority: Balanced or Quick
-- Goal: Generate stars for wave 3
+1. It drops the items with an unknown card type.
+2. It drops the duplicate items.
+3. It puts a missing non-resist card above the resist cards.
+4. It puts a missing resist card at the end of the list.
 
-### Wave 3 (Boss)
+You can move a resist card to the bottom of the list, but you cannot take it out. This keeps the list complete.
 
-- Focus: Maximum damage
-- Priority: Buster cards + servant priority
-- Goal: Defeat boss with critical hits
 
-## Tips for Best Results
+## Servant Priority
 
-1. **Match your team composition**: If running Buster servants, prioritize Buster cards
-2. **Use servant priority for single-target damage**: Focus all cards on your main damage dealer
-3. **Enable critical stars for RNG-heavy teams**: Critical hits can dramatically increase damage
-4. **Adjust per wave**: Different waves often need different card selections
-5. **Consider card chains**: Three of the same type gives bonus effects
+The **Use Servant Priority** switch is also a setting of one wave and turn. Turn the switch on to group the cards by servant before you rank them.
+
+### Team Slots
+
+FGA names each servant by its position in your party.
+
+| Position | Servant |
+| -------- | ------- |
+| **1** | First servant in the party |
+| **2** | Second servant |
+| **3** | Third servant |
+| **4** | First backup |
+| **5** | Second backup |
+| **6** | Third backup |
+
+The servant list holds all six positions. FGA adds the positions that you leave out at the end of your list, so the list always covers the full party.
+
+### How the Sort Works
+
+Turn servant priority off, and FGA sorts only by the card code. Two cards with the same code then sort by critical percentage, and the higher percentage comes first.
+
+Turn servant priority on, and FGA sorts in this order:
+
+1. The position of the servant in your servant list.
+2. The card code.
+3. The critical percentage.
+
+Cards that FGA cannot rank stay at the end of the list.
+
+### Example
+
+```text
+Servant list: 3, 1, 2
+Card order: Buster, Arts, Quick
+
+Hand:
+Servant 1 has Arts and Buster.
+Servant 2 has Quick.
+Servant 3 has Buster and Arts.
+
+Result: Servant 3 Buster, Servant 3 Arts, Servant 1 Buster, Servant 1 Arts, Servant 2 Quick
+```
 
 ## Card Chain Bonuses
 
-Selecting three cards of the same type grants bonuses:
+Three cards of one type give a bonus. FGA can also try to form these chains in a set order. See [Chain Priority](chain-priority.md).
 
-| Chain Type   | Bonus                          |
-| ------------ | ------------------------------ |
-| Buster Chain | +20% attack for all cards      |
-| Arts Chain   | +20% NP gauge for all servants |
-| Quick Chain  | +10 critical stars             |
+| Chain | Bonus |
+| ----- | ----- |
+| Buster | Attack increases for all cards |
+| Arts | NP gauge increases for all servants |
+| Quick | You get more critical stars |
 
 ## Troubleshooting
 
-### Cards not being selected in expected order
+### The order is not the order that I set
 
-- Check if Servant Priority is overriding Card Priority
-- Verify critical star detection isn't promoting unexpected cards
-- Confirm the current wave is using the correct priority configuration
+- Check that you edit the wave and turn that the battle uses.
+- Check the **Use Servant Priority** switch. The servant order comes before the card order.
+- Check the **Use Critical Star Priority** switch. The switch changes the length of the list.
+- Check the card code. A code of three letters must match a real card.
 
-### Servant's cards not being picked
+### My best card comes last
 
-- Add the servant higher in Servant Priority list
-- Check if the servant is stunned (stunned cards are deprioritized)
-- Verify the servant tracker correctly identified the servant
+A resist card stays in the list. Move it to the bottom of the list instead of trying to take it out. See [A Complete List](#a-complete-list).
 
-### Wrong card types being selected
+### FGA clicks a card that I rank low
 
-- Review your Card Priority order in settings
-- Check if affinity detection is working correctly
-- Ensure your priority list includes all card types you want
+FGA can change the order after the sort. The chain rules and the rearrange rule both move cards. Open **Simulation** on the turn to read each step. See [Card Simulation](card-simulation.md).
 
-### Critical cards not being prioritized
+### FGA clicks a card that I did not rank at all
 
-- Enable "Read Critical Star Priority" in settings
-- Check if the critical threshold is being met (7%+)
-- Verify the card visually shows critical stars
+Check that a custom pick does not match the hand. A matching pick replaces the sort. See [Custom Card Priority](custom-card-priority.md).
 
 ## Related Documentation
 
-- [Auto Battle](../auto-battle.md) - Overall battle automation
-- [Command Card Priority Setup](../../battle-setup/card-priority.md) - Configure priorities
-- [Brave Chains](brave-chains.md) - Card chain optimization
+- [Chain Priority](chain-priority.md) - The ordered chain rules
+- [Custom Card Priority](custom-card-priority.md) - Exact three-card picks
+- [Brave Chains](brave-chains.md) - Same-servant chains
+- [Card Simulation](card-simulation.md) - Test a hand without the game
+- [Command Card Priority](../../battle-setup/card-priority.md) - The rule editor

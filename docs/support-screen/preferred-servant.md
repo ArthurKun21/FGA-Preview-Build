@@ -1,6 +1,6 @@
 ---
 title: Preferred Servant Selection
-description: Configure FGA Preview to automatically find and select specific support servants with skill levels, ascension status, and Noble Phantasm requirements.
+description: Learn how FGA matches preferred support servants. Covers atlas and stored images, per-servant filters, skill and append checks, NP level, and image matching.
 tags:
     - support
     - servant
@@ -11,224 +11,237 @@ tags:
 
 # Preferred Servant Selection
 
-Configure FGA to search for specific support servants based on image matching and additional filters like skill levels, ascension status, and Noble Phantasm level.
+This page describes how FGA finds and selects a preferred support servant. It covers servant images, the per-servant filters, and image matching.
 
 ## Overview
 
-Preferred Servant Selection allows you to specify exactly which servants FGA should look for on the support screen. The app scans each support entry, comparing it against your configured servant images and optional requirements.
+Preferred servant selection tells FGA which servants to accept on the support screen. FGA scans each support entry. It compares the entry to your servant images and to the filters for that servant. FGA selects the first entry that meets every requirement.
+
+A servant entry can come from two sources:
+
+| Source | What it needs |
+|--------|---------------|
+| Atlas | No image on your device. FGA resolves the servant faces from the `fga-data` snapshot. |
+| Stored image | An image in your support images folder. Make the image with the Support Image Maker. |
+
+An atlas entry resolves all servant faces for that servant, such as each ascension, costume, and transform. This removes the need to capture a new image after the artwork changes.
 
 ## Key Features
 
-- **Image-based matching**: Select servants by their portrait image
-- **Ascension filtering**: Only match servants showing max ascension artwork
-- **Skill requirements**: Require specific skills to be at level 10
-- **Append skill checking**: Verify append skill levels (JP supports 5, others support 3)
-- **NP level requirements**: Set minimum Noble Phantasm level
-- **Multiple servants**: Add several servants as acceptable options
+- **Atlas and image support** - Add a servant from the atlas or from a stored image.
+- **Per-servant filters** - Each servant has its own filters.
+- **Ascension check** - Accept only servants that show the max-ascension star.
+- **Skill and append checks** - Require skills and append skills at level 10.
+- **NP level check** - Require a minimum Noble Phantasm level.
+- **Per-entry matching** - Each servant has its own matching mode and threshold.
+- **Multiple servants** - Accept any of the servants that you configure.
 
 ---
 
-## Setting Up Servant Selection
+## Add a Servant
 
-### Adding Servant Images
+1. Open a Battle Config.
+2. Tap **Support Selection**.
+3. Select **Preferred** mode.
+4. Tap **Preferred Support**.
+5. Tap **Add** in the Preferred Servants section.
+6. Pick a servant from the atlas list, or tap the support images icon to pick a stored image.
+7. Tap the servant to add it. The detail screen opens.
 
-Before FGA can find servants, you need to capture their images:
+The atlas list holds the servants from the `fga-data` snapshot. A stored image must already exist in your support images folder. Make stored images with the [Support Image Maker](../other-scripts/support-image-maker.md).
 
-1. Use the **Support Image Maker** script to capture servant portraits
-2. Images are saved to your support images folder
-3. Open your Battle Config and navigate to **Preferred Support**
-4. Tap **Add** in the Servants section
-5. Select one or more servant images
-6. Tap **Save** to confirm
-
-### Image Requirements
-
-- Capture the servant's face/portrait area
-- Update images after changing servant ascension artwork
-- Use high-quality screenshots for better matching
+!!! note
+    Preferred mode needs at least one enabled servant or one default Craft Essence. Friend settings alone do not start a search.
 
 ---
 
-## Servant Filters
+## Servant Settings
 
-### Max Ascended
+Each servant has its own settings. Tap the servant to open its detail screen.
 
-When enabled, FGA only selects servants displaying the golden ascension star.
-
-| Setting      | Behavior                                             |
-| ------------ | ---------------------------------------------------- |
-| **Disabled** | Accept any ascension level                           |
-| **Enabled**  | Only accept servants with max ascension star visible |
-
-This filter checks for the star indicator near the servant portrait, confirming they have reached final ascension artwork.
+| Setting | Behavior |
+|---------|----------|
+| **Use this Servant?** | Enables or disables this servant. A disabled servant stays in the config, but FGA does not search for it. |
+| **Auto Send Friend Request** | Sends a friend request for this servant. The master switch must be on. |
+| **Max-ascended** | Accepts only servants that show the golden ascension star. |
+| **Max Skills** | Sets which of the three skills must be at level 10. |
+| **Max Appends** | Turns on the append skill level check. |
+| **Noble Phantasm** | Sets the minimum NP level from 1 to 5. |
+| **Grand Servant** | Sets the Grand servant requirement. This setting shows only on servers that support Grand servants. |
+| **Servant Matching** | Sets the image matching mode and threshold for this servant. |
 
 ### Max Skills
 
-Specify which skills must be at level 10:
+Tap a skill button to change the requirement for that skill.
 
-| Display | Meaning                     |
-| ------- | --------------------------- |
-| **10**  | This skill must be level 10 |
-| **X**   | Skill level doesn't matter  |
+| Display | Meaning |
+|---------|---------|
+| **10** | The skill must be maxed at level 10. |
+| **X** | The skill level does not matter. |
 
-Example configurations:
+For example, `10 / X / 10` means that skills 1 and 3 must be maxed. Skill 2 can be at any level.
 
-| Configuration  | Meaning                              |
-| -------------- | ------------------------------------ |
-| `10 / 10 / 10` | All three skills must be maxed       |
-| `10 / X / X`   | Only first skill must be maxed       |
-| `X / 10 / X`   | Only second skill must be maxed      |
-| `10 / X / 10`  | First and third skills must be maxed |
+FGA reads each skill level icon and compares it to the level 10 template. The skill template uses a similarity of 68 percent.
 
-### Check Append Skills
+### Max Appends
 
-When enabled, FGA also verifies append skill levels after checking regular skills.
+Turn on this switch to check append skill levels. The editor has five append skill rows. Tap a row to require that append skill at level 10.
 
-**Append Skill Slots:**
+- The row shows **10** when you require that append skill.
+- The row shows a dash when you do not require that append skill.
 
-| Server    | Available Slots |
-| --------- | --------------- |
-| **JP**    | 5 append skills |
-| **Other** | 3 append skills |
+How FGA reads append skills:
 
-The append skill check:
+- The support list shows either the skill levels or the append skill levels.
+- FGA switches the list to the append display, reads every candidate under one screen snapshot, and then switches back to the skill display.
+- FGA reads the five append skill level icons at the Japanese server positions on every server.
+- FGA skips the check for an entry that shows the **Follow** indicator. A follow entry uses your own append skills, which do not apply.
 
-1. Toggles the skill display to show append skills
-2. Checks each specified slot for level 10
-3. Returns to regular skill display
+### Noble Phantasm
 
-Configure which append skills must be maxed similar to regular skills.
+Set the minimum NP level. FGA accepts a servant when its NP level is equal to or above this value.
 
-### Noble Phantasm Level
+| NP level | Meaning |
+|----------|---------|
+| **1** | Accepts any NP level. FGA does not read the NP text. |
+| **2** | Accepts NP level 2 or higher. |
+| **3** | Accepts NP level 3 or higher. |
+| **4** | Accepts NP level 4 or higher. |
+| **5** | Accepts NP level 5 only. |
 
-Set a minimum NP level requirement:
+- FGA reads the NP level from the support card with optical character recognition (OCR).
+- FGA reads the NP level from a different region in the Grand layout.
+- A failed read returns level 1. So a failed read fails the check only when you require level 2 or higher.
 
-| NP Level | Meaning                |
-| -------- | ---------------------- |
-| **1**    | Any NP level (default) |
-| **2**    | NP2 or higher          |
-| **3**    | NP3 or higher          |
-| **4**    | NP4 or higher          |
-| **5**    | NP5 only               |
+!!! warning "Server support limitation"
+    NP level detection works on **English** and **Japanese** servers only.
 
-FGA reads the NP level from the support card using text recognition.
+!!! info "Read accuracy"
+    The move from Tesseract to PaddleOCR improved the read accuracy. OCR can still read the NP level incorrectly when the image is not clear.
+
+---
+
+## Servant Image Matching
+
+Each servant has its own matching settings. The settings apply to that servant only.
+
+### Matching Mode
+
+| Mode | How it works | Default similarity |
+|------|--------------|--------------------|
+| **Grayscale** | Converts both images to grayscale and uses normalized correlation. A higher score is better. | 80 percent |
+| **Colored** | Keeps both images in color and uses normalized squared difference. A lower difference is better. | 95 percent |
+
+### Threshold Override
+
+Turn on **Override matching threshold** to set a custom threshold for this servant. Then drag the slider.
+
+- The slider range depends on the mode.
+- The **Grayscale** range is 50 to 100 percent.
+- The **Colored** range is 80 to 100 percent.
+- A higher value requires a closer match in both modes.
+- A mode change resets the threshold to the default of the new mode.
+
+!!! tip
+    Lower the threshold when FGA cannot find a servant that you can see on the screen. Raise the threshold when FGA picks the wrong servant.
 
 ---
 
 ## How Servant Matching Works
 
-### Matching Process
+FGA applies the servant filters in this order. FGA rejects the entry when a filter fails.
 
 ```mermaid
 flowchart TD
-    A[Load Servant Images] --> B[For Each Support Entry]
-    B --> C[Search for servant face]
-    C --> D[Check ascension star<br/>if enabled]
-    D --> E[Check skill levels<br/>if enabled]
-    E --> F[Check NP level<br/>if enabled]
-    F --> G{All Checks Passed?}
-    G -->|Yes| H[Accept Support]
-    G -->|No| I[Try Next Support]
-    I --> B
+    A[Start: one support entry] --> B{Grand layout?}
+    B -->|Yes| C[Check Grand servant level]
+    C -->|Fail| Z[Reject entry]
+    B -->|No| D[Match servant image]
+    C -->|Pass| D
+    D -->|No match| Z
+    D -->|Match| E{Max-ascended on?}
+    E -->|Yes| F[Check ascension star]
+    F -->|Fail| Z
+    E -->|No| G{Max Skills set?}
+    F -->|Pass| G
+    G -->|Yes| H[Check skill levels]
+    H -->|Fail| Z
+    G -->|No| I[Check NP level]
+    H -->|Pass| I
+    I -->|Fail| Z
+    I -->|Pass| J[Initial match]
 ```
 
-### Image Processing
+After FGA collects the initial matches, it runs the append skill check as a separate pass. See [Max Appends](#max-appends).
 
-FGA performs special processing when matching servant images:
+### Friend Lock Crop
 
-- **Friend Lock Cropping**: Automatically removes the left portion of the image where a friend lock icon might appear
-- This prevents locked friend icons from interfering with matching
+When you lock a friend, a lock icon shows on the left of the servant image. The icon can cause the image match to fail. FGA crops the left edge of the servant image before it matches. This stops the lock icon from affecting the result.
 
-### Filter Order
+### Ascension Star
 
-Filters are applied in sequence. If any filter fails, the support is rejected:
-
-1. Servant image match
-2. Grand Servant check (if configured)
-3. Max ascension check
-4. Regular skill check
-5. NP level check
-6. Append skill check (performed separately after initial match)
+FGA checks for the max-ascension star above the servant image. In the Grand layout, FGA reads the star from a lower position.
 
 ---
 
-## Multiple Servant Configuration
+## Multiple Servants
 
-You can add multiple servants as acceptable options:
+You can add several servants. FGA accepts an entry when it matches any of the enabled servants.
 
-| Configuration         | Behavior                               |
-| --------------------- | -------------------------------------- |
-| **Single servant**    | Only matches that specific servant     |
-| **Multiple servants** | Matches ANY of the configured servants |
+FGA collects matches in screen order from top to bottom. The first match wins.
 
-When multiple servants are configured, FGA selects the first match found while scrolling through the support list.
+- The servant order in your config only decides which servant an entry belongs to.
+- When more than one servant can match the same entry, the first servant in your config wins.
 
 ---
 
-## Tips for Best Results
+## Tips
 
-### Image Quality Matters
-
-- Use Support Image Maker for consistent captures
-- Recapture after ascension changes artwork
-- Avoid capturing during animations or transitions
-
-### Balance Strictness and Speed
-
-- More filters = fewer matches = longer search time
-- Start with fewer requirements and add more if needed
-- Consider having backup servants with looser requirements
-
-### Skill Verification Accuracy
-
-- Skill level 10 detection uses image matching
-- Similarity threshold is set to 68% by default
-- If detection seems inaccurate, ensure good screen brightness
-
-### NP Level Detection
-
-- Uses text recognition (OCR) to read NP level
-- Works best with clear, stable display
-- May occasionally misread due to image quality
+- Use atlas entries. An atlas entry needs no image and covers every ascension and costume.
+- Add more than one servant. Extra servants give fallback options.
+- Set the filters on each servant. A filter applies to that servant only.
+- Do not over-specify. Each extra filter reduces the number of matches.
+- Test a strict setup on one quest before you start a long run.
 
 ---
 
 ## Troubleshooting
 
-### Servant not being found
+### FGA does not find the servant
 
-- **Verify image quality**: Recapture using Support Image Maker
-- **Check ascension**: If Max Ascended is enabled, ensure servant shows the star
-- **Relax requirements**: Temporarily disable skill/NP checks
+- Check that the servant is enabled.
+- Check the matching mode and threshold. Lower the threshold when the servant is visible but not found.
+- Relax the filters. Turn off **Max-ascended**, **Max Skills**, or the NP level check.
+- For a stored image, make the image again with the Support Image Maker.
 
-### Wrong servant selected
+### FGA picks the wrong servant
 
-- Your image may match similar servants
-- Capture a more distinctive portion of the portrait
-- Add additional filter requirements to narrow matches
+- Your image can match more than one servant.
+- Raise the matching threshold.
+- Add extra filter requirements.
 
-### Skills not detected correctly
+### Skills are not detected
 
-- Ensure screen brightness is adequate
-- Check that skill icons are fully visible
-- Verify the skill display is showing regular skills (not append)
+- Make sure that the screen is bright and the skill icons are clear.
+- FGA compares each icon to the level 10 template at 68 percent similarity.
 
-### Append skill check fails
+### Append skills fail
 
-- Confirm your server supports the number of append skills configured
-- JP server: 5 slots, Other servers: 3 slots
-- Check that the servant has append skills unlocked
+- Make sure that **Max Appends** is on and that you set the correct rows.
+- FGA skips an entry that shows the **Follow** indicator.
+- Make sure that the support list can switch to the append display.
 
 ### NP level always reads as 1
 
-- Text recognition may fail with low image quality
-- Try increasing screen brightness
-- Ensure the NP level text is fully visible on the support card
+- NP level detection works on English and Japanese servers only.
+- A failed read returns level 1. Make the image clear and raise the screen brightness.
+- Make sure that the NP level text is fully visible.
 
 ---
 
 ## Related Documentation
 
+- [Preferred CE Selection](preferred-ce.md) - Configure Craft Essence requirements
+- [Preferred Friend Selection](preferred-friend.md) - Configure friend filtering
 - [Grand Servant Selection](grand-servant.md) - JP server Grand Servant features
-- [Preferred CE Selection](preferred-ce.md) - Configure CE requirements
 - [Support Image Maker](../other-scripts/support-image-maker.md) - Create support images

@@ -1,6 +1,6 @@
 ---
 title: Preferred CE Selection
-description: Configure FGA Preview to find and select support servants with specific Craft Essences. Includes MLB requirements and Grand Servant multi-slot CE support.
+description: Learn how FGA matches preferred Craft Essences. Covers slot 1, the Grand servant bond CE in slot 2, slot 3, Max Limit Break, matching, and the Grand servant match strategy.
 tags:
     - support
     - craft essence
@@ -11,215 +11,200 @@ tags:
 
 # Preferred CE Selection
 
-Configure FGA to search for support servants equipped with specific Craft Essences (CEs), with options for Max Limit Break (MLB) requirements and Grand Servant multi-slot CE support.
+This page describes how FGA finds and selects a support that equips your preferred Craft Essences (CEs).
 
 ## Overview
 
-Preferred CE Selection allows you to specify which Craft Essences a support servant should have equipped. FGA scans the CE portion of each support entry, comparing against your configured CE images.
+Preferred CE selection tells FGA which CEs a support must equip. FGA scans the CE area of each support entry and compares it to your CE entries.
+
+A CE entry can come from two sources:
+
+| Source | What it needs |
+|--------|---------------|
+| Atlas | No image on your device. FGA resolves the CE faces from the `fga-data` snapshot. |
+| Stored image | An image in your support images folder. Make the image with the Support Image Maker. |
+
+Each CE entry has its own Max-limit-broken (MLB) switch and its own matching settings.
 
 ## Key Features
 
-- **Image-based CE matching**: Select CEs by their image
-- **MLB verification**: Only accept limit broken CEs showing the golden star
-- **Blank CE detection**: Automatically reject supports with no CE equipped
-- **Grand Servant support**: Configure up to 3 CE slots for JP server Grand Servants
-- **Multiple CE options**: Add several CEs as acceptable choices
+- **Atlas and image support** - Add a CE from the atlas or from a stored image.
+- **Three CE slots** - Slot 1 for every support, slot 2 for the bond CE, slot 3 for Grand servants.
+- **Per-CE MLB** - Each CE entry has its own MLB requirement.
+- **Blank CE check** - FGA rejects a normal support that has no CE.
+- **Bond CE check** - Require a specific bond CE type for a Grand servant.
+- **Grand match strategy** - Choose whether slot 1 and slot 3 must both match or either can match.
 
 ---
 
-## Normal Support CE Selection
+## Default CE and Custom CE
 
-For standard supports (non-Grand Servants), each support has one CE slot.
+- **Default Preferred Craft Essences** - FGA applies these CEs to every servant.
+- **Custom Preferred Craft Essences** - FGA applies these CEs to one servant only.
 
-### Adding CE Images
+Each servant has a **Default** page and a **Custom** page for CEs. Tap the toggle at the top to change the page. FGA saves your choice. Your custom data stays when you return to the **Default** page.
 
-1. Use the **Support Image Maker** script to capture CE images
-2. Open your Battle Config and navigate to **Preferred Support**
-3. Tap **Add** in the CE section
-4. Select one or more CE images
-5. Tap **Save** to confirm
-
-### Max Limit Break (MLB)
-
-When enabled, FGA only selects supports where the CE displays the golden limit break star.
-
-| Setting      | Behavior                             |
-| ------------ | ------------------------------------ |
-| **Disabled** | Accept any CE matching the image     |
-| **Enabled**  | Only accept CEs showing the MLB star |
-
-The MLB star appears on the CE when it has been fully limit broken (5 copies merged).
-
-### Blank CE Handling
-
-When you have CE preferences configured:
-
-| CE List     | Blank CE Behavior                     |
-| ----------- | ------------------------------------- |
-| **Empty**   | Supports with blank CEs are rejected  |
-| **Has CEs** | Must match one of your configured CEs |
-
-If you don't configure any CEs, FGA still checks that the support has some CE equipped (not blank).
+A servant uses its custom CE only when you turn on the custom CE option for that servant. Otherwise the servant uses the default CE.
 
 ---
 
-## Grand Servant CE Selection (JP Server Only)
+## CE Slots
 
-Grand Servants on the Japanese server can equip up to 3 Craft Essences. FGA supports checking all three slots.
+| Slot | Applies to | Contents |
+|------|------------|----------|
+| **Slot 1** | Every support | One or more preferred CEs. |
+| **Slot 2** | Grand servants only | A bond CE requirement. |
+| **Slot 3** | Grand servants only | One or more preferred CEs. |
 
-### CE Slot 1 (Main CE)
+The slot 2 and slot 3 settings show only on servers that support Grand servants.
 
-The primary CE slot, functioning similar to normal support CE selection:
+### Slot 1
 
-- Configure preferred CEs through the main CE selection
-- Enable MLB requirement if needed
-- Matches the first CE displayed on the Grand Servant
+1. Tap **Add Preferred Support** in slot 1.
+2. Pick a CE from the atlas list, or tap the support images icon to pick a stored image.
+3. Tap the CE.
 
-### CE Slot 2 (Bond CE)
+- FGA rejects a normal support that has a blank CE when you configure CEs in slot 1.
+- In the Grand layout, the blank CE check does not apply.
 
-The second slot is specifically designed for Bond CEs. Configure the Bond CE requirement:
+### Slot 2 (Bond CE)
 
-| Option     | Behavior                                    |
-| ---------- | ------------------------------------------- |
-| **Skip**   | Don't check the second CE slot              |
-| **Any**    | Accept any Bond CE (regular or charge type) |
-| **Bond**   | Only accept regular Bond CEs                |
-| **Charge** | Only accept NP Charge Bond CEs              |
+Slot 2 holds the bond CE requirement for a Grand servant.
 
-**Bond CE Types:**
+| Option | Behavior |
+|--------|----------|
+| **Skip** | Does not check slot 2. |
+| **Any** | Accepts any bond CE. |
+| **Bond CE** | Accepts a regular bond CE only. |
+| **NP Charge** | Accepts an NP charge bond CE only. |
 
-| Type                | Description                    |
-| ------------------- | ------------------------------ |
-| **Regular Bond CE** | Standard Bond 10 Craft Essence |
-| **Charge Bond CE**  | Bond CE with NP charge effect  |
+FGA detects the bond CE by its icon, not by the full CE image. FGA uses a similarity of 60 percent for the bond CE icon.
 
-When checking for Bond CEs:
+- **Regular bond CE** - The standard Bond 10 Craft Essence.
+- **NP charge bond CE** - A bond CE that gives NP charge at the start.
 
-- FGA first verifies the slot is not blank
-- Then checks for the specific Bond CE type icon
+FGA first checks that slot 2 is not blank. Then it checks for the bond CE type.
 
-### CE Slot 3 (Third CE)
+### Slot 3
 
-The third CE slot for Grand Servants:
+1. Tap **Add Preferred Support** in slot 3.
+2. Pick a CE from the atlas list, or tap the support images icon to pick a stored image.
+3. Tap the CE.
 
-- Configure separately from Slot 1 CEs
-- Has its own MLB toggle independent of Slot 1
-- Uses the same image matching as Slot 1
+Slot 3 has its own CE entries and its own MLB switches. Use [Mana Prism shop CEs](https://fategrandorder.fandom.com/wiki/Category:Shop_Craft_Essences) in slot 3.
+
+---
+
+## Max Limit Break (MLB)
+
+Each CE entry has its own **Max-limit broken** switch. Turn on the switch to require the MLB star for that CE.
+
+- The switch applies to that CE only.
+- The switch applies to that CE in slot 1 and in slot 3.
+- Slot 3 has its own MLB switch, separate from slot 1.
+
+FGA detects the MLB star next to the matched CE. In the Grand layout, FGA reads the star from an adjusted position for each slot.
+
+---
+
+## CE Matching
+
+Each CE entry has its own matching settings.
+
+| Setting | Behavior |
+|---------|----------|
+| **CE Matching** | Sets the matching mode for that CE. |
+| **Override matching threshold** | Turns on a custom matching threshold for that CE. |
+| **Matching Threshold** | Sets the threshold. Tap the reset control to return to the mode default. |
+
+The matching modes are the same as for servants. See [Image Matching](preferred-servant.md#servant-image-matching).
+
+---
+
+## Grand Servant CE Match
+
+This setting decides how FGA combines the slot 1 result and the slot 3 result. The setting applies to the default CE and to each custom CE.
+
+| Option | Behavior |
+|--------|----------|
+| **Match Both** | Slot 1 and slot 3 must both match your preferred CEs. |
+| **Match Either** | Slot 1 or slot 3 must match your preferred CEs. |
+
+!!! note
+    The control stays disabled until you configure CEs in slot 1 and slot 3. An empty slot always matches. So **Match Either** with an empty slot would pass without a real match.
+
+---
+
+## Send Friend Request on Default CE Match
+
+This switch is in the default CE screen. It controls the friend request that follows a default CE match.
+
+- The master switch **Enable Send Friend Request** must be on.
+- The switch is on by default.
+
+When FGA picks a support that uses the default CE, and the picked CE matches your default configuration, FGA sends the friend request. When the picked servant uses a custom CE, this switch has no effect on that pick.
+
+FGA rejects the friend request when your friend list is full.
 
 ---
 
 ## How CE Matching Works
 
-### Normal Support Matching
-
 ```mermaid
 flowchart TD
-    A[Load CE Images] --> B[For Each Support Entry]
-    B --> C{CEs configured?}
-    C -->|No| D[Check not blank]
-    C -->|Yes| E[Search for CE image<br/>in support region]
-    D --> F{Valid?}
-    E --> G[Check MLB star<br/>if enabled]
-    G --> F
-    F -->|Yes| H[Accept]
-    F -->|No| I[Try Next]
-    I --> B
+    A[Start: one support entry] --> B[Check slot 1]
+    B --> C{Grand layout?}
+    C -->|No| D[Use slot 1 result]
+    C -->|Yes| E[Check slot 2 bond CE]
+    E --> F[Check slot 3]
+    F --> G{Match Both or Either?}
+    G -->|Both| H[Slot 1 and slot 3]
+    G -->|Either| I[Slot 1 or slot 3]
+    D --> J{All checks pass?}
+    H --> J
+    I --> J
+    J -->|Yes| K[Accept entry]
+    J -->|No| L[Reject entry]
 ```
 
-### Grand Servant Matching
-
-```mermaid
-flowchart TD
-    A[Check Slot 1 - Main CE<br/>Match configured CEs<br/>Check MLB if enabled] --> B[Check Slot 2 - Bond CE<br/>Skip, Any, Bond, or Charge<br/>Verify not blank]
-    B --> C[Check Slot 3 - Third CE<br/>Match configured CEs<br/>Check MLB if enabled]
-```
-
-### MLB Detection
-
-The limit break star is detected using image matching:
-
-- For normal CEs: Checks the standard MLB star position
-- For Grand Servant triple-slot CEs: Checks adjusted positions for each slot
-- Similarity threshold is configurable in support preferences
+FGA checks all three slots for every entry. It combines the slot 1 and slot 3 results with the Grand match strategy. Slot 2 must also pass.
 
 ---
 
-## Configuring Multiple CEs
+## Tips
 
-You can add multiple CEs as acceptable options:
-
-| Configuration    | Behavior                          |
-| ---------------- | --------------------------------- |
-| **Single CE**    | Only matches that specific CE     |
-| **Multiple CEs** | Matches ANY of the configured CEs |
-
-This is useful for:
-
-- Event CEs with different artwork versions
-- Accepting multiple bonus CEs during events
-- Having fallback options for rarer CEs
-
----
-
-## Tips for Best Results
-
-### Event Farming
-
-- Add all event bonus CEs to increase match chances
-- Consider disabling MLB early in events when few exist
-- Update CE images when event CEs are released
-
-### MLB Requirements
-
-- MLB CEs may be rare among friends early in events
-- Start with MLB disabled, enable after event progresses
-- Some friends may have MLB but show different artwork
-
-### Image Capture Quality
-
-- Capture CEs using Support Image Maker
-- Avoid capturing during animations
-- Include enough of the CE image to be distinctive
-
-### Grand Servant CEs
-
-- Slot 2 uses icon matching, not full CE matching
-- Bond CEs are identified by their characteristic icon
-- Slot 3 requires separate CE images from Slot 1
+- Add all event bonus CEs to raise the number of matches.
+- Turn off MLB early in an event. MLB CEs are rare at the start.
+- Use atlas entries. An atlas entry needs no image.
+- Set the MLB switch on each CE that must be limit broken.
 
 ---
 
 ## Troubleshooting
 
-### CE not being matched
+### FGA does not match the CE
 
-- **Verify image quality**: Recapture using Support Image Maker
-- **Check MLB setting**: Disable if CE might not be limit broken
-- **Multiple versions**: Some CEs have different artwork versions
+- Check that the CE is in the correct slot.
+- Check the matching mode and threshold. Lower the threshold when the CE is visible but not found.
+- Check the MLB switch. Turn it off when the CE may not be limit broken.
+- For a stored image, make the image again with the Support Image Maker.
 
-### MLB not detected
+### MLB is not detected
 
-- Ensure the MLB star is visible on the support screen
-- Check similarity threshold in support preferences
-- The star must be in the expected position
+- Make sure that the MLB star is visible on the support screen.
+- Make sure that the MLB switch is on for that CE.
 
-### Grand Servant CE slots not checking
+### The bond CE does not match
 
-- Grand Servant mode is JP server only
-- Verify your Battle Config is set to JP server
-- Check that Grand Servant mode is properly enabled
+- Bond CE detection uses the icon at 60 percent similarity.
+- Try **Any** instead of a specific bond CE type.
+- Make sure that the bond CE icon is visible.
 
-### Blank CE keeps getting selected
+### Slot 3 is not checked
 
-- This shouldn't happen if you have CEs configured
-- Verify your CE list is not empty
-- Check that the support is actually showing a CE
-
-### Bond CE type not matching
-
-- The Bond CE icon detection uses 60% similarity
-- Some Bond CE variations may not match perfectly
-- Try using "Any" instead of specific type
+- Slot 3 applies to Grand servants only.
+- Make sure that the config uses a server that supports Grand servants.
+- Make sure that you configure CEs in slot 3.
 
 ---
 

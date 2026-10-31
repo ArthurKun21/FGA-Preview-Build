@@ -27,7 +27,7 @@ FGA executes your configured skill commands during battle, handling all the taps
 
 ## How to Start
 
-1. Open your **Battle Config** and set up a **Skill Command** using **Skill Maker** or by pasting a command string.
+1. Open your **Battle Config** and set up a **Skill Command** with the **Script Maker**.
 2. Save the config and go to your quest or support screen.
 3. Start **Auto Battle**; FGA follows your skill commands wave by wave, including targets and Order Change steps.
 
@@ -154,27 +154,29 @@ For servants with choice-based skills (e.g., Space Ishtar, Emiya) or transformat
 | `[Ch3B]` | Option B (3-choice skill) |
 | `[Ch3C]` | Option C (3-choice skill) |
 | `[Tfrm]` | Transformation skill (e.g., Mélusine) |
+| `[x12]` | Order Change (Master Skill only, e.g. `l[x12]`) |
 
 ## Order Change (Servant Swap)
 
-Swap a field servant with a backup using the `x` command followed by the **starting** position and then the **sub** position.
+Swap a field servant with a backup by invoking Order Change through a Master skill, followed by the **starting** position and then the **sub** position inside the brackets.
 
 ### Command Format
 
 ```text
-x[starting][sub]
+<master>[x<starting><sub>]
 
+master: Master skill invoker (j, k, or l — the Script Maker uses l)
 starting: Field servant position (1=A, 2=B, 3=C)
 sub: Backup servant position (1-3)
 
-Example: x23 = Swap field servant B (position 2) with backup servant 3
+Example: l[x23] = Swap field servant B (position 2) with backup servant 3
 ```
 
 ### Swap Process
 
 ```mermaid
 flowchart TD
-    A[Click Master Skill Order Change] --> B[Select Field Servant<br/>Position to swap out]
+    A[Open Master Skill menu<br/>and click the Order Change skill] --> B[Select Field Servant<br/>Position to swap out]
     B --> C[Select Backup Servant<br/>Position to swap in]
     C --> D[Confirm Swap<br/>Update servant tracking]
 ```
@@ -207,10 +209,10 @@ After skill activation:
 | **Wrong target selected**      | Use `1/2/3` for ally targets. Verify servant positions if you used Order Change. |
 | **Animation timeout**          | Increase wait time for slower devices. Ensure network stability. |
 | **Skill confirmation missing** | FGA auto-confirms most dialogs. If it fails, capture a screenshot for support. |
-| **Order Change fails**         | Confirm backup slot exists and is alive. Use `x` followed by field pos (1-3) and sub pos (1-3). |
+| **Order Change fails**         | Confirm backup slot exists and is alive. Use `l[x<start><sub>]` (field pos 1-3, sub pos 1-3), e.g. `l[x13]`. |
 
 ## Related Documentation
 
-- [Skill Maker](../../battle-setup/skill-maker.md) - Create skill commands visually
+- [Script Maker](../../battle-setup/script-maker.md) - Create skill commands visually
 - [Auto Battle](../auto-battle.md) - Overall battle automation
 - [Servant Tracking](../tracking/servant-tracking.md) - How FGA tracks servant positions

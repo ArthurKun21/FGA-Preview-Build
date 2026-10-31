@@ -10,11 +10,11 @@ tags:
 
 # Support List Refresh
 
-Understand how FGA scrolls through and refreshes the support list when searching for preferred servants, including scroll limits, refresh timing, and automatic retry behavior.
+Learn how FGA scrolls through and refreshes the support list when it searches for preferred servants. This covers scroll limits, refresh timing, and automatic retries.
 
 ## Overview
 
-When FGA cannot find a matching support on the visible portion of the support list, it employs a systematic approach of scrolling down and refreshing the list. This guide explains the mechanics behind these behaviors.
+When FGA cannot find a matching support in the visible part of the list, it scrolls down and refreshes the list. This guide explains how these steps work.
 
 ## Key Features
 

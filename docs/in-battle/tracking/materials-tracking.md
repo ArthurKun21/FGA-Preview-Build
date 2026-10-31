@@ -1,6 +1,6 @@
 ---
 title: Materials and Drop Tracking
-description: Track material drops during FGA farming sessions. Configure target materials, set limits, and monitor farming progress.
+description: How FGA tracks material drops during farming. Learn how FGA counts each enabled material and stops the script at your limit.
 tags:
     - battle
     - materials
@@ -10,231 +10,180 @@ tags:
 
 # Materials and Drop Tracking
 
-Monitor and track material drops during your farming sessions.
+FGA counts the materials that drop in your quest. This page tells you how the count works.
 
 ## Overview
 
-FGA can track specific materials that drop during quests, keeping count of how many you've collected. Set target amounts to automatically stop farming when you've gathered enough, or simply monitor your progress without limits.
+FGA tracks the materials that you select in the Materials screen. FGA counts the drops of each enabled material. FGA stops the script when the drops of one material reach that material's count.
+
+You set the materials and the counts in the Materials screen. See [Materials Selection](../../battle-setup/materials.md).
 
 ## Key Features
 
-- **Material Detection**: Identifies configured materials in drop screens
-- **Count Accumulation**: Tracks totals across multiple runs
-- **Limit Enforcement**: Stop when target amount is reached
-- **Auto-Decrement**: Reduce remaining limit after session ends
-- **Multi-Material Support**: Track multiple materials simultaneously
+- **Per-material count**: Each material has its own count and its own default count.
+- **Enabled materials only**: FGA scans a material only when you turn it on.
+- **Running total**: FGA adds the drops of each run to a session total.
+- **Stop at the limit**: FGA stops the script when one material reaches its count.
+- **Auto-decrement**: FGA reduces each count when the session ends.
+- **Exit summary**: The exit screen shows the total of each material.
 
 ## How Material Tracking Works
 
 ```mermaid
 flowchart TD
-    A[Quest Result Screen] --> B[Scan for Configured Materials<br/>Search entire drop area]
-    B --> C[Match Against Material Images<br/>Count occurrences of each]
-    C --> D[Update Running Totals]
-    D --> E[Check Against Limits<br/>Stop if target reached]
+    A[Quest Result Screen] --> B[Read Each Enabled Material]
+    B --> C[Count the Matches in the Script Area]
+    C --> D[Add the Drops to the Session Total]
+    D --> E{One Material Reached Its Count?}
+    E -->|Yes| F[Count This Run]
+    F --> G[Stop with Limit Materials]
+    E -->|No| H[Go to the Next Run]
 ```
 
 ## Configuration
 
-### Selecting Materials
+You set the materials and the counts in the Materials screen. See [Materials Selection](../../battle-setup/materials.md) for the full steps.
 
-1. Open your Battle Config
-2. Navigate to Materials section
-3. Select materials from the list
-4. Choose materials that drop in your target quest
+Each tracked material stores three values.
 
-### Material Categories
+| Value             | What it does                                                                  |
+| ----------------- | ----------------------------------------------------------------------------- |
+| **Count**         | The number of drops that FGA must still find for this material.               |
+| **Default Count** | The count that FGA restores after this material reaches zero.                 |
+| **Enabled**       | Whether FGA counts this material. FGA does not scan a material that is off.   |
 
-| Category         | Examples                       |
-| ---------------- | ------------------------------ |
-| Gems             | Saber gems, Caster gems, etc.  |
-| Pieces/Monuments | Saber pieces, Lancer monuments |
-| Bronze Materials | Bones, Dust, Fangs             |
-| Silver Materials | Seeds, Feathers, Stakes        |
-| Gold Materials   | Hearts, Scales, Lores          |
-| Event Materials  | Event-specific drops           |
+You can also change the count and turn a material on or off in the Battle Launcher. The Battle Launcher shows the material limits of the selected battle config.
 
-### Setting Limits
+## What FGA Counts
 
-| Setting          | Behavior                |
-| ---------------- | ----------------------- |
-| Disabled         | Track without stopping  |
-| Enabled + Amount | Stop when total reached |
+FGA scans only the materials that you turn on. FGA does not count a material that is off. FGA does not stop the script for a material that is off.
 
-## Material Detection
+FGA does not add the counts of all materials together. FGA uses the count of each material by itself.
 
-### How Detection Works
+## How Detection Works
 
-1. FGA loads images for your selected materials
-2. On the drop screen, it scans the entire visible area
-3. Pattern matching identifies each material instance
-4. Counts are accumulated per material type
+FGA reads the drop screen after each run. For each enabled material, FGA does these steps:
 
-### Detection Accuracy
+1. FGA loads the image for that material.
+2. FGA searches the whole script area for that image.
+3. FGA counts how many times the image occurs.
+4. FGA adds that number to the session total for that material.
 
-| Factor            | Impact                               |
-| ----------------- | ------------------------------------ |
-| Image quality     | Higher quality = better detection    |
-| Screen resolution | Affects pattern matching             |
-| Material stacking | Multiple drops detected individually |
+The search uses the full script area. More materials add more work to each drop screen.
 
-## Tracking Multiple Materials
+## Track Many Materials
 
-Track several materials at once:
+FGA can track many materials at the same time. Here is one example.
 
 ```text
 Configured Materials:
-- Dragon Fangs
+- Bone
 - Void Dust
 - Hero's Proof
 
-After 5 Runs:
-┌─────────────────────────────────────────┐
-│         Materials Farmed                │
-├─────────────────────────────────────────┤
-│ Dragon Fangs: 12                        │
-│ Void Dust: 8                            │
-│ Hero's Proof: 15                        │
-└─────────────────────────────────────────┘
+After 5 runs:
+Bone: 12
+Void Dust: 8
+Hero's Proof: 15
 ```
 
 ## Limit Behavior
 
-### Stop on Limit
+FGA keeps a session total for each enabled material. After each run, FGA compares each total with the count of that material.
 
-When limit is enabled and reached:
+1. When the session total of one material reaches its count, FGA counts the current run.
+2. FGA then stops the script.
+3. The exit reason is `Limit Materials`.
 
-1. Current run completes normally
-2. Run is counted in statistics
-3. Script stops with "Limit Materials" reason
-4. Exit summary shows final counts
+The number in the exit reason is the total of all materials that you collected in the session. This total includes every enabled material, not only the material that reached its count.
 
-### Auto-Decrement
+## Auto-Decrement
 
-After script completion:
+FGA reduces the counts one time when the script stops. FGA does this for every stop: a limit, the run count, a manual stop, or a pause.
+
+1. FGA subtracts the session total of each material from that material's count.
+2. When a count reaches zero or less, FGA turns that material off.
+3. FGA then restores that material's count to its default count.
+
+The count keeps your progress for the next session. This helps you farm toward a total goal across many sessions.
 
 ```text
-Before Run:
-- Material Limit: 50
+Before the session:
+- Bone count: 50
 
-During Run:
-- Materials Collected: 15
+Drops in the session:
+- Bone: 15
 
-After Run:
-- Material Limit: 35 (auto-decremented)
+After the session:
+- Bone count: 35
 ```
 
-When limit reaches 0:
-
-- Material limiting is disabled
-- Limit resets to default value
-- Tracking continues without stopping
+When a count reaches zero, FGA turns that material off and restores its count to the default count. You must turn the material on again to track it.
 
 ## Exit Summary
 
-After script completion, view material statistics:
+The exit screen shows the total of each material that you collected in the session.
 
 ```text
 ┌─────────────────────────────────────────┐
 │         Battle Exit Summary             │
 ├─────────────────────────────────────────┤
 │ Materials:                              │
-│   Dragon Fangs: 23                      │
+│   Bone: 23                              │
 │   Void Dust: 18                         │
 │   Hero's Proof: 31                      │
-│ ...                                     │
 └─────────────────────────────────────────┘
 ```
 
+The exit screen shows a material only when its total is more than zero.
+
+## Material Rarity
+
+FGA sorts materials into three rarities. The Materials screen uses one tab for each rarity.
+
+| Tab        | Materials in this tab                                                          |
+| ---------- | ------------------------------------------------------------------------------ |
+| **Copper** | Proofs, bones, fangs, dust, and similar common items.                          |
+| **Silver** | Seeds, feathers, gears, pages, and class pieces.                               |
+| **Gold**   | Claws, hearts, scales, class monuments, and gold skill gems.                   |
+
+See [Materials Selection](../../battle-setup/materials.md) for the full list and the search feature.
+
 ## Tips for Best Results
 
-1. **Select only relevant materials**: More materials = more processing time
-2. **Know your quest drops**: Only track materials that actually drop
-3. **Set realistic limits**: Based on drop rates and available AP
-4. **Check drops manually first**: Verify material detection works
-5. **Use with screenshots**: Enable drop screenshots for records
-
-## Material Drop Rates
-
-Plan your limits based on typical drop rates:
-
-| Drop Type        | Typical Rate           |
-| ---------------- | ---------------------- |
-| Bronze materials | Common (2-3 per run)   |
-| Silver materials | Uncommon (0-2 per run) |
-| Gold materials   | Rare (0-1 per run)     |
-| Gems             | Variable by quest      |
-
-## Best Farming Locations
-
-Configure materials for optimal farming:
-
-### Free Quests
-
-- Consistent drops
-- Known material pools
-- Can use material tracking effectively
-
-### Event Quests
-
-- Event materials often trackable
-- Bonus drops with CEs/teapots
-- May have mixed drop pools
-
-### Daily Quests
-
-- Gem and monument farming
-- Predictable material types
-- Good for limit-based farming
+1. **Track only the materials that you need**: More materials add more work to each drop screen.
+2. **Count the drops first**: Do one test run and read the exit summary.
+3. **Set the default count first**: Set the default count for future sessions, then set the count for this session.
+4. **Use Clear when you change quests**: Tap **Clear**, then add the materials for the new quest.
 
 ## Troubleshooting
 
-### Materials not being detected
+### FGA does not count a material
 
-- Verify material is selected in config
-- Check if material actually drops in quest
-- Ensure drop screen is fully visible
-- Update FGA for latest material images
+1. Make sure that the material is on.
+2. Make sure that the material drops in your quest.
 
-### Count seems inaccurate
+### FGA stops the script too early
 
-- Multiple of same material may stack
-- Visual stacking affects detection
-- Compare with actual inventory after run
+One material can reach its count before the other materials. Check the count of each material that is on.
 
-### Script not stopping at limit
+### The count seems wrong
 
-- Check if limit is properly enabled
-- Verify limit amount is greater than 0
-- Sum of all materials must reach limit
+1. Make sure that the full drop screen is on the screen.
+2. Compare the exit summary with your inventory after the run.
 
-### Wrong materials being counted
+### FGA does not reduce the count
 
-- Material images may be similar
-- Check which materials are configured
-- Remove similar-looking materials
-
-### Auto-decrement not working
-
-- Only triggers on successful completion
-- Manual stops may not decrement
-- Check limit settings after run
+FGA reduces the count one time when the script stops. FGA does not reduce the count when the session collects no drops.
 
 ## CE Drop Tracking
 
-Craft Essence drops are tracked separately:
-
-| Feature      | Materials         | CE Drops        |
-| ------------ | ----------------- | --------------- |
-| Detection    | Material images   | CE icon + stars |
-| Counting     | Per material type | Total CEs       |
-| Limits       | Combined total    | Separate limit  |
-| Notification | Exit summary      | Immediate alert |
-
-See [CE Drop Tracking](ce-drops.md) for dedicated CE tracking.
+FGA tracks Craft Essence drops in a separate page. See [CE Drops](ce-drops.md).
 
 ## Related Documentation
 
+- [Materials Selection](../../battle-setup/materials.md) - Choose materials and set each count
+- [Battle Launcher](../../battle-setup/launcher.md) - Change the limits before a run
+- [CE Drops](ce-drops.md) - Track Craft Essence drops
+- [Exit Reasons](../script-control/auto-battle-exit-reasons.md) - Read the exit summary
 - [Auto Battle](../auto-battle.md) - Overall battle automation
-- [CE Drop Tracking](ce-drops.md) - Track Craft Essence drops
-- [Run Limits](../../app/advanced.md) - Configure limits
