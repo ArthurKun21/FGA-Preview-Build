@@ -321,4 +321,4 @@ The script stops when any configured limit is reached.
 - [Auto Battle](../in-battle/auto-battle.md) - How the battle automation works
 - [Command Card](../battle-setup/card-priority.md) - Card priority configuration
 - [Preferred Support](../battle-setup/support.md) - Support selection setup
-- [Skill Maker](../battle-setup/skill-maker.md) - Skill command configuration
+- [Script Maker](../battle-setup/script-maker.md) - Skill command configuration

@@ -15,7 +15,7 @@ nav:
       - battle-setup/config.md
       - battle-setup/card-priority.md
       - battle-setup/materials.md
-      - battle-setup/skill-maker.md
+      - battle-setup/script-maker.md
       - battle-setup/support.md
     - How to get started:
       - battle-setup/launcher.md

@@ -241,4 +241,4 @@ When disabled:
 ## Related Documentation
 
 - [Auto Battle](../auto-battle.md) - Overall battle automation
-- [Skill Maker](../../battle-setup/skill-maker.md) - Configure wave skills
+- [Script Maker](../../battle-setup/script-maker.md) - Configure wave skills

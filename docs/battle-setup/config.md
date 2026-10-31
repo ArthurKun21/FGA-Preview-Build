@@ -46,7 +46,7 @@ Tap **Name** to open the edit dialog. Tap **Notes** to open the notes editor.
 
 A battle script holds the skill commands for every wave and turn. A config can contain several scripts. Automation runs only the active script.
 
-Tap the script card to open the [Skill Maker](skill-maker.md). In the Skill Maker you manage the script list, edit the commands, and set the start point.
+Tap the script card to open the [Script Maker](script-maker.md). In the Skill Maker you manage the script list, edit the commands, and set the start point.
 
 ## Script Exit Settings
 
@@ -55,7 +55,7 @@ Each battle script owns its exit settings. The Skill Maker lists them at the top
 - **Out of Commands Exit** ends the battle when the script has no commands left.
 - **Off-script Exit** ends the battle when the battle reaches a wave or turn that the script does not define.
 
-See [Set Exit Settings](skill-maker.md#set-exit-settings) in the Skill Maker Guide.
+See [Set Exit Settings](script-maker.md#set-exit-settings) in the Script Maker Guide.
 
 ## Default Run Configuration
 
@@ -202,7 +202,7 @@ Select the servers for this config with the **Server** option. Clear every serve
 
 ### Scripts do not execute correctly
 
-Open the [Skill Maker](skill-maker.md) and check the command sequence for each wave and turn. Check that the wave timings match the enemy counts.
+Open the [Script Maker](script-maker.md) and check the command sequence for each wave and turn. Check that the wave timings match the enemy counts.
 
 ### Support selection fails
 
@@ -213,7 +213,7 @@ Open the [Skill Maker](skill-maker.md) and check the command sequence for each w
 
 ### Battle exits unexpectedly
 
-Check the exit settings in the [Skill Maker](skill-maker.md):
+Check the exit settings in the [Script Maker](script-maker.md):
 
 - Disable **Out of Commands Exit** if you want FGA to continue with card selection
 - Disable **Off-script Exit** if battles may have variable turn counts

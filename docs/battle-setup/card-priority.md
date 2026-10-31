@@ -376,5 +376,5 @@ Here's an example of how you might configure different waves:
 ## Related Documentation
 
 - [Auto Battle](../in-battle/auto-battle.md) - Overall battle automation
-- [Skill Maker](skill-maker.md) - Configure skill execution during battle
+- [Script Maker](script-maker.md) - Configure skill execution during battle
 - [Global Battle Settings](../app/global-battle.md#treat-support-servants-like-your-own) - Treat support servants like your own option

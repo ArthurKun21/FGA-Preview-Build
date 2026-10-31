@@ -111,4 +111,4 @@ Enemy Servants are marked with a silver or gold **class icon** or **crown**. FGA
 ## Related Documentation
 
 - [Auto Battle](../auto-battle.md) - Learn about the main battle loop.
-- [Skill Maker](../../battle-setup/skill-maker.md) - Configure manual target commands and skill scripts.
+- [Script Maker](../../battle-setup/script-maker.md) - Configure manual target commands and skill scripts.

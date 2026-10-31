@@ -257,4 +257,4 @@ Servant tracking involves:
 
 - [Face Card Priority](../card-selection/face-card-priority.md) - Card selection by servant
 - [Brave Chains](../card-selection/brave-chains.md) - Chain formation
-- [Skill Maker](../../battle-setup/skill-maker.md) - Order change commands
+- [Script Maker](../../battle-setup/script-maker.md) - Order change commands

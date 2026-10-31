@@ -211,6 +211,6 @@ After skill activation:
 
 ## Related Documentation
 
-- [Skill Maker](../../battle-setup/skill-maker.md) - Create skill commands visually
+- [Script Maker](../../battle-setup/script-maker.md) - Create skill commands visually
 - [Auto Battle](../auto-battle.md) - Overall battle automation
 - [Servant Tracking](../tracking/servant-tracking.md) - How FGA tracks servant positions

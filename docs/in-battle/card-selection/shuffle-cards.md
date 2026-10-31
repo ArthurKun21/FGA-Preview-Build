@@ -217,4 +217,4 @@ Both features work together:
 
 - [Face Card Priority](face-card-priority.md) - Card selection logic
 - [Brave Chains](brave-chains.md) - Chain formation with shuffled cards
-- [Skill Maker](../../battle-setup/skill-maker.md) - Configure shuffle timing
+- [Script Maker](../../battle-setup/script-maker.md) - Configure shuffle timing

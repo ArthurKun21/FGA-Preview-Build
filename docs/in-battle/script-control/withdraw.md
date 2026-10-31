@@ -240,4 +240,4 @@ This approach conserves quest progress but requires manual intervention.
 ## Related Documentation
 
 - [Auto Battle](../auto-battle.md) - Overall battle automation
-- [Skill Maker](../../battle-setup/skill-maker.md) - Command Spell usage
+- [Script Maker](../../battle-setup/script-maker.md) - Command Spell usage
