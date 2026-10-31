@@ -1,6 +1,6 @@
 ---
 title: Support Class Selection
-description: Configure FGA Preview to search specific class tabs on the support screen for faster and more targeted servant selection.
+description: Learn how FGA searches a class tab on the support screen, and how the Also Check All option adds a fallback to the All tab.
 tags:
     - support
     - class
@@ -10,219 +10,194 @@ tags:
 
 # Support Class Selection
 
-Configure which servant class tab FGA searches when looking for support servants. Selecting a specific class reduces search time and targets your desired servant type.
+This page describes how FGA searches a class tab on the support screen.
 
 ## Overview
 
-The support screen in FGO displays servants organized by class tabs. FGA can automatically navigate to a specific class tab before searching, making support selection faster and more targeted.
+The support screen in FGO groups servants by class tabs. FGA can open a specific class tab before it searches. This makes the search faster and more targeted.
 
 ## Key Features
 
-- **Class tab navigation**: Automatically select a specific class tab
-- **Also Check All option**: Fallback to the All tab if no match is found
-- **Mix/Event tab support**: Target event-specific servant lineups
-- **Speed optimization**: Reduce search time by narrowing scope
+- **Class tab navigation** - FGA opens the class tab that you select.
+- **Also Check All** - FGA also searches the **All** tab when it finds no match.
+- **Mix and Event support** - Target the event support tab.
+- **Faster search** - A class tab reduces the search space.
 
 ---
 
 ## Available Class Options
 
-| Class         | Description                                                     |
-| ------------- | --------------------------------------------------------------- |
-| **None**      | Don't navigate, search current tab                              |
-| **All**       | Navigate to the "All" tab                                       |
-| **Saber**     | Navigate to Saber class tab                                     |
-| **Archer**    | Navigate to Archer class tab                                    |
-| **Lancer**    | Navigate to Lancer class tab                                    |
-| **Rider**     | Navigate to Rider class tab                                     |
-| **Caster**    | Navigate to Caster class tab                                    |
-| **Assassin**  | Navigate to Assassin class tab                                  |
-| **Berserker** | Navigate to Berserker class tab                                 |
-| **Extra**     | Navigate to Extra class tab (Ruler, Avenger, Moon Cancer, etc.) |
-| **Mix**       | Navigate to the Mix/Event tab                                   |
+| Class | Description |
+|-------|-------------|
+| **None** | Does not filter by class. FGA searches the current tab. |
+| **All** | Searches the "All" tab. |
+| **Saber** | Searches the Saber class tab. |
+| **Archer** | Searches the Archer class tab. |
+| **Lancer** | Searches the Lancer class tab. |
+| **Rider** | Searches the Rider class tab. |
+| **Caster** | Searches the Caster class tab. |
+| **Assassin** | Searches the Assassin class tab. |
+| **Berserker** | Searches the Berserker class tab. |
+| **Extra** | Searches the Extra class (Ruler, Avenger, and similar classes). |
+| **Mix** | Searches the Mix or Event tab. |
 
-### Selecting a Class
+### Select a Class
 
-1. Open your Battle Config
-2. Navigate to **Support Selection** → **Preferred Support**
-3. Select your desired class from the **Support Class** dropdown
+1. Open a Battle Config.
+2. Tap **Support Selection**.
+3. Select your class in the **Support Class** list.
+
+FGA opens the class tab after the support screen loads. FGA waits a short time for the tab to open.
+
+!!! note
+    When you select **None**, FGA does not open a class tab. It searches the tab that the game already shows.
 
 ---
 
-## Also Check All Option
+## Also Check All
 
-When enabled, FGA will also search the "All" tab if no match is found in the selected class tab.
+Turn on **Also Check All** to also search the **All** tab. FGA searches the **All** tab after it finds no match in the selected class tab.
 
 ### How Also Check All Works
 
 ```mermaid
 flowchart TD
-    A[Search Selected Class Tab] --> B{Match Found?}
-    B -->|Yes| C[Select Support]
-    B -->|No| D{Also Check All<br/>enabled?}
-    D -->|Yes| E[Switch to All Tab<br/>& Search]
-    D -->|No| F[Refresh List]
-    E --> B
-    F --> A
+    A[Search the selected class tab] --> B{Match found?}
+    B -->|Yes| C[Select support]
+    B -->|No| D{Scrolled through the class tab?}
+    D -->|No| E[Scroll down]
+    E --> A
+    D -->|Yes| F{Also Check All on?}
+    F -->|Yes| G[Open the All tab and search]
+    G --> B
+    F -->|No| H[Refresh the list]
+    H --> A
 ```
 
-### When Also Check All is Available
+### When Also Check All Is Available
 
-The "Also Check All" option is only available for certain class selections:
+The **Also Check All** option is available only for a real class tab.
 
-| Class                   | Also Check All |
-| ----------------------- | -------------- |
-| **None**                | Not available  |
-| **All**                 | Not available  |
-| **Mix**                 | Not available  |
-| **Saber through Extra** | Available      |
+| Class | Also Check All |
+|-------|----------------|
+| **None** | Not available |
+| **All** | Not available |
+| **Mix** | Not available |
+| **Saber** through **Extra** | Available |
 
-The option doesn't appear for None, All, or Mix because:
+The option is not available for **None**, **All**, or **Mix** because:
 
-- **None**: No class tab is selected
-- **All**: Already searching all classes
-- **Mix**: Event tab is separate from class structure
+- **None** - No class tab is selected.
+- **All** - FGA already searches all classes.
+- **Mix** - The event tab is separate from the class structure.
+
+FGA searches the **All** tab one time. After it searches the **All** tab, it refreshes the list as usual.
 
 ---
 
-## Class Selection Strategies
+## Strategies
 
-### Single Class Targeting
+### Target One Class
 
-Best when you know exactly which class servant you need:
+Use this when you know the class that you need.
 
 ```text
 Support Class: Caster
-Also Check All: Disabled
+Also Check All: Off
 ```
 
 Use cases:
 
-- Farming with a specific Caster DPS
-- Events requiring specific class servants
-- Consistent farming setups
+- Farming with a specific Caster damage dealer.
+- A quest that needs a specific class.
+- A setup that you use often.
 
-### Class with All Fallback
+### One Class With an All Fallback
 
-Provides flexibility while still prioritizing a specific class:
+Use this to prefer a class but still accept other classes.
 
 ```text
 Support Class: Berserker
-Also Check All: Enabled
+Also Check All: On
 ```
 
 Use cases:
 
-- Prefer Berserker supports but accept alternatives
-- When friend list may have your servant in different slots
-- Balancing speed with availability
+- You prefer a Berserker but accept other classes.
+- Your servant can appear in different tabs.
+- You want to balance speed and availability.
 
 ### No Class Filter
 
-Searches whatever tab is currently displayed:
+Use this to search the tab that the game shows.
 
 ```text
 Support Class: None
-Also Check All: Not applicable
 ```
 
 Use cases:
 
-- Very specific servant that could be in any class
-- When you'll manually navigate before starting
-- Simple setups without class preference
+- A servant that can be in any class.
+- You open the tab yourself before you start.
+- A simple setup with no class need.
 
-### All Classes Search
-
-Comprehensive search across all servants:
+### Search All Classes
 
 ```text
 Support Class: All
-Also Check All: Not applicable
 ```
 
 Use cases:
 
-- Looking for rare event CEs across all classes
-- Support setup is more important than class
-- Maximum flexibility needed
+- You look for a rare CE across all classes.
+- The support setup matters more than the class.
 
-### Event/Mix Tab
-
-Targets the special event support tab:
+### Event or Mix Tab
 
 ```text
 Support Class: Mix
-Also Check All: Not applicable
 ```
 
 Use cases:
 
-- Event farming requiring event supports
-- Special campaign supports
-- Event CE hunting
+- Event farming that needs event supports.
+- Campaign supports.
+- Event CE hunting.
 
 ---
 
-## Tips for Best Results
+## Tips
 
-### Speed Optimization
-
-- Selecting a specific class is faster than searching "All"
-- Use "Also Check All" only when needed
-- Narrow your search to reduce scroll and refresh cycles
-
-### Event Farming
-
-- Check the Mix tab for event-specific support setups
-- Event supports may appear in the Mix tab first
-- Update class selection as events change
-
-### Consistent Setups
-
-- If you always use the same class, set it in your config
-- Create multiple configs for different class needs
-- Use descriptive config names (e.g., "Caster Farming")
-
-### Friend Coordination
-
-- Ask friends to put servants in expected class slots
-- Coordinate event CE placement with class slots
-- Check which classes your friends typically populate
+- A class tab is faster than the **All** tab.
+- Turn on **Also Check All** only when you accept other classes.
+- Check the **Mix** tab for event support setups.
+- Save a config for each class that you use often.
 
 ---
 
 ## Troubleshooting
 
-### Wrong class tab selected
+### FGA opens the wrong class tab
 
-- Verify your Support Class setting in the config
-- Check that the game is on the support selection screen
-- The script navigates to your selected class after the screen loads
+- Check the **Support Class** setting in the config.
+- FGA opens the tab after the support screen loads.
 
-### Also Check All not working
+### Also Check All has no effect
 
-- Only available for specific class selections
-- Not available for None, All, or Mix
-- Verify the option is actually enabled
+- The option is available only for a real class tab.
+- The option is not available for **None**, **All**, or **Mix**.
+- Make sure that the option is on.
 
-### Mix tab not appearing
+### The Mix tab does not open
 
-- Mix/Event tab may not exist during non-event periods
-- Some servers may have different tab configurations
-- Check the current FGO event schedule
+- The Mix or Event tab may not show outside an event.
+- Some servers use different tabs.
+- Check the current FGO event schedule.
 
-### Class selection taking too long
+### FGA cannot find the support
 
-- Class tab navigation adds a small delay
-- This is normal and ensures reliable tab selection
-- The delay is minimal (about 0.5 seconds)
-
-### Support in wrong tab
-
-- Friends may place servants in unexpected tabs
-- Use "Also Check All" for more flexible matching
-- Consider using "All" class if placement is inconsistent
+- Use **Also Check All** to also search the **All** tab.
+- Friends can put a servant in an unexpected tab.
 
 ---
 

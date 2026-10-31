@@ -14,7 +14,7 @@ Automatically select your configured party before starting quests.
 
 ## Overview
 
-FGA can automatically select the correct party slot before entering battle, ensuring your farming team is always active. Configure which party slot to use, and FGA handles the selection even if a different party is currently active.
+FGA can select the correct party slot before the quest starts, so your farming team is always active. Set the party slot to use. FGA makes the selection, even when a different party is active.
 
 ## Key Features
 
@@ -22,7 +22,7 @@ FGA can automatically select the correct party slot before entering battle, ensu
 - **Current Party Detection**: Identifies which party is active
 - **Smart Switching**: Handles game quirks with party changes
 - **Preset Quest Detection**: Identifies quests with locked parties
-- **Persistent Selection**: Same party used for subsequent runs
+- **Persistent Selection**: The same party is used on later runs
 
 ## How Party Selection Works
 
@@ -98,14 +98,14 @@ Set to "Not Set" if you want to:
 
 ### Same Party Handling
 
-FGO has a quirk where the "Start Quest" button becomes unresponsive if you select the same party that's already active:
+FGO has a quirk: the **Start Quest** button stops responding when you select the party that is already active.
 
 ```text
 Current Party: 3
 Target Party: 3
 
 FGA's Solution:
-1. Click different party (e.g., Party 4)
+1. Click a different party (for example, Party 4)
 2. Wait for animation
 3. Click target Party 3
 4. Now Start Quest button works
@@ -113,12 +113,12 @@ FGA's Solution:
 
 ### Detection Failure Handling
 
-If FGA can't detect the current party:
+When FGA cannot detect the current party:
 
 1. Clicks a temporary different party
 2. Waits for selection
 3. Clicks the target party
-4. Ensures reliable selection
+4. This makes the selection reliable
 
 ## Preset Quest Detection
 
@@ -148,7 +148,7 @@ has stopped to prevent issues.
 After selecting a party once:
 
 - Game remembers your selection
-- FGA skips re-selection on subsequent runs
+- FGA skips the selection again on later runs
 - Improves automation speed
 
 ### Reset Conditions
@@ -164,7 +164,7 @@ Selection tracking resets when:
 1. **Set up dedicated farm parties**: Create parties specifically for automation
 2. **Use consistent slot numbers**: Same slot across different configs
 3. **Name your parties**: Makes manual verification easier
-4. **Check party before long sessions**: Verify correct team is configured
+4. **Check the party before long sessions**: Make sure that the correct team is set
 5. **Test with one run first**: Confirm party selection works
 
 ## Party Setup Recommendations
@@ -190,21 +190,21 @@ Selection tracking resets when:
 
 ### Party not being selected
 
-- Verify party slot is configured correctly
+- Check that the party slot is configured correctly
 - Check if party selection screen is visible
-- Ensure the slot number exists (1-10)
+- Make sure that the slot number exists (1-10)
 
 ### Wrong party selected
 
 - Check your Battle Config settings
-- Verify you're using the correct config
+- Check that you use the correct config
 - Party slot numbers start at 1, not 0
 
 ### Start Quest button not working
 
 - FGA handles this with temporary party switch
 - May need to wait longer between selections
-- Try manual party switch if persists
+- Try a manual party switch when the problem persists
 
 ### Preset Quest stopping script
 

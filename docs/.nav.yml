@@ -25,7 +25,10 @@ nav:
       - in-battle/auto-battle.md
       - Card Selection:
         - in-battle/card-selection/face-card-priority.md
+        - in-battle/card-selection/chain-priority.md
+        - in-battle/card-selection/custom-card-priority.md
         - in-battle/card-selection/brave-chains.md
+        - in-battle/card-selection/card-simulation.md
         - in-battle/card-selection/shuffle-cards.md
       - Skill System:
         - in-battle/skill-system/skill-execution.md
@@ -38,6 +41,7 @@ nav:
       - Resources:
         - in-battle/resources/energy-refill.md
         - in-battle/resources/teapots.md
+        - in-battle/resources/storm-pods.md
       - Script Control:
         - in-battle/script-control/party-selection.md
         - in-battle/script-control/withdraw.md

@@ -1,6 +1,6 @@
 ---
-title: Card Shuffle Feature
-description: Automatically shuffle command cards when optimal cards aren't available. Configure conditions for reshuffling in FGA.
+title: Card Shuffle
+description: Learn how FGA Preview re-deals command cards when the hand does not meet your condition, and how to configure the shuffle wave.
 tags:
     - battle
     - cards
@@ -8,213 +8,159 @@ tags:
     - optimization
 ---
 
-# Card Shuffle Feature
+# Card Shuffle
 
-Reshuffle command cards to get better draws when current cards are suboptimal.
+Card shuffle re-deals the command cards when the hand does not meet your condition.
 
 ## Overview
 
-FGA can use the card shuffle feature (available through Mystic Codes or game mechanics) to get a new set of command cards when the current draw doesn't meet your criteria. This helps ensure you have effective cards available when dealing with difficult enemies.
+A Mystic Code skill can give you a new set of command cards. FGA can use that skill for you when the current hand is not good enough.
+
+Shuffle is a setting of the battle config, and not of a command-card rule. You set the condition and the wave in the **Additional Settings** group of the config.
 
 ## Key Features
 
-- **Condition-Based Shuffle**: Only shuffle when criteria aren't met
-- **Multiple Modes**: Different conditions for different strategies
-- **NP Integration**: Consider NP servant cards when deciding
-- **Automatic Detection**: Scans current cards to evaluate quality
+- **A condition**: FGA shuffles only when the condition is met.
+- **One wave**: you choose the wave that can cause a shuffle.
+- **One shuffle per battle**: FGA shuffles one time in each battle.
+- **Automatic detection**: FGA reads the hand and tests your condition.
 
-## Shuffle Modes
+## Shuffle Conditions
 
-| Mode               | Shuffles When                      |
-| ------------------ | ---------------------------------- |
-| **None**           | Never shuffle                      |
-| **No Effective**   | No class advantage cards available |
-| **No NP Matching** | No cards matching NP servant       |
+| Condition | FGA shuffles when |
+| --------- | ----------------- |
+| **None** | Never. This is the default. |
+| **No effective cards** | The hand has no card with the Weak affinity. |
+| **No cards matching NP** | The sequence clicks an NP, and the hand has no face card from the field slot of that NP. |
 
-## How Shuffle Checker Works
+The **Wave** stepper sets the wave that can cause a shuffle, from 1 to 3. The stepper appears when you select a condition other than **None**. The default wave is 3.
+
+## How the Shuffle Check Works
 
 ```mermaid
 flowchart TD
-    A[Command Cards Read] --> B[Check Shuffle Condition<br/>Based on configured mode]
-    B -->|Should Shuffle| C[Use Shuffle<br/>Get New Cards]
-    B -->|No| D[Select Best<br/>Available Cards]
-    C --> E[Read New Cards<br/>Continue with selection]
-```
+    A[Open the attack screen and read the cards] --> B{Is this the configured wave?}
+    B -->|No| C[Use the cards]
+    B -->|Yes| D{Did this battle already shuffle?}
+    D -->|Yes| C
+    D -->|No| E[Test the condition]
+    E -->|Condition met| F[Cast the shuffle skill and read the cards again]
+    E -->|Condition not met| C
 
-## Mode Details
+## Condition Details
 
-### None Mode
+### No Effective Cards
 
-No automatic shuffling occurs:
-
-- Use whatever cards are drawn
-- Manual shuffle still possible
-- Fastest processing
-
-### No Effective Mode
-
-Shuffles when no class advantage cards are present:
+FGA counts the face cards that have the Weak affinity. A card is effective when the servant of that card has a class advantage against the enemy.
 
 ```text
-Your Servants: [Saber] [Saber] [Caster]
-Enemy: [Lancer]
+Your servants: Saber, Saber, Caster
+Enemy: Lancer
 
-Current Cards:
-[Caster Buster] [Caster Arts] [Saber Quick] ...
+Hand: Caster Buster, Caster Arts, Saber Quick
 
-None of these are "effective" against Lancer
-(Sabers should have advantage)
-
-Check: Are any cards marked as "Weak" affinity?
-If none → Shuffle to try for better cards
+Cards with the Weak affinity: none
+Result: FGA shuffles
 ```
 
-**When to use**:
+### No Cards Matching NP
 
-- Mixed class teams against single-type enemies
-- Want to maximize class advantage damage
-
-### No NP Matching Mode
-
-Shuffles when using NP but no matching face cards exist:
+FGA reads the field slot of each NP in the attack sequence. It then counts the face cards that belong to those slots.
 
 ```text
-Using NP: Servant A (Slot 1)
+Sequence: NP of field slot 1, then two face cards
 
-Current Cards:
-[Servant B] [Servant B] [Servant C] [Servant C] [Servant B]
+Hand: field slot 1 has no card. Field slot 2 has three cards.
 
-No cards from Servant A available!
-
-Shuffle to try for Servant A's cards
-(for brave chain potential)
+Face cards in field slot 1: none
+Result: FGA shuffles
 ```
 
-**When to use**:
+The condition does nothing when the sequence clicks no NP.
 
-- NP turns where brave chains matter
-- Single target NP servants
-- Maximizing main DPS damage
+## Card Affinity
 
-## Card Affinity Detection
+FGA reads the affinity of each face card.
 
-For "No Effective" mode, FGA checks card affinity:
+| Affinity | Meaning |
+| -------- | ------- |
+| Weak | The servant has a class advantage |
+| Normal | The classes are neutral |
+| Resist | The servant has a class disadvantage |
 
-| Affinity | Display   | Meaning            |
-| -------- | --------- | ------------------ |
-| Weak     | W prefix  | Class advantage    |
-| Normal   | No prefix | Neutral            |
-| Resist   | R prefix  | Class disadvantage |
+See [Face Card Priority](face-card-priority.md) for the full code of a card.
 
-A card is "effective" if it has the Weak affinity.
+## Limitations
 
-## NP Usage Integration
+### The Mystic Code Skill
 
-For "No NP Matching" mode, FGA considers:
+The shuffle needs the third skill of your Mystic Code.
 
-1. Which servant(s) are using NP this turn
-2. What field slot each NP servant occupies
-3. Whether any face cards belong to those servants
+- Not every Mystic Code has a shuffle skill.
+- The skill has a cooldown.
+- Check the Mystic Code that you equip.
 
-If NPs are queued but no matching face cards exist, shuffle is triggered.
+### One Shuffle Per Battle
 
-## Shuffle Limitations
+FGA shuffles one time in each battle, and only on the wave that you set. A shuffle does not guarantee a better hand.
 
-### Mystic Code Requirement
+### A Random Result
 
-Shuffle typically requires a Mystic Code skill:
+The new hand is random.
 
-- Not all Mystic Codes have shuffle
-- Skill may have cooldown
-- Check your equipped Mystic Code
+- You can get the same cards.
+- A card with a class advantage is not guaranteed.
+- The distribution of the cards of a servant is random.
 
-### One Shuffle Per Turn
+    F --> C
+```
 
-FGO limits reshuffling:
+## Shuffle and Card Selection
 
-- Can only shuffle once per turn
-- After shuffle, must use new cards
-- No infinite rerolling
-
-### RNG Factor
-
-Shuffling doesn't guarantee better cards:
-
-- May get same or worse cards
-- Class advantage cards not guaranteed
-- Servant card distribution is random
-
-## Tips for Best Results
-
-1. **Match mode to strategy**: Use the mode that fits your farming approach
-2. **Consider NP timing**: No NP Matching is most useful on NP turns
-3. **Check Mystic Code**: Ensure you have shuffle available
-4. **Don't over-rely on shuffle**: Bad RNG can persist after shuffle
-5. **Test with your team**: See how often shuffle triggers
-
-## Configuration Examples
-
-### Boss Farming Setup
-
-- Mode: No NP Matching
-- Goal: Maximize NP servant brave chains
-- When: Wave 3 boss turns
-
-### Mixed Enemy Farming
-
-- Mode: No Effective
-- Goal: Always hit class weakness
-- When: Variable enemy classes
-
-### Speed Farming
-
-- Mode: None
-- Goal: Fastest clear time
-- When: Don't need optimal cards
-
-## Troubleshooting
-
-### Shuffle not triggering when expected
-
-- Verify mode is correctly set
-- Check if condition is actually met
-- Cards may have the required affinity/servant
-
-### Shuffling too often
-
-- Mode conditions are being met frequently
-- Consider if shuffle is actually helping
-- May want to switch to None mode
-
-### No improvement after shuffle
-
-- Shuffle is random, same cards possible
-- Card distribution depends on deck
-- Consider team composition changes
-
-### Shuffle skill on cooldown
-
-- Can only shuffle when skill available
-- FGA checks for shuffle availability
-- May need to wait for cooldown
-
-## Shuffle vs Card Priority
-
-| Feature    | Shuffle          | Card Priority          |
-| ---------- | ---------------- | ---------------------- |
-| Purpose    | Get new cards    | Pick best from current |
-| When       | Before selection | During selection       |
-| Random     | Yes              | No                     |
-| Guaranteed | No               | Works with any cards   |
+| Feature | Shuffle | Card priority |
+| ------- | ------- | ------------- |
+| Purpose | Get a new hand | Pick the best card from the hand |
+| When | Before the selection | During the selection |
+| Random | Yes | No |
 
 Both features work together:
 
-1. Shuffle checks if current cards are acceptable
-2. If not acceptable and shuffle available, reshuffle
-3. Card priority then selects best from (possibly new) cards
+1. FGA reads the hand.
+2. FGA tests your shuffle condition on the wave that you set.
+3. FGA shuffles when the condition is met and the battle did not shuffle yet.
+4. The card rules then rank the hand, which can be the new hand.
+
+## Tips
+
+1. Match the condition to your plan. Use **No effective cards** to always hit a class weakness.
+2. Use **No cards matching NP** on the turns where a brave chain matters.
+3. Check that your Mystic Code has a shuffle skill.
+4. Keep **None** when you want the fastest clear.
+
+## Troubleshooting
+
+### FGA does not shuffle
+
+- Check that the condition is not **None**.
+- Check that the wave matches the wave of the turn.
+- A battle shuffles one time only.
+- The condition can already be met.
+
+### FGA shuffles too often
+
+The condition is met often in your quests. Check the condition, or set **None**.
+
+### The new hand is not better
+
+The new hand is random. You can get the same cards.
+
+### The shuffle skill does nothing
+
+- The skill can be on cooldown.
+- Your Mystic Code can have no shuffle skill.
 
 ## Related Documentation
 
-- [Face Card Priority](face-card-priority.md) - Card selection logic
-- [Brave Chains](brave-chains.md) - Chain formation with shuffled cards
-- [Script Maker](../../battle-setup/script-maker.md) - Configure shuffle timing
+- [Face Card Priority](face-card-priority.md) - The card sort that runs after the shuffle
+- [Card Simulation](card-simulation.md) - Test a hand without the game
+- [Battle Config](../../battle-setup/config.md#additional-settings) - Set the shuffle condition

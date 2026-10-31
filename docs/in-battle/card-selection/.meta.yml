@@ -1,5 +1,5 @@
 title: Card Selection
 icon: material/cards-playing-outline
-description: FGA card selection guide. Learn about face card priority, brave chain optimization, and card shuffle features.
+description: FGA card selection guide. Learn about face card priority, chain priority, custom card priority, brave chains, card shuffle, and the card simulation.
 search:
   boost: 2

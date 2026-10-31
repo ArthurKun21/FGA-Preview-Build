@@ -1,6 +1,6 @@
 ---
-title: Brave Chain Optimization
-description: Maximize damage with brave chains in FGA. Configure card selection to form or avoid brave chains based on your farming strategy.
+title: Brave Chains
+description: Learn how FGA Preview forms and avoids brave chains during battle, and how the brave-chain setting works with chain priority.
 tags:
     - battle
     - cards
@@ -8,250 +8,174 @@ tags:
     - damage
 ---
 
-# Brave Chain Optimization
+# Brave Chains
 
-Form or avoid brave chains to maximize your battle effectiveness.
+A brave chain is a set of three cards that all belong to one servant. The brave-chain setting tells FGA how much it cares about brave chains on a turn.
 
 ## Overview
 
-A Brave Chain occurs when you select three command cards from the same servant, granting an extra attack at the end of the chain. FGA can optimize card selection to form brave chains when you want maximum damage, or avoid them when you need to spread attacks across multiple servants.
+When the three clicked cards all come from one field slot, FGO adds an extra attack at the end of the chain. FGA can try to form a brave chain, or try to avoid one.
+
+The setting belongs to each wave and turn. It works together with the chain priority list. See [Chain Priority](chain-priority.md).
 
 ## Key Features
 
-- **Force Brave Chains**: Prioritize same-servant cards for extra attacks
-- **Avoid Brave Chains**: Spread cards across servants for balanced damage
-- **NP Brave Chains**: Combine Noble Phantasm with face cards
-- **Mighty Chains**: Optimize for mixed card type bonuses
-- **Card Rearrangement**: Position cards for maximum damage
+- **Form or avoid**: four settings control the brave-chain behavior.
+- **NP chains**: put an NP and the face cards of that servant together.
+- **Avoid**: spread the cards across the servants.
+- **Rearrange**: move the cards after FGA selects them.
+- **A test in the app**: the simulation shows the brave chain and the rearrange step.
 
-## Brave Chain Modes
+## Brave Chain Settings
 
-| Mode        | Behavior                     | Best For               |
-| ----------- | ---------------------------- | ---------------------- |
-| **None**    | No chain optimization        | Default card priority  |
-| **Avoid**   | Spread cards across servants | Multiple enemy targets |
-| **With NP** | Form chains with NP cards    | Single target damage   |
-| **Mighty**  | Mixed card types + NP        | Balanced damage boost  |
+| Setting | Behavior |
+| ------- | -------- |
+| **Don't care** | FGA has no brave-chain preference. The other priorities decide. |
+| **With NP** | FGA tries to form a brave chain around a clicked NP. |
+| **Always** | FGA tries to form a brave chain with or without an NP. |
+| **Avoid** | FGA tries to avoid a brave chain. |
 
-## How Brave Chains Work
+A new turn starts with **Don't care**.
 
-### Standard Brave Chain
+### The Change from `pre-2614`
 
-```text
-┌─────────┬─────────┬─────────┬─────────┐
-│ Card 1  │ Card 2  │ Card 3  │  Extra  │
-│ (Saber) │ (Saber) │ (Saber) │ Attack! │
-└─────────┴─────────┴─────────┴─────────┘
+`pre-2614` had a **With NP Mighty** setting. The current **Always** setting replaces it, and **Always** can also look for a brave chain with no NP.
 
-All 3 cards from same servant = Extra Attack
-```
+## Two Paths
 
-### NP Brave Chain
+FGA uses one of two paths for each turn.
 
-```text
-┌─────────┬─────────┬─────────┬─────────┐
-│   NP    │ Buster  │ Quick   │  Extra  │
-│ (Saber) │ (Saber) │ (Saber) │ Attack! │
-└─────────┴─────────┴─────────┴─────────┘
+| **Use Chain Priority** | Path | Behavior |
+| ---------------------- | ---- | -------- |
+| Off | The legacy path | The path reads only the brave-chain setting. |
+| On | The chain priority path | The path reads the ordered chain list. |
 
-NP + 2 face cards from same servant = NP Brave Chain
-```
+Turn **Use Chain Priority** off, and **Always** does the same work as **With NP**. The full **Always** behavior needs the chain priority path.
 
-## Brave Chain Mode Details
+FGA also repairs the stored value. When you turn **Use Chain Priority** off on a turn that holds **Always**, FGA saves the value as **With NP**.
 
-### None Mode
+## The Legacy Path
 
-No special handling for brave chains. Cards are selected purely based on card priority.
+This path runs when **Use Chain Priority** is off. It takes the cards that the card sort already ranked, and it moves the preferred cards to the front. The other cards stay after them in the same order.
 
-- Uses default priority order
-- May accidentally form or avoid chains
-- Fastest processing (no chain analysis)
+### Don't care
 
-### Avoid Mode
+FGA applies only the rearrange rule.
 
-Actively prevents brave chains by selecting cards from different servants.
+### With NP and Always
+
+FGA finds the field slot of the clicked NP, then moves the face cards of that slot to the front. The other cards follow.
 
 ```text
-Selection Process:
-1. Group cards by servant
-2. Take one card from each servant
-3. Repeat until 3 cards selected
-4. Only use same-servant if no alternatives
+1. Read the first NP of the sequence.
+2. Take the face cards that belong to the field slot of that NP.
+3. Put those cards first, then the other cards.
+4. Apply the rearrange rule.
 ```
 
-**Best for:**
+### Avoid
 
-- Multi-target waves
-- Distributing damage evenly
-- Generating stars/NP for multiple servants
-
-### With NP Mode
-
-Prioritizes forming brave chains when using Noble Phantasms.
+FGA takes one card from each servant in turn, then fills the rest from the largest servant groups.
 
 ```text
-Selection Process:
-1. Identify NP servant(s)
-2. Find matching face cards from NP servant
-3. Place NP and matching cards together
-4. Fill remaining slots with priority cards
+1. Group the cards by servant.
+2. Take one card from a servant that you did not use last.
+3. Repeat until you have three cards.
+4. Fill any open position from the largest group.
 ```
 
-**Best for:**
+## The Chain Priority Path
 
-- Single target boss damage
-- Maximizing main DPS output
-- Challenge quest final waves
+This path runs when **Use Chain Priority** is on. The brave chain is one pass of that pipeline. See [Chain Priority](chain-priority.md).
 
-### Mighty Chain Mode
+| Setting | Field slot that the pass uses |
+| ------- | ---------------------------- |
+| **Don't care** | None |
+| **Avoid** | None. The avoid handler runs instead |
+| **With NP** | The slot of the NP, when that slot holds at least two face cards |
+| **Always** | The first slot in priority order that can complete a brave chain |
 
-Attempts to form chains with different card types for the Mighty Chain bonus.
+When the pass finds a slot, the chain handlers accept only an order that also forms a brave chain. The result is a Brave Mighty chain or a Brave Color chain.
+
+## When a Brave Chain Is Possible
+
+A field slot needs three cards to make a brave chain. FGA counts a clicked NP as one card of its own slot.
 
 ```text
-Mighty Chain Bonus:
-Buster + Arts + Quick = +20% damage to all cards
-
-Selection Process:
-1. If using NP, check if different card types available
-2. Select one of each type (B, A, Q) when possible
-3. Prioritize cards from NP servant
-4. Get bonus damage on entire chain
+Sequence: NP of field slot B, then two face cards.
+Hand: field slot B holds two face cards.
+Count for slot B: two face cards plus the NP, so three cards.
+Result: With NP can form a brave chain.
 ```
 
-**Best for:**
+Two or more clicked NPs make a brave chain impossible. Each NP belongs to its own field slot.
 
-- Servants with varied card decks
-- Situations where chain bonus outweighs card priority
-- NP turns with all three card types available
+## Rearrange Cards
 
-## Card Rearrangement
+The **Rearrange Cards** switch is also a setting of one wave and turn. FGA moves the cards after the chain rules run.
 
-When enabled, FGA rearranges selected cards to optimize damage output.
+| Condition | Change |
+| --------- | ------ |
+| One NP and one card before that NP | FGA swaps the first two cards |
+| No card before the NP, and at most one NP | FGA moves the second card to the last position |
 
-### The Third Card Bonus
-
-In FGO, the third card in a chain receives bonus damage. Rearrangement puts your second-best card in the third position:
-
-```text
-Without Rearrangement:
-Position: [1st]     [2nd]     [3rd]
-Cards:    Best   →  2nd Best → 3rd Best
-Bonus:    First     Normal    +Bonus
-          Card
-
-With Rearrangement:
-Position: [1st]     [2nd]     [3rd]
-Cards:    Best   →  3rd Best → 2nd Best
-Bonus:    First     Normal    +Bonus
-          Card
-
-Result: 2nd best card gets the position bonus
-```
+The first card of a chain gives a bonus in FGO. FGA moves the card with the second highest rank to the last position to increase that bonus. FGA also puts a card of the NP servant directly after the NP.
 
 ### When Rearrangement Applies
 
-| Condition              | Rearrangement    |
-| ---------------------- | ---------------- |
-| 1 NP, 1 card before NP | Yes              |
-| 2+ NPs selected        | No               |
-| No NPs                 | Based on setting |
-| 0 cards before NP      | Based on setting |
+| Condition | Rearrangement |
+| --------- | ------------- |
+| 1 NP, 1 card before NP | Yes |
+| 2 or more NPs | No |
+| No NPs | Based on the setting |
+| 0 cards before NP | Based on the setting |
 
-## Per-Wave Configuration
+## Per-Wave Setup
 
-Configure different brave chain settings for each wave:
+You can use a different setting in each wave.
 
-### Typical Setup
+| Wave | Setting | Reason |
+| ---- | ------- | ------ |
+| 1 | Avoid | Clear multiple enemies |
+| 2 | Don't care | A transition wave |
+| 3 | With NP | Focus the damage on the boss |
 
-| Wave | Brave Chain | Rearrange | Reason                 |
-| ---- | ----------- | --------- | ---------------------- |
-| 1    | Avoid       | Off       | Clear multiple enemies |
-| 2    | None        | On        | Transition wave        |
-| 3    | With NP     | On        | Focus boss damage      |
+## Test with the Simulation
 
-## NP Usage Integration
+Open **Simulation** on the wave and turn entry. The ranked list marks each pick with a `Brave chain` badge. The **How FGA decided** trace shows the path that ran, the chain that won, and the rearrange step.
 
-Brave chains work with your NP configuration:
-
-### Multiple NPs
-
-When using multiple NPs in one turn:
-
-- Chains consider all NP servants
-- Matching face cards grouped after NPs
-- Rearrangement may be disabled
-
-### Cards Before NP
-
-The "Cards Before NP" setting affects brave chains:
-
-```text
-Example: 1 card before NP, brave chain enabled
-
-Turn Order:
-1. Face card (from NP servant)
-2. NP
-3. Face card (from NP servant)
-4. Extra attack!
-```
-
-## Tips for Best Results
-
-1. **Match brave chain to content**: Avoid for farming, With NP for bosses
-2. **Enable rearrangement with brave chains**: Maximize the third card bonus
-3. **Use servant priority with brave chains**: Ensure your DPS has cards selected
-4. **Check card availability**: Brave chains need 3 cards from one servant
-5. **Consider NP card type**: NP counts toward card chain bonuses too
-
-## Chain Type Synergies
-
-Combining brave chains with card chains:
-
-| Cards Selected      | Bonuses                     |
-| ------------------- | --------------------------- |
-| 3 Buster + Brave    | Buster chain + Extra attack |
-| NP + 2 Arts + Brave | Arts chain + Extra attack   |
-| B + A + Q + Brave   | Mighty chain + Extra attack |
+See [Card Simulation](card-simulation.md).
 
 ## Troubleshooting
 
-### Brave chains not forming
+### No brave chain forms
 
-- Ensure brave chain mode is not set to "None" or "Avoid"
-- Check if the servant has 3 cards on screen
-- Verify servant tracking correctly identifies cards
-- NP must be ready for NP brave chains
+- Check the setting on that wave and turn.
+- **With NP** needs a clicked NP.
+- **Always** needs **Use Chain Priority**.
+- The servant needs three cards in one field slot.
+- Two or more clicked NPs make a brave chain impossible.
 
-### Wrong servant getting brave chain
+### The wrong servant gets the brave chain
 
-- Adjust Servant Priority to favor your main DPS
-- Check NP usage settings
-- Verify the servant you want has enough cards available
+- Move your main damage servant higher in the servant list.
+- Check the NP part of the skill command for that turn.
 
-### Extra attack not triggering
+### No extra attack
 
-- All 3 cards must be from the same servant
-- NP counts as a card from that servant
-- Support servant cards work for brave chains too
+- All three cards must come from one field slot.
+- A clicked NP counts as a card of its own slot.
+- The cards of a support servant also count.
 
-### Rearrangement not working
+### The order changes with **Rearrange Cards** on
 
-- Check if rearrangement is enabled for current wave
-- Multiple NPs disable rearrangement
-- Verify brave chain mode supports rearrangement
-
-## Legacy Behavior
-
-The "Avoid" mode uses a legacy algorithm that:
-
-1. Sorts cards into servant groups
-2. Takes one card per servant in rotation
-3. Fills remaining slots from largest groups
-
-This ensures maximum spread across available servants.
+- Read the condition table above.
+- Open **Simulation** to see the change step by step.
 
 ## Related Documentation
 
-- [Face Card Priority](face-card-priority.md) - Base card selection
-- [Command Card Priority Setup](../../battle-setup/card-priority.md) - Configure settings
-- [Auto Battle](../auto-battle.md) - Overall battle automation
+- [Chain Priority](chain-priority.md) - The ordered chain rules
+- [Face Card Priority](face-card-priority.md) - The card sort
+- [Custom Card Priority](custom-card-priority.md) - Exact picks that bypass the chain rules
+- [Card Simulation](card-simulation.md) - Test a hand without the game
+- [Command Card Priority](../../battle-setup/card-priority.md) - The rule editor

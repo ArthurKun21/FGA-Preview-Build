@@ -1,6 +1,6 @@
 ---
 title: Support Selection Modes
-description: Learn about the three support selection modes in FGA Preview - First, Manual, and Preferred. Choose the right mode for your farming needs.
+description: Learn about the three support selection modes in FGA Preview - First, Manual, and Preferred - and how the fallback mode works when Preferred finds no match.
 tags:
     - support
     - selection
@@ -9,181 +9,218 @@ tags:
 
 # Support Selection Modes
 
-FGA Preview offers three different modes for selecting support servants during battle automation. Each mode serves different use cases depending on your farming needs.
+FGA Preview has three support selection modes. Each mode serves a different need.
 
 ## Overview
 
-When FGA reaches the support selection screen, it needs to decide which support servant to pick. The selection mode determines how this decision is made - from fully automatic to fully manual control.
+When FGA reaches the support screen, it must pick a support servant. The selection mode decides how FGA makes this choice.
 
-| Mode          | Description                                       | Best For                                  |
-| ------------- | ------------------------------------------------- | ----------------------------------------- |
-| **First**     | Automatically selects the first available support | Speed farming, no specific support needed |
-| **Manual**    | Exits automation for you to select manually       | Precise control, testing setups           |
-| **Preferred** | Searches for specific servants, CEs, or friends   | Optimized farming with specific supports  |
+| Mode | Description | Best for |
+|------|-------------|----------|
+| **First** | Selects the first support in the list. | Fast farming with no specific need. |
+| **Manual** | Waits for you to pick the support. | Precise control and setup tests. |
+| **Preferred** | Searches for your servants, CEs, or friends. | Farming with a specific support. |
+
+---
 
 ## First Mode
 
-First mode selects the first visible support servant without any filtering.
+First mode selects the first support in the list. It applies no filter.
 
 ### How First Mode Works
 
-1. FGA waits for the support list to load
-2. Clicks on the first support entry
-3. Continues with battle if selection succeeds
-4. Refreshes the list if the selection fails (friend has no servant set)
+1. FGA waits for the support list to load.
+2. FGA taps the first support entry.
+3. FGA waits for the support screen to close.
+4. FGA continues the battle when the screen closes.
+5. FGA refreshes the list when the screen stays open. This happens when a friend sets no support.
 
 ### When to Use First Mode
 
-- Farming quests where any support works
-- Event bonus supports where you want maximum speed
-- Testing automation setups quickly
-- When you don't care about specific support skills or CEs
+- Farming quests where any support works.
+- Event bonus supports when you want the most speed.
+- Quick tests of an automation setup.
 
-### Limitations
+### Limits
 
-- No control over which servant is selected
-- Cannot filter by friend status
-- Cannot check for specific skills or Noble Phantasm levels
+- You cannot control which servant FGA selects.
+- FGA cannot filter by friend status.
+- FGA cannot check skills or NP level.
 
 ---
 
 ## Manual Mode
 
-Manual mode exits the automation script when it reaches the support selection screen.
+Manual mode waits on the support screen. You pick the support yourself.
 
 ### How Manual Mode Works
 
-1. FGA detects the support selection screen
-2. Script exits immediately
-3. You manually select your desired support
-4. You must start the script again after you make your selection
+The behavior depends on the **Exit on Manual Support Selection** setting in the app settings.
+
+| Setting | Behavior |
+|---------|----------|
+| **Off** (default) | FGA shows a toast and waits on the support screen. After you pick a support, FGA continues the battle automatically. |
+| **On** | FGA pauses the script in place. The runner shows a notification. Resume the script to continue. |
+
+In both cases, FGA confirms your selection after you pick a support. FGA continues the battle when the confirmation passes.
 
 ### When to Use Manual Mode
 
-- When you need a very specific support for challenging content
-- Testing different support configurations
-- Quests where automation decisions need human oversight
-- Situations where preferred mode cannot match your needs
+- A very specific support for hard content.
+- Tests of different support setups.
+- A quest that needs a human choice.
 
-### Important Behavior
-
-Manual mode stops the script entirely at the support screen. You must:
-
-- Select a support yourself
-- The script will not continue automatically
-- You may need to restart the script after selection
+!!! note
+    Manual mode stops the automatic pick. You must pick the support. The default setting keeps the script running after you pick. Turn on **Exit on Manual Support Selection** to pause the script instead.
 
 ---
 
 ## Preferred Mode
 
-Preferred mode searches for specific support servants, Craft Essences, and friends based on your configured criteria.
+Preferred mode searches for your preferred servants, Craft Essences, and friends.
 
 ### How Preferred Mode Works
 
-1. FGA loads your preferred servant, CE, and friend settings
-2. Scans each visible support entry
-3. Checks if each entry matches ALL your criteria
-4. Selects the first matching support
-5. Scrolls down if no match is found
-6. Refreshes the list after exhausting scroll options
+1. FGA loads your servant, CE, and friend settings.
+2. FGA preloads the support images at the start of the run. A load error shows early.
+3. FGA scans each visible support entry.
+4. FGA checks each entry against all of your criteria.
+5. FGA selects the first match in screen order.
+6. FGA scrolls down when it finds no match.
+7. FGA refreshes the list after it uses all scroll and refresh tries.
 
-### Configuring Preferred Mode
+### Configure Preferred Mode
 
-Preferred mode requires setup through the Battle Config:
+1. Open a Battle Config.
+2. Tap **Support Selection**.
+3. Select **Preferred** mode.
+4. Tap **Preferred Support** to configure.
 
-1. Open your **Battle Config**
-2. Navigate to **Support Selection**
-3. Select **Preferred** mode
-4. Tap **Preferred Support** to configure
-
-See the detailed guides for each component:
+See the detailed guides:
 
 - [Preferred Servant Selection](preferred-servant.md) - Configure servant matching
 - [Preferred CE Selection](preferred-ce.md) - Configure Craft Essence matching
 - [Preferred Friend Selection](preferred-friend.md) - Configure friend filtering
-- [Grand Servant Mode](grand-servant.md) - JP server exclusive features
+- [Grand Servant Selection](grand-servant.md) - JP server features
+
+### Preferred Mode Needs a Criterion
+
+Preferred mode needs at least one of these two items:
+
+- One enabled servant.
+- One default Craft Essence.
+
+Friend settings only narrow an existing search. They do not start a search. When you set no servant and no CE, the script stops. The exit reason is `SupportSelectionPreferredNotSet`.
 
 ### Matching Logic
 
-For a support to be selected, it must satisfy ALL enabled criteria:
+FGA selects a support only when it meets all enabled criteria.
 
-| Criteria       | Condition                                           |
-| -------------- | --------------------------------------------------- |
-| Servant        | Matches any configured servant image                |
-| Ascension      | Shows max ascension star (if enabled)               |
-| Skills         | Required skills are at level 10 (if enabled)        |
-| Append Skills  | Required append skills are at level 10 (if enabled) |
-| Noble Phantasm | NP level meets minimum (if enabled)                 |
-| Craft Essence  | Matches any configured CE image                     |
-| MLB Status     | CE shows limit break star (if enabled)              |
-| Friend Status  | Is a friend (if Friends Only enabled)               |
-| Friend Name    | Matches preferred friend (if configured)            |
+| Criteria | Condition |
+|----------|-----------|
+| Servant | Matches any configured servant. |
+| Ascension | Shows the max-ascension star, when **Max-ascended** is on. |
+| Skills | The required skills are at level 10, when you set **Max Skills**. |
+| Append skills | The required append skills are at level 10, when **Max Appends** is on. |
+| Noble Phantasm | The NP level meets the minimum, when you set a level above 1. |
+| Craft Essence | Matches any configured CE, or the CE is not blank. |
+| MLB | The CE shows the limit break star, when you turn on MLB for that CE. |
+| Friend status | The support is from a friend, when **Friends Only** is on. |
+| Friend name | Matches a preferred friend, when you set friend names. |
+| Grand servant | Meets the Grand level requirement, JP only. |
+
+### Matching Priority
+
+FGA collects matches in screen order from top to bottom. The first match wins.
+
+- The servant order in your config only decides which servant an entry belongs to.
+- When more than one servant can match the same entry, the first servant in your config wins.
 
 ### Search Behavior
 
 ```mermaid
 flowchart TD
-    A[Check Class Tab] --> B[Scan Visible Supports]
-    B --> C{Match Found?}
-    C -->|Yes| D[Select - Done]
-    C -->|No| E[Scroll Down]
-    E --> F{Bottom of List?}
-    F -->|No| B
-    F -->|Yes| G{Also Check All<br/>Enabled?}
-    G -->|Yes| H[Check All Tab]
-    G -->|No| I[Refresh List]
+    A[Open the class tab] --> B[Scan the visible supports]
+    B --> C{Match found?}
+    C -->|Yes| D[Select the support]
+    C -->|No| E{Can scroll down?}
+    E -->|Yes| F[Scroll down]
+    F --> B
+    E -->|No| G{Also Check All on?}
+    G -->|Yes| H[Open the All tab]
     H --> B
-    I --> B
+    G -->|No| I{Refresh tries left?}
+    I -->|Yes| J[Refresh the list]
+    J --> B
+    I -->|No| K[Use the fallback mode]
 ```
 
-### Fallback Behavior
+### Append Skill Check
 
-When no match is found after scrolling:
+FGA reads each entry under one screen snapshot. It collects the entries that need an append skill check, and then it checks those entries in one pass. FGA switches the list to the append display once, reads every level, and switches back.
 
-1. **Also Check All** (if enabled): Switches to the "All" class tab
-2. **Refresh**: Updates the support list
-3. **Repeat**: Continues searching until max refresh limit
+---
+
+## Fallback Mode
+
+Preferred mode uses a fallback mode when it finds no match after it uses all scroll and refresh tries.
+
+Choose the fallback in the **Fallback** setting. The options are **First** and **Manual**. The default is **Manual**.
+
+| Step | Behavior |
+|------|----------|
+| 1 | Preferred mode uses all scroll and refresh tries. |
+| 2 | FGA runs the fallback mode. |
+| 3 | When the fallback also finds no match, FGA runs manual selection. |
+
+!!! tip
+    Use **First** as the fallback to keep the run going with any support. Use **Manual** to stop and pick the support yourself.
 
 ---
 
 ## Choosing the Right Mode
 
-| Scenario                                   | Recommended Mode         |
-| ------------------------------------------ | ------------------------ |
-| Daily farming with any servant             | First                    |
-| Event farming needing specific CEs         | Preferred                |
-| Challenging quest needing specific support | Manual or Preferred      |
-| Speed testing battle configs               | First                    |
-| Farming with friend points in mind         | Preferred (Friends Only) |
+| Scenario | Recommended mode |
+|----------|-------------------|
+| Daily farming with any servant | First |
+| Event farming with specific CEs | Preferred |
+| A hard quest with a specific support | Manual or Preferred |
+| Speed tests of a battle config | First |
+| Farming with Friend Points in mind | Preferred with **Friends Only** |
 
-## Tips for Best Results
+## Tips
 
-- **Start with Preferred**: Configure your ideal support first
-- **Have fallbacks ready**: Add multiple acceptable servants/CEs
-- **Use class filters**: Reduce search time by selecting specific class tabs
-- **Enable Also Check All**: Provides backup if class tab has no matches
-- **Adjust refresh limits**: Increase if your requirements are strict
+- Configure your ideal support in Preferred mode first.
+- Add more than one acceptable servant or CE for fallback.
+- Use a class tab to reduce the search time.
+- Turn on **Also Check All** for a backup when the class tab has no match.
+- Raise the refresh and swipe limits when your requirements are strict.
+
+---
 
 ## Troubleshooting
 
-### Script keeps refreshing without selecting
+### The script keeps refreshing and selects nothing
 
-- Your criteria may be too strict
-- Try disabling some optional checks (MLB, Max Skills, NP Level)
-- Ensure your support images are correctly captured
+- Your criteria can be too strict.
+- Turn off optional checks, such as MLB, Max Skills, or the NP level.
+- Make sure that your support images are correct.
 
-### First mode selects empty support
+### The script stops with SupportSelectionPreferredNotSet
 
-- Some friends may not have set a support
-- This is rare but can happen
-- Script will automatically retry
+- Add at least one enabled servant, or configure one default Craft Essence.
+- Friend names alone do not start a search.
 
-### Manual mode won't continue
+### First mode picks an empty support
 
-- This is expected behavior
-- Manual mode requires you to complete the selection
-- Restart the script if needed
+- A friend can set no support.
+- FGA refreshes the list and tries again.
+
+### Manual mode does not continue
+
+- You must pick the support.
+- With the default setting, FGA continues after you pick.
+- Turn on **Exit on Manual Support Selection** to pause the script instead.
 
 ---
 

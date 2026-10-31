@@ -1,6 +1,6 @@
 ---
 title: Preferred Friend Selection
-description: Configure FGA Preview to select support servants only from your friends list or specific preferred friends for better farming rewards.
+description: Learn how FGA filters support selection by friend status and by preferred friend names for better farming rewards.
 tags:
     - support
     - friends
@@ -10,182 +10,125 @@ tags:
 
 # Preferred Friend Selection
 
-Configure FGA to filter support selection by friend status, or target specific friends by name for optimal farming rewards.
+This page describes how FGA filters support selection by friend status and by preferred friend names.
 
 ## Overview
 
-Preferred Friend Selection allows you to restrict support selection to your friends list or prioritize specific friends. This is valuable because selecting friend supports provides bonus Friend Points compared to random players.
+Preferred friend selection narrows support selection to your friends, or to specific friends by name. A friend support gives bonus Friend Points.
 
 ## Key Features
 
-- **Friends Only mode**: Only select supports from your friends list
-- **Preferred Friends**: Target specific friends by name
-- **Guest and Follow support**: Automatically recognizes different friend statuses
-- **Grand Servant compatible**: Works with JP server Grand Servant format
+- **Friends Only** - Accept only supports from your friends list.
+- **Preferred friends** - Accept only specific friends by name.
+- **Friend status detection** - FGA recognizes friend, guest, and follow status.
+- **Grand servant support** - Friend name matching works in the Grand layout.
 
 ---
 
-## Friends Only Mode
+## Default Friend and Custom Friend
 
-When enabled, FGA only selects support servants from players on your friends list.
+- **Default Preferred Friends** - FGA applies these friend settings to every servant.
+- **Custom Preferred Friends** - FGA applies these friend settings to one servant only.
+
+Each servant has a **Default** page and a **Custom** page for friends, the same as the CE pages. A servant uses its custom friend settings only when you turn on the custom friend option for that servant.
+
+---
+
+## Friends Only
+
+Turn on this switch to accept only supports from players on your friends list. FGA then rejects every support that is not from a friend.
 
 ### Friend Status Types
 
-FGA recognizes three types of friend relationships:
+FGA recognizes three friend statuses.
 
-| Status     | Icon        | Description                  |
-| ---------- | ----------- | ---------------------------- |
-| **Friend** | Friend icon | Mutual friends               |
-| **Guest**  | Guest icon  | Random players (not friends) |
-| **Follow** | Follow icon | Players you follow (one-way) |
+| Status | Description |
+|--------|-------------|
+| **Friend** | A mutual friend. |
+| **Guest** | A random player. FGA rejects a guest when **Friends Only** is on. |
+| **Follow** | A player that you follow. FGA treats a follow the same as a friend. |
 
-With Friends Only enabled:
-
-- **Friends** are accepted
-- **Guests** are rejected
-- **Follow** players are accepted (treated as friends)
-
-### Why Use Friends Only
-
-| Benefit                | Description                                       |
-| ---------------------- | ------------------------------------------------- |
-| **Friend Points**      | Using friend supports gives bonus FP              |
-| **Reliable setups**    | Friends often maintain consistent support lineups |
-| **Event coordination** | Friends may set up event CEs you need             |
+!!! note
+    The friend names apply only when **Friends Only** is on. When the switch is off, FGA ignores the stored names and accepts any player.
 
 ---
 
 ## Preferred Friends
 
-Beyond just filtering to friends, you can target specific friends by name.
+You can target specific friends by name.
 
-### Adding Friend Names
+1. Tap **Add Preferred Support** in the friend section.
+2. Pick one or more friend name images.
+3. Tap **Save**.
 
-1. Use the **Support Image Maker** to capture friend name images
-2. Navigate to your Battle Config **Preferred Support** settings
-3. Tap **Add** in the Friends section
-4. Select one or more friend name images
-5. Tap **Save** to confirm
+FGA requires a match on one of these names. When you set no name, FGA applies the **Friends Only** gate only.
 
 ### How Friend Name Matching Works
 
 ```mermaid
 flowchart TD
-    A[For Each Support Entry] --> B{Friends Only<br/>enabled?}
+    A[Start: one support entry] --> B{Friends Only on?}
     B -->|Yes| C[Check friend status]
-    B -->|No| D{Preferred friends<br/>set?}
-    C --> D
-    D -->|Yes| E[Search for name image]
-    D -->|No| F[Accept any friend]
-    E --> G{Match found<br/>in region?}
-    G -->|Yes| H[Accept this support]
-    G -->|No| I[Try next support]
+    C -->|Not a friend| H[Reject entry]
+    B -->|No| D{Preferred names set?}
+    C -->|Friend| D
+    D -->|No| E[Accept entry]
+    D -->|Yes| F[Search for a name image]
+    F -->|Match| E
+    F -->|No match| H
 ```
 
 ### Matching Priority
 
-When both Friends Only and Preferred Friends are configured:
+FGA applies the checks in this order:
 
-1. Support must be a friend (Friends Only check)
-2. Support must match one of your preferred friend names
-3. Support must still match servant/CE criteria
-
-If no preferred friends are specified but Friends Only is enabled, any friend matching servant/CE criteria will be selected.
+1. The support must be a friend when **Friends Only** is on.
+2. The support must match one of your preferred friend names when you set names.
+3. The support must still match the servant and CE criteria.
 
 ---
 
 ## Grand Servant Friend Matching
 
-For JP server Grand Servants, friend name matching uses a different screen region optimized for the Grand Servant display format.
-
-The friend name search area adjusts automatically:
-
-| Support Type      | Search Region                            |
-| ----------------- | ---------------------------------------- |
-| **Normal**        | Standard friend region below servant     |
-| **Grand Servant** | Adjusted region for Grand Servant layout |
-
-This ensures friend name matching works correctly regardless of support format.
+For a Grand servant, FGA reads the friend name from a different region. The region fits the Grand layout. FGA picks the correct region for each entry, so friend name matching works in both layouts.
 
 ---
 
-## Configuration Options
+## Tips
 
-### Friends Only Toggle
-
-| Setting      | Behavior                                 |
-| ------------ | ---------------------------------------- |
-| **Disabled** | Accept any support (friends and guests)  |
-| **Enabled**  | Only accept friends and followed players |
-
-### Preferred Friends List
-
-| Configuration | Behavior                                    |
-| ------------- | ------------------------------------------- |
-| **Empty**     | Accept any friend (if Friends Only enabled) |
-| **Has names** | Must match one of the specified friends     |
-
----
-
-## Tips for Best Results
-
-### Capturing Friend Names
-
-- Use Support Image Maker for consistent captures
-- Include the full friend name in the capture
-- Avoid capturing when text is animating
-
-### Friend Name Accuracy
-
-- Friend names should be captured clearly
-- Special characters in names may affect matching
-- Update captures if friends change their names
-
-### Balancing Speed and Preference
-
-- Adding many preferred friends increases match chances
-- Very specific friend targeting may slow down selection
-- Consider using just Friends Only for faster matching
-
-### Managing Friend Lists
-
-- Coordinate with friends for event CE setups
-- Remove inactive friends who may have outdated supports
-- Add new friends with useful support configurations
+- Use **Friends Only** alone for faster matching when any friend is acceptable.
+- Capture friend names with the Support Image Maker. Include the full name.
+- Recapture a friend name after the friend changes the name.
+- Coordinate with friends for event CE setups.
 
 ---
 
 ## Troubleshooting
 
-### No friends being found
+### FGA finds no friend
 
-- **Check friend list**: Ensure you have friends with the required class/servant
-- **Verify friend status**: Some "friends" may actually be follows
-- **Refresh the list**: Friends may not be immediately visible
+- Make sure that you have friends with the required class and servant.
+- Refresh the list. Friends may not show at once.
+- Check the friend status. Some entries can be follows or guests.
 
-### Preferred friend not selected
+### A preferred friend is not selected
 
-- **Verify name capture**: Friend names must match exactly
-- **Check other criteria**: Servant and CE must also match
-- **Consider name changes**: Friend may have changed their name
+- The friend name image must match. Make the image again if the name changed.
+- The servant and CE criteria must also match.
 
-### Guest keeps getting selected
+### A guest is selected
 
-- Friends Only may not be enabled
-- Check your support preferences
-- Verify the support icon shows friend status, not guest
+- Make sure that **Friends Only** is on.
+- When **Friends Only** is off, FGA accepts any player.
 
-### Follow players not being accepted
+### The preferred names have no effect
 
-- Follow players should be accepted like friends
-- If issues occur, check for the Follow icon
-- The system treats Follow as equivalent to Friend
+- The names apply only when **Friends Only** is on. Turn on the switch.
 
-### Grand Servant friend matching fails
+### Grand servant friend matching fails
 
-- Ensure you're on JP server
-- Friend name region differs for Grand Servants
-- Recapture friend name if needed
+- Make sure that the config uses the JP server.
+- FGA reads the friend name from a different region in the Grand layout.
 
 ---
 

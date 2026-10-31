@@ -1,6 +1,6 @@
 ---
 title: CE Drop Detection and Tracking
-description: Track Craft Essence drops during FGA farming. Get notifications when CEs drop and set limits to stop farming.
+description: How FGA detects Craft Essence drops. Learn the two-stage check, the CE drop limit, and the separate Stop on CE GET setting.
 tags:
     - battle
     - drops
@@ -10,130 +10,103 @@ tags:
 
 # CE Drop Detection and Tracking
 
-Detect and track Craft Essence drops during farming sessions.
+FGA can find Craft Essence drops on the drop screen. This page tells you how the check works.
 
 ## Overview
 
-FGA can detect when Craft Essences drop from quests, notify you immediately, and optionally stop farming when a target number of CEs have dropped. This is especially useful when farming for event CEs or specific drop CEs.
+FGA counts the Craft Essence (CE) drops that occur in your quest. You can set a CE drop limit that stops the script.
+
+A separate app setting named Stop on CE GET also stops the script. That setting reads a different screen. See [Stop on CE GET](#stop-on-ce-get) on this page.
 
 ## Key Features
 
-- **Drop Detection**: Identifies CE drops on result screens
-- **Star Verification**: Confirms actual CE drops using star icons
-- **Immediate Notifications**: Alert when CE drops occur
-- **Limit Enforcement**: Stop after collecting target CEs
-- **Auto-Decrement**: Reduce remaining limit automatically
+- **Two-stage check**: FGA finds the CE icon, then checks for the star image near it.
+- **Session count**: FGA adds each drop that passes both stages to a session total.
+- **Drop limit**: FGA stops the script when the count reaches your CE limit.
+- **Immediate alert**: FGA sends a `CE Dropped!` notification for each drop that does not stop the script.
+- **Auto-decrement**: FGA reduces the CE limit when the session ends.
 
 ## How CE Detection Works
 
 ```mermaid
 flowchart TD
-    A[Quest Result Screen] --> B[Scan for CE Drop Icons<br/>Search entire visible area]
-    B --> C[For Each Potential CE:<br/>• Check for CE icon<br/>• Verify star pattern nearby<br/>• Confirm actual CE drop]
-    C --> D[If CE Confirmed:<br/>• Increment counter<br/>• Send notification<br/>• Check against limit]
+    A[Drop Screen] --> B[Find Each CE Drop Icon<br/>Search the script area]
+    B --> C[Check for the Star Image<br/>In a region near the icon]
+    C --> D{"Icon and star both found?"}
+    D -->|Yes| E[Count One CE Drop]
+    D -->|No| F[Do Not Count It]
+    E --> G{"Count reached the CE limit?"}
+    G -->|Yes| H[Count This Run]
+    H --> I[Stop with Limit CEs]
+    G -->|No| J[Send CE Dropped Notification]
 ```
 
 ## Detection Method
 
 ### Two-Stage Verification
 
-FGA uses a two-stage process to avoid false positives:
+FGA uses two stages to prevent a wrong count.
 
-#### Stage 1: CE Icon Detection
+#### Stage 1: Find the CE Icon
 
-Scans for the Craft Essence drop icon pattern on the result screen.
+FGA searches the whole script area for the CE drop icon image.
 
-#### Stage 2: Star Verification
+#### Stage 2: Check for the Stars
 
-Checks for the star rating indicator near the CE icon:
+For each CE icon that FGA finds, FGA checks a small region near that icon for the star image. FGA counts a CE drop only when it finds both images.
 
-```text
-┌─────────────────┐
-│   [CE Icon]     │
-│   ★★★★★        │  ← Stars confirm it's a CE
-└─────────────────┘
-```
-
-This prevents mistaking other items for CE drops.
+This two-stage check prevents a wrong count of other items.
 
 ## Configuration
 
-### Enable CE Tracking
+You set the CE limit in the Battle Config and in the Battle Launcher.
 
-1. Open your Battle Config
-2. Find CE Drop settings
-3. Enable "Track CE Drops"
-4. Optionally set a limit
+| Setting         | What it does                                                              |
+| --------------- | ------------------------------------------------------------------------- |
+| **CEs** switch  | Turns the CE drop limit on or off. The switch is in the Battle Launcher.  |
+| **CEs** stepper | Sets the number of CE drops that stops the script. The range is 1 to 999. |
+| **Default CEs** | Sets the CE limit that FGA restores after the count reaches zero.         |
 
-### CE Limit Settings
+See [Default Run Configuration](../../battle-setup/config.md#default-run-configuration) to set the default CEs value.
 
-| Setting     | Behavior                 |
-| ----------- | ------------------------ |
-| Disabled    | Track but don't stop     |
-| Enabled + 1 | Stop after first CE drop |
-| Enabled + N | Stop after N CEs drop    |
+## What FGA Counts
 
-## Stop Conditions
+FGA counts only the drops that pass both stages. FGA keeps one total for the whole session. The total increases each time FGA finds a CE drop.
 
-### Stop on Any CE
+## Limit Behavior
 
-When "Stop on CE" is enabled:
+FGA compares the session count with the CE limit after each run.
 
-- Any CE drop triggers script stop
-- Current run completes first
-- Exit summary shows CE count
-
-### Stop at Limit
-
-When limit is configured:
-
-```text
-Before Run:
-- CE Limit: 5
-
-After Each Drop:
-- Count compared to limit
-- Continue if count < limit
-- Stop if count >= limit
-```
+1. When the count reaches the CE limit, FGA counts the current run.
+2. FGA then stops the script.
+3. The exit reason is `Limit CEs`. The exit screen shows the number of CEs that dropped.
 
 ## Notifications
 
-When a CE drops, FGA sends a notification:
-
-```text
-┌─────────────────────────────────────────┐
-│  FGA: CE Dropped!                       │
-│  A Craft Essence has dropped.           │
-└─────────────────────────────────────────┘
-```
-
-This alerts you even if not watching the screen.
+FGA sends a `CE Dropped!` notification for each drop, except the drop that reaches the limit. When the count reaches the limit, FGA stops the script and does not send that notification.
 
 ## Auto-Decrement
 
-After script completion:
+FGA reduces the CE limit one time when the script stops. FGA does this only when the CE limit is on.
+
+1. FGA subtracts the session count from the CE limit.
+2. When the CE limit reaches zero or less, FGA turns the CE limit off.
+3. FGA then restores the CE limit to the default CEs value.
 
 ```text
-Before Run:
+Before the session:
 - CE Limit: 10
 
-During Run:
-- CEs Dropped: 3
+Drops in the session:
+- CEs: 3
 
-After Run:
-- CE Limit: 7 (auto-decremented)
+After the session:
+- CE Limit: 7
 ```
-
-When limit reaches 0:
-
-- CE limiting is disabled
-- Limit resets to default value
-- Tracking continues without stopping
 
 ## Exit Summary
 
-View CE statistics after completion:
+The exit screen shows the total number of CEs that dropped in the session.
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -149,93 +122,93 @@ View CE statistics after completion:
 ### Limit CEs
 
 ```text
-Exit Reason: LimitCEs (Count: 5)
+Exit Reason: Limit CEs (Count: 3)
 
-FGA has stopped because the configured
-CE drop limit has been reached.
+FGA stopped because the CE drop count
+reached the CE limit that you set.
 ```
 
-### CE Get (Stop on CE)
+### CE GET
 
 ```text
-Exit Reason: CEGet
+Exit Reason: CE GET
 
-FGA has stopped because a Craft Essence
-dropped and "Stop on CE" is enabled.
+FGA stopped because a Craft Essence dropped
+and the Stop on CE GET setting is on.
 ```
+
+## Stop on CE GET
+
+Stop on CE GET is a separate app setting. It is not the CE drop limit.
+
+Stop on CE GET reads the CE reward screen after a quest. When the setting is on and a CE reward occurs, FGA stops the script with the `CE GET` reason. When the setting is off, FGA sends a `CE GET!` notification and continues.
+
+This setting is experimental. It applies to first-clear rewards and Bond CEs. You set it in Global Battle Settings. See [Stop on CE get](../../app/global-battle.md#stop-on-ce-get).
 
 ## Tips for Best Results
 
-1. **Know drop rates**: CE drops are rare, set reasonable limits
-2. **Use for event CEs**: Most useful for limited event drops
-3. **Enable notifications**: Get alerted even when away
-4. **Combine with screenshots**: Keep visual records of drops
-5. **Check drop screen timing**: Ensure screen loads fully
+1. **Know the drop rate**: CE drops are rare. Set a limit that matches your goal.
+2. **Use it for event CEs**: The limit is most useful for limited event drops.
+3. **Keep the alert on**: The `CE Dropped!` notification tells you about each drop.
+4. **Let the drop screen load**: Wait until the drop screen shows all items.
 
 ## Common CE Farming Scenarios
 
 ### Event CE Farming
 
-- Set limit based on desired copies
-- Enable notifications for immediate alerts
-- Consider MLB requirements (5 copies)
+- Set the CE limit to the number of copies that you want.
+- Keep the notification on to get an alert for each drop.
+- Count the copies that you need for a Max Limit Break (five copies).
 
 ### Story CE Farming
 
-- Rare drops from story quests
-- Low limits recommended (1-3)
-- May take many runs
+- The drop rate is low. Set a low limit.
+- The number of runs can be large.
 
 ### Random Drop CEs
 
-- Very low drop rates
-- Use unlimited tracking
-- Review exit summaries periodically
+- The drop rate is very low.
+- Leave the CE limit off and read the exit summary after some runs.
+
+## CE Drops and Material Drops
+
+| Feature      | CE Drops                   | Materials                   |
+| ------------ | -------------------------- | --------------------------- |
+| Detection    | CE icon, then star image   | Material image              |
+| Counting     | One total for the session  | One total for each material |
+| Limit        | CE drop limit (CEs)        | Count of each material      |
+| Alert        | `CE Dropped!` notification | Exit summary                |
+
+See [Materials and Drop Tracking](materials-tracking.md) for material tracking.
 
 ## Troubleshooting
 
-### CE drops not detected
+### FGA does not count a CE drop
 
-- Verify drop screen is fully loaded
-- Check if CE icon is visible on screen
-- Ensure FGA version supports current CE images
-- Screen resolution may affect detection
+1. Make sure that the full drop screen is on the screen.
+2. Make sure that the CE icon and the star image are both visible.
 
-### False positives (wrong count)
+### The count seems wrong
 
-- Star verification should prevent this
-- Check if other items look similar
-- Report persistent issues
+The two-stage check reduces wrong counts. If the count is still wrong, make sure that no other item looks the same.
 
-### Notifications not appearing
+### FGA does not send a notification
 
-- Check device notification settings
-- Verify FGA notification permissions
-- Ensure notifications are enabled in app
+1. Check the notification settings on your device.
+2. Make sure that the app can send notifications.
+3. FGA does not send a notification for the drop that reaches the limit.
 
-### Script not stopping at limit
+### FGA does not stop at the limit
 
-- Confirm limit is greater than 0
-- Check if limiting is enabled
-- Verify correct Battle Config is active
-
-### Auto-decrement not working
-
-- Only triggers on successful completion
-- Manual stops may not decrement
-- Check settings after run
-
-## CE Drops vs Material Drops
-
-| Feature      | CE Drops     | Materials       |
-| ------------ | ------------ | --------------- |
-| Detection    | Icon + stars | Material images |
-| Rarity       | Very rare    | Variable        |
-| Notification | Immediate    | Exit summary    |
-| Limit type   | Count of CEs | Total materials |
+1. Make sure that the CEs switch is on in the Battle Launcher.
+2. Make sure that the CE limit is more than zero.
+3. Make sure that you use the correct battle config.
 
 ## Related Documentation
 
+- [Materials and Drop Tracking](materials-tracking.md) - Track material drops
+- [Battle Config](../../battle-setup/config.md) - Full battle configuration
+- [Battle Launcher](../../battle-setup/launcher.md) - Change the limits before a run
+- [Stop on CE get](../../app/global-battle.md#stop-on-ce-get) - The Stop on CE GET setting
+- [Exit Reasons](../script-control/auto-battle-exit-reasons.md) - Read the exit summary
 - [Auto Battle](../auto-battle.md) - Overall battle automation
-- [Materials Tracking](materials-tracking.md) - Track material drops
-- [Run Limits](../../app/advanced.md) - Configure limits
