@@ -4,12 +4,14 @@ nav:
   - App:
     - app/requirements.md
     - Settings:
+      - app/settings.md
       - app/appearance.md
       - app/global-battle.md
       - app/storage.md
       - app/advanced.md
+      - app/library.md
+      - app/github-backup.md
     - app/fine-tune.md
-    - app/library.md
   - Auto Battle:
     - Configuration:
       - battle-setup/config.md

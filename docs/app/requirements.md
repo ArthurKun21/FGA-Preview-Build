@@ -56,9 +56,21 @@ Media Projection gives FGA Preview the ability to see what's on your screen. The
 !!! info
     A notification will appear while screen capture is active. This is required by Android and cannot be hidden.
 
+### Notifications
+
+FGA Preview uses notifications to show the state of your work. A script reports its state, and a backup, a restore, or a GitHub sync reports its progress and its result.
+
+| What it does               | Why it's needed                                     |
+| -------------------------- | --------------------------------------------------- |
+| Show progress              | Reports the state of a run, a backup, and a sync    |
+| Report results             | Shows exit reasons and failure reasons              |
+
+!!! note
+    The Permissions group in [Advanced Settings](advanced.md) holds the permission rows of the app.
+
 ### Disable Battery Optimization
 
-Some Android devices aggressively stop apps running in the background to save battery. Disabling battery optimization for FGA Preview ensures it keeps running during long farming sessions.
+Some Android devices stop apps that run in the background, to save battery. Turn off battery optimization for FGA Preview. The app then keeps running during long farming sessions.
 
 | What it does               | Why it's needed                                   |
 | -------------------------- | ------------------------------------------------- |
@@ -70,7 +82,8 @@ Some Android devices aggressively stop apps running in the background to save ba
 - **Grant all permissions upfront.** The app will guide you through each one, but enabling them all at once avoids repeated prompts.
 - **Check your Android version first.** If you're on Android 7.1 or older, FGA Preview won't work—consider updating your device or using a different phone.
 - **Keep battery optimization disabled.** Even if the app works initially, the system may kill it during long runs if optimization is enabled.
-- **Restart your device after setup.** A fresh restart can help ensure all permissions are applied correctly.
+- **Grant notifications.** The app reports run progress, backup progress, and GitHub sync progress in a notification.
+- **Restart your device after setup.** A fresh restart helps apply all permissions correctly.
 
 ## Troubleshooting
 
