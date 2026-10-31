@@ -5,9 +5,15 @@ name: verify-lockfile
 
 on:
   pull_request:
+    paths:
+      - '.github/workflows/**'
+      - '.github/actions/**'
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/**' 
+      - '.github/actions/**' 
 
 permissions:
   contents: read
