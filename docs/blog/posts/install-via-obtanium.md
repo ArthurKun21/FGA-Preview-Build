@@ -1,6 +1,8 @@
 ---
 title: Install via Obtainium
 description: Install and auto-update FGA Preview with Obtainium using the GitHub Releases feed, including Android 8+ requirements and update tips.
+categories:
+    - Guides
 tags:
   - installation
   - updates
@@ -10,9 +12,13 @@ date:
 ---
 
 # Install via Obtainium
+
 Install FGA Preview from GitHub Releases and let Obtainium keep it updated for you.
 
+<!-- more -->
+
 ## Overview
+
 Obtainium is an Android app that can install and update apps directly from their official release pages (like GitHub Releases).
 
 This guide helps you:

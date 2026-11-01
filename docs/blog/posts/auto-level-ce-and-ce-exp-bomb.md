@@ -25,11 +25,15 @@ FGA Preview has two scripts for Craft Essence (CE) enhancement: **Auto Level CE*
 
 ### Auto Level CE
 
-The Auto Level CE script enhances one target CE that you selected. The script locks the target CE to protect it. The game selects the fodder CEs with its Auto Select feature. The Auto Select filter uses your **Fodder Rarity** and **Fodder Filter CE Type** settings. The script stops with `Target CE have reached max level.` when the CE is at maximum level. It can also stop with `No fodder CE found` when no fodder CE matches the filter. Use this mode to level one CE.
+The Auto Level CE script enhances one target CE that you selected. The script locks the target CE to protect it. The game selects the fodder CEs with its Auto Select feature. The Auto Select filter uses your **Fodder Rarity** and **Fodder Filter CE Type** settings.
+
+The script stops with `Target CE have reached max level.` when the CE is at maximum level. It can also stop with `No fodder CE found` when no fodder CE matches the filter. Use this mode to level one CE.
 
 ### CE EXP Bomb
 
-The CE EXP Bomb script creates CE Bombs. It levels one CE after another in a loop. The enhancement slot must be empty at the start. The script selects each target CE from your inventory. The target selection uses your **Target Rarity** and **Target Filter CE Type** settings. The script stops when it finds no more fodder or target CEs, or when you stop it. Use this mode to make several leveled CEs.
+The CE EXP Bomb script creates CE Bombs. It levels one CE after another in a loop. The enhancement slot must be empty at the start. The script selects each target CE from your inventory.
+
+The target selection uses your **Target Rarity** and **Target Filter CE Type** settings. The script stops when it finds no more fodder or target CEs, or when you stop it. Use this mode to make several leveled CEs.
 
 ## How to Use Each Mode
 
@@ -55,7 +59,7 @@ The CE EXP Bomb script creates CE Bombs. It levels one CE after another in a loo
 | ------------------ | ------------------------------------------------- | -------------------------------------------------- |
 | Target CE          | You select it before you start                    | The script selects it                              |
 | Start state        | CE in the slot                                    | Empty slot                                         |
-| Stopping Condition | `Target CE have reached max level.` or `No fodder CE found` | `No fodder CE found` or `No suitable target CE found` |
+| Stop condition     | `Target CE have reached max level.` or `No fodder CE found` | `No fodder CE found` or `No suitable target CE found` |
 | Use Case           | Level one specific CE                             | Make several leveled CEs                           |
 
 ## Conclusion

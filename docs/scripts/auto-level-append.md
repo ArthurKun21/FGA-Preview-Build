@@ -7,6 +7,8 @@ tags:
   - servant coins
   - automation
   - enhancement
+hide:
+  - navigation
 ---
 
 # Auto Level Append

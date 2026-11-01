@@ -8,6 +8,8 @@ tags:
   - CE EXP bomb
   - automation
   - enhancement
+hide:
+  - navigation
 ---
 
 # Auto CE EXP Bomb
@@ -46,7 +48,7 @@ flowchart TD
     D --> E[Lock the target CE]
     E --> F[Auto Select selects the fodder CEs]
     F --> G[Confirm the enhancement]
-    G --> H{Is the target CE at max level?}
+    G --> H{Is the target CE at maximum level?}
     H -->|No| F
     H -->|Yes| D
 ```
@@ -68,7 +70,7 @@ The loop runs until one of these occurs:
 
 ### Auto-Lock Protection
 
-- The script locks each target CE with a long press. This needs Android 8.0 or later.
+- The script locks each target CE with a long press. The long press needs Android 8.0 or later.
 - The lock protects the target CE from use as fodder.
 - Enable **Skip the auto-lock of target CE?** to skip this step.
 
@@ -83,10 +85,10 @@ The loop runs until one of these occurs:
 - On the first pass, the script enables Smart Sort, Select Sort, and Sort by Level.
 - Enable **Skip the CE sort settings setup?** to skip this step. Then configure the sort options in the game yourself.
 
-### Auto-Fill on JP
+### Auto-Fill
 
-- On JP, the script enables the auto-fill toggle in the Auto Select window.
-- Later enhancements then run with fewer steps. The script taps Enhance and waits for the Ok dialog.
+- The script enables the auto-fill toggle in the Auto Select window.
+- Later enhancements run with fewer steps. The script taps Enhance and waits for the Ok dialog.
 
 ### Connection Retry
 
@@ -125,7 +127,7 @@ See [Auto Level CE](auto-level-ce.md) for the other mode.
 | -------------- | ------------------------------ | ------------------------------- |
 | Target CE      | The script selects it          | You select it before you start  |
 | Start state    | Empty slot                     | CE in the slot                  |
-| Stop condition | No fodder or no target CEs     | Target CE at max level          |
+| Stop condition | No fodder or no target CEs     | Target CE at maximum level      |
 | Runs           | In a loop, many CEs            | One CE                          |
 
 ## Recommended CE Bomb Strategy
@@ -135,7 +137,7 @@ See [Auto Level CE](auto-level-ce.md) for the other mode.
 1. Set **Target Rarity** to 1★.
 2. Set **Fodder Rarity** to 1★ and 2★.
 3. Set **Fodder Filter CE Type** to Normal.
-4. Start the script. The script levels several 1★ CEs to the maximum.
+4. Start the script. The script levels several 1★ CEs to maximum level.
 5. Feed these 1★ bombs to your 4★ and 5★ CEs.
 
 ### Experience Efficiency
@@ -179,6 +181,6 @@ This loop keeps your inventory small:
 - The first target selection includes the display size, the sort options, and the target filters. Later target selections skip this setup.
 - The script scans a grid of 4 rows and 7 columns to find a target CE.
 - The first fodder selection configures the Auto Select filter. Later fodder selections skip this setup.
-- On JP, the script enables the auto-fill toggle. Later enhancements then need fewer script actions.
+- The script enables the auto-fill toggle. Later enhancements need fewer script actions.
 - The script taps the Skip button while an enhancement runs.
 - The script retries the connection automatically.

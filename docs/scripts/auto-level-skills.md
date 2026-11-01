@@ -6,6 +6,8 @@ tags:
   - skills
   - automation
   - enhancement
+hide:
+  - navigation
 ---
 
 # Auto Level Skills

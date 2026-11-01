@@ -3,5 +3,3 @@ icon: material/script-text-key
 description: FGA Preview automation scripts. Learn about the main automated scripts available in FGA Preview, including their features, configurations, and usage instructions.
 search:
   boost: 3
-hide:
-  - navigation

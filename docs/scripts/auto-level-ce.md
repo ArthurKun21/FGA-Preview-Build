@@ -1,12 +1,14 @@
 ---
 title: Auto Level CE
-description: Level up Craft Essences automatically in Fate/Grand Order with FGA Preview. The script feeds fodder CEs to your target CE until it reaches max level.
+description: Level Craft Essences automatically in Fate/Grand Order with FGA Preview. The script feeds fodder CEs to your target CE until it reaches maximum level.
 tags:
   - scripts
   - CE
   - craft essence
   - automation
   - enhancement
+hide:
+  - navigation
 ---
 
 # Auto Level CE
@@ -42,9 +44,9 @@ flowchart TD
     C --> D[Configure the Auto Select filter]
     D --> E[Auto Select selects the fodder CEs]
     E --> F[Confirm the enhancement]
-    F --> G{Is the target CE at max level?}
+    F --> G{Is the target CE at maximum level?}
     G -->|No| E
-    G -->|Yes| H[Exit: target CE at max level]
+    G -->|Yes| H[Exit: target CE at maximum level]
 ```
 
 The lock and the filter configuration run once, on the first pass. Later passes reuse the filter.
@@ -53,7 +55,7 @@ The lock and the filter configuration run once, on the first pass. Later passes 
 
 ### Auto-Lock Target CE
 
-- The script locks the target CE with a long press. This needs Android 8.0 or later.
+- The script locks the target CE with a long press. The long press needs Android 8.0 or later.
 - The lock protects the target CE from use as fodder.
 - Enable **Skip the auto-lock of target CE?** to skip this step.
 
@@ -63,10 +65,10 @@ The lock and the filter configuration run once, on the first pass. Later passes 
 - On the first pass, the script configures the Auto Select filter. It uses your **Fodder Rarity** and **Fodder Filter CE Type** settings.
 - Later passes reuse this filter.
 
-### Auto-Fill on JP
+### Auto-Fill
 
-- On JP, the script enables the auto-fill toggle in the Auto Select window.
-- Later enhancements then run with fewer steps. The script taps Enhance and waits for the Ok dialog.
+- The script enables the auto-fill toggle in the Auto Select window.
+- Later enhancements run with fewer steps. The script taps Enhance and waits for the Ok dialog.
 
 ### Connection Retry
 
@@ -105,13 +107,13 @@ See [Auto CE EXP Bomb](auto-ce-exp-bomb.md) for the other mode.
 | -------------- | ------------------------------- | ----------------------------- |
 | Target CE      | You select it before you start  | The script selects it         |
 | Start state    | CE in the slot                  | Empty slot                    |
-| Stop condition | Target CE at max level          | No fodder or no target CEs    |
+| Stop condition | Target CE at maximum level      | No fodder or no target CEs    |
 | Purpose        | Level one specific CE           | Make many leveled CEs         |
 
 ## Tips for Best Results
 
 1. Select the target CE before you start the script.
-2. Set **Fodder Rarity** to the rarities that you want to spend.
+2. Set **Fodder Rarity** to the CE rarities that you want to use as fodder.
 3. Keep the auto-lock on. The lock protects the target CE.
 4. Check your QP. Each enhancement costs QP.
 
