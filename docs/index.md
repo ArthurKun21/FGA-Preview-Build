@@ -14,8 +14,6 @@ hide:
 
 # FGA Preview
 
-Currently, this documentation is still a work in progress.
-
 [![Preview Build](https://img.shields.io/github/release/ArthurKun21/FGA-Preview-Build.svg?maxAge=3600&label=download)](https://github.com/ArthurKun21/FGA-Preview-Build/releases)
 
 <a href="https://ko-fi.com/arthurkun21">
