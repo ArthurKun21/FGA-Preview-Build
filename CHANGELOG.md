@@ -667,7 +667,7 @@ Updated CE Template Images
 
 - We didn't notice that the wide and ultra wide detection region are off resulting in mis-click and the quest getting stuck. We have now updated it.
 
-#### Mighty Chain
+Mighty Chain
 
 - @Vylantze have updated the logic behind Mighty Chain
 
@@ -703,7 +703,7 @@ Updated CE Template Images
 
   <img width="69" height="65" alt="image" src="https://github.com/user-attachments/assets/ef28e513-e6ec-43c7-bd0d-90d567e7348a" />
 
-#### Mighty Chain
+Mighty Chain
 
 - Experimental new feature: Mighty Chain by @Vylantze
 
@@ -908,8 +908,8 @@ We have made a mistake in the previous logic for the Grand Servants selection.
 Before even if you set it up to select Grand Servants there's a chance to select
 a normal version of it.
 
-| Grand Servant | Normal Servant|
-|:--:|:--:|
+| Grand Servant                                                                                                                   | Normal Servant                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="300" height="170" alt="image" src="https://github.com/user-attachments/assets/384c8651-8bd5-4a5c-9f34-385a87d8699a" /> | <img width="165" height="168" alt="image" src="https://github.com/user-attachments/assets/2102bb67-7aaf-4b1b-a1ca-12db271d424e" /> |
 
 We have now updated the logic that if you set it up to find Grand Servant it would check for Grand Servant Settings
