@@ -7,6 +7,8 @@ tags:
   - images
   - servants
   - CE
+search:
+  boost: 2
 ---
 
 # Support Image Maker

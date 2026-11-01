@@ -7,6 +7,8 @@ tags:
   - present box
   - embers
   - automation
+search:
+  boost: 2
 ---
 
 # Auto Gift Box (Present Box)

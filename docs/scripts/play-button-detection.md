@@ -8,6 +8,8 @@ tags:
   - troubleshooting
   - fgo automation
   - setup
+search:
+  boost: 2
 ---
 
 # Play Button Detection

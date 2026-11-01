@@ -7,6 +7,8 @@ tags:
   - events
   - automation
   - farming
+search:
+  boost: 2
 ---
 
 # Auto Lottery

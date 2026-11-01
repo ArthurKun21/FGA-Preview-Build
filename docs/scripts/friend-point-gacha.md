@@ -7,6 +7,8 @@ tags:
   - friend points
   - automation
   - summons
+search:
+  boost: 2
 ---
 
 # Friend Point Gacha
