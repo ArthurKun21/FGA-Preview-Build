@@ -38,15 +38,19 @@ You can also lock one server. Select a server when auto-detection fails.
 | TW                  | The Taiwan server                |
 | KR                  | The Korean server                |
 
-!!! note "Android only"
-    The **Game Server** row shows only on Android. See [Settings](settings.md) for the full list of Android-only rows.
+> [!NOTE]
+> **Android only**
+>
+> The **Game Server** row shows only on Android. See [Settings](settings.md) for the full list of Android-only rows.
 
 ### Skip story scenes
 
 Enable **Story Skip** to move through the dialogue and the cutscenes of a quest. A farming run then finishes faster when story plays between the battles.
 
-!!! warning "Story skip has a limit"
-    The script cannot bypass a story part that needs a choice from the player. If the story makes you choose an option, FGA waits until you choose it.
+> [!WARNING]
+> **Story skip has a limit**
+>
+> The script cannot bypass a story part that needs a choice from the player. If the story makes you choose an option, FGA waits until you choose it.
 
 ### Boost item selection
 
@@ -68,8 +72,10 @@ Enable **Hide SQ in AP Resources** to remove Saint Quartz from the list when FGA
 
 A support servant can get so many buffs that the "Support" tag is partly hidden. FGA can then read the servant as one of your own servants. Enable **Treat Support like own Servants** to work around this case.
 
-!!! warning "This option changes card checks"
-    With the option enabled, FGA does not look for the "Support" icon on face cards. If two of the same servant are in your party, card priority can break.
+> [!WARNING]
+> **This option changes card checks**
+>
+> With the option enabled, FGA does not look for the "Support" icon on face cards. If two of the same servant are in your party, card priority can break.
 
 ## Battle Exit Exceptions
 
@@ -113,8 +119,10 @@ Enable **Save unmodified screenshots** to store the raw image with the annotated
 
 Enable **Screenshot Bond** to capture the bond screen that shows after a battle. The image goes to the `bond` folder in your storage location.
 
-!!! note "Bond screenshots can be missed"
-    The script clicks the results screen automatically. That click can sometimes skip a bond screen before the capture.
+> [!NOTE]
+> **Bond screenshots can be missed**
+>
+> The script clicks the results screen automatically. That click can sometimes skip a bond screen before the capture.
 
 ## Tips for Best Results
 
@@ -137,5 +145,5 @@ Enable **Screenshot Bond** to capture the bond screen that shows after a battle.
 
 - [Settings](settings.md)
 - [Card Priority](../battle-setup/card-priority.md)
-- [Withdraw](../in-battle/script-control/withdraw.md)
-- [Auto Battle Exit Reasons](../in-battle/script-control/auto-battle-exit-reasons.md)
+- [Withdraw](../scripts/in-battle/script-control/withdraw.md)
+- [Auto Battle Exit Reasons](../scripts/in-battle/script-control/auto-battle-exit-reasons.md)

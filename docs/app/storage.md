@@ -25,8 +25,10 @@ Tap **Storage Location** to open the folder picker. Tap **Edit** on the row to o
 
 You can also select an SD card or a folder that a cloud service syncs. A cloud folder can make FGA slower, because FGA reads and writes many small files.
 
-!!! warning "The folder change moves your data"
-    After you select a new folder, FGA moves the current data to that folder. FGA disables the row and the buttons while the move runs.
+> [!WARNING]
+> **The folder change moves your data**
+>
+> After you select a new folder, FGA moves the current data to that folder. FGA disables the row and the buttons while the move runs.
 
 ### Reset the support database
 
@@ -40,8 +42,10 @@ The reset runs in the background. Leave the settings screen and use other parts 
 
 Tap **Create backup** to write all your battle configs and app settings into one JSON file.
 
-!!! note "A backup and a restore touch only the settings in the file"
-    A backup file holds a part of your settings. A restore writes over the settings in the file. A setting that the file does not contain stays unchanged.
+> [!NOTE]
+> **A backup and a restore touch only the settings in the file**
+>
+> A backup file holds a part of your settings. A restore writes over the settings in the file. A setting that the file does not contain stays unchanged.
 
 ### Restore a backup
 

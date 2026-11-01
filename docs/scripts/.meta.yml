@@ -1,6 +1,6 @@
-title: Enhancement Scripts
-icon: material/arrow-up-bold
-description: FGA Preview primary scripts. Learn about the main automated scripts available in FGA Preview, including their features, configurations, and usage instructions.
+title: Scripts
+icon: material/script-text-key
+description: FGA Preview automation scripts. Learn about the main automated scripts available in FGA Preview, including their features, configurations, and usage instructions.
 search:
   boost: 3
 hide:

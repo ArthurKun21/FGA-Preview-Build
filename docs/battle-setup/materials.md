@@ -76,8 +76,10 @@ The edit pane controls one material. These items control the material:
 
 When you remove a material that is open in the edit pane, the edit pane closes.
 
-!!! note "How the two counts work together"
-    The **Count** is the number of drops that remain. The **Default Count** is the value that the **Count** returns to after FGA reaches zero. Set the **Default Count** before you change the **Count**.
+> [!NOTE]
+> **How the two counts work together**
+>
+> The **Count** is the number of drops that remain. The **Default Count** is the value that the **Count** returns to after FGA reaches zero. Set the **Default Count** before you change the **Count**.
 
 ### Global Material Defaults
 
@@ -152,8 +154,10 @@ FGA moves your old material settings automatically when it opens an older battle
 
 This change also changes when FGA stops the script. An old config with a shared limit of 5 stopped after 5 drops in total. The same config now stops after 5 drops of each tracked material.
 
-!!! info "Configs that had no material limit"
-    An older config with the material limit turned off keeps its tracked materials, but each material is off. Turn a material on when you want FGA to stop the script for it.
+> [!IMPORTANT]
+> **Configs that had no material limit**
+>
+> An older config with the material limit turned off keeps its tracked materials, but each material is off. Turn a material on when you want FGA to stop the script for it.
 
 ## Tips for Best Results
 
@@ -219,4 +223,4 @@ The undo system stores the full material list before each change. Many quick tap
 
 - [Battle Config](config.md) - Full battle configuration settings
 - [Battle Launcher](launcher.md) - Start and monitor farming runs
-- [Materials and Drop Tracking](../in-battle/tracking/materials-tracking.md) - How FGA counts drops during a run
+- [Materials and Drop Tracking](../scripts/in-battle/tracking/materials-tracking.md) - How FGA counts drops during a run

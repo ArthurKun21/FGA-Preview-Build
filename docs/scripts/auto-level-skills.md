@@ -25,8 +25,10 @@ The Level Skill script automatically enhances your servant's skills by repeatedl
 4. **Configure which skills to upgrade** and their target levels in settings
 5. Start the script
 
-!!! tip Important
-    You must select a servant before starting. The script will exit if no servant is selected.
+> [!TIP]
+> **Important**
+>
+> You must select a servant before starting. The script will exit if no servant is selected.
 
 ## Workflow
 
@@ -64,8 +66,8 @@ flowchart TD
 
 ### Resource Monitoring
 
-- Detects insufficient QP (currency)
-- Detects insufficient materials
+- Detects when QP (currency) is not enough
+- Detects when materials are not enough
 - Stops and reports which resource ran out
 
 ### Comprehensive Exit State
@@ -85,8 +87,8 @@ flowchart TD
 | Skill Two Upgrade Value    | Number of levels to upgrade skill 2 |
 | Skill Three Upgrade Value  | Number of levels to upgrade skill 3 |
 
-!!! note
-    Target level = Minimum (starting) level + Upgrade value
+> [!NOTE]
+> Target level = Minimum (starting) level + Upgrade value
 
 ![Level Skill](<../assets/scripts/Level Skill.png>)
 
@@ -104,7 +106,7 @@ flowchart TD
 | ----------------------- | ----------------------------------------------- |
 | **Done**                | All configured skills have been processed       |
 | **No Servant Selected** | No servant was selected in the enhancement slot |
-| **Ran Out of QP**       | Insufficient QP to continue upgrades            |
+| **Ran Out of QP**       | Not enough QP to continue upgrades              |
 | **Abort**               | Script was manually stopped by user             |
 | **Unexpected**          | An unexpected error occurred                    |
 
@@ -115,8 +117,8 @@ Each skill can exit with one of these reasons:
 | Skill Exit Reason          | Description                                  |
 | -------------------------- | -------------------------------------------- |
 | **Target Level Met**       | Skill reached the configured target level    |
-| **Out of Mats**            | Insufficient materials for this skill        |
-| **Out of QP**              | Insufficient QP for upgrade                  |
+| **Out of Mats**            | Not enough materials for this skill          |
+| **Out of QP**              | Not enough QP for the upgrade                |
 | **Exit Early (QP)**        | Skipped because previous skill ran out of QP |
 | **No Skill Upgrade Error** | Upgrade value was 0                          |
 
@@ -144,25 +146,25 @@ After the script completes, you receive a detailed summary:
 
 ## QP Cascade Effect
 
-If a skill runs out of QP, subsequent skills will be marked with "Exit Early (QP)":
+If a skill runs out of QP, every later skill is marked with "Exit Early (QP)":
 
 ```text
 Skill 1: Out of QP ──► Skill 2: Exit Early (QP) ──► Skill 3: Exit Early (QP)
 ```
 
-This prevents unnecessary attempts when QP is already depleted.
+This stops needless attempts when QP is already used up.
 
 ## Tips for Best Results
 
-1. **Check your materials** before starting to ensure all skills can be upgraded
-2. **Have sufficient QP** for all planned upgrades
+1. **Check your materials** before you start, so that every skill can be upgraded
+2. **Have enough QP** for all planned upgrades
 3. **Set realistic targets** based on your available resources
 4. **Note skill availability** - Skills 2 and 3 may be locked on newer servants
 5. **Configure all three skills** if you want to upgrade multiple in one run
 
 ## Technical Notes
 
-- Skills 2 and 3 availability is checked before attempting upgrade
+- Skills 2 and 3 are checked for availability before an upgrade is attempted
 - Temporary servants are handled with additional confirmation
 - Uses regex pattern matching for level detection: `(\d+)(?:/1|/10)?`
 - Connection retries are handled automatically

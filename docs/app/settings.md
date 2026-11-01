@@ -28,8 +28,10 @@ The settings screen shows one scrollable list. The list holds every section in a
 
 On a wide window the list shows two columns. Section headers and grouped rows always span the full width.
 
-!!! note "Tap and click"
-    This guide uses "tap" for a touch action. On the desktop app, use a mouse click.
+> [!NOTE]
+> **Tap and click**
+>
+> This guide uses "tap" for a touch action. On the desktop app, use a mouse click.
 
 ## Key Features
 

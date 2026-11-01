@@ -12,9 +12,11 @@ tags:
 
 Script Maker creates battle scripts. A battle script is a list of commands. Automation runs the commands during a battle.
 
-A battle config can hold several scripts. One script is active for each battle. Each script has its own commands, name, notes, start point, team, and Mystic Code.
+A battle config can hold several scripts. One script is active for each battle. Each script has its own commands, name, notes, start point, and selected team.
 
-The team holds up to six servants and one Mystic Code. The editor reads servant names, faces, skills, and Mystic Codes from the Atlas data. See [Script Team and Field Display](script-team-and-field-display.md).
+A team holds up to six servants and one Mystic Code. Teams are global. You manage them in the **Teams** tab. Several scripts can select the same team. See [Teams](teams.md).
+
+The editor reads servant names, faces, skills, and Mystic Codes from the Atlas data. See [Script Team and Field Display](script-team-and-field-display.md).
 
 ## Open Script Maker
 
@@ -27,7 +29,7 @@ The script list opens. Tap a script card to open its editor.
 
 The script list shows the exit settings and every script. When the config has more than one script, the list also shows an **Active** selector at the top. Use this selector to set the script that automation runs.
 
-Each script card shows the script name, its notes, and the team preview. The preview lists one icon per team slot and the equipped Mystic Code. Tap **Edit Team** on the preview to open the team screen. See [Script Team and Field Display](script-team-and-field-display.md).
+Each script card has the script name, its notes, and the team preview. The preview lists one icon per team slot and the equipped Mystic Code. A script without a team uses empty slots. Tap **Select team** on the preview to open the team selector. See [Select the Team](#select-the-team).
 
 Tap a card to expand it. The expanded card shows:
 
@@ -51,6 +53,26 @@ Use the toolbar at the bottom of the list:
 ## Rename a Script
 
 Tap the script name in the editor title bar. Enter a name, then tap **Confirm**. The name cannot be blank. A script without a name uses its position, such as **Script 2**.
+
+## Select the Team
+
+A script uses the team that you select for it. The selection drives the servant labels in the editor and the Mystic Code in Master Skills. See [Configure Master Skills](#configure-master-skills).
+
+Tap **Select team** on the script card. The selector lists the global teams:
+
+- The teams that the script used recently come first. Never-used teams follow in stored order.
+- **No team** clears the selection. The script then uses the generic labels.
+
+Tap a team to select it. The app records the use and returns to the script list.
+
+Each team row has a menu with two actions:
+
+| Action | Use |
+| ------ | --- |
+| **Remove from script** | Clear the selection and the use history of this script. The team stays. |
+| **Delete** | Delete the global team after confirmation. Scripts that used it select no team. |
+
+Tap **Add** to create a team. The app opens the **Teams** screen. See [Teams](teams.md).
 
 ## Set Exit Settings
 
@@ -207,11 +229,13 @@ Some skills need a special option and a target. Parentheses hold both. For examp
 
 ## Configure Master Skills
 
-Tap **Master Skills** to open the Master Skills screen. The **Mystic Code** row contains the Mystic Code of the script.
+Tap **Master Skills** to open the Master Skills screen. The **Mystic Code** row contains the Mystic Code of the selected team.
 
-- Tap **Mystic Code** to choose a Mystic Code from the Atlas data. The selected code shows its skill names and icon.
+- Tap **Mystic Code** to choose a Mystic Code from the Atlas data. The team stores the code. Every script that selects the team uses it.
 - Use **Display options** to change how the Mystic Code icon appears.
 - Clear the selection to use the default Master Skill buttons. The row shows **No mystic code set** when you select no code.
+
+A script can select no team. The row then shows **Select team**, and tapping it opens the team selector. See [Select the Team](#select-the-team).
 
 The **Master Skills** button in the bottom bar shows the icon of the equipped Mystic Code. Without an equipped code, the button shows the standard icon.
 
@@ -394,7 +418,9 @@ a1b1l[x13]k2456,#,456,#,456
 | A skill uses the wrong target | Review the target chip for the servant row. Review the Smart Target setting and the gesture you used. |
 | A skill adds without a target | You did not select a servant target. Tap a target chip before you tap the skill. |
 | A skill option screen does not appear | Only skills with special options open the special option screen. |
-| A skill button shows a letter, not an icon | The team has no servant in that slot. Or the Atlas data has no skill for that slot. |
+| A skill button shows a letter, not an icon | The selected team has no servant in that slot. Or the Atlas data has no skill for that slot. |
+| The script card shows empty team slots | The script selects no team. Tap **Select team** on the script card. |
+| A Mystic Code pick does nothing | The script selects no team. The **Mystic Code** row shows **Select team**. Select a team first. |
 | A long press opens a skill description | Skills with Atlas data use the long press for the description. Tap **Use** in the description to add the skill. |
 | History rows show the command only | The team changed after you recorded the actions. The rows show Atlas data again when the team matches. |
 | Names show in Japanese | The Atlas data has no translation for your language. The app shows the Atlas original. |
@@ -407,6 +433,7 @@ a1b1l[x13]k2456,#,456,#,456
 
 ## Related Documentation
 
-- [Auto Battle](../in-battle/auto-battle.md) explains how automation executes battle commands.
+- [Auto Battle](../scripts/in-battle/auto-battle.md) explains how automation executes battle commands.
 - [Card Priority](card-priority.md) explains how automation selects face cards.
-- [Script Team and Field Display](script-team-and-field-display.md) explains script servant teams, the field display, order changes, and transformations.
+- [Teams](teams.md) explains the global teams, the team editor, and the skill versions.
+- [Script Team and Field Display](script-team-and-field-display.md) explains how the editor maps the team to the field display, order changes, and transformations.

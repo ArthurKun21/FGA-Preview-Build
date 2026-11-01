@@ -115,8 +115,8 @@ Select the apple type to use when AP runs out.
 
 Tap a resource to select it. Tap the selected resource again to clear the selection. Only one resource is active at a time.
 
-!!! note
-    If you turn on **Hide SQ in AP Resources**, the SQ resource does not show in this list. This prevents an accidental use of SQ. See the Settings tab.
+> [!NOTE]
+> If you turn on **Hide SQ in AP Resources**, the SQ resource does not show in this list. This prevents an accidental use of SQ. See the Settings tab.
 
 #### Wait for AP Regeneration
 
@@ -126,8 +126,8 @@ When you turn on this option, the script waits for AP to regenerate on its own. 
 
 When you turn on this option, FGA refills AP above your maximum. FGA uses the largest number of apples that fits.
 
-!!! note
-    This option is available only for Copper, Bronze, and Silver apples. FGA disables this option for Gold apples and Saint Quartz.
+> [!NOTE]
+> This option is available only for Copper, Bronze, and Silver apples. FGA disables this option for Gold apples and Saint Quartz.
 
 ### Command Execution Start From
 
@@ -159,15 +159,15 @@ When you turn on this switch, the script does not check the consumables state. F
 
 Use teapots to finish battles at once. Set the maximum number of teapots to use.
 
-!!! note
-    Turn off **Skip Consumables Check** to use this limit.
+> [!NOTE]
+> Turn off **Skip Consumables Check** to use this limit.
 
 #### Ordeal Call Storm Pods
 
 Use Ordeal Call Storm Pods to finish battles at once. Set the maximum number of pods to use. The count range is 1 to 9.
 
-!!! note
-    Turn off **Skip Consumables Check** to use this limit.
+> [!NOTE]
+> Turn off **Skip Consumables Check** to use this limit.
 
 #### Materials
 
@@ -182,8 +182,8 @@ FGA stops the script when one enabled material reaches its own count. See [Mater
 | **Default** | Restore every limit to the default value set in the config |
 | **Reset All** | Turn off all limits and set every count to 1 |
 
-!!! note
-    FGA disables the **Reset All** button until you change a limit.
+> [!NOTE]
+> FGA disables the **Reset All** button until you change a limit.
 
 ---
 
@@ -225,14 +225,16 @@ These settings apply to the current game server.
 | **Send Friend Request** | Override the friend request behavior of the battle config |
 | **Manual Battle Config** | Turn off battle screen automation |
 
-!!! note "Send Friend Request override"
-    The **Send Friend Request** setting has three states.
-
-    - **Default**: FGA follows the friend request settings of the battle config.
-    - **Always**: FGA sends a request on every friend request screen.
-    - **Never**: FGA rejects every request.
-
-    See [Support Selection](support.md) for the friend request settings of the battle config.
+> [!NOTE]
+> **Send Friend Request override**
+>
+> The **Send Friend Request** setting has three states.
+>
+> - **Default**: FGA follows the friend request settings of the battle config.
+> - **Always**: FGA sends a request on every friend request screen.
+> - **Never**: FGA rejects every request.
+>
+> See [Support Selection](support.md) for the friend request settings of the battle config.
 
 ### Per App
 
@@ -249,8 +251,8 @@ These settings apply to the whole app.
 | **Exit on Manual Support Selection** | Stop the script when you select a support by hand |
 | **Debug Mode** | Write detailed logs for problem reports |
 
-!!! note
-    The **Bond Level Target** setting is active only when **Stop on Bond Level Up** is on.
+> [!NOTE]
+> The **Bond Level Target** setting is active only when **Stop on Bond Level Up** is on.
 
 ---
 
@@ -334,10 +336,10 @@ The script stops when it reaches one limit. When the script reaches a limit, tha
 
 ## Related Documentation
 
-- [Auto Battle](../in-battle/auto-battle.md) - How the battle automation works
+- [Auto Battle](../scripts/in-battle/auto-battle.md) - How the battle automation works
 - [Battle Config](config.md) - Full battle configuration settings
 - [Materials Selection](materials.md) - Set the tracked materials and their counts
 - [Command Card Priority](card-priority.md) - Card priority configuration
 - [Script Maker](script-maker.md) - Skill command configuration
 - [Preferred Support](support.md) - Support selection setup
-- [Materials and Drop Tracking](../in-battle/tracking/materials-tracking.md) - How FGA counts drops during a run
+- [Materials and Drop Tracking](../scripts/in-battle/tracking/materials-tracking.md) - How FGA counts drops during a run

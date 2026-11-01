@@ -28,15 +28,16 @@ A battle config contains these groups:
 | **Additional Settings** | Target selection and card shuffling |
 | **Records** | Read-only usage statistics |
 
-!!! note "Changes since `pre-2614`"
-
-    - A config can contain several battle scripts. One script is active.
-    - A config can contain several named command-card rules. One rule is active.
-    - The **Default Ordeal Call Pods** limit is new.
-    - You can select several game servers for one config.
-    - The exit settings moved into the Script Maker script list.
-    - The quick edit dialog for skill commands is gone. Edit commands in the Script Maker.
-    - A Records section tracks the usage of the config.
+> [!NOTE]
+> **Changes since `pre-2614`**
+>
+> - A config can contain several battle scripts. One script is active.
+> - A config can contain several named command-card rules. One rule is active.
+> - The **Default Ordeal Call Pods** limit is new.
+> - You can select several game servers for one config.
+> - The exit settings moved into the Script Maker script list.
+> - The quick edit dialog for skill commands is gone. Edit commands in the Script Maker.
+> - A Records section tracks the usage of the config.
 
 ## General
 
@@ -94,8 +95,10 @@ When the script reaches a limit, the limit turns off and its value returns to th
 | ---------------- | ---------------------------------------------------------- |
 | Party Selection  | ![Party Configuration](../assets/battle/party-config.png)  |
 
-!!! info "Party Slots"
-    All servers use 15 party slots.
+> [!NOTE]
+> **Party Slots**
+>
+> All servers use 15 party slots.
 
 ## Command Card
 
@@ -105,8 +108,10 @@ A config can contain several named command-card rules. One rule is active. Autom
 
 Tap the rule card to open the [Command Card Priority](card-priority.md) editor. The card shows the rule name, the notes, and a chip when **Skip servant face-card checks** is on.
 
-!!! note "Priority options moved"
-    The servant priority and critical-star priority switches are now wave and turn settings inside each rule. See [Command Card Priority](card-priority.md).
+> [!NOTE]
+> **Priority options moved**
+>
+> The servant priority and critical-star priority switches are now wave and turn settings inside each rule. See [Command Card Priority](card-priority.md).
 
 ## Support Selection
 
@@ -137,8 +142,10 @@ When you select **Preferred** mode:
 - **Enable Send Friend Request** is the master switch for sending friend requests. See [Support](support.md).
 - **Preferred Support** is the summary of your preferred servants and default Craft Essence. Tap it to open the [Support](support.md) editor.
 
-!!! note "Preferred mode needs a criterion"
-    Preferred mode needs at least one enabled servant or a configured default Craft Essence. FGA shows a warning when the config has none.
+> [!NOTE]
+> **Preferred mode needs a criterion**
+>
+> Preferred mode needs at least one enabled servant or a configured default Craft Essence. FGA shows a warning when the config has none.
 
 ## Raid Settings
 
@@ -150,10 +157,12 @@ Special options for raid battles like Tunguska or event raids:
 | **Delay Duration** | Wait time in seconds (1-10)                                |
 | **Skip Intro**     | Skips story introductions. This setting is experimental.   |
 
-!!! tip "Why Use Raid Delay?"
-    Some raid battles show kill counters that interfere with FGA's timing. Adding a delay allows the overlay to disappear before FGA starts acting.
-
-    [![Tunguska Raid Example](https://i.ytimg.com/vi/Kpg2DsgQRBg/mqdefault.jpg)](https://youtu.be/Kpg2DsgQRBg?t=123)
+> [!TIP]
+> **Why Use Raid Delay?**
+>
+> Some raid battles show kill counters that interfere with FGA's timing. Adding a delay allows the overlay to disappear before FGA starts acting.
+>
+> [![Tunguska Raid Example](https://i.ytimg.com/vi/Kpg2DsgQRBg/mqdefault.jpg)](https://youtu.be/Kpg2DsgQRBg?t=123)
 
 ## Additional Settings
 

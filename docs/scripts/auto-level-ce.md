@@ -1,6 +1,6 @@
 ---
 title: Auto Level CE
-description: Automatically level up Craft Essences in Fate/Grand Order using FGA Preview. Feed fodder CEs to enhance your target CE efficiently.
+description: Level up Craft Essences automatically in Fate/Grand Order with FGA Preview. The script feeds fodder CEs to your target CE until it reaches max level.
 tags:
   - scripts
   - CE
@@ -11,77 +11,78 @@ tags:
 
 # Auto Level CE
 
-Automatically enhances a selected Craft Essence (CE) to increase its level.
+The script enhances one target Craft Essence (CE) with fodder CEs. It stops when the target CE reaches its maximum level.
 
 ## Overview
 
-The Level CE script enhances a single target Craft Essence by feeding it fodder CEs. Unlike CE Bomb mode, this mode is designed to level a specific CE you've already selected and will stop when that CE reaches its maximum level.
+The script feeds fodder CEs to the target CE that you selected before you started. The game selects the fodder CEs with its Auto Select feature. The script stops when the target CE reaches its maximum level.
+
+This script has two modes. An empty enhancement slot starts CE Bomb mode. See [Auto CE EXP Bomb](auto-ce-exp-bomb.md).
 
 ## How to Start
 
-1. Navigate to **Enhancement → Craft Essence** in the game
-2. **Select the CE you want to level** (tap on it so it appears in the enhancement slot)
-3. The script will automatically detect you're in CE enhancement mode when:
-   - The CE Enhancement banner is visible
-   - A CE is already selected (not empty)
-4. Start the script
+1. Open **Enhancement → Craft Essence** in the game.
+2. Select the CE that you want to level. The CE appears in the enhancement slot.
+3. Open the CE setup screen in FGA Preview. Set the fodder settings.
+4. Start the script.
 
-!!! tip Important
-    You must select a target CE before starting. The script distinguishes between Level CE mode and CE Bomb mode based on whether a CE is already selected.
+The script starts in Level CE mode when the slot contains a CE.
+
+> [!TIP]
+> **Important**
+>
+> Select a target CE before you start the script. With an empty slot, the script starts CE Bomb mode instead.
 
 ## Workflow
 
 ```mermaid
 flowchart TD
-    A[Start Level CE Script] --> B[Verify Target CE is Selected<br/>Not empty enhancement slot]
-    B --> C[Main Enhancement Loop]
-    C --> D[Check if CE is Locked<br/>Auto-lock if needed]
-    D --> E[Open Fodder Selection]
-    E --> F[Configure Filters<br/>Display, Sort, etc.]
-    F --> G[Select Fodder CEs<br/>Drag to select]
-    G --> H[Confirm Enhancement]
-    H --> I{Is Target CE Max?}
-    I -->|No| C
-    I -->|Yes| J[Exit: Target CE Max Level]
+    A[Start Level CE Script] --> B[Target CE is in the enhancement slot]
+    B --> C[Lock the target CE]
+    C --> D[Configure the Auto Select filter]
+    D --> E[Auto Select selects the fodder CEs]
+    E --> F[Confirm the enhancement]
+    F --> G{Is the target CE at max level?}
+    G -->|No| E
+    G -->|Yes| H[Exit: target CE at max level]
 ```
+
+The lock and the filter configuration run once, on the first pass. Later passes reuse the filter.
 
 ## Key Features
 
 ### Auto-Lock Target CE
 
-- Automatically locks the target CE to prevent accidental use as fodder
-- Can be disabled in settings
-- Requires Android 8.0+ for long-press functionality
+- The script locks the target CE with a long press. This needs Android 8.0 or later.
+- The lock protects the target CE from use as fodder.
+- Enable **Skip the auto-lock of target CE?** to skip this step.
 
-### Smart Display Adjustment
+### Auto Select Fodder
 
-- Automatically sets CE display to small size for better visibility
-- Can detect and click the correct corner for display toggle
-- Configurable based on your screen layout
+- The game selects the fodder CEs with its Auto Select feature.
+- On the first pass, the script configures the Auto Select filter. It uses your **Fodder Rarity** and **Fodder Filter CE Type** settings.
+- Later passes reuse this filter.
 
-### Filter Configuration
+### Auto-Fill on JP
 
-- Automatically sets appropriate filters for fodder CEs
-- Filters by rarity (based on your settings)
-- Configures sort options for optimal fodder selection
+- On JP, the script enables the auto-fill toggle in the Auto Select window.
+- Later enhancements then run with fewer steps. The script taps Enhance and waits for the Ok dialog.
 
-### Smart Sort Features
+### Connection Retry
 
-- Enables smart sort for efficient CE organization
-- Enables select sort for easier multi-selection
-- Sorts by level to use lowest-level CEs first
+- The game may lose the connection. The script retries the connection and continues.
 
 ## Settings
 
-| Setting                       | Description                            |
-| ----------------------------- | -------------------------------------- |
-| Target CE Rarity              | Rarity of the CE you're leveling       |
-| Fodder CE Rarity              | Which CE rarities to use as fodder     |
-| Skip Auto-Lock Target CE      | Don't automatically lock the target CE |
-| Skip Automatic Display Change | Don't auto-adjust display size         |
-| Skip CE Filter Detection      | Don't auto-configure filters           |
-| Skip Sort Detection           | Don't auto-configure sort options      |
-| CE Display Change Area        | Which corner to tap to change display  |
+The CE setup screen has these settings. **Target Rarity** and **Target Filter CE Type** appear only in CE Bomb mode.
+
+| Setting                         | Description                                                                      |
+| ------------------------------- | -------------------------------------------------------------------------------- |
+| Fodder Rarity                   | The CE rarities that the script uses as fodder.                                  |
+| Fodder Filter CE Type           | The CE types that the Auto Select filter includes.                               |
+| Skip the auto-lock of target CE? | The script does not lock the target CE.                                         |
+| Skip the CE filter settings setup? | The script does not configure the Auto Select filter. Configure the filter in the game yourself. |
+| Skip the CE sort settings setup? | The script does not configure the sort options. This setting affects CE Bomb mode only. |
 
 ![Level CE](<../assets/scripts/Level CE.png>)
 
@@ -89,34 +90,34 @@ flowchart TD
 
 ## Exit Reasons
 
-The script will stop and notify you when any of these conditions occur:
+The script stops with one of these messages:
 
-| Exit Reason                     | Description                                             |
-| ------------------------------- | ------------------------------------------------------- |
-| **Target CE Max Level**         | The target CE has reached its maximum level             |
-| **No Suitable Fodder CE Found** | No fodder CEs available that match your filter criteria |
-| **No Suitable Target CE Found** | Could not identify a valid target CE                    |
+| Exit Message                          | Description                                                      |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `Target CE have reached max level.`   | The target CE reached its maximum level. This is the normal end. |
+| `No fodder CE found`                  | No fodder CE matches your filter settings.                       |
 
 ## Differences from CE Bomb Mode
 
-| Feature        | Level CE             | CE Bomb                     |
-| -------------- | -------------------- | --------------------------- |
-| Target CE      | Pre-selected by user | Auto-selected from list     |
-| Stop condition | Target CE max level  | No more fodder available    |
-| Purpose        | Level specific CE    | Create multiple leveled CEs |
-| Starting state | CE already in slot   | Empty enhancement slot      |
+See [Auto CE EXP Bomb](auto-ce-exp-bomb.md) for the other mode.
+
+| Feature        | Level CE                        | CE Bomb                       |
+| -------------- | ------------------------------- | ----------------------------- |
+| Target CE      | You select it before you start  | The script selects it         |
+| Start state    | CE in the slot                  | Empty slot                    |
+| Stop condition | Target CE at max level          | No fodder or no target CEs    |
+| Purpose        | Level one specific CE           | Make many leveled CEs         |
 
 ## Tips for Best Results
 
-1. **Select your target CE first** before starting the script
-2. **Use appropriate fodder rarities** to maximize enhancement value
-3. **Enable auto-lock** to protect your target CE
-4. **Configure display area** based on your screen layout
-5. **Ensure sufficient QP** for enhancement costs
+1. Select the target CE before you start the script.
+2. Set **Fodder Rarity** to the rarities that you want to spend.
+3. Keep the auto-lock on. The lock protects the target CE.
+4. Check your QP. Each enhancement costs QP.
 
 ## Technical Notes
 
-- Uses 7 columns × 4 rows grid for target CE selection
-- Uses 7 columns × 3 rows grid for fodder CE selection
-- Skips rows/columns where CEs have been exhausted
-- Handles connection retries automatically
+- The script detects the mode with the state of the enhancement slot.
+- The script does not change the display size, sort options, or target filters in Level CE mode.
+- The script taps the Skip button while an enhancement runs.
+- The script retries the connection automatically.

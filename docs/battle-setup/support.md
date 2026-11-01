@@ -35,13 +35,15 @@ The atlas data comes from the `fga-data` snapshot. The app ships with a bundled 
 3. Select **Preferred** mode.
 4. Tap **Preferred Support**.
 
-!!! note "Preferred mode needs one criterion"
-    Preferred mode needs at least one of these two items:
-
-    - One enabled servant.
-    - One default Craft Essence.
-
-    Friend settings only narrow an existing search. They do not start a search. If you set no servant and no CE, the battle script stops. The exit reason is `SupportSelectionPreferredNotSet`.
+> [!NOTE]
+> **Preferred mode needs one criterion**
+>
+> Preferred mode needs at least one of these two items:
+>
+> - One enabled servant.
+> - One default Craft Essence.
+>
+> Friend settings only narrow an existing search. They do not start a search. If you set no servant and no CE, the battle script stops. The exit reason is `SupportSelectionPreferredNotSet`.
 
 ---
 
@@ -67,8 +69,8 @@ Choose the class tab that FGA searches.
 
 When you enable this option and you select a class, FGA also searches the "All" tab. It searches the "All" tab after it finds no match in the class tab.
 
-!!! note
-    This option is not available when you select "None", "All", or "Mix".
+> [!NOTE]
+> This option is not available when you select "None", "All", or "Mix".
 
 ### Friend Requests After Battle
 
@@ -125,8 +127,10 @@ The **Display options** pane has three sections.
 - Entries that you already added have a check mark. You cannot add them a second time.
 - Tap an entry that you already added to open its detail screen.
 
-!!! tip "Image source"
-    You must first create servant images with the **Support Image Maker** feature. Without images, FGA cannot identify servants.
+> [!TIP]
+> **Image source**
+>
+> You must first create servant images with the **Support Image Maker** feature. Without images, FGA cannot identify servants.
 
 ### Servant Detail Screen
 
@@ -166,12 +170,14 @@ Set which of the three skills must be at level 10. The layout depends on the ser
 
 For example, `10 / X / 10` means that skills 1 and 3 must be maxed. Skill 2 can be at any level.
 
-!!! note "Skill versions"
-    A servant can have more than one version of the same skill. FGO upgrades skills in rank-up quests.
-
-    An atlas servant displays each version as a tab. The tab name is the skill name. The app opens the newest version first.
-
-    All versions of one skill share the same 10 or X setting.
+> [!NOTE]
+> **Skill versions**
+>
+> A servant can have more than one version of the same skill. FGO upgrades skills in rank-up quests.
+>
+> An atlas servant displays each version as a tab. The tab name is the skill name. The app opens the newest version first.
+>
+> All versions of one skill share the same 10 or X setting.
 
 The summary badge has the same value. For example, the badge is `X / X / X` when you set no skill requirement.
 
@@ -185,14 +191,16 @@ Turn on this switch to check append skill levels. The editor has five append ski
 - The row is `X` when you do not require that append skill.
 - The summary badge is **Any** when the switch is off.
 
-!!! note "How FGA reads append skills"
-    The support list has either the skill levels or the append skill levels.
-
-    FGA switches the list to the append display, reads the levels under one screen snapshot, and then switches back to the skill display.
-
-    FGA reads the five append skill level icons at the Japanese server positions on every server.
-
-    FGA skips the check for an entry that has the **Follow** indicator. A follow entry has your own append skills, which do not apply.
+> [!NOTE]
+> **How FGA reads append skills**
+>
+> The support list has either the skill levels or the append skill levels.
+>
+> FGA switches the list to the append display, reads the levels under one screen snapshot, and then switches back to the skill display.
+>
+> FGA reads the five append skill level icons at the Japanese server positions on every server.
+>
+> FGA skips the check for an entry that has the **Follow** indicator. A follow entry has your own append skills, which do not apply.
 
 #### Noble Phantasm
 
@@ -209,15 +217,19 @@ FGA checks the NP level with these rules:
 - FGA reads the NP level from a different region in the Grand layout.
 - A failed text read returns level 1. So a failed read fails only when you require level 2 or higher.
 
-!!! info "The NP level matches the setting but FGA did not select the servant"
-    Optical character recognition (OCR) can read the NP level incorrectly.
+> [!NOTE]
+> **The NP level matches the setting but FGA did not select the servant**
+>
+> Optical character recognition (OCR) can read the NP level incorrectly.
+>
+> The move from Tesseract to PaddleOCR improved the read accuracy.
 
-    The move from Tesseract to PaddleOCR improved the read accuracy.
-
-!!! warning "Server support limitation"
-    NP level detection currently works on **English** and **Japanese** servers only.
-
-    Please [create an issue on GitHub](https://github.com/ArthurKun21/FGA-Preview-Build/issues/new?template=feature_request.yml) so we can coordinate adding support for other languages.
+> [!WARNING]
+> **Server support limitation**
+>
+> NP level detection currently works on **English** and **Japanese** servers only.
+>
+> Please [create an issue on GitHub](https://github.com/ArthurKun21/FGA-Preview-Build/issues/new?template=feature_request.yml) so we can coordinate adding support for other languages.
 
 #### Grand Servant
 
@@ -227,8 +239,8 @@ FGA checks the NP level with these rules:
 | **Any Grand Servant** | Accepts a Grand servant at level 100 or higher. |
 | **Only Grand Servant Above Level 100** | Accepts a Grand servant above level 100. |
 
-!!! warning
-    The Grand servant tag currently works in **Grand Duels** only. Use in a normal quest can return no match.
+> [!WARNING]
+> The Grand servant tag currently works in **Grand Duels** only. Use in a normal quest can return no match.
 
 FGA treats an entry as a Grand servant when it finds the Grand CE logo on that entry. FGA also treats an entry as a Grand servant when you set this option, or when the CE configuration uses a Grand slot.
 
@@ -317,8 +329,8 @@ This setting decides how FGA combines the slot 1 result and the slot 3 result. T
 | **Match Both** | Slot 1 and slot 3 must both match your preferred CEs. |
 | **Match Either** | Slot 1 or slot 3 must match your preferred CEs. |
 
-!!! note
-    The control stays disabled until you configure CEs in slot 1 and slot 3. An empty slot always matches. So **Match Either** with an empty slot would pass without a real match.
+> [!NOTE]
+> The control stays disabled until you configure CEs in slot 1 and slot 3. An empty slot always matches. So **Match Either** with an empty slot would pass without a real match.
 
 ### Send Friend Request on Default CE Match
 
@@ -343,8 +355,8 @@ Each servant has a **Default** page and a **Custom** page for friends, the same 
 
 Turn on this switch to accept only supports from players on your friends list. FGA then rejects every support that is not from a friend.
 
-!!! note
-    The friend names apply only when **Friends Only** is on. When the switch is off, FGA ignores the stored names and accepts any player.
+> [!NOTE]
+> The friend names apply only when **Friends Only** is on. When the switch is off, FGA ignores the stored names and accepts any player.
 
 ### Preferred Friends
 
@@ -383,8 +395,10 @@ The app stores the configuration as a new entry.
 - You can save more than one entry for the same servant or selection. The entries become variations of one configuration.
 - When an exactly equal entry is already stored, the app saves nothing and reports a duplicate.
 
-!!! tip "Reuse a configuration in another battle config"
-    Save the configuration once. Open the same defaults screen from another battle config. Tap **Apply**.
+> [!TIP]
+> **Reuse a configuration in another battle config**
+>
+> Save the configuration once. Open the same defaults screen from another battle config. Tap **Apply**.
 
 ### Apply, Overwrite, and Delete an Entry
 
@@ -409,8 +423,10 @@ The browser lists every saved entry. Tap an entry to load it into this battle co
 - A servant that is already in the config has the note **Already added**. The app does not add it a second time.
 - Each entry also has a **Delete** action.
 
-!!! note "Images are not part of an entry"
-    The app saves names and settings only. An atlas entry loads its images from the atlas data. An entry from your stored support images loads its images from your device.
+> [!NOTE]
+> **Images are not part of an entry**
+>
+> The app saves names and settings only. An atlas entry loads its images from the atlas data. An entry from your stored support images loads its images from your device.
 
 ---
 
@@ -439,12 +455,14 @@ Turn on **Override matching threshold** to set a custom threshold. Then drag the
 - A mode change resets the threshold to the default of the new mode.
 - The summary badge has the custom threshold when the override is on.
 
-!!! tip "When to change the threshold"
-    Lower the threshold when FGA cannot find an entry that you can see on the screen.
-
-    Raise the threshold when FGA picks the wrong entry.
-
-    Test a change on one quest before you start a long farming run.
+> [!TIP]
+> **When to change the threshold**
+>
+> Lower the threshold when FGA cannot find an entry that you can see on the screen.
+>
+> Raise the threshold when FGA picks the wrong entry.
+>
+> Test a change on one quest before you start a long farming run.
 
 ---
 
@@ -623,9 +641,9 @@ A support must meet all of these conditions before FGA selects it:
 
 ## Related Documentation
 
-- [Auto Battle](../in-battle/auto-battle.md) - Overall battle automation
-- [Support Image Maker](../other-scripts/support-image-maker.md) - Create support images
-- [Preferred Servant](../support-screen/preferred-servant.md) - Servant filters in detail
-- [Preferred CE](../support-screen/preferred-ce.md) - Craft Essence filters in detail
-- [Preferred Friend](../support-screen/preferred-friend.md) - Friend filters in detail
-- [Grand Servant](../support-screen/grand-servant.md) - Grand Servant detection and handling
+- [Auto Battle](../scripts/in-battle/auto-battle.md) - Overall battle automation
+- [Support Image Maker](../scripts/support-image-maker.md) - Create support images
+- [Preferred Servant](../scripts/in-battle/support/preferred-servant.md) - Servant filters in detail
+- [Preferred CE](../scripts/in-battle/support/preferred-ce.md) - Craft Essence filters in detail
+- [Preferred Friend](../scripts/in-battle/support/preferred-friend.md) - Friend filters in detail
+- [Grand Servant](../scripts/in-battle/support/grand-servant.md) - Grand Servant detection and handling

@@ -25,15 +25,19 @@ The Advanced section holds the service options, the game area options, a Permiss
 
 Enable **Auto stop accessibility service on script service stop** to stop the accessibility service each time the script service stops. The next run then starts with a fresh service, and the service runs without problems.
 
-!!! note "Android only"
-    This row shows only on Android.
+> [!NOTE]
+> **Android only**
+>
+> This row shows only on Android.
 
 ### Start the service with the app
 
 Enable **Auto-start service** to start the overlay service and the accessibility service when you open FGA. You then start a run with one tap.
 
-!!! note "Android only"
-    This row shows only on Android.
+> [!NOTE]
+> **Android only**
+>
+> This row shows only on Android.
 
 ### Select the game area mode
 
@@ -64,11 +68,15 @@ Enable **Thresholded stage counter detection** when FGA reads the stage counter 
 
 FGA shows a warning when it cannot find the play button with confidence. Enable **Ignore warning about play button's location** to stop the warning.
 
-!!! warning "Enable this option with care"
-    With the warning off, FGA can tap a wrong place on the screen. Check the play button detection yourself before you use this option.
+> [!WARNING]
+> **Enable this option with care**
+>
+> With the warning off, FGA can tap a wrong place on the screen. Check the play button detection yourself before you use this option.
 
-!!! note "Android only"
-    This row shows only on Android.
+> [!NOTE]
+> **Android only**
+>
+> This row shows only on Android.
 
 ## Permissions
 
@@ -80,8 +88,10 @@ The Permissions group holds three rows. Tap a row to open the related screen in 
 | Battery Optimization | To keep the service alive during a long run. Android can otherwise stop FGA to save power. The permission gives FGA unrestricted battery use |
 | Display over other apps | To show the floating control panel above the game |
 
-!!! note "Android only"
-    The Permissions group shows only on Android.
+> [!NOTE]
+> **Android only**
+>
+> The Permissions group shows only on Android.
 
 ## Debugging
 

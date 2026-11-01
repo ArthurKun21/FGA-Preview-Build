@@ -77,6 +77,61 @@ minify_html = true
 [project.plugins.social.cards_layout_options]
 background_color = "#c62828"
 
+# Blog: posts live in docs/blog/posts/ and get date-based URLs (/blog/YYYY/MM/DD/slug/).
+# Archive, categories, and pagination are enabled by default.
+[project.plugins.blog]
+blog_dir = "blog"
+
+# Redirect pages for URLs that existed before docs/post became a blog.
+[project.plugins.redirects.redirect_maps]
+"post/grand-duels.md" = "blog/posts/grand-duels.md"
+"post/auto-level-ce-and-ce-exp-bomb.md" = "blog/posts/auto-level-ce-and-ce-exp-bomb.md"
+
+# Redirects for the docs restructure: automation script docs consolidated
+# under scripts/ (in-battle gained the renamed support/ section; other-scripts merged in).
+"in-battle/auto-battle.md" = "scripts/in-battle/auto-battle.md"
+"in-battle/card-selection/brave-chains.md" = "scripts/in-battle/card-selection/brave-chains.md"
+"in-battle/card-selection/card-simulation.md" = "scripts/in-battle/card-selection/card-simulation.md"
+"in-battle/card-selection/chain-priority.md" = "scripts/in-battle/card-selection/chain-priority.md"
+"in-battle/card-selection/custom-card-priority.md" = "scripts/in-battle/card-selection/custom-card-priority.md"
+"in-battle/card-selection/face-card-priority.md" = "scripts/in-battle/card-selection/face-card-priority.md"
+"in-battle/card-selection/shuffle-cards.md" = "scripts/in-battle/card-selection/shuffle-cards.md"
+"in-battle/resources/energy-refill.md" = "scripts/in-battle/resources/energy-refill.md"
+"in-battle/resources/storm-pods.md" = "scripts/in-battle/resources/storm-pods.md"
+"in-battle/resources/teapots.md" = "scripts/in-battle/resources/teapots.md"
+"in-battle/script-control/auto-battle-exit-reasons.md" = "scripts/in-battle/script-control/auto-battle-exit-reasons.md"
+"in-battle/script-control/party-selection.md" = "scripts/in-battle/script-control/party-selection.md"
+"in-battle/script-control/screen-detection.md" = "scripts/in-battle/script-control/screen-detection.md"
+"in-battle/script-control/withdraw.md" = "scripts/in-battle/script-control/withdraw.md"
+"in-battle/skill-system/auto-target.md" = "scripts/in-battle/skill-system/auto-target.md"
+"in-battle/skill-system/skill-execution.md" = "scripts/in-battle/skill-system/skill-execution.md"
+"in-battle/tracking/ce-drops.md" = "scripts/in-battle/tracking/ce-drops.md"
+"in-battle/tracking/materials-tracking.md" = "scripts/in-battle/tracking/materials-tracking.md"
+"in-battle/tracking/servant-tracking.md" = "scripts/in-battle/tracking/servant-tracking.md"
+"in-battle/tracking/stage-tracking.md" = "scripts/in-battle/tracking/stage-tracking.md"
+"support-screen/class-picker.md" = "scripts/in-battle/support/class-picker.md"
+"support-screen/grand-servant.md" = "scripts/in-battle/support/grand-servant.md"
+"support-screen/preferred-ce.md" = "scripts/in-battle/support/preferred-ce.md"
+"support-screen/preferred-friend.md" = "scripts/in-battle/support/preferred-friend.md"
+"support-screen/preferred-servant.md" = "scripts/in-battle/support/preferred-servant.md"
+"support-screen/refresh.md" = "scripts/in-battle/support/refresh.md"
+"support-screen/selection-modes.md" = "scripts/in-battle/support/selection-modes.md"
+"other-scripts/friend-point-gacha.md" = "scripts/friend-point-gacha.md"
+"other-scripts/gift-box.md" = "scripts/gift-box.md"
+"other-scripts/lottery.md" = "scripts/lottery.md"
+"other-scripts/play-button-detection.md" = "scripts/play-button-detection.md"
+"other-scripts/support-image-maker.md" = "scripts/support-image-maker.md"
+
+# Click-to-zoom lightbox for images.
+[project.plugins.glightbox]
+
+# RSS feeds for the blog (default: feed_rss_created.xml / feed_rss_updated.xml).
+[project.plugins.rss]
+match_path = "blog/posts/.*"
+
+# Self-host external assets (badges, remote thumbnails) instead of hotlinking.
+[project.plugins.privacy]
+
 [project.markdown_extensions]
 admonition = {}
 def_list = {}
@@ -100,3 +155,5 @@ pymdownx.inlinehilite = {}
 pymdownx.snippets = {}
 pymdownx.mark = {}
 pymdownx.keys = {}
+# GitHub callouts: "> [!TIP]"-style blockquotes used across docs/.
+pymdownx.quotes.callouts = true

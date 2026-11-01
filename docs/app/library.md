@@ -43,8 +43,10 @@ The available servers are:
 | TW      | The Taiwan server                                 |
 | KR      | The Korean server                                 |
 
-!!! note "BetterFGO variants"
-    The BetterFGO variants of NA and JP use the same tab as their base server.
+> [!NOTE]
+> **BetterFGO variants**
+>
+> The BetterFGO variants of NA and JP use the same tab as their base server.
 
 ### Select a sort method
 

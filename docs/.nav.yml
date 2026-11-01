@@ -1,6 +1,6 @@
 nav:
   - Home: index.md
-  - Posts: post/
+  - Blog: blog/
   - App:
     - app/requirements.md
     - Settings:
@@ -19,48 +19,55 @@ nav:
       - battle-setup/materials.md
       - battle-setup/script-maker.md
       - battle-setup/script-team-and-field-display.md
+      - battle-setup/teams.md
       - battle-setup/support.md
     - How to get started:
       - battle-setup/launcher.md
     - In-battle:
-      - in-battle/auto-battle.md
+      - scripts/in-battle/auto-battle.md
       - Card Selection:
-        - in-battle/card-selection/face-card-priority.md
-        - in-battle/card-selection/chain-priority.md
-        - in-battle/card-selection/custom-card-priority.md
-        - in-battle/card-selection/brave-chains.md
-        - in-battle/card-selection/card-simulation.md
-        - in-battle/card-selection/shuffle-cards.md
+        - scripts/in-battle/card-selection/face-card-priority.md
+        - scripts/in-battle/card-selection/chain-priority.md
+        - scripts/in-battle/card-selection/custom-card-priority.md
+        - scripts/in-battle/card-selection/brave-chains.md
+        - scripts/in-battle/card-selection/card-simulation.md
+        - scripts/in-battle/card-selection/shuffle-cards.md
       - Skill System:
-        - in-battle/skill-system/skill-execution.md
-        - in-battle/skill-system/auto-target.md
+        - scripts/in-battle/skill-system/skill-execution.md
+        - scripts/in-battle/skill-system/auto-target.md
       - Tracking:
-        - in-battle/tracking/stage-tracking.md
-        - in-battle/tracking/servant-tracking.md
-        - in-battle/tracking/materials-tracking.md
-        - in-battle/tracking/ce-drops.md
+        - scripts/in-battle/tracking/stage-tracking.md
+        - scripts/in-battle/tracking/servant-tracking.md
+        - scripts/in-battle/tracking/materials-tracking.md
+        - scripts/in-battle/tracking/ce-drops.md
       - Resources:
-        - in-battle/resources/energy-refill.md
-        - in-battle/resources/teapots.md
-        - in-battle/resources/storm-pods.md
+        - scripts/in-battle/resources/energy-refill.md
+        - scripts/in-battle/resources/teapots.md
+        - scripts/in-battle/resources/storm-pods.md
       - Script Control:
-        - in-battle/script-control/party-selection.md
-        - in-battle/script-control/withdraw.md
-        - in-battle/script-control/auto-battle-exit-reasons.md
-        - in-battle/script-control/screen-detection.md
-    - Support screen:
-      - support-screen/class-picker.md
-      - support-screen/refresh.md
-      - support-screen/selection-modes.md
-      - Preferred Support:
-        - support-screen/preferred-servant.md
-        - support-screen/preferred-ce.md
-        - support-screen/preferred-friend.md
-        - support-screen/grand-servant.md
+        - scripts/in-battle/script-control/party-selection.md
+        - scripts/in-battle/script-control/withdraw.md
+        - scripts/in-battle/script-control/auto-battle-exit-reasons.md
+        - scripts/in-battle/script-control/screen-detection.md
+      - Support screen:
+        - scripts/in-battle/support/class-picker.md
+        - scripts/in-battle/support/refresh.md
+        - scripts/in-battle/support/selection-modes.md
+        - Preferred Support:
+          - scripts/in-battle/support/preferred-servant.md
+          - scripts/in-battle/support/preferred-ce.md
+          - scripts/in-battle/support/preferred-friend.md
+          - scripts/in-battle/support/grand-servant.md
   - scripts/auto-level-servant.md
   - scripts/auto-level-ce.md
   - scripts/auto-ce-exp-bomb.md
   - scripts/auto-level-skills.md
   - scripts/auto-level-append.md
-  - Other Scripts: other-scripts/
+  - Other Scripts:
+    - scripts/friend-point-gacha.md
+    - scripts/gift-box.md
+    - scripts/lottery.md
+    - scripts/play-button-detection.md
+    - scripts/support-image-maker.md
+  - Tags: tags.md
   - Changelog: changelog/

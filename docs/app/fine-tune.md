@@ -116,4 +116,4 @@ The Similarity settings control how strictly FGA matches an image. A high value 
 - [Settings](settings.md)
 - [Battle Launcher](../battle-setup/launcher.md)
 - [Preferred Support](../battle-setup/support.md)
-- [Auto Battle](../in-battle/auto-battle.md)
+- [Auto Battle](../scripts/in-battle/auto-battle.md)

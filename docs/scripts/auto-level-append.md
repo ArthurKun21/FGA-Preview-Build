@@ -23,7 +23,7 @@ Append Skills are additional passive skills that can be unlocked using Servant C
 
 ## Technical Difficulties
 
-Unlike regular skills, append skills' screen have their level text unable to be read via OCR. Therefore, the script relies on counting upgrade attempts to track levels.
+Unlike regular skills, the append skill screen cannot be read with OCR. The script therefore counts upgrade attempts to track the levels.
 
 ## How to Start
 
@@ -34,8 +34,10 @@ Unlike regular skills, append skills' screen have their level text unable to be 
 4. **Configure which appends to unlock/upgrade** in settings
 5. Start the script
 
-!!! tip "Important"
-    You must select a servant before starting. The script will exit if no servant is selected.
+> [!TIP]
+> **Important**
+>
+> You must select a servant before starting. The script will exit if no servant is selected.
 
 ![Level Append](<../assets/scripts/Level Append Old.png>)
 
@@ -107,8 +109,8 @@ flowchart TD
 | Upgrade Append Four        | Number of levels to upgrade append 4 (JP only) |
 | Upgrade Append Five        | Number of levels to upgrade append 5 (JP only) |
 
-!!! note
-    The app automatically detects which appends are locked/unlocked.
+> [!NOTE]
+> The app automatically detects which appends are locked/unlocked.
 
 ![Level Append Dialog](<../assets/scripts/Level Append Dialog.png>)
 

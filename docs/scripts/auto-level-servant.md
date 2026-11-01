@@ -26,8 +26,10 @@ The Level Servant script automatically feeds embers to your selected servant to 
    - Or the servant ascension/grail banner is visible
 4. Start the script
 
-!!! tip "Important"
-    You must select a servant before starting. The script will exit if no servant is selected.
+> [!TIP]
+> **Important**
+>
+> You must select a servant before starting. The script will exit if no servant is selected.
 
 ![Level Servant](<../assets/scripts/Level Servant.png>)
 

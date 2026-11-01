@@ -266,6 +266,11 @@ When **Use Servant Priority** is on for a wave and turn, FGA picks cards from th
 first. Each entry holds its own servant order. The servant list always shows all six team
 positions.
 
+When the battle script's selected team is available, the priority rows and the servant sort screen
+show each position's actual servant: the servant chips render the servant's face icon, and the
+sort rows are labeled "position · servant name" (for example "1 · Artoria"). Empty team slots and
+setups without a team keep the generic "Servant N" labels.
+
 ### Team Slots
 
 Each servant has a team position from 1 to 6:
@@ -446,6 +451,6 @@ Here is an example of how you can configure different waves:
 
 ## Related Documentation
 
-- [Auto Battle](../in-battle/auto-battle.md) - Overall battle automation
+- [Auto Battle](../scripts/in-battle/auto-battle.md) - Overall battle automation
 - [Script Maker](script-maker.md) - Configure skill execution during battle
 - [Global Battle Settings](../app/global-battle.md#treat-support-servants-like-your-own) - Treat support servants like your own option
