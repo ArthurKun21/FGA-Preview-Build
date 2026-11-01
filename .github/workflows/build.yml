@@ -113,7 +113,8 @@ jobs:
         run: |
           git switch -c update-release-${{ needs.build-app.outputs.COMMIT_COUNT_OUTPUT }}
 
-          { printf '# Pre-%s\n\n' "$COMMIT_COUNT"; cat CHANGELOG.md; } > CHANGELOG.md
+          { head -n 1 CHANGELOG.md; printf '\n## pre-%s\n' "$COMMIT_COUNT"; tail -n +2 CHANGELOG.md; } > CHANGELOG.md.tmp
+          mv CHANGELOG.md.tmp CHANGELOG.md
 
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
