@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-### Breaking Changes
+### Breaking Changes in Unreleased
 
 - Migration of Battle Configs' shared preferences into Protobuf backed by Proto Datastore.
   - Exported configs are now would be `.pb` instead of `.json`.
@@ -16,7 +16,7 @@
 - Multiple Scripts in the same battle config is now available.
   - UI is still basic, still working on this.
 
-### New features
+### New features in Unreleased
 
 - Added baseline profiles, should make the startup a bit faster.
 - Added Support for Leveling Append 4 and 5 for all servers
@@ -25,12 +25,12 @@
 
   <img width="799" height="162" alt="image" src="https://github.com/user-attachments/assets/890bb1e8-04d2-47c4-bb9a-489f8d45553b" />
 
-### Fixes
+### Fixes in Unreleased
 
 - Removing of battle config should not crash the battle launcher
 - Duplicate keys causes error when using `CN` locale
 
-### Misc
+### Misc in Unreleased
 
 - We have moved to using the Github packages for the custom libraries that I've used. This should add an extra security at the very least with the libraries that I made.
 
@@ -38,7 +38,7 @@
 
 2026-06-22
 
-### New features
+### New features in pre-2614
 
 - Battle script got its own script execution updated with scheduler.
   - BFGO NP Skip was given higher priority at certain points of time making it reliable to skip 3 NPs in a row.
@@ -62,7 +62,7 @@
     ![Black Sea Amber](https://static.atlasacademy.io/JP/Items/6565.png)
 - Minor performance upgrade thanks to the updated opencv to v5
 
-### Fixes
+### Fixes in pre-2614
 
 - Support Image Maker was crashing because I accidentally deleted a string, re-added now.
 
@@ -70,7 +70,7 @@
 
 2026-05-08
 
-### Breaking Changes
+### Breaking Changes in pre-2541
 
 #### Command Card Selection
 
@@ -85,7 +85,7 @@
 
 <img width="774" height="84" alt="image" src="https://github.com/user-attachments/assets/d5f895bf-1be0-48a1-b5d2-13b8be0855bf" />
 
-### Fix
+### Fixes in pre-2541
 
 - There were some problem in UI where setting NPs causes it to be sorted out. We already address this problem
     - For technical reason, it was due to us using set instead of list causing it to lost the order, we have now moved it to List
@@ -96,7 +96,7 @@
 
 - Fixed the Battle Launcher not updating all of the battle config data causing incorrect values on the summary screen.
 
-### Feat
+### Feat in pre-2541
 
 - Added tracking of preferred support Servants/CEs/Friends. Can show you how many time a certain preferred support got picked
 
@@ -110,7 +110,7 @@
 
 2026-04-26
 
-### Feat
+### Feat in pre-2509
 
 - Added [Prelati](https://apps.atlasacademy.io/db/JP/servant/467) to the Skill Maker
 
@@ -122,7 +122,7 @@
 
 2026-04-25
 
-### Feat
+### Feat in pre-2508
 
 - Added the ability to start the script at a different step of the battle script
 
@@ -136,7 +136,7 @@
 
 - Updated NP skip detection for better FGO, new logic currently only improves the 1st NP skip detection. For further improvements of the consecutive NP Skip detection(2nd and 3rd NP still uses old logic). It is going to require a lot of work to make it work reliably so it is going to be a future update.
 
-### Fixes
+### Fixes in pre-2508
 
 #### UI
 
@@ -151,7 +151,7 @@
 
 2026-04-13
 
-### Fixes
+### Fixes in pre-2489
 
 - Fix the infinite support screen refresh
 - Fix the face card for TW, now all servers uses the new servant face card region.
@@ -159,7 +159,7 @@
 - Fix the dialog UI for Support Gallery and Preferred Support where the background is transparent instead of solid color.
 - Update the text for `stop on bond level up` to clarify that it is also includes above the selected target bond level as well.
 
-### Feat
+### Feat in pre-2489
 
 #### Support New Feat
 
@@ -173,7 +173,7 @@
 
 2026-03-23
 
-### Breaking Changes
+### Breaking Changes in pre-2463
 
 - Update the Battle Script Command Parser. You can now add whitespaces, tabs and new lines for better readability. All of this are going to be ignored when parsing the commands.
 
@@ -187,7 +187,7 @@
 >
 > Any existing battle scripts edited after this version will no longer be compatible with older versions of the app. If you want to use it, you gotta update to remove the whitespaces, tabs and new lines.
 
-### Features
+### Features in pre-2463
 
 - Update Home Screen UI. Added server clock and a simple gallery list detail view of the current supports. Links in Home Screen are now displayed to users.
 
@@ -234,13 +234,13 @@
 
 - Added re-request of Media Projection(for screenshot) and Accessibility Service when they're lost. This problem was observed on some devices particularly on Samsung devices when the screen was turned off.
 
-### Fixes
+### Fixes in pre-2463
 
 - EN have now updated its UI to the accomodate the Alignment and Attribute.
 
     - <img width="400" height="347" alt="image" src="https://webview.fate-go.us/wp-content/uploads/2026/03/0323_olgamally_quest_2/info_06_sf9b1.png" />
 
-### Misc
+### Misc in pre-2463
 
 - Some optimization for running scripts. This is due to updating some of the inner workings of the dependency injection which ties in the program together.
 
@@ -252,13 +252,13 @@
 
 2026-01-08
 
-### Fixes
+### Fixes in pre-2304
 
 - Updated the Quest Reward template image for NA server as it appears to have been updated.
 - Updated the skill confirmation template image for TW server
 - Fixed the repeat FP summon logic due to missing template image for 100x summon.
 
-### Feat
+### Feat in pre-2304
 
 - Added Reliquary of Departed Souls to the materials list. I actually forgot about this.
 - Added fallback method for FP summon when 100x summmon isn't detected. It uses the `sell` button to determine that we are on the repeat fp summon screen.
@@ -267,16 +267,16 @@
 
 2025-12-21
 
-### Fixes
+### Fixes in pre-2292
 
 - Improved the checking of storage path.
 
-### Feat
+### Feat in pre-2292
 
 - Updated the Battle Launcher colors for better visibility.
 - Display the app build count in the launcher for easier tracking of versions.
 
-### Breaking Changes
+### Breaking Changes in pre-2292
 
 - Removed the NP level switch to always enable NP level detection. If you no longer want to use NP level detection change it to `Lvl 1`
 
@@ -284,14 +284,14 @@
 
 2025-12-19
 
-### Feat
+### Feat in pre-2288
 
 - Minor UI update to Battle Launcher and added some text hints
 - Updated Party Selection to 15 for all servers
 - Switched all servers to 100x FP summon
 - Enabled Long Press to all servers for faster rolling
 
-### Fixes
+### Fixes in pre-2288
 
 - Fixed the repeat screen to enable to repeat quest again after the UI update.
 
@@ -299,7 +299,7 @@
 
 2025-12-15
 
-### Fixes
+### Fixes in pre-2278
 
 - Update the rank up template image for JP server as it appears to have been updated.
 
@@ -307,11 +307,11 @@
 
 2025-12-12
 
-### Fixes
+### Fixes in pre-2273
 
 - Added a blank English strings resource file to fix localization issues for some devices.
 
-### Feat
+### Feat in pre-2273
 
 #### Lottery
 
@@ -326,7 +326,7 @@
 
 2025-12-04
 
-### Fixes
+### Fixes in pre-2267
 
 - Updated the asset lookup map to include the betterfgo keys. I forgot to add this resulting in problems with bfgo.
 - Fixed the validation logic for number of cards before NP selection in Skill Maker.
@@ -335,7 +335,7 @@
 
 2025-12-04
 
-### Fixes
+### Fixes in pre-2263
 
 - Caching cutout preference caused problems for some devices, reverted back to direct calls again.
 
@@ -343,13 +343,13 @@
 
 2025-12-03
 
-### Fixes
+### Fixes in pre-2262
 
 - Apple count could go over 999, we are now fixing this by increasing the max apple count to 9,999.
 - Apple count would be fixed in between 0 and 9,999.
 - Import Battle configs results in some information to be lost(NP Level, Default Runs, etc) due to incorrect numeric type conversion. Fixed the conversion logic to properly parse the numbers.
 
-### Feat
+### Feat in pre-2262
 
 - We have now successfully migrated from the old Tesseract to modern PaddleOCR for our OCR operations. This now should result in more accurate readings.
 - As a result of the OCR migration, NP Level Detection for EN and JP server is now a bit more reliable.
@@ -396,7 +396,7 @@ Updated CE Template Images
 
 2025-11-28
 
-### Fixes
+### Fixes in pre-2253
 
 - Widescreen layout at CE menu screen have been updated causing errors when trying to level CEs. Updated the layout to match the new widescreen layout.
 - The updated logic for fodder CEs causes crash when there's a locked CE. Fixed the logic to guard against locked CEs.
@@ -405,7 +405,7 @@ Updated CE Template Images
 
 2025-11-27
 
-### Feat
+### Feat in pre-2252
 
 - Added CE Type Filter in Level CE script, also added this to the FP Launcher for better CE filtering when creating Craft Essence EXP bomb
 
@@ -425,7 +425,7 @@ Updated CE Template Images
 
 2025-11-24
 
-### Feat
+### Feat in pre-2249
 
 - Added a favorite icon for configs marked as favorite
 
@@ -437,7 +437,7 @@ Updated CE Template Images
 
     In the Battle Launcher
 
-### Fixes
+### Fixes in pre-2249
 
 - `Stop on Bond Level Up` was not working due to exception not being re-thrown after being caught.
 - Restored pre-allocated Mats to ease up the memory allocation on some devices.
@@ -446,11 +446,11 @@ Updated CE Template Images
 
 2025-11-22
 
-### Breaking Changes
+### Breaking Changes in pre-2245
 
 - Removed Screen Recording feature to simplify the codebase and reduce maintenance overhead.
 
-### Feat
+### Feat in pre-2245
 
 - Updated the MediaProjection request to use full screen for Android 15 and above. This should help reduce issues when you click the app only option that causes problems.
 - Minor optimization on loading of image assets.
@@ -459,7 +459,7 @@ Updated CE Template Images
 
 2025-10-15
 
-### Feat
+### Feat in pre-2208
 
 - Enabled parallel reading of the command cards. If anyone wants to bring back the one at a time go to `Fine-Tune` -> `Optimizations` -> Set `Parallel Command Card Check` to 1
 
@@ -482,7 +482,7 @@ Updated CE Template Images
     - [Li Shuwen](https://apps.atlasacademy.io/db/JP/servant/235)
 - When on `Tips` screen, we have added delay on there to remove wasted image matching process.
 
-### Fixes
+### Fixes in pre-2208
 
 - used the correct coroutines for optimized image loading with opencv
 - Unable to load CE/Friend support if there's no ".png" extension on the config file.
@@ -491,7 +491,7 @@ Updated CE Template Images
 
 2025-10-01
 
-### Fixes
+### Fixes in pre-2186
 
 - Update codebase and aggressively close opencv mat resources in order to decrease resources used in long run
 - Updated cutout region from being calculated every time to only once per script run, now it will only reset on script end
@@ -504,13 +504,13 @@ Updated CE Template Images
 >
 > This is mostly UI update
 
-### Fixes
+### Fixes in pre-2178
 
 - Language picker doesn't update the app's language. Made a mistake with the setup of this last preference datastore migration.
 - In AutoBattle, pausing the script will now not count the pause time into the script's runtime. Going to update all other parts of the code in the future.
 - Add a retry mechanism when loading the language model for tesseract
 
-### Features
+### Features in pre-2178
 
 - Use Material3Expressive and various UI screen update
 - Use dynamic colors for Android 12 and above
@@ -538,7 +538,7 @@ Updated CE Template Images
 
     You can click the `Return back to library` if you don't want to update.
 
-### Chore
+### Chore in pre-2178
 
 - Updated the app's architecture to make it easier to swap when protobuf migration happens in the future.
 
@@ -546,7 +546,7 @@ Updated CE Template Images
 
 2025-09-13
 
-### Fixes
+### Fixes in pre-2163
 
 - When using the app for the first time, it won't launch because the storage path hasn't been set yet. This creates a circular problem, as you need to set up the storage path before the app can launch.
 - Forgot to delete the config file itself and its reference as I was only deleting the in-app memory of it, resulting in the config file not being deleted at all.
@@ -555,11 +555,11 @@ Updated CE Template Images
 
 2025-09-10
 
-### Fixes
+### Fixes in pre-2152
 
 - Stepper not updating correctly, reverted back to old behavior
 
-### Feat
+### Feat in pre-2152
 
 #### Support Servant
 
@@ -607,12 +607,12 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/00ce55a1...0b5f9b64)
 
-### Fixes
+### Fixes in pre-2148
 
 - Cannot select an apple, update apple count or any server related preference if you have switched from one game server(EN) to another (JP) and vice versa.
 - Selected Apple's Count not being decreased if you used it.
 
-### Feat
+### Feat in pre-2148
 
 - Updated to show all of the apple counts in battle launcher
 - Updated to add more buttons for easier updating of apple count
@@ -625,7 +625,7 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/7e5a2fe0...00ce55a1)
 
-### Fixes
+### Fixes in pre-2146
 
 - Stepper is going to take in the boundary on initialization to ensure that it wouldn't go out of bounds such as `-1` in teapots/runs/ etc
 - Updated the Skill Maker to use the full width in order to display the text more clearly
@@ -634,7 +634,7 @@ Updated CE Template Images
 
 - Make the saving of image patterns multi-thread friendly
 
-### Feat
+### Feat in pre-2146
 
 - In anticipation of the upcoming raid, added experimental raid options. Be warn that the locations are based from past data and might cause wrong click
 
@@ -644,7 +644,7 @@ Updated CE Template Images
 
     <img width="867" height="468" alt="image" src="https://github.com/user-attachments/assets/0511d5ec-5c14-4183-84f0-a25b550a4b16" />
 
-### Possible breaking changes
+### Possible breaking changes in pre-2146
 
 - We have migrated from shared preferences to Preference Datastore, while everything is working fine so far be sure to Backup your configs in case that there was a problem.
 
@@ -659,7 +659,7 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/64db6921...7e5a2fe0)
 
-### Fixes
+### Fixes in pre-2138
 
 #### Teapots
 
@@ -677,7 +677,7 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/735e550e...64db6921)
 
-### Fixes
+### Fixes in pre-2133
 
 - Update the location to close the skill window during cooldown @erectorOps
 
@@ -689,7 +689,7 @@ Updated CE Template Images
 
   <img width="1041" height="587" alt="image" src="https://github.com/user-attachments/assets/7a7948aa-9990-4a69-b1ce-b91d2d8524f5" />
 
-### Features
+### Features in pre-2133
 
 #### Overlays
 
@@ -713,7 +713,7 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/0900ecc0...735e550e)
 
-### Fixes
+### Fixes in pre-2126
 
 - Move the initialization of tesseract to its designated thread.
 
@@ -723,7 +723,7 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/d0860904...0900ecc0)
 
-### Updates
+### Updates in pre-2124
 
 - Added Summer Tiamat to servant template images
 
@@ -739,13 +739,13 @@ Updated CE Template Images
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/16a1815a...d0860904)
 
-### Fixes
+### Fixes in pre-2120
 
 - Not optimized initialization of Tesseract caused some devices to crash.
 - We were using too much threads for Tesseract. Moved the Tesseract back with others to the service scoped threads.
 - Added some excpetion handling for Tesseract and optimized the initilization of regex for reused.
 
-### Feature
+### Feature in pre-2120
 
 #### Use OCR on Apple Count
 
@@ -768,7 +768,7 @@ Updated CE Template Images
 - Perform some minor UI tweaks here and there
 - Updated and perform some cleanup on codebase
 
-### Fixes
+### Fixes in pre-2116
 
 #### Grand Servant Tag
 
@@ -803,7 +803,7 @@ Updated CE Template Images
 
 Fixes:
 
-### Teapots Fix
+### Teapots Fix in pre-2106
 
 - It is now back to just normal turn on or off
 
@@ -814,7 +814,7 @@ Fixes:
   This should help you ~~and me~~ to not accidentally use Teapots on non-high bond quests.
 - The above condition doesn't apply to Ordeal Call Free Quest if you ran out of Storm Pods, as we have no way of turning it off once the quests ends.
 
-### Grand Servants Fix
+### Grand Servants Fix in pre-2106
 
 - We have updated the detection regions for both normal as well as support image maker.
 - Removed the warning for `Above lvl 100` with the new updated detection region as it seems fairly consistent at Grand Duels
@@ -969,7 +969,7 @@ sharing the same window with out of ember/qp. We have now implemented a handler 
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/18da5b64...1e5c8503)
 
-### Updated the Support Text Information
+### Updated the Support Text Information in pre-2074
 
 Updated the UI to also display the full information including Grand Servant Configuration
 
@@ -981,7 +981,7 @@ Updated the UI to also display the full information including Grand Servant Conf
 
 <img width="567" height="556" alt="image" src="https://github.com/user-attachments/assets/cfc54416-cded-48d5-b940-740802197a21" />
 
-### Auto Send Friend Request is now per battle config
+### Auto Send Friend Request is now per battle config in pre-2074
 
 It has now been migrated from per server configuration into per battle configuration
 
@@ -999,7 +999,7 @@ It has now been migrated from per server configuration into per battle configura
 
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/ee232491...18da5b64)
 
-### Default Run configuration
+### Default Run configuration in pre-2061
 
 <img width="544" height="315" alt="image" src="https://github.com/user-attachments/assets/a415982f-f1a3-4cb4-861e-68ecce385708" />
 
@@ -1007,7 +1007,7 @@ The initial value of per item in the configuration will always be "1" but by res
 
 Whenever you completed your inputted number of runs, it would also reset to whatever default you have inputted instead of "1"
 
-### Auto Level Servant for JP
+### Auto Level Servant for JP in pre-2061
 
 It has now been optimized to use the newly added auto fill embers
 
@@ -1016,7 +1016,7 @@ It has now been optimized to use the newly added auto fill embers
 > [!WARNING]
 > Haven't tested with the temporary servants such as welfares at the time of creating this feature. As such may fail, please be advised.
 
-### Auto Level CE for JP
+### Auto Level CE for JP in pre-2061
 
 It has now been optimized to use the newly added auto fill CEs
 
