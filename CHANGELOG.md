@@ -4,17 +4,18 @@
 
 ### Breaking Changes in Unreleased
 
-- Migration of Battle Configs' shared preferences into Protobuf backed by Proto Datastore.
-  - Exported configs are now would be `.pb` instead of `.json`.
-  - Importing configs now supports two formats: `.pb`(the new format) and `.json` (for the backwards compatibility).
+- Migration of Battle Configs' shared preferences into Protobuf backed by Proto Datastore:
+
+    - Exported configs are now would be `.pb` instead of `.json`.
+    - Importing configs now supports two formats: `.pb`(the new format) and `.json` (for the backwards compatibility).
 - Preferred Servants now have been updated thanks to the migration:
-  - Each servant now has its own setup (`Skills`, `Appends`, `NP Level`, etc)
-  - Each servant now has local CE and friend configurations, which override the global CE and friend option.
+    - Each servant now has its own setup (`Skills`, `Appends`, `NP Level`, etc)
+    - Each servant now has local CE and friend configurations, which override the global CE and friend option.
 - NP Cards and Command Cards are now explicitly shown.
-  - Also added `{` and `}` at the start and end of the action cards.
-  - Any `n` on the action cards denotes `command card` hence `{4n6}` is NP Servant 1, Command Card, NP Servant 3
+    - Also added `{` and `}` at the start and end of the action cards.
+    - Any `n` on the action cards denotes `command card` hence `{4n6}` is NP Servant 1, Command Card, NP Servant 3
 - Multiple Scripts in the same battle config is now available.
-  - UI is still basic, still working on this.
+    - UI is still basic, still working on this.
 
 ### New features in Unreleased
 
@@ -41,25 +42,26 @@
 ### New features in pre-2614
 
 - Battle script got its own script execution updated with scheduler.
-  - BFGO NP Skip was given higher priority at certain points of time making it reliable to skip 3 NPs in a row.
-  - Some parts of the battle script are turned off at certain points in time
-  - Some of the screen checks are only checked every N turns during certain periods of time because they are unlikely to match.
-  - The above changes should, in theory, reduce the processing power needed due to not checking all of the screen matches every time.
+    - BFGO NP Skip was given higher priority at certain points of time making it reliable to skip 3 NPs in a row.
+    - Some parts of the battle script are turned off at certain points in time
+    - Some of the screen checks are only checked every N turns during certain periods of time because they are unlikely to match.
+    - The above changes should, in theory, reduce the processing power needed due to not checking all of the screen matches every time.
 - Added missing image template for the Command Spell for KR/CN/TW (untested, but should work in theory)
 - Added Command Card Screen detection (will be referred to as the Attack screen)
-  - This is the part of the battle script where you will have to choose command cards
-  - In case of a lag, the script should be able to recover using this as the starting point
+    - This is the part of the battle script where you will have to choose command cards
+    - In case of a lag, the script should be able to recover using this as the starting point
 - Added retry to open the attack screen.
-  - Often, lag can prevent the attack screen from opening. We have added a retry mechanism for this.
+    - Often, lag can prevent the attack screen from opening. We have added a retry mechanism for this.
 - Partial Support for Android 17
 - Added two new materials
-  - https://apps.atlasacademy.io/db/JP/item/6564
+    - https://apps.atlasacademy.io/db/JP/item/6564
 
-    ![Pearl of Creation](https://static.atlasacademy.io/JP/Items/6564.png)
+      ![Pearl of Creation](https://static.atlasacademy.io/JP/Items/6564.png)
 
-  - https://apps.atlasacademy.io/db/JP/item/6565
+    - https://apps.atlasacademy.io/db/JP/item/6565
 
-    ![Black Sea Amber](https://static.atlasacademy.io/JP/Items/6565.png)
+      ![Black Sea Amber](https://static.atlasacademy.io/JP/Items/6565.png)
+
 - Minor performance upgrade thanks to the updated opencv to v5
 
 ### Fixes in pre-2614
@@ -781,10 +783,12 @@ Updated CE Template Images
   <img width="541" height="292" alt="image" src="https://github.com/user-attachments/assets/4d6e844d-3021-4e4c-b6da-59e21f94ed49" />
 
 #### Level Servant Script
+
 - Fixed the "execute" button not being handled for welfare servants
 - Also tested that the trial welfare servant will correctly stop the script once it reached its max level. We weren't sure due to the UI change.
 
 #### Skill Maker
+
 - Added Button hints for Shiki. But if you ever don't want to upgrade yet you can use Dante's options in the mean time.
 
   <img width="1073" height="560" alt="image" src="https://github.com/user-attachments/assets/8eff6c3f-e035-4353-8ac8-c59767507cbe" />
@@ -822,6 +826,7 @@ Fixes:
   <img width="549" height="76" alt="image" src="https://github.com/user-attachments/assets/b42dfa86-d03a-47ac-b452-16ba2ce63170" />
 
 Experiment:
+
 - We have introduced a dedicated thread to Tesseract(OCR) to check if it will improve the NP level detection. As well as we have updated its detection region.
   Let me know if it somehow improved.
 
@@ -844,6 +849,7 @@ Fixes:
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/11839899...eec23e1e)
 
 Fixes:
+
 - Accidentally flip the hiding condition for the play button resulting in play button still showing on vertical mode.
 - Improve the image matching operations by removing the redundant operation cause by kotlin sequence and "also" operator
 
@@ -854,10 +860,12 @@ Fixes:
 [Compare changes](https://github.com/ArthurKun21/fga-preview/compare/e6930503...11839899)
 
 Fixes:
+
 - disabling the skip filter for JP will cause an infinite loop on CE leveling, now it will always auto ON the auto fill
 - Made a mistake when translating my jupyter notebook for experiment to the app code that cause incorrect detection area for searching friends with grand servants. We have now fixed it
 
 Breaking:
+
 - We are now removing the root screenshot feature for future improvement of codebase.
 
 ## pre-2092
@@ -907,6 +915,7 @@ a normal version of it.
 We have now updated the logic that if you set it up to find Grand Servant it would check for Grand Servant Settings
 
 Such Settings are any of the following:
+
 - You have selected to find if there's Bond CE/NP Charge on Slot 2
 - You have setup to find a CE on Slot 3
 - You are searching for either Grand Servant Tag(Fixed lvl 100 or Lvl 100 and above)
@@ -914,6 +923,7 @@ Such Settings are any of the following:
 ---
 
 The following are now added to Default Support Servants to help to the upcoming Extra 1 Grand Duel and beyond
+
 - Mash
 - Jalter
 - Arcueid
@@ -973,11 +983,11 @@ sharing the same window with out of ember/qp. We have now implemented a handler 
 
 Updated the UI to also display the full information including Grand Servant Configuration
 
-#### Battle Configuration Screen
+Battle Configuration Screen
 
 <img width="551" height="368" alt="image" src="https://github.com/user-attachments/assets/cd49e4ad-5621-48a0-b596-f696fb72eec4" />
 
-#### Battle Launcher
+Battle Launcher
 
 <img width="567" height="556" alt="image" src="https://github.com/user-attachments/assets/cfc54416-cded-48d5-b940-740802197a21" />
 
@@ -985,11 +995,11 @@ Updated the UI to also display the full information including Grand Servant Conf
 
 It has now been migrated from per server configuration into per battle configuration
 
-#### Battle Configuration Screen
+Battle Configuration Screen
 
 <img width="573" height="462" alt="image" src="https://github.com/user-attachments/assets/eb3e5035-4ffd-4738-9102-5216a9de7fea" />
 
-#### Battle Launcher
+Battle Launcher
 
 <img width="570" height="569" alt="image" src="https://github.com/user-attachments/assets/86cb4f0c-67e0-414c-a94a-50bc22ca0779" />
 
