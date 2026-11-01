@@ -1,9 +1,10 @@
 ---
 title: Appearance Settings
-description: Customize FGA Preview appearance settings. Configure theme (light/dark/system), language preferences, and date/time formatting for the app interface.
+description: Customize FGA Preview appearance settings. Set the theme, the app language, and the date and time formats of the app interface.
 tags:
     - app
     - settings
+    - appearance
     - theme
     - language
     - date-time
@@ -13,13 +14,15 @@ tags:
 
 ## Overview
 
-Appearance Settings control how the app looks and displays information. You can pick a color theme, change the interface language, and choose how dates and times are formatted. These options are cosmetic and do not affect automation behavior.
+Appearance Settings control how FGA looks and how FGA shows dates and times. The options are cosmetic, and they do not change the behavior of a script.
+
+The Appearance section holds two settings and a Datetime group. The group holds three settings.
 
 ## Key Features
 
-### Choose your preferred language
+### Select the app language
 
-Select the language for all menus, labels, and messages in the app. Available languages:
+Tap **App Language** to open a list dialog. Tap a language to select it. FGA applies the language to all menus, labels, and messages.
 
 | Language                       | Code  |
 | ------------------------------ | ----- |
@@ -30,49 +33,56 @@ Select the language for all menus, labels, and messages in the app. Available la
 | Chinese (Traditional / Taiwan) | zh-TW |
 | Vietnamese                     | vi    |
 
-The app restarts briefly after changing the language.
+### Select the theme
 
-### Set the color theme
+Tap the **Theme** row to open a list of three options:
 
-Pick a theme that matches your preference or environment:
-
-| Theme  | Description                                                    |
+| Option | Description                                                    |
 | ------ | -------------------------------------------------------------- |
-| Light  | Bright backgrounds with dark text.                             |
-| Dark   | Dark backgrounds with light text, easier on the eyes at night. |
-| System | Follows your device's system-wide dark-mode setting.           |
+| Light  | Light backgrounds with dark text                               |
+| Dark   | Dark backgrounds with light text                               |
+| Auto   | Follows the dark-mode setting of the device                     |
 
-### Show relative time
+### Use relative time
 
-Enable **Use relative time** to display timestamps like "5 minutes ago" or "yesterday" instead of exact dates. This makes recent activity easier to scan at a glance.
+Enable **Use relative time** to show a time such as "5 minutes ago" instead of an exact date. Recent activity is then easier to read.
 
-### Use 24-hour clock format
+### Use the 24-hour format
 
-Toggle **24-hour format** on to display times such as 14:30 instead of 2:30 PM. This is common in military and many international contexts.
+Enable **Use 24-hour format** to show a time such as 14:30 instead of 2:30 PM.
 
-### Select a date format
+### Select a date and time format
 
-Pick a date style that matches your region:
+Tap **Date-Time Format** to open a list dialog. The row under the title shows a live example of each format. Tap a format to select it.
 
-| Format       | Example            |
-| ------------ | ------------------ |
-| Default      | Uses device locale |
-| MM/dd/yy     | 12/06/25           |
-| dd/MM/yy     | 06/12/25           |
-| yyyy-MM-dd   | 2025-12-06         |
-| dd MMM yyyy  | 06 Dec 2025        |
-| MMM dd, yyyy | Dec 06, 2025       |
+| Option        | Example            |
+| ------------- | ------------------ |
+| Default       | Uses the locale of the device |
+| MM/dd/yy      | 12/06/25           |
+| dd/MM/yy      | 06/12/25           |
+| yyyy-MM-dd    | 2025-12-06         |
+| dd MMM yyyy   | 06 Dec 2025        |
+| MMM dd, yyyy  | Dec 06, 2025       |
 
-The preview in the settings shows a live example of your chosen format.
+The **Last sync** row in the GitHub Backup section also uses this format. See [GitHub Backup](github-backup.md).
 
 ## Tips for Best Results
 
-- Use **System** theme to automatically switch between light and dark based on your phone's schedule.
-- Pick a date format that matches how you read dates locally so config timestamps are intuitive.
-- Relative time is handy when sorting by "recently used" in the Library, since you can see how long ago a config ran.
+- Use the **Auto** theme to follow the dark-mode schedule of the device.
+- Select a date format that matches how you read dates. The config timestamps in the Library are then easier to read.
+- Enable **Use relative time** when you sort configs by "Recently Used". You then see how long ago each config ran.
 
 ## Troubleshooting
 
-- **Language change did not apply:** The app may need a manual restart if it fails to refresh automatically.
-- **Theme flickers or looks wrong:** Force-close the app and reopen it to reload the theme correctly.
-- **Date format shows wrong example:** Ensure your device's system locale is set correctly, then re-select the format.
+| Problem | Solution |
+| ------- | -------- |
+| The language change does not apply | FGA reloads the screen at once. If the old language stays, close FGA and open it again. |
+| The theme flickers or looks wrong | Close FGA and open it again to reload the theme. |
+| The date format example is wrong | Check the locale of the device. Then select the format again. |
+| The date and time format does not apply everywhere | Some screens show a relative time. Enable or disable **Use relative time** to switch between the two styles. |
+
+## Related Documentation
+
+- [Settings](settings.md)
+- [Global Battle Settings](global-battle.md)
+- [GitHub Backup](github-backup.md)

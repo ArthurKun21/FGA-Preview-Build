@@ -105,8 +105,7 @@ runs:
         COMMIT_COUNT_DIFF: ${{ steps.commits.outputs.commit-count-diff }}
         COMMIT_LOGS: ${{ steps.commits.outputs.commit-logs }}
       run: |
-        current_date=$(date +"%Y-%m-%d")
-        changelog=$(printf '# %s\n\n%s\n\n%s' "$COMMIT_COUNT" "$current_date" "$COMMIT_LOGS")
+        changelog=$(printf '# Pre-%s\n\n## Commits\n\n%s' "$COMMIT_COUNT" "$COMMIT_LOGS")
 
         if [ "$COMMIT_COUNT_DIFF" -gt 0 ]; then
           create_release=true

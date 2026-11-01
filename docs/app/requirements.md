@@ -20,8 +20,10 @@ Before using FGA Preview, your device needs to meet a few basic requirements and
 
 FGA Preview requires **Android 8.0 (Oreo) or newer**. This is because the app uses special gestures like long-press that are only available on Android 8.0 and above.
 
-!!! tip "How to check your Android version"
-    Go to **Settings → About phone → Android version** on your device to see which version you have.
+> [!TIP]
+> **How to check your Android version**
+>
+> Go to **Settings → About phone → Android version** on your device to see which version you have.
 
 ### Accessibility Service
 
@@ -32,8 +34,8 @@ The Accessibility Service lets FGA Preview interact with your screen on your beh
 | Tap and swipe         | Performs in-game actions like selecting cards          |
 | Read screen content   | Detects game state to know when to act                 |
 
-!!! note
-    Android will show a warning when enabling this permission. This is normal for all automation apps.
+> [!NOTE]
+> Android will show a warning when enabling this permission. This is normal for all automation apps.
 
 ### Overlay Permission
 
@@ -53,12 +55,24 @@ Media Projection gives FGA Preview the ability to see what's on your screen. The
 | Capture screen images  | Identifies cards, buttons, and game states            |
 | Enable image matching  | Matches screenshots against known patterns            |
 
-!!! info
-    A notification will appear while screen capture is active. This is required by Android and cannot be hidden.
+> [!NOTE]
+> A notification will appear while screen capture is active. This is required by Android and cannot be hidden.
+
+### Notifications
+
+FGA Preview uses notifications to show the state of your work. A script reports its state, and a backup, a restore, or a GitHub sync reports its progress and its result.
+
+| What it does               | Why it's needed                                     |
+| -------------------------- | --------------------------------------------------- |
+| Show progress              | Reports the state of a run, a backup, and a sync    |
+| Report results             | Shows exit reasons and failure reasons              |
+
+> [!NOTE]
+> The Permissions group in [Advanced Settings](advanced.md) holds the permission rows of the app.
 
 ### Disable Battery Optimization
 
-Some Android devices aggressively stop apps running in the background to save battery. Disabling battery optimization for FGA Preview ensures it keeps running during long farming sessions.
+Some Android devices stop apps that run in the background, to save battery. Turn off battery optimization for FGA Preview. The app then keeps running during long farming sessions.
 
 | What it does               | Why it's needed                                   |
 | -------------------------- | ------------------------------------------------- |
@@ -70,7 +84,8 @@ Some Android devices aggressively stop apps running in the background to save ba
 - **Grant all permissions upfront.** The app will guide you through each one, but enabling them all at once avoids repeated prompts.
 - **Check your Android version first.** If you're on Android 7.1 or older, FGA Preview won't work—consider updating your device or using a different phone.
 - **Keep battery optimization disabled.** Even if the app works initially, the system may kill it during long runs if optimization is enabled.
-- **Restart your device after setup.** A fresh restart can help ensure all permissions are applied correctly.
+- **Grant notifications.** The app reports run progress, backup progress, and GitHub sync progress in a notification.
+- **Restart your device after setup.** A fresh restart helps apply all permissions correctly.
 
 ## Troubleshooting
 
