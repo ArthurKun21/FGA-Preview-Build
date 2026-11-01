@@ -1,8 +1,8 @@
 # Robots.txt for FGA Preview Documentation
-# https://arthurkun21.github.io/FGA-Preview
+# https://arthurkun21.github.io/FGA-Preview-Build
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://arthurkun21.github.io/FGA-Preview/sitemap.xml
+Sitemap: https://arthurkun21.github.io/FGA-Preview-Build/sitemap.xml
