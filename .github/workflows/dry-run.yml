@@ -7,8 +7,23 @@ on:
   # Manual triggers
   workflow_dispatch:
     inputs:
-      upload_build:
-        description: 'Upload Build to GitHub Actions'
+      upload_android:
+        description: 'Upload Android Build to GitHub Actions'
+        required: false
+        type: boolean
+        default: false
+      upload_windows:
+        description: 'Upload Windows Build to GitHub Actions'
+        required: false
+        type: boolean
+        default: false
+      upload_linux:
+        description: 'Upload Linux Build to GitHub Actions'
+        required: false
+        type: boolean
+        default: false
+      upload_macos:
+        description: 'Upload macOS Build to GitHub Actions'
         required: false
         type: boolean
         default: false
@@ -58,11 +73,11 @@ jobs:
           ./gradlew assembleCi --parallel
 
       - name: Upload Alpha
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_android == 'true' || github.event.inputs.upload_android == true) }}
         uses: $/.github/actions/upload-alpha
         with:
           commit-count: ${{ env.COMMIT_COUNT }}
-          upload-build: ${{ github.event.inputs.upload_build }}
+          upload-build: ${{ github.event.inputs.upload_android }}
 
   Desktop-App:
     timeout-minutes: 60
@@ -70,6 +85,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, macos-latest, windows-latest ]
+        include:
+          - os: ubuntu-latest
+            upload: ${{ inputs.upload_linux }}
+          - os: macos-latest
+            upload: ${{ inputs.upload_macos }}
+          - os: windows-latest
+            upload: ${{ inputs.upload_windows }}
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
@@ -94,4 +116,4 @@ jobs:
         with:
           os: ${{ matrix.os }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          upload-build: ${{ github.event.inputs.upload_build }}
+          upload-build: ${{ matrix.upload }}

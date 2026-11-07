@@ -3,7 +3,7 @@ description: 'Build the Desktop release for the current OS and optionally upload
 
 inputs:
   os:
-    description: 'Runner OS from the workflow matrix, used to select which artifact to upload'
+    description: 'Runner OS from the workflow matrix, used to select which artifact to stage and upload'
     required: true
   github-token:
     description: 'GitHub token for the Maven GitHub package download'
@@ -16,11 +16,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - id: commit-count
+    - id: prepare
       name: Prepare build
       shell: bash
+      env:
+        OS_INPUT: ${{ inputs.os }}
       run: |
         echo "commit-count=$(git rev-list --count HEAD)" >> "$GITHUB_OUTPUT"
+        case "$OS_INPUT" in
+          windows-*) os_name=windows ;;
+          ubuntu-*) os_name=linux ;;
+          macos-*) os_name=macos ;;
+          *) echo "Unsupported OS input: $OS_INPUT" >&2; exit 1 ;;
+        esac
+        echo "os-name=$os_name" >> "$GITHUB_OUTPUT"
 
     - name: Build Desktop Release
       shell: bash
@@ -30,24 +39,70 @@ runs:
       run: |
         ./gradlew :desktopApp:packageReleaseDistributionForCurrentOS
 
-    - name: Upload Windows Build
+    # Stage the release artifacts at the repository root, renamed with the commit count, so the
+    # upload step never depends on Compose's output layout
+    - name: Stage Windows artifacts
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'windows') }}
+      shell: pwsh
+      env:
+        COMMIT_COUNT: ${{ steps.prepare.outputs.commit-count }}
+      run: |
+        $dist = "desktopApp/build/compose/binaries/main-release"
+        Move-Item "$dist/app/FGA-Preview" "FGA-Preview-${env:COMMIT_COUNT}"
+        Compress-Archive -Path "FGA-Preview-${env:COMMIT_COUNT}" -DestinationPath "FGA-Preview-${env:COMMIT_COUNT}.zip" -Force
+        Move-Item "$dist/msi/*.msi" "FGA-Preview-${env:COMMIT_COUNT}.msi"
+
+    - name: Stage Linux artifacts
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'ubuntu') }}
+      shell: bash
+      env:
+        COMMIT_COUNT: ${{ steps.prepare.outputs.commit-count }}
+      run: |
+        dist="desktopApp/build/compose/binaries/main-release"
+        mv "$dist/deb/"*.deb "FGA-Preview-${COMMIT_COUNT}.deb"
+        mv "$dist/app/FGA-Preview" "FGA-Preview-${COMMIT_COUNT}"
+        # Native zip keeps the executable bits, so the app image stays runnable after extraction
+        zip -r -q "FGA-Preview-${COMMIT_COUNT}.zip" "FGA-Preview-${COMMIT_COUNT}"
+
+    - name: Stage macOS artifacts
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'macos') }}
+      shell: bash
+      env:
+        COMMIT_COUNT: ${{ steps.prepare.outputs.commit-count }}
+      run: |
+        dist="desktopApp/build/compose/binaries/main-release"
+        mv "$dist/dmg/"*.dmg "FGA-Preview-${COMMIT_COUNT}.dmg"
+        mv "$dist/app/FGA-Preview.app" "FGA-Preview-${COMMIT_COUNT}.app"
+        # ditto is the canonical way to zip a .app bundle: it preserves symlinks, permissions and
+        # extended attributes; --keepParent stores the bundle as the zip root
+        ditto -c -k --sequesterRsrc --keepParent \
+          "FGA-Preview-${COMMIT_COUNT}.app" \
+          "FGA-Preview-${COMMIT_COUNT}.zip"
+
+    - name: Upload Zip
+      if: ${{ inputs.upload-build == 'true' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-${{ steps.prepare.outputs.os-name }}-desktop-${{ steps.prepare.outputs.commit-count }}-zip
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.zip
+
+    - name: Upload Windows Installer
       if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'windows') }}
       uses: actions/upload-artifact@v7.0.2
       with:
-        name: fga-ci-windows-desktop-${{ steps.commit-count.outputs.commit-count }}
-        path: ./desktopApp/build/compose/binaries/main-release/msi/*.msi
-        # path: ./desktopApp/build/compose/binaries/main-release/portable/*.exe
+        name: fga-ci-windows-desktop-${{ steps.prepare.outputs.commit-count }}-msi
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.msi
 
-    - name: Upload Linux Build
+    - name: Upload Linux Package
       if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'ubuntu') }}
       uses: actions/upload-artifact@v7.0.2
       with:
-        name: fga-ci-linux-desktop-${{ steps.commit-count.outputs.commit-count }}
-        path: ./desktopApp/build/compose/binaries/main-release/**/*.deb
+        name: fga-ci-linux-desktop-${{ steps.prepare.outputs.commit-count }}-deb
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.deb
 
-    - name: Upload Macos Build
+    - name: Upload macOS Image
       if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'macos') }}
       uses: actions/upload-artifact@v7.0.2
       with:
-        name: fga-ci-macos-desktop-${{ steps.commit-count.outputs.commit-count }}
-        path: ./desktopApp/build/compose/binaries/main-release/**/*.dmg
+        name: fga-ci-macos-desktop-${{ steps.prepare.outputs.commit-count }}-dmg
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.dmg
