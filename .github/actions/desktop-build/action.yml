@@ -79,9 +79,30 @@ runs:
           "FGA-Preview-${COMMIT_COUNT}.app" \
           "FGA-Preview-${COMMIT_COUNT}.zip"
 
-    - name: Upload Build
+    - name: Upload Zip
       if: ${{ inputs.upload-build == 'true' }}
       uses: actions/upload-artifact@v7.0.2
       with:
-        name: fga-ci-${{ steps.prepare.outputs.os-name }}-desktop-${{ steps.prepare.outputs.commit-count }}
-        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.*
+        name: fga-ci-${{ steps.prepare.outputs.os-name }}-desktop-${{ steps.prepare.outputs.commit-count }}-zip
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.zip
+
+    - name: Upload Windows Installer
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'windows') }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-windows-desktop-${{ steps.prepare.outputs.commit-count }}-msi
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.msi
+
+    - name: Upload Linux Package
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'ubuntu') }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-linux-desktop-${{ steps.prepare.outputs.commit-count }}-deb
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.deb
+
+    - name: Upload macOS Image
+      if: ${{ inputs.upload-build == 'true' && startsWith(inputs.os, 'macos') }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: fga-ci-macos-desktop-${{ steps.prepare.outputs.commit-count }}-dmg
+        path: FGA-Preview-${{ steps.prepare.outputs.commit-count }}.dmg
