@@ -12,6 +12,21 @@ on:
         required: false
         type: boolean
         default: false
+      upload_windows:
+        description: 'Upload Windows Build to GitHub Actions'
+        required: false
+        type: boolean
+        default: false
+      upload_linux:
+        description: 'Upload Linux Build to GitHub Actions'
+        required: false
+        type: boolean
+        default: false
+      upload_macos:
+        description: 'Upload macOS Build to GitHub Actions'
+        required: false
+        type: boolean
+        default: false
       suggest_runtime:
         description: 'Suggest Runtime Modules'
         required: false
@@ -70,6 +85,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, macos-latest, windows-latest ]
+        include:
+          - os: ubuntu-latest
+            upload: ${{ inputs.upload_linux }}
+          - os: macos-latest
+            upload: ${{ inputs.upload_macos }}
+          - os: windows-latest
+            upload: ${{ inputs.upload_windows }}
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
@@ -94,4 +116,4 @@ jobs:
         with:
           os: ${{ matrix.os }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          upload-build: ${{ github.event.inputs.upload_build }}
+          upload-build: ${{ matrix.upload }}
