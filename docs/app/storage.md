@@ -1,11 +1,12 @@
 ---
 title: Storage Settings
-description: Configure FGA Preview storage settings. Manage the data storage location, reset the support database, and create or restore a settings backup.
+description: Configure FGA Preview storage settings. Manage the data storage location, reset the support database, create or restore a settings backup, and set up an automatic backup of battle configs.
 tags:
     - app
     - settings
     - storage
     - backup
+    - auto-backup
     - support-database
 ---
 
@@ -13,9 +14,9 @@ tags:
 
 ## Overview
 
-Storage Settings control where FGA keeps your data. FGA writes battle configs, screenshots, and other files to the storage location. You can also reset the support database and make a backup of your settings.
+Storage Settings control where FGA keeps your data. FGA writes battle configs, screenshots, and other files to the storage location. You can also reset the support database, make a backup of your settings, and configure an automatic backup of your battle configs.
 
-The Storage section holds three parts. The first part is the storage location. The second part resets the support database. The third part makes and restores a backup.
+The Storage section holds four parts. The first part is the storage location. The second part resets the support database. The third part makes and restores a backup. The fourth part configures the automatic backup of battle configs.
 
 ## Key Features
 
@@ -40,7 +41,7 @@ The reset runs in the background. Leave the settings screen and use other parts 
 
 ### Make a backup of your settings
 
-Tap **Create backup** to write all your battle configs and app settings into one JSON file.
+Tap **Create backup** to write your app settings into one JSON file.
 
 > [!NOTE]
 > **A backup and a restore touch only the settings in the file**
@@ -51,12 +52,32 @@ Tap **Create backup** to write all your battle configs and app settings into one
 
 Tap **Restore backup** and then tap **Choose file**. Select a JSON file that FGA wrote before. The import runs in the background, and a notification shows the progress.
 
-Each config in the file appears in the Library with its original name and settings.
+FGA applies the restored settings to the app.
+
+### Configure auto backup
+
+Auto backup writes a zip archive with your battle configs to the `configs` folder of the storage location. The archive name contains the date and the time. FGA keeps the last 4 archives and deletes older archives. An auto backup contains only your battle configs. Use **Create backup** for your app settings.
+
+> [!NOTE]
+> **Auto backup needs a storage location**
+>
+> FGA disables the auto backup controls while the storage location is "Internal Storage". Select a storage location first.
+
+Set the **Backup interval** to **Daily**, **Every 2 days**, or **Weekly**. Choose **Off** to stop the automatic backups.
+
+The row **Last auto backup** shows the date and the time of the last successful backup. The row shows **Never** before the first backup.
+
+On Android, a scheduled job runs the backup. The job waits until the battery is not low. On the desktop version, FGA runs the backup only while the app is open. FGA shows a notification on Android, or a message on the desktop version, when a backup fails.
+
+FGA skips a config file that it cannot read. One damaged file does not stop the backup.
+
+To restore the configs, unzip an archive, and import the `.pb` files in the Library.
 
 ## Tips for Best Results
 
 - Select a folder that you can open in a file manager. You can then share or read the files yourself.
 - Keep one recent backup outside the device. Use a cloud service or a computer.
+- Keep the storage location in a folder that a cloud service syncs. The service then keeps a copy of each auto backup.
 - Reset the support database when support images do not load after a game update.
 - Enable notifications so that you see the progress of a move, a reset, or a restore. See [Advanced Settings](advanced.md).
 
@@ -69,6 +90,8 @@ Each config in the file appears in the Library with its original name and settin
 | Support images do not load | Tap **Reset Support Database**. Check the free space on the device if the reset fails. |
 | The backup file is empty or damaged | Write the backup again to a different folder. Then check that FGA can write to that folder. |
 | The restore does nothing | Check that the file is a valid FGA backup JSON. Another JSON file or a damaged export does not import. |
+| You cannot change the auto backup interval | Select a storage location first. The backup writes into the `configs` folder of the storage location. |
+| The auto backup does not run | Check the interval under **Auto backup**. On the desktop version, FGA runs the backup only while the app is open. |
 
 ## Related Documentation
 
