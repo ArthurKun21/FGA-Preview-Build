@@ -7,8 +7,8 @@ on:
   # Manual triggers
   workflow_dispatch:
     inputs:
-      upload_build:
-        description: 'Upload Build to GitHub Actions'
+      upload_android:
+        description: 'Upload Android Build to GitHub Actions'
         required: false
         type: boolean
         default: false
@@ -73,11 +73,11 @@ jobs:
           ./gradlew assembleCi --parallel
 
       - name: Upload Alpha
-        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_build == 'true' || github.event.inputs.upload_build == true) }}
+        if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.upload_android == 'true' || github.event.inputs.upload_android == true) }}
         uses: $/.github/actions/upload-alpha
         with:
           commit-count: ${{ env.COMMIT_COUNT }}
-          upload-build: ${{ github.event.inputs.upload_build }}
+          upload-build: ${{ github.event.inputs.upload_android }}
 
   Desktop-App:
     timeout-minutes: 60
