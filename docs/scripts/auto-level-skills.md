@@ -94,7 +94,7 @@ flowchart TD
 
 ![Level Skill](<../assets/scripts/Level Skill.png>)
 
-![Level Skill Dialog](<../assets/scripts/Level Skill Dialog.png>)
+![Level Skill Dialog](<../assets/scripts/Level-Skill-Dialog.png>)
 
 ![Level Skill with unavailable slots](<../assets/scripts/Level Skill Limited.png>)
 

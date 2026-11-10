@@ -88,7 +88,7 @@ The CE setup screen has these settings. **Target Rarity** and **Target Filter CE
 
 ![Level CE](<../assets/scripts/Level CE.png>)
 
-![Level CE Dialog](<../assets/scripts/Level CE Dialog.png>)
+![Level CE Dialog](<../assets/scripts/Level-CE-Dialog.png>)
 
 ## Exit Reasons
 

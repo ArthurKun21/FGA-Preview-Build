@@ -114,9 +114,9 @@ flowchart TD
 > [!NOTE]
 > The app automatically detects which appends are locked/unlocked.
 
-![Level Append Dialog](<../assets/scripts/Level Append Dialog.png>)
+![Level Append Dialog](<../assets/scripts/Level-Append-Dialog.png>)
 
-![Level Append Extended Dialog](<../assets/scripts/Level Append Extended Dialog.png>)
+![Level Append Extended Dialog](<../assets/scripts/Level-Append-Extended-Dialog.png>)
 
 ## Exit Reasons
 

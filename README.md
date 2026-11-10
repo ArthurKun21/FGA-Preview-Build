@@ -81,21 +81,21 @@ We implemented some of the following features.
 
 ## APP
 
-![FGA Preview](https://github.com/user-attachments/assets/890f2031-d7a8-49d1-87dd-3bf54c55e545)
+![FGA Preview](docs/assets/app.png)
 
 ## Scripts
 
 ### Auto Level Skills
 
-![Auto Level Skill](https://github.com/user-attachments/assets/8d3810e0-dd60-44c0-813c-a02912890f53)
+![Auto Level Skill](docs/assets/scripts/Level-Skill-Dialog.png)
 
 ### Auto Level CE
 
-![Auto Level CE](https://github.com/user-attachments/assets/7b9d452c-2356-43c8-97b4-e71bc6c49bc7)
+![Auto Level CE](docs/assets/scripts/Level-CE-Dialog.png)
 
 ### Auto Level Append
 
-![Auto Level Append](https://github.com/user-attachments/assets/d70caf20-053b-4dfe-a831-d883049d6b08)
+![Auto Level Append](docs/assets/scripts/Level-Append-Dialog.png)
 
 ### Improved Support Selection
 
@@ -103,7 +103,13 @@ We implemented some of the following features.
 - NP Level Detection(a bit more reliable with PaddleOCR)
 - Support for Grand Servant system
 
-![Improved Support Selection](https://github.com/user-attachments/assets/00ec91c8-6d8e-4670-b9e1-ba6e66674f58)
+![Top Level Support Settings](docs/assets/battle/Preferred-Support-1.png)
+
+![Support Append Skills Settings](docs/assets/battle/Preferred-Support-2.png)
+
+![Support Noble Phantasm Settings](docs/assets/battle/Preferred-Support-3.png)
+
+![Support Custom CE and Friends Settings](docs/assets/battle/Preferred-Support-4.png)
 
 ## TODO
 
