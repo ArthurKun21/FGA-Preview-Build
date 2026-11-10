@@ -108,7 +108,7 @@ The loop runs until one of these occurs:
 
 ![CE EXP Bomb Screen](<../assets/scripts/CE EXP Bomb.png>)
 
-![CE EXP Bomb Dialog](<../assets/scripts/CE EXP Bomb Dialog.png>)
+![CE EXP Bomb Dialog](<../assets/scripts/CE-EXP-Bomb-Dialog.png>)
 
 ## Exit Reasons
 

@@ -27,9 +27,9 @@ The script performs FP summons continuously. It uses the 10x and 100x summon but
    - The 10x or 100x continue summon button
    - The Sell button
 
-![Friend Point Gacha](<../assets/scripts/Friend Point Gacha.png>)
+![Friend Point Gacha](<../assets/scripts/Friend-Point-Gacha.png>)
 
-![Friend Point Gacha to CE EXP Bomb](<../assets/scripts/Friend Point Gacha To CE EXP Bomb.png>)
+![Friend Point Gacha to CE EXP Bomb](<../assets/scripts/Friend-Point-Gacha-To-CE-EXP-Bomb.png>)
 
 ## Workflow
 

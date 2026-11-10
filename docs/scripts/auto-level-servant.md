@@ -105,7 +105,7 @@ The setup screen shows these settings:
 | Redirect to Palingenesis upon reaching the level cap?  | The script opens the palingenesis (grail) menu at max level.                                                                             |
 | Mute Notifications?                                    | The script mutes the enhancement notification popups while leveling.                                                                     |
 
-![Level Servant Dialog](<../assets/scripts/Level Servant Dialog.png>)
+![Level Servant Dialog](<../assets/scripts/Level-Servant-Dialog.png>)
 
 ## Exit Reasons
 

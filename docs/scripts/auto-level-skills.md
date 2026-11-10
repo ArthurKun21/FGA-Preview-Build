@@ -98,7 +98,7 @@ flowchart TD
 
 ![Level Skill with unavailable slots](<../assets/scripts/Level Skill Limited.png>)
 
-![Level Skill with unavailable slots Dialog](<../assets/scripts/Level Skill Limited Dialog.png>)
+![Level Skill with unavailable slots Dialog](<../assets/scripts/Level-Skill-Limited-Dialog.png>)
 
 ## Exit Reasons
 

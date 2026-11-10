@@ -76,7 +76,7 @@ flowchart TD
 | Max Gold Ember Total Count          | Maximum total gold embers to collect                          |
 | Loop Into Lottery After Present Box | Return to lottery after collection (when called from lottery) |
 
-![Gift Box Dialog](<../assets/scripts/Gift Box.png>)
+![Gift Box Dialog](<../assets/scripts/Gift-Box.png>)
 
 ## Exit Reasons
 
