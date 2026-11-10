@@ -119,50 +119,34 @@ Current things being worked on
 
     It will be on the `configs` folder. Plan to enable to allow users to create folder for organization.
 
-2. [ ] Migrate from shared preferences to datastore
-
-3. [ ] Github Backup and Restore for configs
-
-4. [ ] FGA Settings Backup and Restore
-
-5. [ ] Config tags and filter tag
+2. [ ] Config tags and filter tag
 
     It will make it easy to search for at battle launcher.
 
-6. [ ] Battle History.
-
 Ideas want to work on:
 
-1. [ ] Work on Servant Profiles.
+1. [ ] Spam V2, it will be based from Servant Profiles to provide better skill usage during spam. It will only take effect once the Command List is empty
 
-2. [ ] Spam V2, it will be based from Servant Profiles to provide better skill usage during spam. It will only take effect once the Command List is empty
+2. [ ] Use the current storage settings to auto save all of the configs
 
-3. [ ] On pause, show the remaining commands
-
-4. [ ] Use the current storage settings to auto save all of the configs
-
-5. [ ] Integration with Laplace from [Chaldea](https://github.com/chaldea-center/chaldea).
+3. [ ] Integration with Laplace from [Chaldea](https://github.com/chaldea-center/chaldea).
 
     The Idea is to able to get data from Laplace and then copy paste it into another text box.
 
-6. [ ] Combine Card and Servant Priority.
+4. [ ] Combine Card and Servant Priority.
 
-7. [ ] Update the Card pick logic to maximize dmg/np gain
+5. [ ] Update the Card pick logic to maximize dmg/np gain
     - e.g. `NP(Servant A)-(Card from A)-(Card from B)` will become `NP(Servant A)-(Card from B)-(Card from A))`
 
-8. [ ] Read less images from card pick logic
+6. [ ] Read less images from card pick logic
     - When 3 NP used. verify NPs can be used and no card checking.
     - When 2 NP used. Find the same one as the higher priority card in the same chain
 
-9. [ ] Need to have full friend list to get the error when sending request with full list.
+7. [ ] Need to have full friend list to get the error when sending request with full list.
 
-10. [ ] Select what is the wave/turn the script would start. This is now made possible thanks to the fast lazy column
+8. [ ] Different scripts per support.
 
-11. [ ] Different scripts per support.
-
-12. [ ] Auto Creation of Blue Apples, if available
-
-13. [ ] Download Support Servants/CE from another repository. Instead of need to use Support Image Maker. Can just download support files.
+9. [ ] Auto Creation of Blue Apples, if available
 
 Already done:
 
@@ -214,3 +198,21 @@ Already done:
 19. [X] Grand Servant Support(mostly good)
 
 20. [X] Migration from hilt to kotlin-inject/metro
+
+21. [X] Migrate from shared preferences to datastore
+
+22. [X] Github Backup and Restore for configs
+
+23. [X] FGA Settings Backup and Restore
+
+24. [X] Battle History.
+
+25. [X] Work on Servant Profiles.
+
+26. [X] On pause, show the remaining commands
+
+27. [X] Select what is the wave/turn the script would start. This is now made possible thanks to the fast lazy column
+
+28. [X] Download Support Servants/CE from another repository. Instead of need to use Support Image Maker. Can just download support files.
+
+    [FGA Data Repository](https://github.com/ArthurKun21/fga-data)
