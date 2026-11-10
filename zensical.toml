@@ -130,7 +130,7 @@ blog_dir = "blog"
 match_path = "blog/posts/.*"
 
 # Self-host external assets (badges, remote thumbnails) instead of hotlinking.
-[project.plugins.privacy]
+# [project.plugins.privacy]
 
 [project.markdown_extensions]
 admonition = {}
