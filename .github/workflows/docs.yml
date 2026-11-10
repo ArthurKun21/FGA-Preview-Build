@@ -7,6 +7,9 @@ on:
       - 'docs/**'
       - zensical.toml
       - '.github/workflows/docs.yml'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - '.python-version'
   pull_request:
     branches:
       - main
@@ -14,6 +17,9 @@ on:
       - 'docs/**'
       - zensical.toml
       - '.github/workflows/docs.yml'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - '.python-version'
   # Manual triggers
   workflow_dispatch:
 
