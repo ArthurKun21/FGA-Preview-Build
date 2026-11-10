@@ -83,6 +83,8 @@ We implemented some of the following features.
 
 ![FGA Preview](docs/assets/app.png)
 
+![Battle Launcher](docs/assets/battle/battle-launcher.png)
+
 ## Scripts
 
 ### Auto Level Skills
